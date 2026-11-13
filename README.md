@@ -19,6 +19,7 @@
   <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/images/spotify.png" alt="Spotify" width="64">&nbsp;&nbsp;
   <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/images/jellyfin.png" alt="Jellyfin" width="64">&nbsp;&nbsp;
   <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/images/alexa_media.png" alt="Alexa Media Player" width="64">&nbsp;&nbsp;
+  <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/images/philips_js.png" alt="Philips TV" width="64">&nbsp;&nbsp;
   <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/images/bluesound.png" alt="Bluesound" width="64">&nbsp;&nbsp;
   <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/images/heos.png" alt="HEOS" width="64">
 </p>
@@ -49,6 +50,7 @@ The cards work on top of the integrations you already use, and draw only what ea
 - **Jellyfin**: an episode shows its series and episode ("Harbor Tales · S2E5"), a film says so, the client app is in the subtitle, and idle sessions stay out of the way (`hide_idle_sessions`)
 - **Alexa Media Player** (Echo): "Last called" badge, next alarm, timer and reminder, a do-not-disturb button, and Alexa speaker groups shown as groups
 - **Apple TV and HomePod**: the app playing in the subtitle, the episode (*Series · S1E4*), the apps as sources, an optional **remote** (`show_remote`); a HomePod is a speaker
+- **Philips TV**: *Recording* and *New recording* tags, **Ambilight**, **Ambilight + Hue** and **screen** on / off buttons, and the optional **remote** (`show_remote`) sent as Philips keys
 - **Animated**: the record slides out of the sleeve and turns while playing, the equalizer bounces, glows while paused, a ring turns while buffering, the drawn speaker beats, the TV screen glows, the playing rooms of a group ring (see [Animations](#animations)); `prefers-reduced-motion` stops them
 - Drawn **speaker, TV and receiver** pictures for a player without artwork, following its `device_class`, and **device pictures** by model for Echo speakers and displays, HomePods and Apple TV boxes (see [Drawn pictures](#drawn-pictures))
 - Header icon of the kind of player (speaker, speaker group, TV, receiver) in a tinted circle colored by its state, and a state chip on the title line
@@ -75,6 +77,7 @@ Any `media_player` entity works: the card reads what the player supports. These 
 | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/images/bluesound.png" alt="" width="16"> [Bluesound](https://www.home-assistant.io/integrations/bluesound/), <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/images/heos.png" alt="" width="16"> [HEOS](https://www.home-assistant.io/integrations/heos/), <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/images/linkplay.png" alt="" width="16"> [LinkPlay](https://www.home-assistant.io/integrations/linkplay/), <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/images/yamaha_musiccast.png" alt="" width="16"> [Yamaha MusicCast](https://www.home-assistant.io/integrations/yamaha_musiccast/), <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/images/snapcast.png" alt="" width="16"> [Snapcast](https://www.home-assistant.io/integrations/snapcast/) (core) | Playback, volume, sources, **groups** (join / unjoin) |
 | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/images/jellyfin.png" alt="" width="16"> [Jellyfin](https://www.home-assistant.io/integrations/jellyfin/) (core) | One player per client session: the **episode** as *Series · S2E5* (or *Movie*), the **client app** in the subtitle (the session's device model, e.g. *Jellyfin Android TV*), a drawn TV when there is no artwork; **idle sessions** (an app left open, nothing playing) are left out of `players` and of the rooms (`hide_idle_sessions`) |
 | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/images/alexa_media.png" alt="" width="16"> [Alexa Media Player](https://github.com/alandtse/alexa_media_player) (custom) | Echo speakers and groups: playback, volume, **Last called** badge (`last_called`), the **next alarm, timer and reminder** of the Echo (its *Next alarm / timer / reminder* sensors) in one line, a **do-not-disturb** button (its *Do not disturb* switch), **speaker groups** (*Everywhere*, multiroom groups) shown as groups (Alexa cannot join or unjoin speakers from Home Assistant), and Alexa content in `favorites` (`AMAZON_MUSIC`, `TUNEIN`, `SPOTIFY`…, or `custom` for a voice command) |
+| <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/images/philips_js.png" alt="" width="16"> [Philips TV](https://www.home-assistant.io/integrations/philips_js/) (core) | Power, volume, **sources** (channels, apps, HDMI), drawn TV picture, *Recording* / *New recording* tags, **Ambilight**, **Ambilight + Hue** and **screen** buttons (shown while the TV is on), **remote** (`show_remote`: direction pad, OK, back, home, play / pause) |
 | Receivers and TVs (<img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/images/denonavr.png" alt="" width="16"> [Denon AVR](https://www.home-assistant.io/integrations/denonavr/), <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/images/yamaha.png" alt="" width="16"> [Yamaha](https://www.home-assistant.io/integrations/yamaha/), <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/images/samsungtv.png" alt="" width="16"> [Samsung TV](https://www.home-assistant.io/integrations/samsungtv/), <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/images/webostv.png" alt="" width="16"> [LG webOS](https://www.home-assistant.io/integrations/webostv/)…) | Power, volume, **sources** and **sound modes**, drawn receiver or TV picture |
 
 ## Prerequisites
@@ -202,7 +205,7 @@ language: fr
 | `players` | both | — | Two `media_player` entities or more, shown together (see [Several players](#several-players)); takes the place of `entity` |
 | `only_playing` | both | `false` | With `players`: only the players that are playing (or buffering); the others are summed up in one line at the bottom, which shows them on click. When none plays, the one that changed last is shown |
 | `include_paused` | both | `false` | With `only_playing`: paused players count as playing |
-| `show_remote` | both | `false` | Apple TV: a remote section (direction pad, select, menu, home, play / pause) sent to the device's `remote` entity; on the mini card, a remote button in the compact view opens it in a popup (and the detailed view keeps the section) |
+| `show_remote` | both | `false` | Apple TV and Philips TV: a remote section (direction pad, select, menu, home, play / pause) sent to the device's `remote` entity; on the mini card, a remote button in the compact view opens it in a popup (and the detailed view keeps the section) |
 | `hide_idle_sessions` | both | `true` | Jellyfin: leave the sessions with nothing playing out of `players` (named in the line at the bottom) and of the rooms |
 | `title` | both | Player name | Card title |
 | `show_title` | both | `true` | Show the title in the header (e.g. `false` under a section heading of your own) |
@@ -315,6 +318,21 @@ On the mini card, `show_remote: true` adds a remote button to the compact view; 
 ```yaml
 type: custom:media-mini-card
 entity: media_player.living_room_apple_tv
+show_remote: true
+```
+
+### Philips TV
+
+A Philips TV (`philips_js`) shows a *Recording* tag while it records (and *New recording* when one is available), and buttons for its **Ambilight**, **Ambilight + Hue** and **screen** (on / off), each lit while on; the screen button lights up when the screen is off. The buttons show while the TV is on. `show_remote: true` adds the remote, sent as Philips keys:
+
+| Full card | Mini card |
+|---|---|
+| <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/card-philips-tv.png" alt="Philips TV with Ambilight and the remote" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/mini-card-philips-tv.png" alt="Philips TV mini card" width="360"> |
+| <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/card-philips-tv-dark.png" alt="Philips TV with Ambilight and the remote dark" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/mini-card-philips-tv-dark.png" alt="Philips TV mini card dark" width="360"> |
+
+```yaml
+type: custom:media-card
+entity: media_player.living_room_tv
 show_remote: true
 ```
 
@@ -509,7 +527,7 @@ Contributions for additional languages are welcome!
 
 ## Credits
 
-Sonos, Music Assistant, Squeezebox, Google Cast, AirPlay, Apple TV, HomePod and Spotify are trademarks of their respective owners. This project is not affiliated with any of them. Icons from [Material Design Icons](https://pictogrammers.com/library/mdi/); the artworks of the screenshots are drawn for them.
+Sonos, Music Assistant, Squeezebox, Google Cast, AirPlay, Apple TV, HomePod, Philips, Ambilight and Spotify are trademarks of their respective owners. This project is not affiliated with any of them. Icons from [Material Design Icons](https://pictogrammers.com/library/mdi/); the artworks of the screenshots are drawn for them.
 
 ## License
 

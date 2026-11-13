@@ -82,6 +82,15 @@ const ICONS = {
   select: "M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z",
   home: "M12 5.69L17 10.19V18H15V12H9V18H7V10.19L12 5.69M12 3L2 12H5V20H11V14H13V20H19V12H22L12 3Z",
   play_pause: "M3,5V19L11,12M13,19H16V5H13M18,5V19H21V5",
+  // Philips TV row: mdi:television-ambient-light, mdi:lightbulb-group, mdi:monitor-off, mdi:record-rec
+  ambilight:
+    "M3 11H0V9H3V11M3 14H0V16H3V14M5 5.12L2.88 3L1.46 4.41L3.59 6.54L5 5.12M10 5V2H8V5H10M24 9H21V11H24V9M16 5V2H14V5H16M20.41 6.54L22.54 4.42L21.12 3L19 5.12L20.41 6.54M24 14H21V16H24V14M19 9V16C19 17.1 18.1 18 17 18H15V20H9V18H7C5.9 18 5 17.1 5 16V9C5 7.9 5.9 7 7 7H17C18.1 7 19 7.9 19 9M17 9H7V16H17V9M19 19.88L21.12 22L22.54 20.59L20.41 18.47L19 19.88M3.59 18.46L1.47 20.59L2.88 22L5 19.88L3.59 18.46Z",
+  ambilight_hue:
+    "M15 14V16A1 1 0 0 1 14 17H10A1 1 0 0 1 9 16V14A5 5 0 1 1 15 14M14 18H10V19A1 1 0 0 0 11 20H13A1 1 0 0 0 14 19M7 19V18H5V19A1 1 0 0 0 6 20H7.17A2.93 2.93 0 0 1 7 19M5 10A6.79 6.79 0 0 1 5.68 7A4 4 0 0 0 4 14.45V16A1 1 0 0 0 5 17H7V14.88A6.92 6.92 0 0 1 5 10M17 18V19A2.93 2.93 0 0 1 16.83 20H18A1 1 0 0 0 19 19V18M18.32 7A6.79 6.79 0 0 1 19 10A6.92 6.92 0 0 1 17 14.88V17H19A1 1 0 0 0 20 16V14.45A4 4 0 0 0 18.32 7Z",
+  screen_off:
+    "M14,18V20H16V22H8V20H10V18H3A2,2 0 0,1 1,16V4L0,3L1.41,1.58L22.16,22.34L20.75,23.75L15,18H14M3,16H13L3,6V16M21,2A2,2 0 0,1 23,4V16A2,2 0 0,1 21,18H20.66L18.66,16H21V4H6.66L4.66,2H21Z",
+  recording:
+    "M12.5,5A7.5,7.5 0 0,0 5,12.5A7.5,7.5 0 0,0 12.5,20A7.5,7.5 0 0,0 20,12.5A7.5,7.5 0 0,0 12.5,5M7,10H9A1,1 0 0,1 10,11V12C10,12.5 9.62,12.9 9.14,12.97L10.31,15H9.15L8,13V15H7M12,10H14V11H12V12H14V13H12V14H14V15H12A1,1 0 0,1 11,14V11A1,1 0 0,1 12,10M16,10H18V11H16V14H18V15H16A1,1 0 0,1 15,14V11A1,1 0 0,1 16,10M8,11V12H9V11",
   chevron_down: "M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z",
   chevron_right: "M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z",
   back: "M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z",
@@ -108,6 +117,7 @@ const PLATFORMS = {
   jellyfin: "Jellyfin",
   kodi: "Kodi",
   dlna_dmr: "DLNA",
+  philips_js: "Philips TV",
 };
 
 const SECTIONS = ["rooms", "source", "queue", "favorites", "remote"];
@@ -133,7 +143,7 @@ const STRINGS = {
     zoom: "Detail button", zoom_helper: "Top right button: switches to the full card and back", language: "Language", lang_auto: "Automatic (Home Assistant language)",
     media: "Media", players: "Players (several, stacked in the card)", players_helper: "Two or more: one block per player, one under the other", only_playing: "Only the players that are playing", include_paused: "Paused players too", n_playing: "{n} playing", players_count: "{n} players", more_players: "{n} more: {names}", back: "Back to all players",
     movie: "Movie", last_called: "Last called", next_alarm: "Alarm", next_timer: "Timer", next_reminder: "Reminder", dnd: "Do not disturb", speaker_group: "Speaker group", hide_idle_sessions: "Hide idle Jellyfin sessions",
-    remote: "Remote", r_up: "Up", r_down: "Down", r_left: "Left", r_right: "Right", r_select: "Select", r_menu: "Menu", r_home: "Home", r_play_pause: "Play / pause", show_remote: "Show the remote (Apple TV)", close_remote: "Close the remote",
+    remote: "Remote", r_up: "Up", r_down: "Down", r_left: "Left", r_right: "Right", r_select: "Select", r_menu: "Menu", r_home: "Home", r_play_pause: "Play / pause", show_remote: "Show the remote (Apple TV, Philips TV)", close_remote: "Close the remote", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Screen on or off", recording: "Recording", new_recording: "New recording",
   },
   fr: {
     st_playing: "Lecture", st_paused: "En pause", st_idle: "Inactif", st_on: "Allumé", st_off: "Éteint", st_standby: "Veille", st_buffering: "Chargement", st_unavailable: "Indisponible", st_unknown: "Inconnu",
@@ -150,7 +160,7 @@ const STRINGS = {
     zoom: "Bouton détail", zoom_helper: "Bouton en haut à droite : bascule vers la carte complète et revient", language: "Langue", lang_auto: "Automatique (langue de Home Assistant)",
     media: "Médias", players: "Lecteurs (plusieurs, empilés dans la carte)", players_helper: "Deux ou plus : un bloc par lecteur, l'un sous l'autre", only_playing: "Seulement les lecteurs en lecture", include_paused: "Les lecteurs en pause aussi", n_playing: "{n} en lecture", players_count: "{n} lecteurs", more_players: "{n} de plus : {names}", back: "Retour à tous les lecteurs",
     movie: "Film", last_called: "Dernier appelé", next_alarm: "Alarme", next_timer: "Minuteur", next_reminder: "Rappel", dnd: "Ne pas déranger", speaker_group: "Groupe d'enceintes", hide_idle_sessions: "Masquer les sessions Jellyfin inactives",
-    remote: "Télécommande", r_up: "Haut", r_down: "Bas", r_left: "Gauche", r_right: "Droite", r_select: "Valider", r_menu: "Menu", r_home: "Accueil", r_play_pause: "Lecture / pause", show_remote: "Afficher la télécommande (Apple TV)", close_remote: "Fermer la télécommande",
+    remote: "Télécommande", r_up: "Haut", r_down: "Bas", r_left: "Gauche", r_right: "Droite", r_select: "Valider", r_menu: "Menu", r_home: "Accueil", r_play_pause: "Lecture / pause", show_remote: "Afficher la télécommande (Apple TV, Philips TV)", close_remote: "Fermer la télécommande", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Allumer ou éteindre l'écran", recording: "Enregistrement en cours", new_recording: "Nouvel enregistrement",
   },
   de: {
     st_playing: "Wiedergabe", st_paused: "Pausiert", st_idle: "Untätig", st_on: "An", st_off: "Aus", st_standby: "Standby", st_buffering: "Puffern", st_unavailable: "Nicht verfügbar", st_unknown: "Unbekannt",
@@ -167,7 +177,7 @@ const STRINGS = {
     zoom: "Detailtaste", zoom_helper: "Taste oben rechts: wechselt zur vollständigen Karte und zurück", language: "Sprache", lang_auto: "Automatisch (Sprache von Home Assistant)",
     media: "Medien", players: "Player (mehrere, in der Karte gestapelt)", players_helper: "Zwei oder mehr: ein Block pro Player, untereinander", only_playing: "Nur Player, die gerade abspielen", include_paused: "Auch pausierte Player", n_playing: "{n} spielen", players_count: "{n} Player", more_players: "{n} weitere: {names}", back: "Zurück zu allen Playern",
     movie: "Film", last_called: "Zuletzt angesprochen", next_alarm: "Wecker", next_timer: "Timer", next_reminder: "Erinnerung", dnd: "Nicht stören", speaker_group: "Lautsprechergruppe", hide_idle_sessions: "Inaktive Jellyfin-Sitzungen ausblenden",
-    remote: "Fernbedienung", r_up: "Hoch", r_down: "Runter", r_left: "Links", r_right: "Rechts", r_select: "Auswählen", r_menu: "Menü", r_home: "Home", r_play_pause: "Wiedergabe / Pause", show_remote: "Fernbedienung anzeigen (Apple TV)", close_remote: "Fernbedienung schließen",
+    remote: "Fernbedienung", r_up: "Hoch", r_down: "Runter", r_left: "Links", r_right: "Rechts", r_select: "Auswählen", r_menu: "Menü", r_home: "Home", r_play_pause: "Wiedergabe / Pause", show_remote: "Fernbedienung anzeigen (Apple TV, Philips TV)", close_remote: "Fernbedienung schließen", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Bildschirm ein- oder ausschalten", recording: "Aufnahme läuft", new_recording: "Neue Aufnahme",
   },
   es: {
     st_playing: "Reproduciendo", st_paused: "En pausa", st_idle: "Inactivo", st_on: "Encendido", st_off: "Apagado", st_standby: "En espera", st_buffering: "Cargando", st_unavailable: "No disponible", st_unknown: "Desconocido",
@@ -184,7 +194,7 @@ const STRINGS = {
     zoom: "Botón de detalle", zoom_helper: "Botón arriba a la derecha: cambia a la tarjeta completa y vuelve", language: "Idioma", lang_auto: "Automático (idioma de Home Assistant)",
     media: "Multimedia", players: "Reproductores (varios, apilados en la tarjeta)", players_helper: "Dos o más: un bloque por reproductor, uno debajo de otro", only_playing: "Solo los reproductores en reproducción", include_paused: "También los reproductores en pausa", n_playing: "{n} reproduciendo", players_count: "{n} reproductores", more_players: "{n} más: {names}", back: "Volver a todos los reproductores",
     movie: "Película", last_called: "Último llamado", next_alarm: "Alarma", next_timer: "Temporizador", next_reminder: "Recordatorio", dnd: "No molestar", speaker_group: "Grupo de altavoces", hide_idle_sessions: "Ocultar sesiones de Jellyfin inactivas",
-    remote: "Mando", r_up: "Arriba", r_down: "Abajo", r_left: "Izquierda", r_right: "Derecha", r_select: "Seleccionar", r_menu: "Menú", r_home: "Inicio", r_play_pause: "Reproducir / pausa", show_remote: "Mostrar el mando (Apple TV)", close_remote: "Cerrar el mando",
+    remote: "Mando", r_up: "Arriba", r_down: "Abajo", r_left: "Izquierda", r_right: "Derecha", r_select: "Seleccionar", r_menu: "Menú", r_home: "Inicio", r_play_pause: "Reproducir / pausa", show_remote: "Mostrar el mando (Apple TV, Philips TV)", close_remote: "Cerrar el mando", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Encender o apagar la pantalla", recording: "Grabando", new_recording: "Nueva grabación",
   },
   it: {
     st_playing: "In riproduzione", st_paused: "In pausa", st_idle: "Inattivo", st_on: "Acceso", st_off: "Spento", st_standby: "Standby", st_buffering: "Caricamento", st_unavailable: "Non disponibile", st_unknown: "Sconosciuto",
@@ -201,7 +211,7 @@ const STRINGS = {
     zoom: "Pulsante dettagli", zoom_helper: "Pulsante in alto a destra: passa alla scheda completa e ritorna", language: "Lingua", lang_auto: "Automatica (lingua di Home Assistant)",
     media: "Media", players: "Lettori (più lettori, impilati nella scheda)", players_helper: "Due o più: un blocco per lettore, uno sotto l'altro", only_playing: "Solo i lettori in riproduzione", include_paused: "Anche i lettori in pausa", n_playing: "{n} in riproduzione", players_count: "{n} lettori", more_players: "Altri {n}: {names}", back: "Torna a tutti i lettori",
     movie: "Film", last_called: "Ultimo chiamato", next_alarm: "Sveglia", next_timer: "Timer", next_reminder: "Promemoria", dnd: "Non disturbare", speaker_group: "Gruppo di altoparlanti", hide_idle_sessions: "Nascondi le sessioni Jellyfin inattive",
-    remote: "Telecomando", r_up: "Su", r_down: "Giù", r_left: "Sinistra", r_right: "Destra", r_select: "Seleziona", r_menu: "Menu", r_home: "Home", r_play_pause: "Riproduci / pausa", show_remote: "Mostra il telecomando (Apple TV)", close_remote: "Chiudi il telecomando",
+    remote: "Telecomando", r_up: "Su", r_down: "Giù", r_left: "Sinistra", r_right: "Destra", r_select: "Seleziona", r_menu: "Menu", r_home: "Home", r_play_pause: "Riproduci / pausa", show_remote: "Mostra il telecomando (Apple TV, Philips TV)", close_remote: "Chiudi il telecomando", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Accendi o spegni lo schermo", recording: "Registrazione in corso", new_recording: "Nuova registrazione",
   },
   nl: {
     st_playing: "Speelt af", st_paused: "Gepauzeerd", st_idle: "Inactief", st_on: "Aan", st_off: "Uit", st_standby: "Stand-by", st_buffering: "Bufferen", st_unavailable: "Niet beschikbaar", st_unknown: "Onbekend",
@@ -218,7 +228,7 @@ const STRINGS = {
     zoom: "Detailknop", zoom_helper: "Knop rechtsboven: schakelt naar de volledige kaart en terug", language: "Taal", lang_auto: "Automatisch (taal van Home Assistant)",
     media: "Media", players: "Spelers (meerdere, gestapeld in de kaart)", players_helper: "Twee of meer: één blok per speler, onder elkaar", only_playing: "Alleen spelers die afspelen", include_paused: "Ook gepauzeerde spelers", n_playing: "{n} spelen af", players_count: "{n} spelers", more_players: "Nog {n}: {names}", back: "Terug naar alle spelers",
     movie: "Film", last_called: "Laatst aangesproken", next_alarm: "Wekker", next_timer: "Timer", next_reminder: "Herinnering", dnd: "Niet storen", speaker_group: "Speakergroep", hide_idle_sessions: "Inactieve Jellyfin-sessies verbergen",
-    remote: "Afstandsbediening", r_up: "Omhoog", r_down: "Omlaag", r_left: "Links", r_right: "Rechts", r_select: "Selecteren", r_menu: "Menu", r_home: "Home", r_play_pause: "Afspelen / pauze", show_remote: "Afstandsbediening tonen (Apple TV)", close_remote: "Afstandsbediening sluiten",
+    remote: "Afstandsbediening", r_up: "Omhoog", r_down: "Omlaag", r_left: "Links", r_right: "Rechts", r_select: "Selecteren", r_menu: "Menu", r_home: "Home", r_play_pause: "Afspelen / pauze", show_remote: "Afstandsbediening tonen (Apple TV, Philips TV)", close_remote: "Afstandsbediening sluiten", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Scherm aan of uit", recording: "Opname bezig", new_recording: "Nieuwe opname",
   },
   pt: {
     st_playing: "A reproduzir", st_paused: "Em pausa", st_idle: "Inativo", st_on: "Ligado", st_off: "Desligado", st_standby: "Em espera", st_buffering: "A carregar", st_unavailable: "Indisponível", st_unknown: "Desconhecido",
@@ -235,7 +245,7 @@ const STRINGS = {
     zoom: "Botão de detalhe", zoom_helper: "Botão no canto superior direito: muda para o cartão completo e volta", language: "Idioma", lang_auto: "Automático (idioma do Home Assistant)",
     media: "Multimédia", players: "Leitores (vários, empilhados no cartão)", players_helper: "Dois ou mais: um bloco por leitor, um por baixo do outro", only_playing: "Só os leitores em reprodução", include_paused: "Também os leitores em pausa", n_playing: "{n} a reproduzir", players_count: "{n} leitores", more_players: "Mais {n}: {names}", back: "Voltar a todos os leitores",
     movie: "Filme", last_called: "Último chamado", next_alarm: "Alarme", next_timer: "Temporizador", next_reminder: "Lembrete", dnd: "Não incomodar", speaker_group: "Grupo de colunas", hide_idle_sessions: "Ocultar sessões Jellyfin inativas",
-    remote: "Comando", r_up: "Cima", r_down: "Baixo", r_left: "Esquerda", r_right: "Direita", r_select: "Selecionar", r_menu: "Menu", r_home: "Início", r_play_pause: "Reproduzir / pausa", show_remote: "Mostrar o comando (Apple TV)", close_remote: "Fechar o comando",
+    remote: "Comando", r_up: "Cima", r_down: "Baixo", r_left: "Esquerda", r_right: "Direita", r_select: "Selecionar", r_menu: "Menu", r_home: "Início", r_play_pause: "Reproduzir / pausa", show_remote: "Mostrar o comando (Apple TV, Philips TV)", close_remote: "Fechar o comando", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Ligar ou desligar o ecrã", recording: "A gravar", new_recording: "Nova gravação",
   },
   pl: {
     st_playing: "Odtwarzanie", st_paused: "Wstrzymano", st_idle: "Bezczynny", st_on: "Włączony", st_off: "Wyłączony", st_standby: "Czuwanie", st_buffering: "Buforowanie", st_unavailable: "Niedostępny", st_unknown: "Nieznany",
@@ -252,7 +262,7 @@ const STRINGS = {
     zoom: "Przycisk szczegółów", zoom_helper: "Przycisk w prawym górnym rogu: przełącza na pełną kartę i z powrotem", language: "Język", lang_auto: "Automatycznie (język Home Assistant)",
     media: "Multimedia", players: "Odtwarzacze (kilka, jeden pod drugim na karcie)", players_helper: "Dwa lub więcej: jeden blok na odtwarzacz, jeden pod drugim", only_playing: "Tylko odtwarzacze, które odtwarzają", include_paused: "Także wstrzymane odtwarzacze", n_playing: "Odtwarza: {n}", players_count: "Odtwarzacze: {n}", more_players: "Jeszcze {n}: {names}", back: "Wróć do wszystkich odtwarzaczy",
     movie: "Film", last_called: "Ostatnio wywołany", next_alarm: "Alarm", next_timer: "Minutnik", next_reminder: "Przypomnienie", dnd: "Nie przeszkadzać", speaker_group: "Grupa głośników", hide_idle_sessions: "Ukryj nieaktywne sesje Jellyfin",
-    remote: "Pilot", r_up: "W górę", r_down: "W dół", r_left: "W lewo", r_right: "W prawo", r_select: "Wybierz", r_menu: "Menu", r_home: "Ekran główny", r_play_pause: "Odtwarzaj / pauza", show_remote: "Pokaż pilota (Apple TV)", close_remote: "Zamknij pilota",
+    remote: "Pilot", r_up: "W górę", r_down: "W dół", r_left: "W lewo", r_right: "W prawo", r_select: "Wybierz", r_menu: "Menu", r_home: "Ekran główny", r_play_pause: "Odtwarzaj / pauza", show_remote: "Pokaż pilota (Apple TV, Philips TV)", close_remote: "Zamknij pilota", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Włącz lub wyłącz ekran", recording: "Nagrywanie", new_recording: "Nowe nagranie",
   },
   sr: {
     st_playing: "Репродукција", st_paused: "Паузирано", st_idle: "Неактиван", st_on: "Укључен", st_off: "Искључен", st_standby: "Мировање", st_buffering: "Учитавање", st_unavailable: "Недоступан", st_unknown: "Непознато",
@@ -269,7 +279,7 @@ const STRINGS = {
     zoom: "Тастер за детаље", zoom_helper: "Тастер горе десно: прелази на пуну картицу и назад", language: "Језик", lang_auto: "Аутоматски (језик Home Assistant-а)",
     media: "Медији", players: "Плејери (више њих, један испод другог у картици)", players_helper: "Два или више: један блок по плејеру, један испод другог", only_playing: "Само плејери који репродукују", include_paused: "И паузирани плејери", n_playing: "{n} репродукује", players_count: "Плејера: {n}", more_players: "Још {n}: {names}", back: "Назад на све плејере",
     movie: "Филм", last_called: "Последњи позван", next_alarm: "Аларм", next_timer: "Тајмер", next_reminder: "Подсетник", dnd: "Не узнемиравај", speaker_group: "Група звучника", hide_idle_sessions: "Сакриј неактивне Jellyfin сесије",
-    remote: "Даљински", r_up: "Горе", r_down: "Доле", r_left: "Лево", r_right: "Десно", r_select: "Изабери", r_menu: "Мени", r_home: "Почетна", r_play_pause: "Пусти / пауза", show_remote: "Прикажи даљински (Apple TV)", close_remote: "Затвори даљински",
+    remote: "Даљински", r_up: "Горе", r_down: "Доле", r_left: "Лево", r_right: "Десно", r_select: "Изабери", r_menu: "Мени", r_home: "Почетна", r_play_pause: "Пусти / пауза", show_remote: "Прикажи даљински (Apple TV, Philips TV)", close_remote: "Затвори даљински", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Укључи или искључи екран", recording: "Снимање", new_recording: "Нови снимак",
   },
   "sr-Latn": {
     st_playing: "Reprodukcija", st_paused: "Pauzirano", st_idle: "Neaktivan", st_on: "Uključen", st_off: "Isključen", st_standby: "Mirovanje", st_buffering: "Učitavanje", st_unavailable: "Nedostupan", st_unknown: "Nepoznato",
@@ -286,7 +296,7 @@ const STRINGS = {
     zoom: "Taster za detalje", zoom_helper: "Taster gore desno: prelazi na punu karticu i nazad", language: "Jezik", lang_auto: "Automatski (jezik Home Assistant-a)",
     media: "Mediji", players: "Plejeri (više njih, jedan ispod drugog u kartici)", players_helper: "Dva ili više: jedan blok po plejeru, jedan ispod drugog", only_playing: "Samo plejeri koji reprodukuju", include_paused: "I pauzirani plejeri", n_playing: "{n} reprodukuje", players_count: "Plejera: {n}", more_players: "Još {n}: {names}", back: "Nazad na sve plejere",
     movie: "Film", last_called: "Poslednji pozvan", next_alarm: "Alarm", next_timer: "Tajmer", next_reminder: "Podsetnik", dnd: "Ne uznemiravaj", speaker_group: "Grupa zvučnika", hide_idle_sessions: "Sakrij neaktivne Jellyfin sesije",
-    remote: "Daljinski", r_up: "Gore", r_down: "Dole", r_left: "Levo", r_right: "Desno", r_select: "Izaberi", r_menu: "Meni", r_home: "Početna", r_play_pause: "Pusti / pauza", show_remote: "Prikaži daljinski (Apple TV)", close_remote: "Zatvori daljinski",
+    remote: "Daljinski", r_up: "Gore", r_down: "Dole", r_left: "Levo", r_right: "Desno", r_select: "Izaberi", r_menu: "Meni", r_home: "Početna", r_play_pause: "Pusti / pauza", show_remote: "Prikaži daljinski (Apple TV, Philips TV)", close_remote: "Zatvori daljinski", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Uključi ili isključi ekran", recording: "Snimanje", new_recording: "Novi snimak",
   },
   ro: {
     st_playing: "Redare", st_paused: "În pauză", st_idle: "Inactiv", st_on: "Pornit", st_off: "Oprit", st_standby: "Standby", st_buffering: "Se încarcă", st_unavailable: "Indisponibil", st_unknown: "Necunoscut",
@@ -303,7 +313,7 @@ const STRINGS = {
     zoom: "Buton detalii", zoom_helper: "Butonul din dreapta sus: trece la cardul complet și înapoi", language: "Limbă", lang_auto: "Automat (limba Home Assistant)",
     media: "Media", players: "Playere (mai multe, stivuite în card)", players_helper: "Două sau mai multe: un bloc pe player, unul sub altul", only_playing: "Doar playerele care redau", include_paused: "Și playerele în pauză", n_playing: "{n} redau", players_count: "{n} playere", more_players: "Încă {n}: {names}", back: "Înapoi la toate playerele",
     movie: "Film", last_called: "Ultimul apelat", next_alarm: "Alarmă", next_timer: "Cronometru", next_reminder: "Memento", dnd: "Nu deranjați", speaker_group: "Grup de boxe", hide_idle_sessions: "Ascunde sesiunile Jellyfin inactive",
-    remote: "Telecomandă", r_up: "Sus", r_down: "Jos", r_left: "Stânga", r_right: "Dreapta", r_select: "Selectează", r_menu: "Meniu", r_home: "Acasă", r_play_pause: "Redare / pauză", show_remote: "Afișează telecomanda (Apple TV)", close_remote: "Închide telecomanda",
+    remote: "Telecomandă", r_up: "Sus", r_down: "Jos", r_left: "Stânga", r_right: "Dreapta", r_select: "Selectează", r_menu: "Meniu", r_home: "Acasă", r_play_pause: "Redare / pauză", show_remote: "Afișează telecomanda (Apple TV, Philips TV)", close_remote: "Închide telecomanda", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Pornește sau oprește ecranul", recording: "Înregistrare în curs", new_recording: "Înregistrare nouă",
   },
   da: {
     st_playing: "Afspiller", st_paused: "Sat på pause", st_idle: "Inaktiv", st_on: "Tændt", st_off: "Slukket", st_standby: "Standby", st_buffering: "Buffer", st_unavailable: "Utilgængelig", st_unknown: "Ukendt",
@@ -320,7 +330,7 @@ const STRINGS = {
     zoom: "Detaljeknap", zoom_helper: "Knap øverst til højre: skifter til det fulde kort og tilbage", language: "Sprog", lang_auto: "Automatisk (Home Assistants sprog)",
     media: "Medier", players: "Afspillere (flere, stablet i kortet)", players_helper: "To eller flere: én blok pr. afspiller, under hinanden", only_playing: "Kun afspillere, der afspiller", include_paused: "Også afspillere på pause", n_playing: "{n} afspiller", players_count: "{n} afspillere", more_players: "{n} mere: {names}", back: "Tilbage til alle afspillere",
     movie: "Film", last_called: "Sidst kaldt", next_alarm: "Alarm", next_timer: "Timer", next_reminder: "Påmindelse", dnd: "Forstyr ikke", speaker_group: "Højttalergruppe", hide_idle_sessions: "Skjul inaktive Jellyfin-sessioner",
-    remote: "Fjernbetjening", r_up: "Op", r_down: "Ned", r_left: "Venstre", r_right: "Højre", r_select: "Vælg", r_menu: "Menu", r_home: "Hjem", r_play_pause: "Afspil / pause", show_remote: "Vis fjernbetjeningen (Apple TV)", close_remote: "Luk fjernbetjeningen",
+    remote: "Fjernbetjening", r_up: "Op", r_down: "Ned", r_left: "Venstre", r_right: "Højre", r_select: "Vælg", r_menu: "Menu", r_home: "Hjem", r_play_pause: "Afspil / pause", show_remote: "Vis fjernbetjeningen (Apple TV, Philips TV)", close_remote: "Luk fjernbetjeningen", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Tænd eller sluk skærmen", recording: "Optager", new_recording: "Ny optagelse",
   },
   sv: {
     st_playing: "Spelar", st_paused: "Pausad", st_idle: "Inaktiv", st_on: "På", st_off: "Av", st_standby: "Viloläge", st_buffering: "Buffrar", st_unavailable: "Otillgänglig", st_unknown: "Okänd",
@@ -337,7 +347,7 @@ const STRINGS = {
     zoom: "Detaljknapp", zoom_helper: "Knappen uppe till höger: växlar till hela kortet och tillbaka", language: "Språk", lang_auto: "Automatiskt (Home Assistants språk)",
     media: "Media", players: "Spelare (flera, staplade i kortet)", players_helper: "Två eller fler: ett block per spelare, under varandra", only_playing: "Bara spelare som spelar", include_paused: "Även pausade spelare", n_playing: "{n} spelar", players_count: "{n} spelare", more_players: "{n} till: {names}", back: "Tillbaka till alla spelare",
     movie: "Film", last_called: "Senast anropad", next_alarm: "Alarm", next_timer: "Timer", next_reminder: "Påminnelse", dnd: "Stör ej", speaker_group: "Högtalargrupp", hide_idle_sessions: "Dölj inaktiva Jellyfin-sessioner",
-    remote: "Fjärrkontroll", r_up: "Upp", r_down: "Ned", r_left: "Vänster", r_right: "Höger", r_select: "Välj", r_menu: "Meny", r_home: "Hem", r_play_pause: "Spela / pausa", show_remote: "Visa fjärrkontrollen (Apple TV)", close_remote: "Stäng fjärrkontrollen",
+    remote: "Fjärrkontroll", r_up: "Upp", r_down: "Ned", r_left: "Vänster", r_right: "Höger", r_select: "Välj", r_menu: "Meny", r_home: "Hem", r_play_pause: "Spela / pausa", show_remote: "Visa fjärrkontrollen (Apple TV, Philips TV)", close_remote: "Stäng fjärrkontrollen", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Slå på eller av skärmen", recording: "Spelar in", new_recording: "Ny inspelning",
   },
   bg: {
     st_playing: "Възпроизвежда", st_paused: "На пауза", st_idle: "Неактивен", st_on: "Включен", st_off: "Изключен", st_standby: "Готовност", st_buffering: "Зареждане", st_unavailable: "Недостъпен", st_unknown: "Неизвестно",
@@ -354,7 +364,7 @@ const STRINGS = {
     zoom: "Бутон за подробности", zoom_helper: "Бутон горе вдясно: превключва към пълната карта и обратно", language: "Език", lang_auto: "Автоматично (езикът на Home Assistant)",
     media: "Медия", players: "Плейъри (няколко, един под друг в картата)", players_helper: "Два или повече: по един блок за плейър, един под друг", only_playing: "Само плейърите, които възпроизвеждат", include_paused: "И плейърите на пауза", n_playing: "Възпроизвеждат: {n}", players_count: "Плейъри: {n}", more_players: "Още {n}: {names}", back: "Назад към всички плейъри",
     movie: "Филм", last_called: "Последно извикан", next_alarm: "Аларма", next_timer: "Таймер", next_reminder: "Напомняне", dnd: "Не безпокойте", speaker_group: "Група високоговорители", hide_idle_sessions: "Скриване на неактивните сесии на Jellyfin",
-    remote: "Дистанционно", r_up: "Нагоре", r_down: "Надолу", r_left: "Наляво", r_right: "Надясно", r_select: "Избор", r_menu: "Меню", r_home: "Начало", r_play_pause: "Пускане / пауза", show_remote: "Показване на дистанционното (Apple TV)", close_remote: "Затваряне на дистанционното",
+    remote: "Дистанционно", r_up: "Нагоре", r_down: "Надолу", r_left: "Наляво", r_right: "Надясно", r_select: "Избор", r_menu: "Меню", r_home: "Начало", r_play_pause: "Пускане / пауза", show_remote: "Показване на дистанционното (Apple TV, Philips TV)", close_remote: "Затваряне на дистанционното", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Включване или изключване на екрана", recording: "Записва", new_recording: "Нов запис",
   },
   ru: {
     st_playing: "Воспроизведение", st_paused: "Пауза", st_idle: "Бездействует", st_on: "Включён", st_off: "Выключен", st_standby: "Ожидание", st_buffering: "Буферизация", st_unavailable: "Недоступен", st_unknown: "Неизвестно",
@@ -371,7 +381,7 @@ const STRINGS = {
     zoom: "Кнопка подробностей", zoom_helper: "Кнопка справа вверху: переключает на полную карточку и обратно", language: "Язык", lang_auto: "Автоматически (язык Home Assistant)",
     media: "Медиа", players: "Плееры (несколько, друг под другом в карточке)", players_helper: "Два или больше: по блоку на плеер, друг под другом", only_playing: "Только воспроизводящие плееры", include_paused: "И плееры на паузе", n_playing: "Воспроизводят: {n}", players_count: "Плееров: {n}", more_players: "Ещё {n}: {names}", back: "Назад ко всем плеерам",
     movie: "Фильм", last_called: "Последний вызванный", next_alarm: "Будильник", next_timer: "Таймер", next_reminder: "Напоминание", dnd: "Не беспокоить", speaker_group: "Группа колонок", hide_idle_sessions: "Скрывать неактивные сеансы Jellyfin",
-    remote: "Пульт", r_up: "Вверх", r_down: "Вниз", r_left: "Влево", r_right: "Вправо", r_select: "Выбрать", r_menu: "Меню", r_home: "Домой", r_play_pause: "Воспроизведение / пауза", show_remote: "Показывать пульт (Apple TV)", close_remote: "Закрыть пульт",
+    remote: "Пульт", r_up: "Вверх", r_down: "Вниз", r_left: "Влево", r_right: "Вправо", r_select: "Выбрать", r_menu: "Меню", r_home: "Домой", r_play_pause: "Воспроизведение / пауза", show_remote: "Показывать пульт (Apple TV, Philips TV)", close_remote: "Закрыть пульт", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Включить или выключить экран", recording: "Идёт запись", new_recording: "Новая запись",
   },
   uk: {
     st_playing: "Відтворення", st_paused: "Пауза", st_idle: "Неактивний", st_on: "Увімкнено", st_off: "Вимкнено", st_standby: "Очікування", st_buffering: "Буферизація", st_unavailable: "Недоступний", st_unknown: "Невідомо",
@@ -388,7 +398,7 @@ const STRINGS = {
     zoom: "Кнопка подробиць", zoom_helper: "Кнопка праворуч угорі: перемикає на повну картку й назад", language: "Мова", lang_auto: "Автоматично (мова Home Assistant)",
     media: "Медіа", players: "Плеєри (кілька, один під одним у картці)", players_helper: "Два чи більше: по блоку на плеєр, один під одним", only_playing: "Лише плеєри, що відтворюють", include_paused: "І плеєри на паузі", n_playing: "Відтворюють: {n}", players_count: "Плеєрів: {n}", more_players: "Ще {n}: {names}", back: "Назад до всіх плеєрів",
     movie: "Фільм", last_called: "Останній викликаний", next_alarm: "Будильник", next_timer: "Таймер", next_reminder: "Нагадування", dnd: "Не турбувати", speaker_group: "Група колонок", hide_idle_sessions: "Приховувати неактивні сеанси Jellyfin",
-    remote: "Пульт", r_up: "Вгору", r_down: "Вниз", r_left: "Ліворуч", r_right: "Праворуч", r_select: "Вибрати", r_menu: "Меню", r_home: "Додому", r_play_pause: "Відтворення / пауза", show_remote: "Показувати пульт (Apple TV)", close_remote: "Закрити пульт",
+    remote: "Пульт", r_up: "Вгору", r_down: "Вниз", r_left: "Ліворуч", r_right: "Праворуч", r_select: "Вибрати", r_menu: "Меню", r_home: "Додому", r_play_pause: "Відтворення / пауза", show_remote: "Показувати пульт (Apple TV, Philips TV)", close_remote: "Закрити пульт", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Увімкнути або вимкнути екран", recording: "Триває запис", new_recording: "Новий запис",
   },
   hu: {
     st_playing: "Lejátszás", st_paused: "Szüneteltetve", st_idle: "Tétlen", st_on: "Be", st_off: "Ki", st_standby: "Készenlét", st_buffering: "Pufferelés", st_unavailable: "Nem elérhető", st_unknown: "Ismeretlen",
@@ -405,7 +415,7 @@ const STRINGS = {
     zoom: "Részletek gomb", zoom_helper: "Jobb felső gomb: a teljes kártyára vált és vissza", language: "Nyelv", lang_auto: "Automatikus (Home Assistant nyelve)",
     media: "Média", players: "Lejátszók (több, egymás alatt a kártyán)", players_helper: "Kettő vagy több: lejátszónként egy blokk, egymás alatt", only_playing: "Csak a lejátszást végző lejátszók", include_paused: "A szüneteltetett lejátszók is", n_playing: "{n} játszik", players_count: "{n} lejátszó", more_players: "Még {n}: {names}", back: "Vissza az összes lejátszóhoz",
     movie: "Film", last_called: "Utoljára megszólítva", next_alarm: "Ébresztő", next_timer: "Időzítő", next_reminder: "Emlékeztető", dnd: "Ne zavarjanak", speaker_group: "Hangszórócsoport", hide_idle_sessions: "Inaktív Jellyfin-munkamenetek elrejtése",
-    remote: "Távirányító", r_up: "Fel", r_down: "Le", r_left: "Balra", r_right: "Jobbra", r_select: "Kiválasztás", r_menu: "Menü", r_home: "Kezdőlap", r_play_pause: "Lejátszás / szünet", show_remote: "Távirányító megjelenítése (Apple TV)", close_remote: "Távirányító bezárása",
+    remote: "Távirányító", r_up: "Fel", r_down: "Le", r_left: "Balra", r_right: "Jobbra", r_select: "Kiválasztás", r_menu: "Menü", r_home: "Kezdőlap", r_play_pause: "Lejátszás / szünet", show_remote: "Távirányító megjelenítése (Apple TV, Philips TV)", close_remote: "Távirányító bezárása", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Képernyő be- vagy kikapcsolása", recording: "Felvétel folyamatban", new_recording: "Új felvétel",
   },
   sk: {
     st_playing: "Prehráva sa", st_paused: "Pozastavené", st_idle: "Nečinný", st_on: "Zapnutý", st_off: "Vypnutý", st_standby: "Pohotovosť", st_buffering: "Načítava sa", st_unavailable: "Nedostupný", st_unknown: "Neznámy",
@@ -422,7 +432,7 @@ const STRINGS = {
     zoom: "Tlačidlo podrobností", zoom_helper: "Tlačidlo vpravo hore: prepne na úplnú kartu a späť", language: "Jazyk", lang_auto: "Automaticky (jazyk Home Assistant)",
     media: "Médiá", players: "Prehrávače (viaceré, pod sebou v karte)", players_helper: "Dva alebo viac: jeden blok na prehrávač, pod sebou", only_playing: "Len prehrávače, ktoré prehrávajú", include_paused: "Aj pozastavené prehrávače", n_playing: "Prehráva: {n}", players_count: "Prehrávače: {n}", more_players: "Ďalšie {n}: {names}", back: "Späť na všetky prehrávače",
     movie: "Film", last_called: "Naposledy oslovený", next_alarm: "Budík", next_timer: "Časovač", next_reminder: "Pripomienka", dnd: "Nerušiť", speaker_group: "Skupina reproduktorov", hide_idle_sessions: "Skryť neaktívne relácie Jellyfin",
-    remote: "Diaľkový ovládač", r_up: "Hore", r_down: "Dole", r_left: "Vľavo", r_right: "Vpravo", r_select: "Vybrať", r_menu: "Ponuka", r_home: "Domov", r_play_pause: "Prehrať / pozastaviť", show_remote: "Zobraziť diaľkový ovládač (Apple TV)", close_remote: "Zavrieť diaľkový ovládač",
+    remote: "Diaľkový ovládač", r_up: "Hore", r_down: "Dole", r_left: "Vľavo", r_right: "Vpravo", r_select: "Vybrať", r_menu: "Ponuka", r_home: "Domov", r_play_pause: "Prehrať / pozastaviť", show_remote: "Zobraziť diaľkový ovládač (Apple TV, Philips TV)", close_remote: "Zavrieť diaľkový ovládač", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Zapnúť alebo vypnúť obrazovku", recording: "Nahráva sa", new_recording: "Nová nahrávka",
   },
   cs: {
     st_playing: "Přehrává se", st_paused: "Pozastaveno", st_idle: "Nečinný", st_on: "Zapnuto", st_off: "Vypnuto", st_standby: "Pohotovost", st_buffering: "Načítání", st_unavailable: "Nedostupný", st_unknown: "Neznámý",
@@ -439,7 +449,7 @@ const STRINGS = {
     zoom: "Tlačítko podrobností", zoom_helper: "Tlačítko vpravo nahoře: přepne na úplnou kartu a zpět", language: "Jazyk", lang_auto: "Automaticky (jazyk Home Assistant)",
     media: "Média", players: "Přehrávače (více, pod sebou v kartě)", players_helper: "Dva a více: jeden blok na přehrávač, pod sebou", only_playing: "Jen přehrávače, které přehrávají", include_paused: "I pozastavené přehrávače", n_playing: "Přehrává: {n}", players_count: "Přehrávače: {n}", more_players: "Dalších {n}: {names}", back: "Zpět na všechny přehrávače",
     movie: "Film", last_called: "Naposledy oslovený", next_alarm: "Budík", next_timer: "Časovač", next_reminder: "Připomínka", dnd: "Nerušit", speaker_group: "Skupina reproduktorů", hide_idle_sessions: "Skrýt neaktivní relace Jellyfin",
-    remote: "Dálkový ovladač", r_up: "Nahoru", r_down: "Dolů", r_left: "Vlevo", r_right: "Vpravo", r_select: "Vybrat", r_menu: "Nabídka", r_home: "Domů", r_play_pause: "Přehrát / pozastavit", show_remote: "Zobrazit dálkový ovladač (Apple TV)", close_remote: "Zavřít dálkový ovladač",
+    remote: "Dálkový ovladač", r_up: "Nahoru", r_down: "Dolů", r_left: "Vlevo", r_right: "Vpravo", r_select: "Vybrat", r_menu: "Nabídka", r_home: "Domů", r_play_pause: "Přehrát / pozastavit", show_remote: "Zobrazit dálkový ovladač (Apple TV, Philips TV)", close_remote: "Zavřít dálkový ovladač", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Zapnout nebo vypnout obrazovku", recording: "Nahrává se", new_recording: "Nová nahrávka",
   },
   sl: {
     st_playing: "Predvajanje", st_paused: "Začasno ustavljeno", st_idle: "Nedejaven", st_on: "Vklopljen", st_off: "Izklopljen", st_standby: "Pripravljenost", st_buffering: "Nalaganje", st_unavailable: "Ni na voljo", st_unknown: "Neznano",
@@ -456,7 +466,7 @@ const STRINGS = {
     zoom: "Gumb za podrobnosti", zoom_helper: "Gumb zgoraj desno: preklopi na polno kartico in nazaj", language: "Jezik", lang_auto: "Samodejno (jezik Home Assistanta)",
     media: "Predstavnost", players: "Predvajalniki (več, drug pod drugim na kartici)", players_helper: "Dva ali več: en blok na predvajalnik, drug pod drugim", only_playing: "Samo predvajalniki, ki predvajajo", include_paused: "Tudi zaustavljeni predvajalniki", n_playing: "Predvaja: {n}", players_count: "Predvajalniki: {n}", more_players: "Še {n}: {names}", back: "Nazaj na vse predvajalnike",
     movie: "Film", last_called: "Nazadnje poklican", next_alarm: "Budilka", next_timer: "Časovnik", next_reminder: "Opomnik", dnd: "Ne moti", speaker_group: "Skupina zvočnikov", hide_idle_sessions: "Skrij neaktivne seje Jellyfin",
-    remote: "Daljinec", r_up: "Gor", r_down: "Dol", r_left: "Levo", r_right: "Desno", r_select: "Izberi", r_menu: "Meni", r_home: "Domov", r_play_pause: "Predvajaj / premor", show_remote: "Prikaži daljinec (Apple TV)", close_remote: "Zapri daljinec",
+    remote: "Daljinec", r_up: "Gor", r_down: "Dol", r_left: "Levo", r_right: "Desno", r_select: "Izberi", r_menu: "Meni", r_home: "Domov", r_play_pause: "Predvajaj / premor", show_remote: "Prikaži daljinec (Apple TV, Philips TV)", close_remote: "Zapri daljinec", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Vklopi ali izklopi zaslon", recording: "Snemanje", new_recording: "Nov posnetek",
   },
   lv: {
     st_playing: "Atskaņo", st_paused: "Pauzēts", st_idle: "Dīkstāvē", st_on: "Ieslēgts", st_off: "Izslēgts", st_standby: "Gaidstāve", st_buffering: "Ielādē", st_unavailable: "Nav pieejams", st_unknown: "Nezināms",
@@ -473,7 +483,7 @@ const STRINGS = {
     zoom: "Detaļu poga", zoom_helper: "Poga augšējā labajā stūrī: pārslēdz uz pilno karti un atpakaļ", language: "Valoda", lang_auto: "Automātiski (Home Assistant valoda)",
     media: "Multivide", players: "Atskaņotāji (vairāki, kartē cits zem cita)", players_helper: "Divi vai vairāk: viens bloks katram atskaņotājam, cits zem cita", only_playing: "Tikai atskaņotāji, kas atskaņo", include_paused: "Arī pauzētie atskaņotāji", n_playing: "Atskaņo: {n}", players_count: "Atskaņotāji: {n}", more_players: "Vēl {n}: {names}", back: "Atpakaļ uz visiem atskaņotājiem",
     movie: "Filma", last_called: "Pēdējais uzrunātais", next_alarm: "Modinātājs", next_timer: "Taimeris", next_reminder: "Atgādinājums", dnd: "Netraucēt", speaker_group: "Skaļruņu grupa", hide_idle_sessions: "Slēpt neaktīvās Jellyfin sesijas",
-    remote: "Tālvadība", r_up: "Augšup", r_down: "Lejup", r_left: "Pa kreisi", r_right: "Pa labi", r_select: "Izvēlēties", r_menu: "Izvēlne", r_home: "Sākums", r_play_pause: "Atskaņot / pauze", show_remote: "Rādīt tālvadību (Apple TV)", close_remote: "Aizvērt tālvadību",
+    remote: "Tālvadība", r_up: "Augšup", r_down: "Lejup", r_left: "Pa kreisi", r_right: "Pa labi", r_select: "Izvēlēties", r_menu: "Izvēlne", r_home: "Sākums", r_play_pause: "Atskaņot / pauze", show_remote: "Rādīt tālvadību (Apple TV, Philips TV)", close_remote: "Aizvērt tālvadību", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Ieslēgt vai izslēgt ekrānu", recording: "Notiek ierakstīšana", new_recording: "Jauns ieraksts",
   },
   el: {
     st_playing: "Αναπαραγωγή", st_paused: "Σε παύση", st_idle: "Αδρανές", st_on: "Ενεργό", st_off: "Ανενεργό", st_standby: "Αναμονή", st_buffering: "Φόρτωση", st_unavailable: "Μη διαθέσιμο", st_unknown: "Άγνωστο",
@@ -490,7 +500,7 @@ const STRINGS = {
     zoom: "Κουμπί λεπτομερειών", zoom_helper: "Κουμπί πάνω δεξιά: μεταβαίνει στην πλήρη κάρτα και πίσω", language: "Γλώσσα", lang_auto: "Αυτόματα (γλώσσα του Home Assistant)",
     media: "Πολυμέσα", players: "Αναπαραγωγείς (πολλοί, ο ένας κάτω από τον άλλο)", players_helper: "Δύο ή περισσότεροι: ένα μπλοκ ανά αναπαραγωγέα, ο ένας κάτω από τον άλλο", only_playing: "Μόνο οι αναπαραγωγείς που παίζουν", include_paused: "Και οι αναπαραγωγείς σε παύση", n_playing: "{n} σε αναπαραγωγή", players_count: "{n} αναπαραγωγείς", more_players: "Ακόμη {n}: {names}", back: "Πίσω σε όλους τους αναπαραγωγείς",
     movie: "Ταινία", last_called: "Τελευταία κλήση", next_alarm: "Ξυπνητήρι", next_timer: "Χρονόμετρο", next_reminder: "Υπενθύμιση", dnd: "Μην ενοχλείτε", speaker_group: "Ομάδα ηχείων", hide_idle_sessions: "Απόκρυψη ανενεργών συνεδριών Jellyfin",
-    remote: "Τηλεχειριστήριο", r_up: "Πάνω", r_down: "Κάτω", r_left: "Αριστερά", r_right: "Δεξιά", r_select: "Επιλογή", r_menu: "Μενού", r_home: "Αρχική", r_play_pause: "Αναπαραγωγή / παύση", show_remote: "Εμφάνιση τηλεχειριστηρίου (Apple TV)", close_remote: "Κλείσιμο τηλεχειριστηρίου",
+    remote: "Τηλεχειριστήριο", r_up: "Πάνω", r_down: "Κάτω", r_left: "Αριστερά", r_right: "Δεξιά", r_select: "Επιλογή", r_menu: "Μενού", r_home: "Αρχική", r_play_pause: "Αναπαραγωγή / παύση", show_remote: "Εμφάνιση τηλεχειριστηρίου (Apple TV, Philips TV)", close_remote: "Κλείσιμο τηλεχειριστηρίου", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Ενεργοποίηση ή απενεργοποίηση οθόνης", recording: "Εγγραφή σε εξέλιξη", new_recording: "Νέα εγγραφή",
   },
 };
 
@@ -592,15 +602,23 @@ const isAlexaGroup = (hass, id) => {
 
 // Apple TV (core apple_tv): Apple TV boxes, HomePods and AirPlay speakers; the device's model tells them apart.
 const isAppleTv = (hass, id) => platformOf(hass, id) === "apple_tv";
+// Philips TV (core philips_js): a TV with its remote, its Ambilight light and its switches on the same device.
+const isPhilips = (hass, id) => platformOf(hass, id) === "philips_js";
 
-// Remote entity of an Apple TV (the same device), whose remote.send_command takes up, down, left, right, select,
-// menu, home and play_pause (pyatv's remote control).
+// Remote entity of an Apple TV or a Philips TV (the same device). The keys of the card are named after pyatv's
+// remote control (up, down, left, right, select, menu, home, play_pause); a Philips TV takes its JointSpace keys.
+const REMOTE_PLATFORMS = new Set(["apple_tv", "philips_js"]);
+const REMOTE_COMMANDS = {
+  philips_js: { up: "CursorUp", down: "CursorDown", left: "CursorLeft", right: "CursorRight", select: "Confirm", menu: "Back", home: "Home", play_pause: "PlayPause" },
+};
+const remoteCommand = (hass, rid, cmd) => REMOTE_COMMANDS[platformOf(hass, rid)]?.[cmd] || cmd;
 const remoteOf = (hass, id) => {
-  if (!isAppleTv(hass, id)) return null;
+  const platform = platformOf(hass, id);
+  if (!REMOTE_PLATFORMS.has(platform)) return null;
   const device = hass.entities?.[id]?.device_id;
   const base = id.slice(id.indexOf(".") + 1);
   const e = Object.values(hass.entities || {}).find(
-    (x) => x?.platform === "apple_tv" && String(x.entity_id).startsWith("remote.") && ((device && x.device_id === device) || x.entity_id === `remote.${base}`),
+    (x) => x?.platform === platform && String(x.entity_id).startsWith("remote.") && ((device && x.device_id === device) || x.entity_id === `remote.${base}`),
   );
   return e && hass.states?.[e.entity_id] ? e.entity_id : null;
 };
@@ -627,29 +645,48 @@ const kindFor = (hass, id, s) => {
 // while `hide_idle_sessions` is on (default).
 const idleSession = (hass, config, id) => config?.hide_idle_sessions !== false && isJellyfin(hass, id) && !isActive(hass?.states?.[id]);
 
-// The Alexa entities of an Echo device: the do-not-disturb switch and the next alarm, timer and reminder sensors.
-// Found on the same device by their translation key, else by the entity ids Alexa Media Player gives them.
-const ALEXA_EXTRAS = { dnd: ["switch", "do_not_disturb"], alarm: ["sensor", "next_alarm"], timer: ["sensor", "next_timer"], reminder: ["sensor", "next_reminder"] };
-const alexaExtras = (hass, id) => {
-  if (!isAlexa(hass, id)) return null;
+// Entities of a player's device that its integration adds next to the media player: found on the same device by
+// their translation key, else by the entity ids the integration gives them (`<domain>.<player id>_<suffix>`).
+// `table` maps a key to [domain, translation key, entity id suffixes].
+const deviceExtras = (hass, id, platform, table) => {
   const device = hass.entities?.[id]?.device_id;
   const base = id.slice(id.indexOf(".") + 1);
   const all = Object.values(hass.entities || {});
   const out = {};
-  for (const [key, [domain, tkey]] of Object.entries(ALEXA_EXTRAS)) {
+  for (const [key, [domain, tkey, suffixes]] of Object.entries(table)) {
     const e = all.find(
       (x) =>
-        x?.platform === "alexa_media" &&
+        x?.platform === platform &&
         String(x.entity_id).startsWith(`${domain}.`) &&
-        ((device && x.device_id === device && x.translation_key === tkey) || x.entity_id === `${domain}.${base}_${tkey}` || x.entity_id === `${domain}.${base}_${tkey}_switch`),
+        ((device && x.device_id === device && x.translation_key === tkey) || suffixes.some((sfx) => x.entity_id === `${domain}.${base}_${sfx}`)),
     );
     if (e && hass.states?.[e.entity_id]) out[key] = e.entity_id;
   }
   return out;
 };
 
+// The Alexa entities of an Echo device: the do-not-disturb switch and the next alarm, timer and reminder sensors.
+const ALEXA_EXTRAS = {
+  dnd: ["switch", "do_not_disturb", ["do_not_disturb", "do_not_disturb_switch"]],
+  alarm: ["sensor", "next_alarm", ["next_alarm", "next_alarm_switch"]],
+  timer: ["sensor", "next_timer", ["next_timer", "next_timer_switch"]],
+  reminder: ["sensor", "next_reminder", ["next_reminder", "next_reminder_switch"]],
+};
+const alexaExtras = (hass, id) => (isAlexa(hass, id) ? deviceExtras(hass, id, "alexa_media", ALEXA_EXTRAS) : null);
+
+// The Philips entities of a TV: Ambilight (light), Ambilight + Hue and the screen (switches), the recordings
+// (binary sensors).
+const PHILIPS_EXTRAS = {
+  ambilight: ["light", "ambilight", ["ambilight"]],
+  ambilight_hue: ["switch", "ambilight_hue", ["ambilight_hue"]],
+  screen: ["switch", "screen_state", ["screen_state"]],
+  recording: ["binary_sensor", "recording_ongoing", ["recording_ongoing"]],
+  new_recording: ["binary_sensor", "recording_new", ["recording_new", "new_recording_available"]],
+};
+const philipsExtras = (hass, id) => (isPhilips(hass, id) ? deviceExtras(hass, id, "philips_js", PHILIPS_EXTRAS) : null);
+
 // Brand accent of the integrations that have one; the theme's primary color otherwise.
-const ACCENTS = { spotify: "#1db954", plex: "#e5a00d", jellyfin: "#aa5cc3", music_assistant: "#3a8fde", alexa_media: "#00a8e1" };
+const ACCENTS = { spotify: "#1db954", plex: "#e5a00d", jellyfin: "#aa5cc3", music_assistant: "#3a8fde", alexa_media: "#00a8e1", philips_js: "#0b5ed7" };
 
 // Apple TV remote section: its style goes with it too.
 const REMOTE_STYLE = `
@@ -676,6 +713,9 @@ const ALEXA_STYLE = `
   .alexa .tag { padding: 0 8px; border: 1px solid var(--mc-accent, var(--primary-color)); border-radius: 10px; color: var(--mc-accent, var(--primary-color)); font-size: 11px; font-weight: 500; line-height: 18px; white-space: nowrap; }
   .alexa.compact { gap: 6px; }
   .alexa.compact .alexa-info { gap: 2px 8px; }`;
+// Philips row (recording tags, Ambilight, Ambilight + Hue, screen): the same layout as the Alexa row.
+const PHILIPS_STYLE = `${ALEXA_STYLE.replaceAll(".alexa", ".philips")}
+  .philips .tag.rec { border-color: var(--error-color, #db4437); color: var(--error-color, #db4437); }`;
 const accentStyle = (hass, id) => {
   const a = ACCENTS[platformOf(hass, id)];
   return a ? `:host { --mc-accent: ${a}; }` : "";
@@ -1439,8 +1479,8 @@ class MediaBase extends HTMLElement {
     if (!id) return null;
     const ids = [id, ...roomIds(h, this._config, id), ...groupOf(h.states[id]), favoritesSensor(h, this._config, id), ...listedPlayers(this._config)];
     // Alexa: the switch and sensors of each Echo shown.
-    // Apple TV: its remote entity.
-    const extras = ids.flatMap((i) => (i ? [...Object.values(alexaExtras(h, i) || {}), remoteOf(h, i)] : []));
+    // Apple TV and Philips TV: the remote entity; Philips TV: Ambilight, its switches and recording sensors.
+    const extras = ids.flatMap((i) => (i ? [...Object.values(alexaExtras(h, i) || {}), ...Object.values(philipsExtras(h, i) || {}), remoteOf(h, i)] : []));
     return [h.entities, h.devices, h.language, h.locale, h.themes?.darkMode, this._active, ...[...ids, ...extras].map((i) => h.states[i])];
   }
 
@@ -1678,7 +1718,7 @@ class MediaBase extends HTMLElement {
         run();
       } else if (action === "confirm_cancel" || (action === "confirm_backdrop" && path[0] === el)) this._closeConfirm();
       else if (action === "remote" && this._confirm.remote && !el.disabled)
-        this._call("send_command", { entity_id: el.dataset.target, command: el.dataset.value }, null, "remote");
+        this._call("send_command", { entity_id: el.dataset.target, command: remoteCommand(this._hass, el.dataset.target, el.dataset.value) }, null, "remote");
       return;
     }
     if (!el) return;
@@ -1717,8 +1757,12 @@ class MediaBase extends HTMLElement {
         return this._update();
       }
       case "remote":
-        // Apple TV: the target is the device's remote entity, the value the command.
-        return this._call("send_command", { entity_id: id, command: el.dataset.value }, null, "remote");
+        // Apple TV and Philips TV: the target is the device's remote entity, the value the key of the card, sent
+        // as the integration names it.
+        return this._call("send_command", { entity_id: id, command: remoteCommand(this._hass, id, el.dataset.value) }, null, "remote");
+      case "toggle_extra":
+        // Philips TV: the target is its Ambilight light or one of its switches.
+        return this._call("toggle", { entity_id: id }, null, id.slice(0, id.indexOf(".")));
       case "dnd":
         // Alexa: the target is the Echo's do-not-disturb switch.
         return this._call("toggle", { entity_id: id }, null, "switch");
@@ -1953,6 +1997,34 @@ class MediaBase extends HTMLElement {
     return `<div class="alexa${compact ? " compact" : ""}"><style>${ALEXA_STYLE}</style><div class="alexa-info">${items.join("")}</div>${dnd}</div>`;
   }
 
+  // Philips TV: "Recording" and "New recording" tags, then Ambilight, Ambilight + Hue and the screen, each a
+  // button that toggles its entity (shown only while the TV is on, as the integration only reaches them then).
+  _philipsRow(id, s, compact = false) {
+    const x = philipsExtras(this._hass, id);
+    if (!x) return "";
+    const items = [];
+    for (const key of ["recording", "new_recording"]) {
+      const st = x[key] ? this._s(x[key]) : null;
+      if (st?.state === "on") items.push(`<span class="tag${key === "recording" ? " rec" : ""}">${esc(this._t(key))}</span>`);
+    }
+    const buttons = isOff(s)
+      ? []
+      : [
+          ["ambilight", ICONS.ambilight],
+          ["ambilight_hue", ICONS.ambilight_hue],
+          ["screen", ICONS.screen_off],
+        ]
+          .filter(([key]) => x[key])
+          .map(([key, icon]) => {
+            const st = this._s(x[key]);
+            // The screen switch is on while the picture shows: its button lights up when the screen is off.
+            const on = key === "screen" ? st.state === "off" : st.state === "on";
+            return this._btn("toggle_extra", icon, this._t(key), { on, target: x[key], disabled: offline(st) });
+          });
+    if (!items.length && !buttons.length) return "";
+    return `<div class="philips${compact ? " compact" : ""}"><style>${PHILIPS_STYLE}</style><div class="philips-info">${items.join("")}</div>${buttons.join("")}</div>`;
+  }
+
   // Second line of a Jellyfin or Apple TV item: "Series · S1E3" for an episode, "Movie" for a film; nothing else changes.
   _videoLine(id, s) {
     if (!(isJellyfin(this._hass, id) || isAppleTv(this._hass, id)) || !isActive(s)) return "";
@@ -2102,6 +2174,8 @@ class MediaCard extends MediaBase {
     if (c.show_progress !== false) parts.push(this._progress(id, s));
     if (c.show_controls !== false) parts.push(`<div class="controls">${this._controls(s)}</div>`);
     parts.push(this._alexaRow(id, s));
+    parts.push(this._philipsRow(id, s));
+
     if (c.show_volume !== false) parts.push(this._volume(id, s));
     if (c.show_remote === true) parts.push(this._remote(id));
     if (c.show_rooms !== false) parts.push(this._rooms(id, s));
@@ -2181,6 +2255,8 @@ class MediaCard extends MediaBase {
         if (controls) parts.push(`<div class="controls">${controls}</div>`);
       }
       parts.push(this._alexaRow(id, s, true));
+      parts.push(this._philipsRow(id, s, true));
+
       if (c.show_volume !== false) parts.push(this._volume(id, s));
       return `<div class="player">${parts.filter(Boolean).join("")}</div>`;
     });
@@ -2317,7 +2393,7 @@ class MediaCard extends MediaBase {
       );
   }
 
-  // Apple TV remote (`show_remote`): a direction pad with select, then menu, home and play / pause, sent to the
+  // Apple TV and Philips TV remote (`show_remote`): a direction pad with select, then menu, home and play / pause, sent to the
   // device's remote entity (remote.send_command).
   _remote(id) {
     const rid = remoteOf(this._hass, id);
@@ -2417,7 +2493,7 @@ class MediaMiniCard extends MediaCard {
     const { id, s, error } = this._player();
     if (error) return this._errorCard(error);
     const c = this._config;
-    // Apple TV (`show_remote`): a remote button before the controls opens the remote in a popup.
+    // Apple TV and Philips TV (`show_remote`): a remote button before the controls opens the remote in a popup.
     const rid = c.show_remote === true ? remoteOf(this._hass, id) : null;
     const remote = rid ? this._btn("open_remote", ICONS.remote, this._t("remote"), { target: rid, disabled: offline(this._s(rid)) }) : "";
     const controls = (remote || "") + (c.show_controls !== false ? this._controls(s, true) : "");
@@ -2426,7 +2502,7 @@ class MediaMiniCard extends MediaCard {
         ${this._header(id, s)}
         <div class="content">
           <div class="row">${this._art(id, s, { front: true })}${this._meta(s, id)}${controls ? `<div class="controls">${controls}</div>` : ""}</div>
-          ${c.show_progress !== false ? this._progress(id, s, false) : ""}${this._alexaRow(id, s, true)}
+          ${c.show_progress !== false ? this._progress(id, s, false) : ""}${this._alexaRow(id, s, true)}${this._philipsRow(id, s, true)}
           ${c.show_volume !== false ? this._volume(id, s) : ""}
         </div>
       </ha-card>`;
@@ -2453,6 +2529,7 @@ class MediaMiniCard extends MediaCard {
             c.show_progress !== false ? this._progress(id, s, true, true) : "",
             c.show_controls !== false ? `<div class="controls">${this._controls(s, false, { target: id, big: false })}</div>` : "",
             this._alexaRow(id, s, true),
+            this._philipsRow(id, s, true),
             c.show_volume !== false ? this._volume(id, s) : "",
           ]
             .filter((p) => p && p !== '<div class="controls"></div>')

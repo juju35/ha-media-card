@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.4.0 - 2026-11-13
+
+### Features
+- **Philips TV** (`philips_js`): a row with the *Recording* and *New recording* tags of the TV, and buttons for its **Ambilight**, **Ambilight + Hue** and **screen** (on / off), each toggling its entity; the buttons show while the TV is on. Found on the TV's device by their translation key, else by the entity ids the integration gives them.
+- **Philips TV remote**: `show_remote: true` now works with a Philips TV too (remote section, and the remote popup of the mini card); the keys are sent as Philips keys (`CursorUp`, `Confirm`, `Back`, `Home`, `PlayPause`…).
+- The new texts in the 22 languages.
+
 ## 1.3.3 - 2026-11-13
 
 ### Fixes

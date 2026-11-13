@@ -247,3 +247,49 @@ test("HomePod mini: seen from slightly above in the full card (+ and − on its 
   assert.match(draw(true, f), /#9b6dff/, "violet while playing");
   assert.equal(mc.DEVICE_PICTURES.echo(true, f).includes("#22c3e6"), true, "cyan ring");
 });
+
+const PTV = "media_player.bedroom_philips_tv";
+const PREMOTE = "remote.bedroom_philips_tv_remote";
+const pmini = (config, hass = makeHass()) => card(config, hass, mc.MediaMiniCard);
+
+test("Philips TV: recording tag, Ambilight, Ambilight + Hue and screen buttons that toggle their entity", () => {
+  const hass = makeHass();
+  const c = card({ entity: PTV }, hass);
+  const h = html(c);
+  assert.match(h, /class="philips"/);
+  assert.match(h, /<span class="tag rec">Recording<\/span>/);
+  assert.doesNotMatch(h, /New recording/, "no new recording: no tag");
+  assert.match(h, /data-action="toggle_extra" data-target="light\.bedroom_philips_tv_ambilight" title="Ambilight" aria-label="Ambilight" aria-pressed="true"/);
+  assert.match(h, /data-action="toggle_extra" data-target="switch\.bedroom_philips_tv_ambilight_hue" title="Ambilight \+ Hue"/);
+  // The screen is on: its (screen off) button is not lit.
+  assert.match(h, /data-action="toggle_extra" data-target="switch\.bedroom_philips_tv_screen_state" title="Screen on or off" aria-label="Screen on or off">/);
+  click(c, { action: "toggle_extra", target: "light.bedroom_philips_tv_ambilight" });
+  click(c, { action: "toggle_extra", target: "switch.bedroom_philips_tv_screen_state" });
+  assert.deepEqual(hass.calls, [
+    ["light", "toggle", { entity_id: "light.bedroom_philips_tv_ambilight" }],
+    ["switch", "toggle", { entity_id: "switch.bedroom_philips_tv_screen_state" }],
+  ]);
+  assert.match(html(pmini({ entity: PTV })), /class="philips compact"/);
+});
+
+test("Philips TV: the buttons go while the TV is off, an Echo or Apple TV gets no Philips row", () => {
+  const off = card({ entity: PTV }, makeHass(home({ [PTV]: { state: "off" }, "binary_sensor.bedroom_philips_tv_recording_ongoing": { state: "off" } })));
+  assert.doesNotMatch(html(off), /class="philips/);
+  assert.doesNotMatch(html(card({ entity: ECHO })), /class="philips/);
+  assert.doesNotMatch(html(card({ entity: ATV })), /class="philips/);
+});
+
+test("Philips TV: the remote keys are sent as JointSpace keys", () => {
+  const hass = makeHass();
+  const c = card({ entity: PTV, show_remote: true }, hass);
+  const keys = [...html(c).matchAll(/data-action="remote" data-target="remote\.bedroom_philips_tv_remote" data-value="([a-z_]+)"/g)].map((m) => m[1]);
+  assert.deepEqual(keys, ["up", "left", "select", "right", "down", "menu", "home", "play_pause"]);
+  for (const k of ["up", "select", "menu", "home", "play_pause"]) click(c, { action: "remote", target: PREMOTE, value: k });
+  assert.deepEqual(
+    hass.calls.map((x) => x[2].command),
+    ["CursorUp", "Confirm", "Back", "Home", "PlayPause"],
+  );
+  // Mini card: the popup sends them the same way.
+  const m = pmini({ entity: PTV, show_remote: true });
+  assert.match(html(m), /data-action="open_remote" data-target="remote\.bedroom_philips_tv_remote"/);
+});
