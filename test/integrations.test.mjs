@@ -153,6 +153,31 @@ test("Apple TV: the remote only with show_remote, and its keys send remote.send_
   assert.doesNotMatch(html(card({ entity: ECHO, show_remote: true })), /data-action="remote"/);
 });
 
+test("Apple TV mini card: a remote button opens the remote in a popup that stays open while its keys are pressed", () => {
+  const mini = (config, hass) => card(config, hass, mc.MediaMiniCard);
+  assert.doesNotMatch(html(mini({ entity: ATV })), /data-action="open_remote"/, "only with show_remote");
+  assert.doesNotMatch(html(mini({ entity: ECHO, show_remote: true })), /data-action="open_remote"/, "only an Apple TV");
+  const hass = makeHass();
+  const c = mini({ entity: ATV, show_remote: true }, hass);
+  assert.match(html(c), /data-action="open_remote" data-target="remote\.family_room_apple_tv"/);
+  assert.doesNotMatch(html(c), /data-action="remote"/, "no keys before the popup opens");
+  click(c, { action: "open_remote", target: REMOTE });
+  const h = html(c);
+  assert.match(h, /<ha-card class="dialog-open remote-open">/);
+  assert.match(h, /role="dialog"/);
+  const keys = [...h.matchAll(/data-action="remote" data-target="remote\.family_room_apple_tv" data-value="([a-z_]+)"/g)].map((m) => m[1]);
+  assert.deepEqual(keys, ["up", "left", "select", "right", "down", "menu", "home", "play_pause"]);
+  click(c, { action: "remote", target: REMOTE, value: "up" });
+  click(c, { action: "remote", target: REMOTE, value: "select" });
+  assert.deepEqual(hass.calls, [
+    ["remote", "send_command", { entity_id: REMOTE, command: "up" }],
+    ["remote", "send_command", { entity_id: REMOTE, command: "select" }],
+  ]);
+  assert.match(html(c), /role="dialog"/, "still open after the keys");
+  click(c, { action: "confirm_cancel" });
+  assert.doesNotMatch(html(c), /role="dialog"/, "closed by its cross");
+});
+
 test("HomePod: a speaker, with its drawn mesh speaker and no join button", () => {
   const h = html(card({ entity: HOMEPOD }));
   assert.match(h, /class="pic-box/);

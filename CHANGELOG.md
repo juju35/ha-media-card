@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.0 - 2026-11-13
+
+### Features
+- **Apple TV mini card**: with `show_remote: true`, a remote button sits before the controls of the compact view; it opens the remote (direction pad, select, menu, home, play / pause) in a popup at the top of the card, which stays open while its keys are pressed and closes with its cross, Escape or a click elsewhere. The detailed view keeps its remote section.
+- The *Close the remote* text in the 22 languages.
+
 ## 1.2.0 - 2026-11-13
 
 ### Features

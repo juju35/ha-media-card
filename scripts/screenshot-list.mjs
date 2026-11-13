@@ -24,6 +24,8 @@ export const shots = [
   // Several players (`players`): stacked in the full card, filtered with only_playing, listed in the mini card.
   ...pair("card-players", { type: "media-card", width: 460, config: { players: [LIVING, "media_player.lounge", "media_player.tv"] } }),
   ...pair("card-players-playing", { type: "media-card", width: 460, config: { players: PLAYERS, only_playing: true } }),
+  ...pair("mini-card-apple-tv", { type: "media-mini-card", width: 380, extras: true, config: { entity: "media_player.family_room_apple_tv", show_remote: true } }),
+  ...pair("mini-card-remote", { type: "media-mini-card", width: 380, extras: true, config: { entity: "media_player.family_room_apple_tv", show_remote: true }, clicks: ['[data-action="open_remote"]'] }),
   ...pair("mini-card-players", { type: "media-mini-card", width: 380, config: { players: PLAYERS } }),
   ...pair("mini-card-players-open", { type: "media-mini-card", width: 380, config: { players: PLAYERS }, clicks: ['[data-action="expand_player"][data-target="media_player.lounge"]'] }),
   // Jellyfin (an episode, the client app in the subtitle) and Alexa Media Player (last called, next alarm and timer,

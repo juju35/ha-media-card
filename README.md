@@ -187,7 +187,7 @@ language: fr
 | `players` | both | — | Two `media_player` entities or more, shown together (see [Several players](#several-players)); takes the place of `entity` |
 | `only_playing` | both | `false` | With `players`: only the players that are playing (or buffering); the others are summed up in one line at the bottom, which shows them on click. When none plays, the one that changed last is shown |
 | `include_paused` | both | `false` | With `only_playing`: paused players count as playing |
-| `show_remote` | both | `false` | Apple TV: a remote section (direction pad, select, menu, home, play / pause) sent to the device's `remote` entity; on the mini card, in its detailed view |
+| `show_remote` | both | `false` | Apple TV: a remote section (direction pad, select, menu, home, play / pause) sent to the device's `remote` entity; on the mini card, a remote button in the compact view opens it in a popup (and the detailed view keeps the section) |
 | `hide_idle_sessions` | both | `true` | Jellyfin: leave the sessions with nothing playing out of `players` (named in the line at the bottom) and of the rooms |
 | `title` | both | Player name | Card title |
 | `show_title` | both | `true` | Show the title in the header (e.g. `false` under a section heading of your own) |
@@ -286,6 +286,19 @@ The Apple TV shows the app playing, the episode and its apps as sources; `show_r
 
 ```yaml
 type: custom:media-card
+entity: media_player.living_room_apple_tv
+show_remote: true
+```
+
+On the mini card, `show_remote: true` adds a remote button to the compact view; it opens the remote in a popup at the top of the card, which stays open while its keys are pressed:
+
+| Compact view | Remote popup |
+|---|---|
+| <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/mini-card-apple-tv.png" alt="Mini card with the remote button" width="360"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/mini-card-remote.png" alt="Remote popup of the mini card" width="360"> |
+| <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/mini-card-apple-tv-dark.png" alt="Mini card with the remote button dark" width="360"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/mini-card-remote-dark.png" alt="Remote popup of the mini card dark" width="360"> |
+
+```yaml
+type: custom:media-mini-card
 entity: media_player.living_room_apple_tv
 show_remote: true
 ```
