@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.4.1 - 2026-11-14
+
+### Fixes
+- Mini card visual editor: it now offers the full card's options that its detail view uses (rooms list, folded sections, favorites sensor, background, and the rooms, source, queue and favorites sections), not only the compact view's.
+- Visual editor: rooms and players written as `- entity: media_player.x` in YAML now show in the entity pickers, and keep their YAML form when the list is edited.
+- README: `favorites` is YAML only (the visual editor keeps it).
+
 ## 1.4.0 - 2026-11-13
 
 ### Features
