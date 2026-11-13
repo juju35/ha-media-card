@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.3.2 - 2026-11-13
+
+### Fixes
+- A click could do nothing: Home Assistant updates the card several times a second, and a rewrite of the card between the press and the release replaced the element pressed, so that the click was lost (most visible on *Show less* of the hidden players, which then seemed stuck). The card is no longer rewritten while a press is in progress; the pending update is drawn right after the click.
+- The hidden players (`only_playing`) hide again when the card folds back: a tap elsewhere, the mini card back to its compact view, or the card leaving the page.
+- No focus ring after a mouse click or a tap: the focus is kept across updates only for the keyboard.
+
 ## 1.3.1 - 2026-11-13
 
 ### Fixes
