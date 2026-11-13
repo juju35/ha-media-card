@@ -332,6 +332,21 @@ test("the hidden players hide again when the card folds back, and no rewrite hap
   c.disconnectedCallback();
 });
 
+test("an update held under a press is drawn on release, even when the click hits no button", async () => {
+  const c = stacked({ only_playing: true }, makeHass(), mc.MediaMiniCard);
+  c.connectedCallback();
+  const before = html(c);
+  c._pressing = true;
+  c.hass = makeHass(withState("media_player.office", { state: "playing" }));
+  assert.equal(html(c), before, "held under the press");
+  // A click beside every button: nothing to do, nothing rendered by the click itself.
+  c._onClick({ composedPath: () => [], stopPropagation() {}, detail: 1 });
+  c._onPressEnd();
+  await new Promise((r) => setTimeout(r, 0));
+  assert.notEqual(html(c), before, "drawn on release");
+  c.disconnectedCallback();
+});
+
 test("an unavailable player gets disabled buttons, and a click on them does nothing", () => {
   const hass = makeHass(withState(LIVING, { state: "unavailable" }));
   for (const Card of [mc.MediaCard, mc.MediaMiniCard]) {
