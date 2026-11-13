@@ -25,6 +25,7 @@ The cards work on top of the integrations you already use, and draw only what ea
 - **Progress** bar with elapsed and total time, moving every second while playing; click it to seek, or focus it and use the arrow keys (10 s), Home and End
 - **Controls**: power, shuffle, previous, play / pause (or stop), next, repeat (off → all → one), each one only when the player supports it
 - **Volume** slider with the whole percentage, mute, or - / + buttons for a player that only steps its volume
+- **Several players** (`players`): the full card stacks a block per player (artwork, track, progress, controls, volume), the mini card lists them one per row; `only_playing` keeps only the ones that are playing (see [Several players](#several-players))
 - **Rooms**: every speaker the shown player can be grouped with (same integration, grouping supported) or the players of the `entities` option, each with its state, its track, its own volume and mute; a click on a room's name shows that player in the card
 - **Speaker groups**: a link button per room joins it to the group or takes it out (`media_player.join` / `unjoin`); **Ungroup all** asks first, in a popup at the top of the card; the subtitle tells who the player plays with
 - **Source** and **sound mode** chips (inputs of a receiver, Sonos favorites and line-in, Spotify Connect devices…)
@@ -99,7 +100,7 @@ The Marketplace adds the resource `/local/community/ha-media-card/media-card.js`
 
 ### Visual editor
 
-Edit a dashboard, click **Add card** and search for **Media Card** or **Media Mini Card**. The first playing player is preselected; pick another one, the rooms, an optional title, the sections to show and the language. The preview updates live, and options left at their default are kept out of the generated YAML.
+Edit a dashboard, click **Add card** and search for **Media Card** or **Media Mini Card**. The first playing player is preselected; pick another one (or several players to show together), the rooms, an optional title, the sections to show and the language. The preview updates live, and options left at their default are kept out of the generated YAML.
 
 ### Minimal
 
@@ -114,6 +115,17 @@ entity: media_player.living_room
 ```
 
 Without `entity`, the card shows the first player that is playing.
+
+Several players in one card:
+
+```yaml
+type: custom:media-card
+players:
+  - media_player.living_room
+  - media_player.kitchen
+  - media_player.bedroom
+only_playing: true
+```
 
 ### Full options
 
@@ -167,6 +179,9 @@ language: fr
 | Option | Card | Default | Description |
 |---|---|---|---|
 | `entity` | both | First playing player | The `media_player` entity to show |
+| `players` | both | — | Two `media_player` entities or more, shown together (see [Several players](#several-players)); takes the place of `entity` |
+| `only_playing` | both | `false` | With `players`: only the players that are playing (or buffering); the others are summed up in one line at the bottom, which shows them on click. When none plays, the one that changed last is shown |
+| `include_paused` | both | `false` | With `only_playing`: paused players count as playing |
 | `title` | both | Player name | Card title |
 | `show_title` | both | `true` | Show the title in the header (e.g. `false` under a section heading of your own) |
 | `show_subtitle` | both | `true` | Show the subtitle (group members, app or source) under the title |
@@ -192,6 +207,33 @@ The rooms are the speakers of the same integration that can be grouped with the 
 - The **link** button of a room joins it to the group of the shown player (to the group's leader, the first of its `group_members`), or takes it out. The new membership shows at once, until the integration reports it.
 - **Ungroup all** takes every other speaker out of the group, after a confirmation.
 - A click on a room's **name** shows that player in the card (the title then follows it); a click on the configured player's name brings it back.
+
+### Several players
+
+With two players or more in `players`, the card shows them together, in the order of the list:
+
+- The **Media Card** stacks a block per player, separated by a thin line: artwork, track, progress, the controls the player supports, volume and mute. The header gives the card's title (`title`, *Media* by default), how many players it has and how many play. A click on a player's **name** opens it in the full view (rooms and groups, source, queue, favorites), with a **back** button to the stack.
+- The **Media Mini Card** lists them one per row: artwork, name, track, play / pause and a small volume slider. A click on a row unfolds it (progress, every control, volume with its percentage); a click elsewhere on the page folds it back. The detail button switches to the stacked view.
+- `only_playing: true` keeps the players that are playing (add `include_paused: true` for the paused ones); the others are named in one line at the bottom, a click on it shows them too.
+
+`title`, `show_progress`, `show_controls` and `show_volume` apply to every player. Without `players` (or with a single one), the cards behave exactly as with `entity`.
+
+| Light | Dark |
+|---|---|
+| <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/card-players.png" alt="several players" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/card-players-dark.png" alt="several players dark" width="400"> |
+
+Only the players that are playing (`only_playing`), the others in one line at the bottom:
+
+| Light | Dark |
+|---|---|
+| <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/card-players-playing.png" alt="only playing" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/card-players-playing-dark.png" alt="only playing dark" width="400"> |
+
+The mini card lists them one per row; a click on a row unfolds it:
+
+| Light | Dark |
+|---|---|
+| <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/mini-card-players.png" alt="mini card, several players" width="380"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/mini-card-players-dark.png" alt="mini card, several players dark" width="380"> |
+| <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/mini-card-players-open.png" alt="mini card, a row unfolded" width="380"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/mini-card-players-open-dark.png" alt="mini card, a row unfolded dark" width="380"> |
 
 ## Screenshots
 

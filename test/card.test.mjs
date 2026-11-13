@@ -370,3 +370,145 @@ test("visual editors: stub config, and defaults kept out of the YAML", () => {
   assert.deepEqual({ ...events[0].detail.config }, { entity: LIVING, show_rooms: false });
   assert.equal(FEATURES.music_assistant & mc.F.GROUPING, mc.F.GROUPING);
 });
+
+// Several players (`players`): stacked in the full card, listed in the mini card.
+const PLAYERS = ["media_player.living_room", "media_player.lounge", "media_player.office"];
+const stacked = (config = {}, hass = makeHass(), Card = mc.MediaCard) => {
+  const card = new Card();
+  card.setConfig({ players: PLAYERS, collapsed: [], ...config });
+  card.hass = hass;
+  return card;
+};
+
+test("players: one block per player, under a common header, each with its own controls", () => {
+  const card = stacked();
+  const h = html(card);
+  assert.equal((h.match(/<div class="player">/g) || []).length, 3);
+  assert.match(h, /<div class="name">Media<\/div>/, "default title");
+  assert.match(h, /3 players/);
+  assert.match(h, /<span class="chip active" title="2 playing">/, "playing count in the header chip");
+  assert.match(h, /Midnight Avenue/);
+  assert.match(h, /Golden Hour/);
+  assert.match(h, /data-progress="media_player\.lounge"/, "each bar names its player");
+  assert.doesNotMatch(h, /data-section=/, "the heavy sections stay in the full view");
+  assert.match(stacked({ title: "Music" }).shadowRoot.innerHTML, /<div class="name">Music<\/div>/);
+  const hass = makeHass();
+  const c = stacked({}, hass);
+  click(c, { action: "pause", target: "media_player.lounge" });
+  click(c, { action: "next", target: "media_player.living_room" });
+  assert.deepEqual(hass.calls, [
+    ["media_player", "media_pause", { entity_id: "media_player.lounge" }],
+    ["media_player", "media_next_track", { entity_id: "media_player.living_room" }],
+  ]);
+  assert.match(h, /data-action="pause" data-target="media_player\.lounge"/);
+  assert.equal(card.getCardSize(), 10);
+});
+
+test("players: a click on a player's name opens it in the full view, the back button returns to the stack", () => {
+  const card = stacked();
+  click(card, { action: "show_player", target: "media_player.lounge" });
+  let h = html(card);
+  assert.match(h, /data-action="back"/);
+  assert.match(h, /data-section="source"/);
+  assert.match(h, /<div class="name">Lounge<\/div>/);
+  click(card, { action: "back" });
+  h = html(card);
+  assert.doesNotMatch(h, /data-action="back"/);
+  assert.equal((h.match(/<div class="player">/g) || []).length, 3);
+});
+
+test("players: the position of each player is painted from its own state", () => {
+  const card = stacked();
+  const els = [
+    { dataset: { progress: "media_player.living_room" }, style: {} },
+    { dataset: { progress: "media_player.lounge" }, style: {} },
+  ];
+  card.shadowRoot.querySelectorAll = (sel) => (sel === "[data-progress]" ? els : []);
+  card._paintProgress();
+  assert.notEqual(els[0].style.width, els[1].style.width);
+  assert.ok(els.every((e) => /%$/.test(e.style.width)));
+});
+
+test("only_playing: the playing players only, the others in one line that shows them on click", () => {
+  const card = stacked({ only_playing: true });
+  let h = html(card);
+  assert.equal((h.match(/<div class="player">/g) || []).length, 2);
+  assert.match(h, /1 more: Office/);
+  click(card, { action: "toggle_hidden" });
+  h = html(card);
+  assert.equal((h.match(/<div class="player">/g) || []).length, 3);
+  assert.match(h, /aria-expanded="true"/);
+  const paused = stacked({ only_playing: true }, makeHass(withState("media_player.lounge", { state: "paused" })));
+  assert.equal((html(paused).match(/<div class="player">/g) || []).length, 1, "paused players are left out by default");
+  const withPaused = stacked({ only_playing: true, include_paused: true }, makeHass(withState("media_player.lounge", { state: "paused" })));
+  assert.equal((html(withPaused).match(/<div class="player">/g) || []).length, 2);
+});
+
+test("only_playing: when nothing plays, the player that changed last is shown", () => {
+  const st = { ...states };
+  for (const [i, id] of PLAYERS.entries()) st[id] = { ...st[id], state: "idle", last_changed: new Date(1_000_000 + i * (id === "media_player.lounge" ? 10_000 : 1000)).toISOString() };
+  const h = html(stacked({ only_playing: true }, makeHass(st)));
+  assert.equal((h.match(/<div class="player">/g) || []).length, 1);
+  assert.match(h, /data-target="media_player\.lounge"/);
+  assert.match(h, /2 more: Living room, Office/);
+  assert.match(h, /Nothing playing/);
+});
+
+test("players: one player is the same as entity; players must be media players", () => {
+  const one = stacked({ players: ["media_player.lounge"] });
+  assert.doesNotMatch(html(one), /<div class="player">/);
+  assert.match(html(one), /<div class="name">Lounge<\/div>/);
+  assert.throws(() => new mc.MediaCard().setConfig({ players: ["media_player.a", "light.kitchen"] }));
+  assert.match(html(stacked({ players: ["media_player.nope", "media_player.gone"] })), /No media player found/);
+});
+
+test("mini card with players: one row per player, a click unfolds a row, the detail button shows the stack", () => {
+  const hass = makeHass();
+  const card = stacked({}, hass, mc.MediaMiniCard);
+  let h = html(card);
+  assert.equal((h.match(/<div class="pitem">/g) || []).length, 3);
+  assert.match(h, /data-action="pause" data-target="media_player\.living_room"/);
+  assert.match(h, /<input type="range"[^>]*data-target="media_player\.lounge"/);
+  assert.doesNotMatch(h, /data-action="shuffle"/);
+  assert.equal(card.getCardSize(), 4);
+  click(card, { action: "expand_player", target: "media_player.lounge" });
+  h = html(card);
+  assert.match(h, /<div class="pitem open">/);
+  assert.match(h, /data-action="shuffle" data-target="media_player\.lounge"/);
+  card.connectedCallback();
+  card._onOutside({ composedPath: () => [] });
+  assert.doesNotMatch(html(card), /pitem open/, "a click elsewhere folds the row back");
+  click(card, { action: "zoom" });
+  assert.equal((html(card).match(/<div class="player">/g) || []).length, 3);
+  click(card, { action: "show_player", target: "media_player.office" });
+  assert.match(html(card), /data-action="back"/);
+  card._onUnzoom({ composedPath: () => [] });
+  assert.equal((html(card).match(/<div class="pitem">/g) || []).length, 3, "back to the list, the opened player closed");
+  card.disconnectedCallback();
+  const only = stacked({ only_playing: true }, makeHass(), mc.MediaMiniCard);
+  assert.equal((html(only).match(/<div class="pitem">/g) || []).length, 2);
+  assert.match(html(only), /1 more: Office/);
+});
+
+test("visual editors: players, only_playing and include_paused, left out of the YAML at their defaults", () => {
+  for (const Editor of [mc.MediaCardEditor, mc.MediaMiniCardEditor]) {
+    const ed = new Editor();
+    ed.setConfig({ players: PLAYERS });
+    const form = { listeners: {}, addEventListener(t, f) { this.listeners[t] = f; } };
+    const doc = mc.document;
+    const create = doc.createElement;
+    doc.createElement = (t) => (t === "ha-form" ? form : create(t));
+    ed.appendChild = () => {};
+    ed.hass = makeHass();
+    doc.createElement = create;
+    assert.ok(form.schema.some((s) => s.name === "players"));
+    const toggles = form.schema.find((s) => s.type === "grid").schema.map((s) => s.name);
+    assert.ok(toggles.includes("only_playing") && toggles.includes("include_paused"));
+    assert.equal(form.data.entity, undefined, "no stub entity when players are set");
+    assert.equal(form.computeHelper({ name: "players" }), "Two or more: one block per player, one under the other");
+    const events = [];
+    ed.dispatchEvent = (e) => events.push(e);
+    form.listeners["value-changed"]({ stopPropagation() {}, detail: { value: { players: PLAYERS, only_playing: true, include_paused: false } } });
+    assert.deepEqual({ ...events[0].detail.config }, { players: PLAYERS, only_playing: true });
+  }
+});

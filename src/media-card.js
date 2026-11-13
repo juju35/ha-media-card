@@ -67,6 +67,8 @@ const ICONS = {
   sound_mode: "M10,20H14V4H10V20M4,20H8V12H4V20M16,9V20H20V9H16Z",
   close: "M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z",
   chevron_down: "M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z",
+  chevron_right: "M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z",
+  back: "M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z",
   // mdi:arrow-expand and mdi:arrow-collapse (mini card detail button)
   expand: "M10,21V19H6.41L10.91,14.5L9.5,13.09L5,17.59V14H3V21H10M14.5,10.91L19,6.41V10H21V3H14V5H17.59L13.09,9.5L14.5,10.91Z",
   collapse: "M19.5,3.09L15,7.59V4H13V11H20V9H16.41L20.91,4.5L19.5,3.09M4,13V15H7.59L3.09,19.5L4.5,20.91L9,16.41V20H11V13H4Z",
@@ -113,6 +115,7 @@ const STRINGS = {
     show_background: "Blurred artwork background", show_progress: "Show progress", show_controls: "Show control buttons", show_volume: "Show volume", show_rooms: "Show rooms and groups",
     show_source: "Show source and sound mode", show_queue: "Show queue", show_favorites: "Show favorites", collapsed: "Sections folded by default", favorites_entity: "Favorites sensor (Sonos)",
     zoom: "Detail button", zoom_helper: "Top right button: switches to the full card and back", language: "Language", lang_auto: "Automatic (Home Assistant language)",
+    media: "Media", players: "Players (several, stacked in the card)", players_helper: "Two or more: one block per player, one under the other", only_playing: "Only the players that are playing", include_paused: "Paused players too", n_playing: "{n} playing", players_count: "{n} players", more_players: "{n} more: {names}", back: "Back to all players",
   },
   fr: {
     st_playing: "Lecture", st_paused: "En pause", st_idle: "Inactif", st_on: "Allumé", st_off: "Éteint", st_standby: "Veille", st_buffering: "Chargement", st_unavailable: "Indisponible", st_unknown: "Inconnu",
@@ -127,6 +130,7 @@ const STRINGS = {
     show_background: "Fond flouté de la pochette", show_progress: "Afficher la progression", show_controls: "Afficher les boutons de commande", show_volume: "Afficher le volume", show_rooms: "Afficher les pièces et groupes",
     show_source: "Afficher la source et le mode son", show_queue: "Afficher la file d'attente", show_favorites: "Afficher les favoris", collapsed: "Sections repliées par défaut", favorites_entity: "Capteur des favoris (Sonos)",
     zoom: "Bouton détail", zoom_helper: "Bouton en haut à droite : bascule vers la carte complète et revient", language: "Langue", lang_auto: "Automatique (langue de Home Assistant)",
+    media: "Médias", players: "Lecteurs (plusieurs, empilés dans la carte)", players_helper: "Deux ou plus : un bloc par lecteur, l'un sous l'autre", only_playing: "Seulement les lecteurs en lecture", include_paused: "Les lecteurs en pause aussi", n_playing: "{n} en lecture", players_count: "{n} lecteurs", more_players: "{n} de plus : {names}", back: "Retour à tous les lecteurs",
   },
   de: {
     st_playing: "Wiedergabe", st_paused: "Pausiert", st_idle: "Untätig", st_on: "An", st_off: "Aus", st_standby: "Standby", st_buffering: "Puffern", st_unavailable: "Nicht verfügbar", st_unknown: "Unbekannt",
@@ -141,6 +145,7 @@ const STRINGS = {
     show_background: "Unscharfer Cover-Hintergrund", show_progress: "Fortschritt anzeigen", show_controls: "Steuertasten anzeigen", show_volume: "Lautstärke anzeigen", show_rooms: "Räume und Gruppen anzeigen",
     show_source: "Quelle und Klangmodus anzeigen", show_queue: "Warteschlange anzeigen", show_favorites: "Favoriten anzeigen", collapsed: "Standardmäßig eingeklappte Abschnitte", favorites_entity: "Favoriten-Sensor (Sonos)",
     zoom: "Detailtaste", zoom_helper: "Taste oben rechts: wechselt zur vollständigen Karte und zurück", language: "Sprache", lang_auto: "Automatisch (Sprache von Home Assistant)",
+    media: "Medien", players: "Player (mehrere, in der Karte gestapelt)", players_helper: "Zwei oder mehr: ein Block pro Player, untereinander", only_playing: "Nur Player, die gerade abspielen", include_paused: "Auch pausierte Player", n_playing: "{n} spielen", players_count: "{n} Player", more_players: "{n} weitere: {names}", back: "Zurück zu allen Playern",
   },
   es: {
     st_playing: "Reproduciendo", st_paused: "En pausa", st_idle: "Inactivo", st_on: "Encendido", st_off: "Apagado", st_standby: "En espera", st_buffering: "Cargando", st_unavailable: "No disponible", st_unknown: "Desconocido",
@@ -155,6 +160,7 @@ const STRINGS = {
     show_background: "Fondo difuminado de la carátula", show_progress: "Mostrar progreso", show_controls: "Mostrar botones de control", show_volume: "Mostrar volumen", show_rooms: "Mostrar habitaciones y grupos",
     show_source: "Mostrar fuente y modo de sonido", show_queue: "Mostrar cola", show_favorites: "Mostrar favoritos", collapsed: "Secciones plegadas por defecto", favorites_entity: "Sensor de favoritos (Sonos)",
     zoom: "Botón de detalle", zoom_helper: "Botón arriba a la derecha: cambia a la tarjeta completa y vuelve", language: "Idioma", lang_auto: "Automático (idioma de Home Assistant)",
+    media: "Multimedia", players: "Reproductores (varios, apilados en la tarjeta)", players_helper: "Dos o más: un bloque por reproductor, uno debajo de otro", only_playing: "Solo los reproductores en reproducción", include_paused: "También los reproductores en pausa", n_playing: "{n} reproduciendo", players_count: "{n} reproductores", more_players: "{n} más: {names}", back: "Volver a todos los reproductores",
   },
   it: {
     st_playing: "In riproduzione", st_paused: "In pausa", st_idle: "Inattivo", st_on: "Acceso", st_off: "Spento", st_standby: "Standby", st_buffering: "Caricamento", st_unavailable: "Non disponibile", st_unknown: "Sconosciuto",
@@ -169,6 +175,7 @@ const STRINGS = {
     show_background: "Sfondo sfocato della copertina", show_progress: "Mostra avanzamento", show_controls: "Mostra pulsanti di controllo", show_volume: "Mostra volume", show_rooms: "Mostra stanze e gruppi",
     show_source: "Mostra sorgente e modalità audio", show_queue: "Mostra coda", show_favorites: "Mostra preferiti", collapsed: "Sezioni chiuse per impostazione predefinita", favorites_entity: "Sensore dei preferiti (Sonos)",
     zoom: "Pulsante dettagli", zoom_helper: "Pulsante in alto a destra: passa alla scheda completa e ritorna", language: "Lingua", lang_auto: "Automatica (lingua di Home Assistant)",
+    media: "Media", players: "Lettori (più lettori, impilati nella scheda)", players_helper: "Due o più: un blocco per lettore, uno sotto l'altro", only_playing: "Solo i lettori in riproduzione", include_paused: "Anche i lettori in pausa", n_playing: "{n} in riproduzione", players_count: "{n} lettori", more_players: "Altri {n}: {names}", back: "Torna a tutti i lettori",
   },
   nl: {
     st_playing: "Speelt af", st_paused: "Gepauzeerd", st_idle: "Inactief", st_on: "Aan", st_off: "Uit", st_standby: "Stand-by", st_buffering: "Bufferen", st_unavailable: "Niet beschikbaar", st_unknown: "Onbekend",
@@ -183,6 +190,7 @@ const STRINGS = {
     show_background: "Vervaagde hoesachtergrond", show_progress: "Voortgang tonen", show_controls: "Bedieningsknoppen tonen", show_volume: "Volume tonen", show_rooms: "Ruimtes en groepen tonen",
     show_source: "Bron en geluidsmodus tonen", show_queue: "Wachtrij tonen", show_favorites: "Favorieten tonen", collapsed: "Standaard ingeklapte secties", favorites_entity: "Favorietensensor (Sonos)",
     zoom: "Detailknop", zoom_helper: "Knop rechtsboven: schakelt naar de volledige kaart en terug", language: "Taal", lang_auto: "Automatisch (taal van Home Assistant)",
+    media: "Media", players: "Spelers (meerdere, gestapeld in de kaart)", players_helper: "Twee of meer: één blok per speler, onder elkaar", only_playing: "Alleen spelers die afspelen", include_paused: "Ook gepauzeerde spelers", n_playing: "{n} spelen af", players_count: "{n} spelers", more_players: "Nog {n}: {names}", back: "Terug naar alle spelers",
   },
   pt: {
     st_playing: "A reproduzir", st_paused: "Em pausa", st_idle: "Inativo", st_on: "Ligado", st_off: "Desligado", st_standby: "Em espera", st_buffering: "A carregar", st_unavailable: "Indisponível", st_unknown: "Desconhecido",
@@ -197,6 +205,7 @@ const STRINGS = {
     show_background: "Fundo desfocado da capa", show_progress: "Mostrar progresso", show_controls: "Mostrar botões de controlo", show_volume: "Mostrar volume", show_rooms: "Mostrar divisões e grupos",
     show_source: "Mostrar fonte e modo de som", show_queue: "Mostrar fila", show_favorites: "Mostrar favoritos", collapsed: "Secções recolhidas por omissão", favorites_entity: "Sensor de favoritos (Sonos)",
     zoom: "Botão de detalhe", zoom_helper: "Botão no canto superior direito: muda para o cartão completo e volta", language: "Idioma", lang_auto: "Automático (idioma do Home Assistant)",
+    media: "Multimédia", players: "Leitores (vários, empilhados no cartão)", players_helper: "Dois ou mais: um bloco por leitor, um por baixo do outro", only_playing: "Só os leitores em reprodução", include_paused: "Também os leitores em pausa", n_playing: "{n} a reproduzir", players_count: "{n} leitores", more_players: "Mais {n}: {names}", back: "Voltar a todos os leitores",
   },
   pl: {
     st_playing: "Odtwarzanie", st_paused: "Wstrzymano", st_idle: "Bezczynny", st_on: "Włączony", st_off: "Wyłączony", st_standby: "Czuwanie", st_buffering: "Buforowanie", st_unavailable: "Niedostępny", st_unknown: "Nieznany",
@@ -211,6 +220,7 @@ const STRINGS = {
     show_background: "Rozmyte tło z okładki", show_progress: "Pokaż postęp", show_controls: "Pokaż przyciski sterowania", show_volume: "Pokaż głośność", show_rooms: "Pokaż pomieszczenia i grupy",
     show_source: "Pokaż źródło i tryb dźwięku", show_queue: "Pokaż kolejkę", show_favorites: "Pokaż ulubione", collapsed: "Sekcje domyślnie zwinięte", favorites_entity: "Czujnik ulubionych (Sonos)",
     zoom: "Przycisk szczegółów", zoom_helper: "Przycisk w prawym górnym rogu: przełącza na pełną kartę i z powrotem", language: "Język", lang_auto: "Automatycznie (język Home Assistant)",
+    media: "Multimedia", players: "Odtwarzacze (kilka, jeden pod drugim na karcie)", players_helper: "Dwa lub więcej: jeden blok na odtwarzacz, jeden pod drugim", only_playing: "Tylko odtwarzacze, które odtwarzają", include_paused: "Także wstrzymane odtwarzacze", n_playing: "Odtwarza: {n}", players_count: "Odtwarzacze: {n}", more_players: "Jeszcze {n}: {names}", back: "Wróć do wszystkich odtwarzaczy",
   },
   sr: {
     st_playing: "Репродукција", st_paused: "Паузирано", st_idle: "Неактиван", st_on: "Укључен", st_off: "Искључен", st_standby: "Мировање", st_buffering: "Учитавање", st_unavailable: "Недоступан", st_unknown: "Непознато",
@@ -225,6 +235,7 @@ const STRINGS = {
     show_background: "Замућена позадина омота", show_progress: "Прикажи напредак", show_controls: "Прикажи командне тастере", show_volume: "Прикажи јачину звука", show_rooms: "Прикажи просторије и групе",
     show_source: "Прикажи извор и режим звука", show_queue: "Прикажи ред", show_favorites: "Прикажи омиљено", collapsed: "Подразумевано скупљени одељци", favorites_entity: "Сензор омиљених (Sonos)",
     zoom: "Тастер за детаље", zoom_helper: "Тастер горе десно: прелази на пуну картицу и назад", language: "Језик", lang_auto: "Аутоматски (језик Home Assistant-а)",
+    media: "Медији", players: "Плејери (више њих, један испод другог у картици)", players_helper: "Два или више: један блок по плејеру, један испод другог", only_playing: "Само плејери који репродукују", include_paused: "И паузирани плејери", n_playing: "{n} репродукује", players_count: "Плејера: {n}", more_players: "Још {n}: {names}", back: "Назад на све плејере",
   },
   "sr-Latn": {
     st_playing: "Reprodukcija", st_paused: "Pauzirano", st_idle: "Neaktivan", st_on: "Uključen", st_off: "Isključen", st_standby: "Mirovanje", st_buffering: "Učitavanje", st_unavailable: "Nedostupan", st_unknown: "Nepoznato",
@@ -239,6 +250,7 @@ const STRINGS = {
     show_background: "Zamućena pozadina omota", show_progress: "Prikaži napredak", show_controls: "Prikaži komandne tastere", show_volume: "Prikaži jačinu zvuka", show_rooms: "Prikaži prostorije i grupe",
     show_source: "Prikaži izvor i režim zvuka", show_queue: "Prikaži red", show_favorites: "Prikaži omiljeno", collapsed: "Podrazumevano skupljeni odeljci", favorites_entity: "Senzor omiljenih (Sonos)",
     zoom: "Taster za detalje", zoom_helper: "Taster gore desno: prelazi na punu karticu i nazad", language: "Jezik", lang_auto: "Automatski (jezik Home Assistant-a)",
+    media: "Mediji", players: "Plejeri (više njih, jedan ispod drugog u kartici)", players_helper: "Dva ili više: jedan blok po plejeru, jedan ispod drugog", only_playing: "Samo plejeri koji reprodukuju", include_paused: "I pauzirani plejeri", n_playing: "{n} reprodukuje", players_count: "Plejera: {n}", more_players: "Još {n}: {names}", back: "Nazad na sve plejere",
   },
   ro: {
     st_playing: "Redare", st_paused: "În pauză", st_idle: "Inactiv", st_on: "Pornit", st_off: "Oprit", st_standby: "Standby", st_buffering: "Se încarcă", st_unavailable: "Indisponibil", st_unknown: "Necunoscut",
@@ -253,6 +265,7 @@ const STRINGS = {
     show_background: "Fundal estompat al copertei", show_progress: "Afișează progresul", show_controls: "Afișează butoanele de comandă", show_volume: "Afișează volumul", show_rooms: "Afișează camerele și grupurile",
     show_source: "Afișează sursa și modul sunet", show_queue: "Afișează coada", show_favorites: "Afișează favoritele", collapsed: "Secțiuni restrânse implicit", favorites_entity: "Senzor de favorite (Sonos)",
     zoom: "Buton detalii", zoom_helper: "Butonul din dreapta sus: trece la cardul complet și înapoi", language: "Limbă", lang_auto: "Automat (limba Home Assistant)",
+    media: "Media", players: "Playere (mai multe, stivuite în card)", players_helper: "Două sau mai multe: un bloc pe player, unul sub altul", only_playing: "Doar playerele care redau", include_paused: "Și playerele în pauză", n_playing: "{n} redau", players_count: "{n} playere", more_players: "Încă {n}: {names}", back: "Înapoi la toate playerele",
   },
   da: {
     st_playing: "Afspiller", st_paused: "Sat på pause", st_idle: "Inaktiv", st_on: "Tændt", st_off: "Slukket", st_standby: "Standby", st_buffering: "Buffer", st_unavailable: "Utilgængelig", st_unknown: "Ukendt",
@@ -267,6 +280,7 @@ const STRINGS = {
     show_background: "Sløret coverbaggrund", show_progress: "Vis forløb", show_controls: "Vis betjeningsknapper", show_volume: "Vis lydstyrke", show_rooms: "Vis rum og grupper",
     show_source: "Vis kilde og lydtilstand", show_queue: "Vis kø", show_favorites: "Vis favoritter", collapsed: "Sektioner foldet sammen som standard", favorites_entity: "Favoritsensor (Sonos)",
     zoom: "Detaljeknap", zoom_helper: "Knap øverst til højre: skifter til det fulde kort og tilbage", language: "Sprog", lang_auto: "Automatisk (Home Assistants sprog)",
+    media: "Medier", players: "Afspillere (flere, stablet i kortet)", players_helper: "To eller flere: én blok pr. afspiller, under hinanden", only_playing: "Kun afspillere, der afspiller", include_paused: "Også afspillere på pause", n_playing: "{n} afspiller", players_count: "{n} afspillere", more_players: "{n} mere: {names}", back: "Tilbage til alle afspillere",
   },
   sv: {
     st_playing: "Spelar", st_paused: "Pausad", st_idle: "Inaktiv", st_on: "På", st_off: "Av", st_standby: "Viloläge", st_buffering: "Buffrar", st_unavailable: "Otillgänglig", st_unknown: "Okänd",
@@ -281,6 +295,7 @@ const STRINGS = {
     show_background: "Suddig omslagsbakgrund", show_progress: "Visa förlopp", show_controls: "Visa kontrollknappar", show_volume: "Visa volym", show_rooms: "Visa rum och grupper",
     show_source: "Visa källa och ljudläge", show_queue: "Visa kö", show_favorites: "Visa favoriter", collapsed: "Sektioner hopfällda som standard", favorites_entity: "Favoritsensor (Sonos)",
     zoom: "Detaljknapp", zoom_helper: "Knappen uppe till höger: växlar till hela kortet och tillbaka", language: "Språk", lang_auto: "Automatiskt (Home Assistants språk)",
+    media: "Media", players: "Spelare (flera, staplade i kortet)", players_helper: "Två eller fler: ett block per spelare, under varandra", only_playing: "Bara spelare som spelar", include_paused: "Även pausade spelare", n_playing: "{n} spelar", players_count: "{n} spelare", more_players: "{n} till: {names}", back: "Tillbaka till alla spelare",
   },
   bg: {
     st_playing: "Възпроизвежда", st_paused: "На пауза", st_idle: "Неактивен", st_on: "Включен", st_off: "Изключен", st_standby: "Готовност", st_buffering: "Зареждане", st_unavailable: "Недостъпен", st_unknown: "Неизвестно",
@@ -295,6 +310,7 @@ const STRINGS = {
     show_background: "Размит фон от обложката", show_progress: "Покажи напредъка", show_controls: "Покажи бутоните за управление", show_volume: "Покажи силата на звука", show_rooms: "Покажи стаите и групите",
     show_source: "Покажи източника и звуковия режим", show_queue: "Покажи опашката", show_favorites: "Покажи любимите", collapsed: "Свити по подразбиране секции", favorites_entity: "Сензор за любими (Sonos)",
     zoom: "Бутон за подробности", zoom_helper: "Бутон горе вдясно: превключва към пълната карта и обратно", language: "Език", lang_auto: "Автоматично (езикът на Home Assistant)",
+    media: "Медия", players: "Плейъри (няколко, един под друг в картата)", players_helper: "Два или повече: по един блок за плейър, един под друг", only_playing: "Само плейърите, които възпроизвеждат", include_paused: "И плейърите на пауза", n_playing: "Възпроизвеждат: {n}", players_count: "Плейъри: {n}", more_players: "Още {n}: {names}", back: "Назад към всички плейъри",
   },
   ru: {
     st_playing: "Воспроизведение", st_paused: "Пауза", st_idle: "Бездействует", st_on: "Включён", st_off: "Выключен", st_standby: "Ожидание", st_buffering: "Буферизация", st_unavailable: "Недоступен", st_unknown: "Неизвестно",
@@ -309,6 +325,7 @@ const STRINGS = {
     show_background: "Размытый фон обложки", show_progress: "Показывать прогресс", show_controls: "Показывать кнопки управления", show_volume: "Показывать громкость", show_rooms: "Показывать комнаты и группы",
     show_source: "Показывать источник и звуковой режим", show_queue: "Показывать очередь", show_favorites: "Показывать избранное", collapsed: "Свёрнутые по умолчанию разделы", favorites_entity: "Датчик избранного (Sonos)",
     zoom: "Кнопка подробностей", zoom_helper: "Кнопка справа вверху: переключает на полную карточку и обратно", language: "Язык", lang_auto: "Автоматически (язык Home Assistant)",
+    media: "Медиа", players: "Плееры (несколько, друг под другом в карточке)", players_helper: "Два или больше: по блоку на плеер, друг под другом", only_playing: "Только воспроизводящие плееры", include_paused: "И плееры на паузе", n_playing: "Воспроизводят: {n}", players_count: "Плееров: {n}", more_players: "Ещё {n}: {names}", back: "Назад ко всем плеерам",
   },
   uk: {
     st_playing: "Відтворення", st_paused: "Пауза", st_idle: "Неактивний", st_on: "Увімкнено", st_off: "Вимкнено", st_standby: "Очікування", st_buffering: "Буферизація", st_unavailable: "Недоступний", st_unknown: "Невідомо",
@@ -323,6 +340,7 @@ const STRINGS = {
     show_background: "Розмитий фон обкладинки", show_progress: "Показувати прогрес", show_controls: "Показувати кнопки керування", show_volume: "Показувати гучність", show_rooms: "Показувати кімнати й групи",
     show_source: "Показувати джерело й звуковий режим", show_queue: "Показувати чергу", show_favorites: "Показувати обране", collapsed: "Типово згорнуті розділи", favorites_entity: "Датчик обраного (Sonos)",
     zoom: "Кнопка подробиць", zoom_helper: "Кнопка праворуч угорі: перемикає на повну картку й назад", language: "Мова", lang_auto: "Автоматично (мова Home Assistant)",
+    media: "Медіа", players: "Плеєри (кілька, один під одним у картці)", players_helper: "Два чи більше: по блоку на плеєр, один під одним", only_playing: "Лише плеєри, що відтворюють", include_paused: "І плеєри на паузі", n_playing: "Відтворюють: {n}", players_count: "Плеєрів: {n}", more_players: "Ще {n}: {names}", back: "Назад до всіх плеєрів",
   },
   hu: {
     st_playing: "Lejátszás", st_paused: "Szüneteltetve", st_idle: "Tétlen", st_on: "Be", st_off: "Ki", st_standby: "Készenlét", st_buffering: "Pufferelés", st_unavailable: "Nem elérhető", st_unknown: "Ismeretlen",
@@ -337,6 +355,7 @@ const STRINGS = {
     show_background: "Elmosott borító háttér", show_progress: "Haladás megjelenítése", show_controls: "Vezérlőgombok megjelenítése", show_volume: "Hangerő megjelenítése", show_rooms: "Helyiségek és csoportok megjelenítése",
     show_source: "Forrás és hangmód megjelenítése", show_queue: "Lejátszási sor megjelenítése", show_favorites: "Kedvencek megjelenítése", collapsed: "Alapértelmezésben összecsukott részek", favorites_entity: "Kedvencek érzékelő (Sonos)",
     zoom: "Részletek gomb", zoom_helper: "Jobb felső gomb: a teljes kártyára vált és vissza", language: "Nyelv", lang_auto: "Automatikus (Home Assistant nyelve)",
+    media: "Média", players: "Lejátszók (több, egymás alatt a kártyán)", players_helper: "Kettő vagy több: lejátszónként egy blokk, egymás alatt", only_playing: "Csak a lejátszást végző lejátszók", include_paused: "A szüneteltetett lejátszók is", n_playing: "{n} játszik", players_count: "{n} lejátszó", more_players: "Még {n}: {names}", back: "Vissza az összes lejátszóhoz",
   },
   sk: {
     st_playing: "Prehráva sa", st_paused: "Pozastavené", st_idle: "Nečinný", st_on: "Zapnutý", st_off: "Vypnutý", st_standby: "Pohotovosť", st_buffering: "Načítava sa", st_unavailable: "Nedostupný", st_unknown: "Neznámy",
@@ -351,6 +370,7 @@ const STRINGS = {
     show_background: "Rozmazané pozadie obalu", show_progress: "Zobraziť priebeh", show_controls: "Zobraziť ovládacie tlačidlá", show_volume: "Zobraziť hlasitosť", show_rooms: "Zobraziť miestnosti a skupiny",
     show_source: "Zobraziť zdroj a režim zvuku", show_queue: "Zobraziť poradie", show_favorites: "Zobraziť obľúbené", collapsed: "Predvolene zbalené sekcie", favorites_entity: "Senzor obľúbených (Sonos)",
     zoom: "Tlačidlo podrobností", zoom_helper: "Tlačidlo vpravo hore: prepne na úplnú kartu a späť", language: "Jazyk", lang_auto: "Automaticky (jazyk Home Assistant)",
+    media: "Médiá", players: "Prehrávače (viaceré, pod sebou v karte)", players_helper: "Dva alebo viac: jeden blok na prehrávač, pod sebou", only_playing: "Len prehrávače, ktoré prehrávajú", include_paused: "Aj pozastavené prehrávače", n_playing: "Prehráva: {n}", players_count: "Prehrávače: {n}", more_players: "Ďalšie {n}: {names}", back: "Späť na všetky prehrávače",
   },
   cs: {
     st_playing: "Přehrává se", st_paused: "Pozastaveno", st_idle: "Nečinný", st_on: "Zapnuto", st_off: "Vypnuto", st_standby: "Pohotovost", st_buffering: "Načítání", st_unavailable: "Nedostupný", st_unknown: "Neznámý",
@@ -365,6 +385,7 @@ const STRINGS = {
     show_background: "Rozmazané pozadí obalu", show_progress: "Zobrazit průběh", show_controls: "Zobrazit ovládací tlačítka", show_volume: "Zobrazit hlasitost", show_rooms: "Zobrazit místnosti a skupiny",
     show_source: "Zobrazit zdroj a režim zvuku", show_queue: "Zobrazit frontu", show_favorites: "Zobrazit oblíbené", collapsed: "Výchozí sbalené sekce", favorites_entity: "Senzor oblíbených (Sonos)",
     zoom: "Tlačítko podrobností", zoom_helper: "Tlačítko vpravo nahoře: přepne na úplnou kartu a zpět", language: "Jazyk", lang_auto: "Automaticky (jazyk Home Assistant)",
+    media: "Média", players: "Přehrávače (více, pod sebou v kartě)", players_helper: "Dva a více: jeden blok na přehrávač, pod sebou", only_playing: "Jen přehrávače, které přehrávají", include_paused: "I pozastavené přehrávače", n_playing: "Přehrává: {n}", players_count: "Přehrávače: {n}", more_players: "Dalších {n}: {names}", back: "Zpět na všechny přehrávače",
   },
   sl: {
     st_playing: "Predvajanje", st_paused: "Začasno ustavljeno", st_idle: "Nedejaven", st_on: "Vklopljen", st_off: "Izklopljen", st_standby: "Pripravljenost", st_buffering: "Nalaganje", st_unavailable: "Ni na voljo", st_unknown: "Neznano",
@@ -379,6 +400,7 @@ const STRINGS = {
     show_background: "Zamegljeno ozadje naslovnice", show_progress: "Prikaži napredek", show_controls: "Prikaži gumbe za upravljanje", show_volume: "Prikaži glasnost", show_rooms: "Prikaži prostore in skupine",
     show_source: "Prikaži vir in zvočni način", show_queue: "Prikaži čakalno vrsto", show_favorites: "Prikaži priljubljene", collapsed: "Privzeto strnjeni razdelki", favorites_entity: "Senzor priljubljenih (Sonos)",
     zoom: "Gumb za podrobnosti", zoom_helper: "Gumb zgoraj desno: preklopi na polno kartico in nazaj", language: "Jezik", lang_auto: "Samodejno (jezik Home Assistanta)",
+    media: "Predstavnost", players: "Predvajalniki (več, drug pod drugim na kartici)", players_helper: "Dva ali več: en blok na predvajalnik, drug pod drugim", only_playing: "Samo predvajalniki, ki predvajajo", include_paused: "Tudi zaustavljeni predvajalniki", n_playing: "Predvaja: {n}", players_count: "Predvajalniki: {n}", more_players: "Še {n}: {names}", back: "Nazaj na vse predvajalnike",
   },
   lv: {
     st_playing: "Atskaņo", st_paused: "Pauzēts", st_idle: "Dīkstāvē", st_on: "Ieslēgts", st_off: "Izslēgts", st_standby: "Gaidstāve", st_buffering: "Ielādē", st_unavailable: "Nav pieejams", st_unknown: "Nezināms",
@@ -393,6 +415,7 @@ const STRINGS = {
     show_background: "Izpludināts vāciņa fons", show_progress: "Rādīt progresu", show_controls: "Rādīt vadības pogas", show_volume: "Rādīt skaļumu", show_rooms: "Rādīt telpas un grupas",
     show_source: "Rādīt avotu un skaņas režīmu", show_queue: "Rādīt rindu", show_favorites: "Rādīt izlasi", collapsed: "Pēc noklusējuma sakļautās sadaļas", favorites_entity: "Izlases sensors (Sonos)",
     zoom: "Detaļu poga", zoom_helper: "Poga augšējā labajā stūrī: pārslēdz uz pilno karti un atpakaļ", language: "Valoda", lang_auto: "Automātiski (Home Assistant valoda)",
+    media: "Multivide", players: "Atskaņotāji (vairāki, kartē cits zem cita)", players_helper: "Divi vai vairāk: viens bloks katram atskaņotājam, cits zem cita", only_playing: "Tikai atskaņotāji, kas atskaņo", include_paused: "Arī pauzētie atskaņotāji", n_playing: "Atskaņo: {n}", players_count: "Atskaņotāji: {n}", more_players: "Vēl {n}: {names}", back: "Atpakaļ uz visiem atskaņotājiem",
   },
   el: {
     st_playing: "Αναπαραγωγή", st_paused: "Σε παύση", st_idle: "Αδρανές", st_on: "Ενεργό", st_off: "Ανενεργό", st_standby: "Αναμονή", st_buffering: "Φόρτωση", st_unavailable: "Μη διαθέσιμο", st_unknown: "Άγνωστο",
@@ -407,6 +430,7 @@ const STRINGS = {
     show_background: "Θολό φόντο εξωφύλλου", show_progress: "Εμφάνιση προόδου", show_controls: "Εμφάνιση κουμπιών ελέγχου", show_volume: "Εμφάνιση έντασης", show_rooms: "Εμφάνιση δωματίων και ομάδων",
     show_source: "Εμφάνιση πηγής και λειτουργίας ήχου", show_queue: "Εμφάνιση ουράς", show_favorites: "Εμφάνιση αγαπημένων", collapsed: "Ενότητες κλειστές από προεπιλογή", favorites_entity: "Αισθητήρας αγαπημένων (Sonos)",
     zoom: "Κουμπί λεπτομερειών", zoom_helper: "Κουμπί πάνω δεξιά: μεταβαίνει στην πλήρη κάρτα και πίσω", language: "Γλώσσα", lang_auto: "Αυτόματα (γλώσσα του Home Assistant)",
+    media: "Πολυμέσα", players: "Αναπαραγωγείς (πολλοί, ο ένας κάτω από τον άλλο)", players_helper: "Δύο ή περισσότεροι: ένα μπλοκ ανά αναπαραγωγέα, ο ένας κάτω από τον άλλο", only_playing: "Μόνο οι αναπαραγωγείς που παίζουν", include_paused: "Και οι αναπαραγωγείς σε παύση", n_playing: "{n} σε αναπαραγωγή", players_count: "{n} αναπαραγωγείς", more_players: "Ακόμη {n}: {names}", back: "Πίσω σε όλους τους αναπαραγωγείς",
   },
 };
 
@@ -515,9 +539,36 @@ const playerIds = (hass) =>
 const findPlayer = (hass, config, active) => {
   const ids = playerIds(hass);
   if (!ids.length) return { error: "no_player" };
-  const want = active || config.entity;
+  const listed = listedPlayers(config);
+  const want = active || config.entity || (listed.length === 1 ? listed[0] : null);
   if (want) return hass.states[want] ? { id: want } : { error: "unknown_entity" };
   return { id: ids.find((id) => hass.states[id].state === "playing") || ids.find((id) => !offline(hass.states[id])) || ids[0] };
+};
+
+// The `players` option: the players stacked in the card, as entity ids (strings or { entity }), in its order.
+function listedPlayers(config) {
+  const list = Array.isArray(config?.players) ? config.players : [];
+  return [...new Set(list.map((e) => (typeof e === "string" ? e : e?.entity)).filter(Boolean))];
+}
+
+// Two players or more in `players`: the card stacks them (one player only is the same as `entity`).
+const isStacked = (config) => listedPlayers(config).length >= 2;
+const isPlaying = (s) => s?.state === "playing" || s?.state === "buffering";
+
+// Players of the stacked view, in the order of the option. With `only_playing`, only the playing ones (and the
+// paused ones with `include_paused`); the others are counted in `hidden`. When none of them plays, the one that
+// changed last (the last one active) is shown, else the first one.
+const stackedPlayers = (hass, config) => {
+  const ids = listedPlayers(config).filter((id) => hass?.states?.[id]);
+  if (!config.only_playing) return { shown: ids, hidden: [] };
+  const on = (id) => isPlaying(hass.states[id]) || (config.include_paused === true && hass.states[id].state === "paused");
+  let shown = ids.filter(on);
+  if (!shown.length && ids.length) {
+    const changed = (id) => Date.parse(hass.states[id].last_changed) || 0;
+    const last = ids.filter((id) => !offline(hass.states[id])).sort((a, b) => changed(b) - changed(a))[0];
+    shown = [last || ids[0]];
+  }
+  return { shown, hidden: ids.filter((id) => !shown.includes(id)) };
 };
 
 const groupOf = (s) => (Array.isArray(s?.attributes?.group_members) ? s.attributes.group_members : []);
@@ -857,6 +908,57 @@ const MINI_STYLE = `
   @container (max-width: 190px) { .row .art, .row .pic-box { display: none; } }
 `;
 
+// Several players (`players`): the full card stacks a block per player, the mini card lists them one per row.
+const STACK_STYLE = `
+  .zoom.back { margin: -4px 0 -4px -4px; }
+  .players { display: flex; flex-direction: column; }
+  .player { display: flex; flex-direction: column; gap: 8px; padding: 12px 0; min-width: 0; }
+  .player:first-child { padding-top: 0; }
+  .player:last-child { padding-bottom: 0; }
+  .player + .player { border-top: 1px solid var(--divider-color, rgba(127,127,127,.2)); }
+  .player-head { display: flex; align-items: center; gap: 12px; min-width: 0; }
+  .player-head .art, .player-head .pic-box { width: 64px; height: 64px; border-radius: 8px; }
+  .player-head .eq { left: 4px; bottom: 4px; height: 10px; padding: 2px 3px; }
+  .player-head .eq i { width: 2px; }
+  .player-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+  .player-name { display: inline-flex; align-items: center; gap: 2px; align-self: flex-start; max-width: 100%; font-size: 11px; font-weight: 500;
+                 text-transform: uppercase; letter-spacing: .04em; color: var(--secondary-text-color); }
+  .player-name span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .player-name .icon { width: 14px; height: 14px; }
+  .player-name:hover { color: var(--primary-text-color); }
+  .player-head > .chip { align-self: flex-start; }
+  .player .controls { gap: 6px; }
+  .more-players { display: flex; align-items: center; gap: 8px; margin-top: 12px; padding-top: 10px; font-size: 12px; color: var(--secondary-text-color);
+                  border-top: 1px solid var(--divider-color, rgba(127,127,127,.2)); }
+  .more-players > span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .more-players .chevron { width: 16px; height: 16px; transition: transform .2s ease; }
+  .more-players[aria-expanded="false"] .chevron { transform: rotate(-90deg); }
+  @container (max-width: 250px) {
+    .player-head .art, .player-head .pic-box { width: 44px; height: 44px; }
+    .player-head { gap: 8px; }
+    .player-head > .chip { display: none; }
+  }
+`;
+
+const LIST_STYLE = `
+  .plist { display: flex; flex-direction: column; gap: 6px; }
+  .pitem { display: flex; flex-direction: column; gap: 8px; padding: 6px 8px; border-radius: 12px; min-width: 0;
+           background: color-mix(in srgb, var(--secondary-background-color, rgba(127,127,127,.08)) 70%, transparent); }
+  .pitem.open { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--mc-accent) 45%, transparent); }
+  .prow { display: flex; align-items: center; gap: 10px; min-width: 0; }
+  .prow .art, .prow .pic-box { width: 32px; height: 32px; border-radius: 6px; box-shadow: none; }
+  .prow .eq { display: none; }
+  .prow-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px; }
+  .prow-name { font-size: 13px; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .prow-sub { font-size: 11px; color: var(--secondary-text-color); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .prow .btn.round, .pitem .controls .btn.round { width: 32px; height: 32px; }
+  .prow .btn.round .icon { width: 18px; height: 18px; }
+  .prow input[type="range"] { flex: 0 0 64px; min-width: 0; }
+  .pitem .controls { justify-content: center; }
+  @container (max-width: 260px) { .prow input[type="range"] { display: none; } }
+  @container (max-width: 190px) { .prow .art, .prow .pic-box { display: none; } }
+`;
+
 // Element names of Home Assistant dialogs (more-info opened from the card, among others).
 const DIALOG_TAGS = new Set(["HA-MORE-INFO-DIALOG", "HA-DIALOG", "DIALOG"]);
 const isOutside = (card, ev) => {
@@ -936,7 +1038,7 @@ class MediaBase extends HTMLElement {
     if (!h || !this._config) return null;
     const { id } = findPlayer(h, this._config, this._active);
     if (!id) return null;
-    const ids = [id, ...roomIds(h, this._config, id), ...groupOf(h.states[id]), favoritesSensor(h, this._config, id)];
+    const ids = [id, ...roomIds(h, this._config, id), ...groupOf(h.states[id]), favoritesSensor(h, this._config, id), ...listedPlayers(this._config)];
     return [h.entities, h.language, h.locale, h.themes?.darkMode, this._active, ...ids.map((i) => h.states[i])];
   }
 
@@ -968,10 +1070,12 @@ class MediaBase extends HTMLElement {
   setConfig(config) {
     if (!config) throw new Error("Invalid configuration");
     if (config.entity && !String(config.entity).startsWith("media_player.")) throw new Error("entity must be a media_player");
+    if (listedPlayers(config).some((id) => !String(id).startsWith("media_player."))) throw new Error("players must be media_player entities");
     this._config = { ...config };
     this.toggleAttribute?.("hide-title", config.show_title === false);
     this.toggleAttribute?.("hide-subtitle", config.show_subtitle === false);
     this._active = null;
+    this._showHidden = false;
     this._html = "";
     this._lastDeps = null;
     this._update();
@@ -1030,7 +1134,8 @@ class MediaBase extends HTMLElement {
   }
 
   _tick() {
-    if (!this._hass || this._dragging || this._s(this._id)?.state !== "playing") return;
+    if (!this._hass || this._dragging) return;
+    if (!(this._shownIds || [this._id]).some((id) => this._s(id)?.state === "playing")) return;
     this._paintProgress();
   }
 
@@ -1051,17 +1156,27 @@ class MediaBase extends HTMLElement {
     } else vinyl.style.setProperty("--mc-spin-delay", `${-((Date.now() % 3000) / 1000).toFixed(2)}s`);
   }
 
-  // Progress bar, elapsed time and slider value of the shown player, from media_position and its timestamp.
+  // Progress bars, elapsed times and slider values, from media_position and its timestamp: of the shown player, or
+  // of the player each element names (stacked players).
   _paintProgress() {
-    const s = this._s(this._id);
-    const d = duration(s);
-    if (!d) return;
-    const p = position(s) ?? 0;
-    for (const el of this.shadowRoot.querySelectorAll("[data-progress]")) el.style.width = `${((p / d) * 100).toFixed(2)}%`;
-    for (const el of this.shadowRoot.querySelectorAll("[data-elapsed]")) el.textContent = fmtTime(p);
+    const at = (el, key) => {
+      const s = this._s(el.dataset[key] || this._id);
+      const d = duration(s);
+      return d ? { d, p: position(s) ?? 0 } : null;
+    };
+    for (const el of this.shadowRoot.querySelectorAll("[data-progress]")) {
+      const v = at(el, "progress");
+      if (v) el.style.width = `${((v.p / v.d) * 100).toFixed(2)}%`;
+    }
+    for (const el of this.shadowRoot.querySelectorAll("[data-elapsed]")) {
+      const v = at(el, "elapsed");
+      if (v) el.textContent = fmtTime(v.p);
+    }
     for (const el of this.shadowRoot.querySelectorAll('[role="slider"][data-action="seek"]')) {
-      el.setAttribute("aria-valuenow", String(Math.round(p)));
-      el.setAttribute("aria-valuetext", `${fmtTime(p)} / ${fmtTime(d)}`);
+      const v = at(el, "target");
+      if (!v) continue;
+      el.setAttribute("aria-valuenow", String(Math.round(v.p)));
+      el.setAttribute("aria-valuetext", `${fmtTime(v.p)} / ${fmtTime(v.d)}`);
     }
   }
 
@@ -1158,9 +1273,23 @@ class MediaBase extends HTMLElement {
         return this._update();
       }
       case "show_player":
-        this._active = id === this._config.entity ? null : id;
+        // Stacked players: the clicked one opens in the full view, with a back button to the stack.
+        this._active = isStacked(this._config) || id !== this._config.entity ? id : null;
         this._lastDeps = null;
         return this._update();
+      case "back":
+        this._active = null;
+        this._lastDeps = null;
+        return this._update();
+      case "toggle_hidden":
+        this._showHidden = !this._showHidden;
+        return this._update();
+      case "expand_player": {
+        // Folded back, like the sections, by a click elsewhere on the page.
+        const key = `player:${id}`;
+        this._toggled = new Map(this._toggled).set(key, !this._toggled?.get(key));
+        return this._update();
+      }
       case "play":
       case "pause":
       case "stop":
@@ -1259,6 +1388,7 @@ class MediaBase extends HTMLElement {
   // The player shown (remembered for the actions and the progress ticker) and its state, or the error to show.
   _player() {
     const { id, error } = findPlayer(this._hass, this._config, this._active);
+    this._shownIds = null;
     if (error) return { error };
     this._id = id;
     return { id, s: this._s(id) };
@@ -1300,16 +1430,16 @@ class MediaBase extends HTMLElement {
     const c = this._config;
     const cls = statusClass(s?.state);
     const icon = groupOf(s).length > 1 ? ICONS.speakers : ICONS[kindOf(s)];
-    const text = this._stateText(s);
     const sub = this._subtitle(id, s);
+    const back = isStacked(c) && this._active ? this._iconButton("back", ICONS.back, this._t("back"), "zoom back") : "";
     return `
-      <div class="header">
+      <div class="header">${back}
         <div class="type-icon ${cls}">${svgIcon(icon)}</div>
         <div class="titles">
           <div class="name">${esc(c.title && !this._active ? c.title : nameOf(this._hass, id))}</div>
           ${sub ? `<div class="sub">${esc(sub)}</div>` : ""}
         </div>
-        <span class="chip clickable ${cls}" role="button" tabindex="0" data-entity="${esc(id)}" title="${esc(text)}" aria-label="${esc(text)}"><span class="dot"></span><span class="chip-text">${esc(text)}</span></span>
+        ${this._stateChip(id, s)}
         ${this._zoomButton()}
       </div>`;
   }
@@ -1341,16 +1471,23 @@ class MediaBase extends HTMLElement {
     return `<div class="meta"><div class="track" title="${esc(title)}">${esc(title)}</div>${artist ? `<div class="artist">${esc(artist)}</div>` : ""}${album ? `<div class="album">${esc(album)}</div>` : ""}</div>`;
   }
 
-  _progress(id, s, times = true) {
+  // `own`: the bar and the time name their player (several players in the card), painted from its own position.
+  _progress(id, s, times = true, own = false) {
     const d = duration(s);
     if (!d || !isActive(s)) return "";
     const seek = has(s, F.SEEK) && !offline(s);
+    const of = own ? `="${esc(id)}"` : "";
     const bar = `<div class="bar${seek ? " seek clickable" : ""}"${
       seek
         ? ` role="slider" tabindex="0" data-action="seek" data-target="${esc(id)}" aria-label="${esc(this._t("seek"))}" aria-valuemin="0" aria-valuemax="${Math.round(d)}"`
         : ""
-    }><div data-progress style="width:0%"></div></div>`;
-    return times ? `<div class="progress"><span data-elapsed></span>${bar}<span>${fmtTime(d)}</span></div>` : bar;
+    }><div data-progress${of} style="width:0%"></div></div>`;
+    return times ? `<div class="progress"><span data-elapsed${of}></span>${bar}<span>${fmtTime(d)}</span></div>` : bar;
+  }
+
+  // Small borderless icon button of the header (detail, back).
+  _iconButton(action, icon, label, cls = "zoom") {
+    return `<button class="${cls}" data-action="${action}" title="${esc(label)}" aria-label="${esc(label)}">${svgIcon(icon)}</button>`;
   }
 
   _btn(action, icon, label, { on = false, disabled = false, big = false, primary = false, target = "", value = "" } = {}) {
@@ -1360,27 +1497,38 @@ class MediaBase extends HTMLElement {
     }${disabled ? " disabled" : ""}>${svgIcon(icon)}</button>`;
   }
 
+  // Play / pause (or stop) button of the player, the one its state calls for.
+  _playButton(s, { big = false, target = "" } = {}) {
+    const dis = offline(s);
+    const playing = isPlaying(s);
+    if (playing && has(s, F.PAUSE)) return this._btn("pause", ICONS.pause, this._t("pause"), { big, primary: true, disabled: dis, target });
+    if (playing && has(s, F.STOP)) return this._btn("stop", ICONS.stop, this._t("stop"), { big, primary: true, disabled: dis, target });
+    if (!playing && has(s, F.PLAY)) return this._btn("play", ICONS.play, this._t("play"), { big, primary: true, disabled: dis, target });
+    return "";
+  }
+
   // Transport buttons the player supports: power, shuffle, previous, play / pause, next, repeat (`compact`: the
-  // three middle ones only).
-  _controls(s, compact = false) {
+  // three middle ones only). `target`: the player the buttons act on, when it is not the shown one.
+  _controls(s, compact = false, { target = "", big = !compact } = {}) {
     const dis = offline(s);
     const a = s?.attributes || {};
     const out = [];
     const power = isOff(s) ? has(s, F.TURN_ON) : has(s, F.TURN_OFF);
-    if (power && (!compact || isOff(s))) out.push(this._btn("power", ICONS.power, this._t("power"), { disabled: dis, on: !isOff(s) && !compact }));
+    if (power && (!compact || isOff(s))) out.push(this._btn("power", ICONS.power, this._t("power"), { disabled: dis, on: !isOff(s) && !compact, target }));
     if (isOff(s)) return out.join("");
-    if (!compact && has(s, F.SHUFFLE_SET)) out.push(this._btn("shuffle", ICONS.shuffle, this._t("shuffle"), { on: !!a.shuffle, disabled: dis }));
-    if (has(s, F.PREVIOUS_TRACK)) out.push(this._btn("previous", ICONS.previous, this._t("previous"), { disabled: dis }));
-    const playing = s?.state === "playing" || s?.state === "buffering";
-    if (playing && has(s, F.PAUSE)) out.push(this._btn("pause", ICONS.pause, this._t("pause"), { big: !compact, primary: true, disabled: dis }));
-    else if (playing && has(s, F.STOP)) out.push(this._btn("stop", ICONS.stop, this._t("stop"), { big: !compact, primary: true, disabled: dis }));
-    else if (!playing && has(s, F.PLAY)) out.push(this._btn("play", ICONS.play, this._t("play"), { big: !compact, primary: true, disabled: dis }));
-    if (has(s, F.NEXT_TRACK)) out.push(this._btn("next", ICONS.next, this._t("next"), { disabled: dis }));
+    if (!compact && has(s, F.SHUFFLE_SET)) out.push(this._btn("shuffle", ICONS.shuffle, this._t("shuffle"), { on: !!a.shuffle, disabled: dis, target }));
+    if (has(s, F.PREVIOUS_TRACK)) out.push(this._btn("previous", ICONS.previous, this._t("previous"), { disabled: dis, target }));
+    out.push(this._playButton(s, { big, target }));
+    if (has(s, F.NEXT_TRACK)) out.push(this._btn("next", ICONS.next, this._t("next"), { disabled: dis, target }));
     if (!compact && has(s, F.REPEAT_SET)) {
       const r = a.repeat || "off";
-      out.push(this._btn("repeat", r === "one" ? ICONS.repeat_one : ICONS.repeat, this._t(`repeat_${r === "one" || r === "all" ? r : "off"}`), { on: r !== "off", disabled: dis }));
+      out.push(this._btn("repeat", r === "one" ? ICONS.repeat_one : ICONS.repeat, this._t(`repeat_${r === "one" || r === "all" ? r : "off"}`), { on: r !== "off", disabled: dis, target }));
     }
     return out.join("");
+  }
+
+  _slider(id, v, dis) {
+    return `<input type="range" min="0" max="100" step="1" value="${v}" style="--p:${v}%" data-target="${esc(id)}" aria-label="${esc(`${this._t("volume")} ${nameOf(this._hass, id)}`)}"${dis ? " disabled" : ""}>`;
   }
 
   // Mute button and volume slider (or - / + buttons for a player that only steps its volume).
@@ -1393,10 +1541,7 @@ class MediaBase extends HTMLElement {
     if (has(s, F.VOLUME_MUTE)) parts.push(this._btn("mute", muted ? ICONS.muted : ICONS.volume, this._t(muted ? "unmute" : "mute"), { on: muted, disabled: dis, target: id }));
     const v = volPct(s);
     if (has(s, F.VOLUME_SET) && v !== null) {
-      parts.push(
-        `<input type="range" min="0" max="100" step="1" value="${v}" style="--p:${v}%" data-target="${esc(id)}" aria-label="${esc(`${this._t("volume")} ${nameOf(this._hass, id)}`)}"${dis ? " disabled" : ""}>`,
-        `<span class="pct">${v} %</span>`,
-      );
+      parts.push(this._slider(id, v, dis), `<span class="pct">${v} %</span>`);
     } else if (has(s, F.VOLUME_STEP)) {
       parts.push(this._btn("vol_down", ICONS.volume_down, this._t("volume_down"), { disabled: dis, target: id }), this._btn("vol_up", ICONS.volume_up, this._t("volume_up"), { disabled: dis, target: id }));
     }
@@ -1415,7 +1560,7 @@ class MediaCard extends MediaBase {
   }
 
   getCardSize() {
-    return 7;
+    return isStacked(this._config) && !this._active ? 1 + 3 * listedPlayers(this._config).length : 7;
   }
 
   getGridOptions() {
@@ -1436,6 +1581,7 @@ class MediaCard extends MediaBase {
   }
 
   _render() {
+    if (isStacked(this._config) && !this._active) return this._renderStack();
     const { id, s, error } = this._player();
     if (error) return this._errorCard(error);
     const c = this._config;
@@ -1453,6 +1599,80 @@ class MediaCard extends MediaBase {
       <ha-card>${bg}
         ${this._header(id, s)}
         <div class="content">${parts.filter((p) => p && p !== '<div class="controls"></div>').join("")}</div>
+      </ha-card>`;
+  }
+
+  // Players of the stacked view (`players`, filtered by `only_playing`), remembered for the actions and the ticker.
+  _stack() {
+    const { shown, hidden } = stackedPlayers(this._hass, this._config);
+    this._shownIds = this._showHidden ? [...shown, ...hidden] : shown;
+    this._id = shown[0];
+    return { ids: this._shownIds, hidden };
+  }
+
+  // Header of the stacked view: the card's title, how many players it has, and how many play.
+  _stackHeader() {
+    const c = this._config;
+    const all = listedPlayers(c)
+      .map((id) => this._s(id))
+      .filter(Boolean);
+    const n = all.filter(isPlaying).length;
+    const cls = n ? "active" : all.some((s) => s.state === "paused") ? "warn" : all.some((s) => !offline(s) && !isOff(s)) ? "ok" : "idle";
+    const text = n ? this._t("n_playing", { n }) : this._t("nothing_playing");
+    return `
+      <div class="header">
+        <div class="type-icon ${cls}">${svgIcon(ICONS.speakers)}</div>
+        <div class="titles">
+          <div class="name">${esc(c.title || this._t("media"))}</div>
+          <div class="sub">${esc(this._t("players_count", { n: all.length }))}</div>
+        </div>
+        <span class="chip ${cls}" title="${esc(text)}"><span class="dot"></span><span class="chip-text">${esc(text)}</span></span>
+        ${this._zoomButton()}
+      </div>`;
+  }
+
+  // The players `only_playing` leaves out, in one line at the bottom: a click shows them too, and hides them again.
+  _hiddenRow(hidden) {
+    if (!hidden.length) return "";
+    const label = this._showHidden ? this._t("zoom_out") : this._t("more_players", { n: hidden.length, names: hidden.map((id) => nameOf(this._hass, id)).join(", ") });
+    return `<div class="more-players clickable" role="button" tabindex="0" data-action="toggle_hidden" aria-expanded="${!!this._showHidden}">${svgIcon(ICONS.speakers)}<span>${esc(
+      label,
+    )}</span>${svgIcon(ICONS.chevron_down, "chevron")}</div>`;
+  }
+
+  _stateChip(id, s) {
+    const text = this._stateText(s);
+    return `<span class="chip clickable ${statusClass(s?.state)}" role="button" tabindex="0" data-entity="${esc(id)}" title="${esc(text)}" aria-label="${esc(
+      text,
+    )}"><span class="dot"></span><span class="chip-text">${esc(text)}</span></span>`;
+  }
+
+  // Several players: a block per player (artwork, track, progress, controls, volume); a click on its name shows
+  // it in the full view (rooms, source, queue, favorites), with a back button to the stack.
+  _renderStack() {
+    const { ids, hidden } = this._stack();
+    if (!ids.length) return this._errorCard("no_player");
+    const c = this._config;
+    const blocks = ids.map((id) => {
+      const s = this._s(id);
+      const name = nameOf(this._hass, id);
+      const parts = [
+        `<div class="player-head">${this._art(id, s)}<div class="player-main"><div class="player-name clickable" role="button" tabindex="0" data-action="show_player" data-target="${esc(
+          id,
+        )}" title="${esc(this._t("show_player", { name }))}"><span>${esc(name)}</span>${svgIcon(ICONS.chevron_right)}</div>${this._meta(s)}</div>${this._stateChip(id, s)}</div>`,
+      ];
+      if (c.show_progress !== false) parts.push(this._progress(id, s, true, true));
+      if (c.show_controls !== false) {
+        const controls = this._controls(s, false, { target: id, big: false });
+        if (controls) parts.push(`<div class="controls">${controls}</div>`);
+      }
+      if (c.show_volume !== false) parts.push(this._volume(id, s));
+      return `<div class="player">${parts.filter(Boolean).join("")}</div>`;
+    });
+    return `<style>${ANIM_STYLE}${BASE_STYLE}${FULL_STYLE}${STACK_STYLE}</style>
+      <ha-card>
+        ${this._stackHeader()}
+        <div class="content"><div class="players">${blocks.join("")}</div>${this._hiddenRow(hidden)}</div>
       </ha-card>`;
   }
 
@@ -1624,7 +1844,8 @@ class MediaMiniCard extends MediaCard {
   }
 
   getCardSize() {
-    return this._zoomed ? super.getCardSize() : 3;
+    if (this._zoomed) return super.getCardSize();
+    return isStacked(this._config) ? 1 + listedPlayers(this._config).length : 3;
   }
 
   getGridOptions() {
@@ -1639,6 +1860,8 @@ class MediaMiniCard extends MediaCard {
 
   _setZoom(on) {
     this._zoomed = on;
+    // Back to the compact list: a player opened from the stack closes too.
+    if (!on && isStacked(this._config)) this._active = null;
     this._update();
     this.dispatchEvent(new CustomEvent("iron-resize", { bubbles: true, composed: true }));
   }
@@ -1650,6 +1873,7 @@ class MediaMiniCard extends MediaCard {
 
   _render() {
     if (this._zoomed) return super._render();
+    if (isStacked(this._config)) return this._renderList();
     const { id, s, error } = this._player();
     if (error) return this._errorCard(error);
     const c = this._config;
@@ -1662,6 +1886,45 @@ class MediaMiniCard extends MediaCard {
           ${c.show_progress !== false ? this._progress(id, s, false) : ""}
           ${c.show_volume !== false ? this._volume(id, s) : ""}
         </div>
+      </ha-card>`;
+  }
+
+  // Several players: one row per player (artwork, name, track, play / pause, volume); a click on a row unfolds it
+  // (progress, controls, volume with its percentage), the detail button switches to the stacked full view.
+  _renderList() {
+    const { ids, hidden } = this._stack();
+    if (!ids.length) return this._errorCard("no_player");
+    const c = this._config;
+    const rows = ids.map((id) => {
+      const s = this._s(id);
+      const a = s?.attributes || {};
+      const open = !!this._toggled?.get(`player:${id}`);
+      const sub = isActive(s) && a.media_title ? [a.media_title, a.media_artist].filter(Boolean).join(" · ") : this._stateText(s);
+      const play = !open && c.show_controls !== false && !isOff(s) ? this._playButton(s, { target: id }) : "";
+      const v = volPct(s);
+      const vol =
+        !open && c.show_volume !== false && !isOff(s) && has(s, F.VOLUME_SET) && v !== null
+          ? this._slider(id, v, offline(s))
+          : "";
+      const detail = open
+        ? [
+            c.show_progress !== false ? this._progress(id, s, true, true) : "",
+            c.show_controls !== false ? `<div class="controls">${this._controls(s, false, { target: id, big: false })}</div>` : "",
+            c.show_volume !== false ? this._volume(id, s) : "",
+          ]
+            .filter((p) => p && p !== '<div class="controls"></div>')
+            .join("")
+        : "";
+      return `<div class="pitem${open ? " open" : ""}">
+          <div class="prow">${this._art(id, s)}<div class="prow-main clickable" role="button" tabindex="0" data-action="expand_player" data-target="${esc(id)}" aria-expanded="${open}"><div class="prow-name">${esc(
+            nameOf(this._hass, id),
+          )}</div><div class="prow-sub">${esc(sub)}</div></div>${play}${vol}</div>${detail}
+        </div>`;
+    });
+    return `<style>${ANIM_STYLE}${BASE_STYLE}${MINI_STYLE}${STACK_STYLE}${LIST_STYLE}</style>
+      <ha-card>
+        ${this._stackHeader()}
+        <div class="content"><div class="plist">${rows.join("")}</div>${this._hiddenRow(hidden)}</div>
       </ha-card>`;
   }
 }
@@ -1694,6 +1957,11 @@ const LANGUAGES = [
   ["lv", "Latviešu"],
   ["el", "Ελληνικά"],
 ];
+
+const HELPERS = { zoom: "zoom_helper", players: "players_helper" };
+
+// Several players stacked in the card (both editors).
+const PLAYERS_FIELD = { name: "players", selector: { entity: { domain: "media_player", multiple: true } } };
 
 class MediaEditorBase extends HTMLElement {
   // [name, default]
@@ -1739,7 +2007,7 @@ class MediaEditorBase extends HTMLElement {
     if (!this._form) {
       this._form = document.createElement("ha-form");
       this._form.computeLabel = (s) => t(this._hass, this._config, s.name);
-      this._form.computeHelper = (s) => (s.name === "zoom" ? t(this._hass, this._config, "zoom_helper") : undefined);
+      this._form.computeHelper = (s) => (HELPERS[s.name] ? t(this._hass, this._config, HELPERS[s.name]) : undefined);
       this._form.addEventListener("value-changed", (ev) => {
         ev.stopPropagation();
         const config = { ...ev.detail.value };
@@ -1756,7 +2024,7 @@ class MediaEditorBase extends HTMLElement {
     }
     const data = { ...this.constructor.defaults, ...this._config };
     for (const [name, def] of toggles) if (data[name] === undefined) data[name] = def;
-    if (!data.entity) data.entity = MediaCard.getStubConfig(this._hass).entity;
+    if (!data.entity && !listedPlayers(data).length) data.entity = MediaCard.getStubConfig(this._hass).entity;
     this._form.hass = this._hass;
     // A new data or schema object re-renders the whole form: only when the config or the language changed.
     if (this._dataFor !== this._config) {
@@ -1784,6 +2052,8 @@ class MediaCardEditor extends MediaEditorBase {
       ["show_source", true],
       ["show_queue", true],
       ["show_favorites", true],
+      ["only_playing", false],
+      ["include_paused", false],
     ];
   }
 
@@ -1793,6 +2063,7 @@ class MediaCardEditor extends MediaEditorBase {
 
   static extraFields(tr) {
     return [
+      PLAYERS_FIELD,
       { name: "entities", selector: { entity: { domain: "media_player", multiple: true } } },
       {
         name: "collapsed",
@@ -1818,7 +2089,13 @@ class MediaMiniCardEditor extends MediaEditorBase {
       ["show_controls", true],
       ["show_volume", true],
       ["zoom", true],
+      ["only_playing", false],
+      ["include_paused", false],
     ];
+  }
+
+  static extraFields() {
+    return [PLAYERS_FIELD];
   }
 }
 

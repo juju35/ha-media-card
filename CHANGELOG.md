@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.0 - 2026-11-13
+
+### Features
+- **Several players** (`players`): with two media players or more, the Media Card stacks a block per player (artwork, track, progress, controls, volume) under a common header that counts the players and the ones playing; a click on a player's name opens it in the full view (rooms, source, queue, favorites), with a back button to the stack.
+- The Media Mini Card lists the players one per row (artwork, name, track, play / pause, volume); a click on a row unfolds it (progress, every control, volume), and the detail button switches to the stacked view.
+- `only_playing`: only the players that are playing (`include_paused` adds the paused ones); the others are named in one line at the bottom that shows them on click, and the player that changed last is shown when none plays.
+- Visual editors: players, only playing and paused players options; their texts in the 22 languages.
+
 ## 1.0.0 - 2026-11-13
 
 ### Features

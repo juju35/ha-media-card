@@ -5,6 +5,7 @@ import { buffering, paused } from "./mock-states.mjs";
 
 const LIVING = "media_player.living_room";
 const ALL = ["rooms", "source", "queue", "favorites"];
+const PLAYERS = [LIVING, "media_player.lounge", "media_player.spotify", "media_player.office"];
 const pair = (file, rest) => [
   { file, theme: "light", ...rest },
   { file: `${file}-dark`, theme: "dark", ...rest },
@@ -20,6 +21,11 @@ export const shots = [
   ...pair("mini-card-spotify", { type: "media-mini-card", width: 380, config: { entity: "media_player.spotify" } }),
   ...pair("mini-card-tv", { type: "media-mini-card", width: 380, config: { entity: "media_player.tv" } }),
   ...pair("mini-card-zoom", { type: "media-mini-card", width: 460, config: { entity: LIVING, collapsed: ["source", "queue", "favorites"] }, clicks: [".zoom"] }),
+  // Several players (`players`): stacked in the full card, filtered with only_playing, listed in the mini card.
+  ...pair("card-players", { type: "media-card", width: 460, config: { players: [LIVING, "media_player.lounge", "media_player.tv"] } }),
+  ...pair("card-players-playing", { type: "media-card", width: 460, config: { players: PLAYERS, only_playing: true } }),
+  ...pair("mini-card-players", { type: "media-mini-card", width: 380, config: { players: PLAYERS } }),
+  ...pair("mini-card-players-open", { type: "media-mini-card", width: 380, config: { players: PLAYERS }, clicks: ['[data-action="expand_player"][data-target="media_player.lounge"]'] }),
   // Narrow cards: the full card at 6 of 12 columns of a phone's Sections view, the mini card likewise.
   ...pair("card-narrow", { type: "media-card", width: 238, config: { entity: LIVING, collapsed: ALL } }),
   ...pair("mini-card-narrow", { type: "media-mini-card", width: 170, config: { entity: LIVING } }),
