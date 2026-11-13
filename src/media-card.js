@@ -1305,6 +1305,42 @@ const isOutside = (card, ev) => {
   return !path.includes(card) && !path.some((n) => DIALOG_TAGS.has(n.tagName));
 };
 
+// "A click elsewhere" is caught on the pointer, not only on the click event: on iOS (Safari and the companion app)
+// a tap on something that is not clickable (the background, an empty spot, a card with no action) sends no click to
+// the page. It counts when the press and the release are both outside the card (a slider dragged out of the card
+// does not fold it), and a scroll does not count (the browser cancels the pointer). Keyboard clicks still go through
+// the click event.
+const watchOutside = (card, handler) => {
+  let downOutside = false;
+  const onDown = (ev) => {
+    downOutside = isOutside(card, ev);
+  };
+  const onUp = (ev) => {
+    if (downOutside && isOutside(card, ev)) handler(ev);
+    downOutside = false;
+  };
+  const onClick = (ev) => {
+    if (ev.detail === 0 && isOutside(card, ev)) handler(ev);
+  };
+  return {
+    on() {
+      document.addEventListener("pointerdown", onDown, true);
+      document.addEventListener("pointerup", onUp, true);
+      document.addEventListener("click", onClick, true);
+    },
+    // A tap (press and release at the same spot), for the tests.
+    tap(ev) {
+      onDown(ev);
+      onUp(ev);
+    },
+    off() {
+      document.removeEventListener("pointerdown", onDown, true);
+      document.removeEventListener("pointerup", onUp, true);
+      document.removeEventListener("click", onClick, true);
+    },
+  };
+};
+
 // Elements a click acts on, and how one is told from the others across renders (focus kept for keyboard users).
 const FOCUS_SELECTOR = "[data-action], [data-entity], input[type=range]";
 const focusKey = (el) => {
@@ -1386,13 +1422,15 @@ class MediaBase extends HTMLElement {
 
   connectedCallback() {
     // A click elsewhere on the page folds the sections back to their defaults and closes the popup.
-    this._onOutside ??= (ev) => {
-      if ((!this._toggled?.size && !this._confirm) || !isOutside(this, ev)) return;
+    this._outside ??= watchOutside(this, () => {
+      if (!this._toggled?.size && !this._confirm) return;
       this._toggled = new Map();
       if (this._confirm) this._closeConfirm();
       else this._update();
-    };
-    document.addEventListener("click", this._onOutside, true);
+    });
+    this._outside.on();
+    // Back on the page after leaving it: rendered again in its default state.
+    if (this._hass && this._config) this._update();
     if (this._confirm) window.addEventListener("keydown", this._onKey);
     // The position moves on its own while playing: only the progress bar and its time are updated every second.
     clearInterval(this._ticker);
@@ -1402,8 +1440,12 @@ class MediaBase extends HTMLElement {
   disconnectedCallback() {
     clearInterval(this._ticker);
     this._ticker = null;
-    document.removeEventListener("click", this._onOutside, true);
+    this._outside?.off();
     window.removeEventListener("keydown", this._onKey);
+    // Left (another dashboard view, a conditional card hidden): back to the defaults, so that the card does not come
+    // back unfolded or with its popup open.
+    this._toggled = new Map();
+    this._confirm = null;
     window.removeEventListener("pointerup", this._onRelease, true);
     window.removeEventListener("pointercancel", this._onRelease, true);
     clearTimeout(this._pendingTimer);
@@ -2283,9 +2325,9 @@ class MediaCard extends MediaBase {
 class MediaMiniCard extends MediaCard {
   constructor() {
     super();
-    this._onUnzoom = (ev) => {
-      if (this._zoomed && isOutside(this, ev)) this._setZoom(false);
-    };
+    this._unzoom = watchOutside(this, () => {
+      if (this._zoomed) this._setZoom(false);
+    });
   }
 
   static getConfigElement() {
@@ -2294,12 +2336,17 @@ class MediaMiniCard extends MediaCard {
 
   connectedCallback() {
     super.connectedCallback();
-    document.addEventListener("click", this._onUnzoom, true);
+    this._unzoom.on();
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    document.removeEventListener("click", this._onUnzoom, true);
+    this._unzoom.off();
+    // Back to the compact view once off the screen (see the full card).
+    if (this._zoomed) {
+      this._zoomed = false;
+      if (isStacked(this._config)) this._active = null;
+    }
   }
 
   getCardSize() {
