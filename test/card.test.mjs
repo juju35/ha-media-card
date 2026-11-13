@@ -418,7 +418,11 @@ test("players: a click on a player's name opens it in the full view, the back bu
 });
 
 test("players: the position of each player is painted from its own state", () => {
-  const card = stacked();
+  // Fresh timestamps: the mock states carry a fixed date, so every playing position would be clamped to 100 %.
+  const now = new Date().toISOString();
+  let st = withState("media_player.living_room", {}, { media_position_updated_at: now });
+  st = { ...st, "media_player.lounge": { ...st["media_player.lounge"], attributes: { ...st["media_player.lounge"].attributes, media_position_updated_at: now } } };
+  const card = stacked({}, makeHass(st));
   const els = [
     { dataset: { progress: "media_player.living_room" }, style: {} },
     { dataset: { progress: "media_player.lounge" }, style: {} },
