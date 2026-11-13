@@ -42,6 +42,9 @@ export const shots = [
   // Apple TV (episode in an app, its apps as sources, the remote) and a HomePod.
   ...pair("card-apple-tv", { type: "media-card", width: 460, extras: true, config: { entity: "media_player.family_room_apple_tv", show_remote: true, collapsed: ["queue", "favorites"] } }),
   ...pair("card-homepod", { type: "media-card", width: 460, extras: true, config: { entity: "media_player.study_homepod" } }),
+  // Philips TV: recording tag, Ambilight, Ambilight + Hue and screen buttons, the remote (Philips keys).
+  ...pair("card-philips-tv", { type: "media-card", width: 460, extras: true, config: { entity: "media_player.bedroom_philips_tv", show_remote: true, collapsed: ["queue", "favorites"] } }),
+  ...pair("mini-card-philips-tv", { type: "media-mini-card", width: 380, extras: true, config: { entity: "media_player.bedroom_philips_tv", show_remote: true } }),
   // Narrow cards: the full card at 6 of 12 columns of a phone's Sections view, the mini card likewise.
   ...pair("card-narrow", { type: "media-card", width: 238, config: { entity: LIVING, collapsed: ALL } }),
   ...pair("mini-card-narrow", { type: "media-mini-card", width: 170, config: { entity: LIVING } }),

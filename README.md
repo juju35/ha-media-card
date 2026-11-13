@@ -321,6 +321,21 @@ entity: media_player.living_room_apple_tv
 show_remote: true
 ```
 
+### Philips TV
+
+A Philips TV (`philips_js`) shows a *Recording* tag while it records (and *New recording* when one is available), and buttons for its **Ambilight**, **Ambilight + Hue** and **screen** (on / off), each lit while on; the screen button lights up when the screen is off. The buttons show while the TV is on. `show_remote: true` adds the remote, sent as Philips keys:
+
+| Full card | Mini card |
+|---|---|
+| <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/card-philips-tv.png" alt="Philips TV with Ambilight and the remote" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/mini-card-philips-tv.png" alt="Philips TV mini card" width="360"> |
+| <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/card-philips-tv-dark.png" alt="Philips TV with Ambilight and the remote dark" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/mini-card-philips-tv-dark.png" alt="Philips TV mini card dark" width="360"> |
+
+```yaml
+type: custom:media-card
+entity: media_player.living_room_tv
+show_remote: true
+```
+
 ### Drawn pictures
 
 With no artwork, the card draws the device. Echo speakers and displays, HomePods and Apple TV boxes get a picture of their own, chosen from the **model** of their device in Home Assistant's device registry (tolerant: case, spacing and generation suffix do not matter); any other player keeps the speaker, TV or receiver picture of its `device_class`. These are original, stylized silhouettes of the general shape of each device, with no logo or brand. Only their lights move, and only while playing (a soft pulse, stopped by `prefers-reduced-motion`); the bodies follow the light or dark theme.
