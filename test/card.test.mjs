@@ -271,9 +271,38 @@ test("sections fold by default as configured, and unfold on click", () => {
   assert.match(h, /data-section="queue" aria-expanded="true"/);
   // A click elsewhere on the page folds it back.
   card.connectedCallback();
-  card._onOutside({ composedPath: () => [] });
+  card._outside.tap({ composedPath: () => [] });
   assert.match(html(card), /data-section="queue" aria-expanded="false"/);
   card.disconnectedCallback();
+});
+
+test("folding: a tap elsewhere (pointer), not a drag that ends outside; leaving the page folds back too", () => {
+  const card = newCard({ collapsed: undefined }, makeHass());
+  card.connectedCallback();
+  const inside = { composedPath: () => [card] };
+  const outside = { composedPath: () => [] };
+  click(card, { action: "toggle_section", section: "queue" });
+  // A slider pressed in the card and released outside of it: nothing folds.
+  card._outside.tap(inside);
+  assert.match(html(card), /data-section="queue" aria-expanded="true"/);
+  // A tap on a spot that sends no click (iOS): the pointer alone folds it.
+  card._outside.tap(outside);
+  assert.match(html(card), /data-section="queue" aria-expanded="false"/);
+  // Left with a section open and back: folded.
+  click(card, { action: "toggle_section", section: "queue" });
+  card.disconnectedCallback();
+  card.connectedCallback();
+  assert.match(html(card), /data-section="queue" aria-expanded="false"/);
+  card.disconnectedCallback();
+  // The mini card comes back compact.
+  const mini = newCard({}, makeHass(), mc.MediaMiniCard);
+  mini.connectedCallback();
+  click(mini, { action: "zoom" });
+  assert.match(html(mini), /data-section="rooms"/);
+  mini.disconnectedCallback();
+  mini.connectedCallback();
+  assert.doesNotMatch(html(mini), /data-section=/);
+  mini.disconnectedCallback();
 });
 
 test("an unavailable player gets disabled buttons, and a click on them does nothing", () => {
@@ -302,7 +331,7 @@ test("the mini card is compact, and its detail button switches to the full card 
   assert.match(h, /data-section="rooms"/);
   assert.equal(card.getGridOptions().columns, 12);
   card.connectedCallback();
-  card._onUnzoom({ composedPath: () => [] });
+  card._unzoom.tap({ composedPath: () => [] });
   assert.doesNotMatch(html(card), /data-section=/);
   assert.equal(card.getGridOptions().columns, 6);
   card.disconnectedCallback();
@@ -480,13 +509,13 @@ test("mini card with players: one row per player, a click unfolds a row, the det
   assert.match(h, /<div class="pitem open">/);
   assert.match(h, /data-action="shuffle" data-target="media_player\.lounge"/);
   card.connectedCallback();
-  card._onOutside({ composedPath: () => [] });
+  card._outside.tap({ composedPath: () => [] });
   assert.doesNotMatch(html(card), /pitem open/, "a click elsewhere folds the row back");
   click(card, { action: "zoom" });
   assert.equal((html(card).match(/<div class="player">/g) || []).length, 3);
   click(card, { action: "show_player", target: "media_player.office" });
   assert.match(html(card), /data-action="back"/);
-  card._onUnzoom({ composedPath: () => [] });
+  card._unzoom.tap({ composedPath: () => [] });
   assert.equal((html(card).match(/<div class="pitem">/g) || []).length, 3, "back to the list, the opened player closed");
   card.disconnectedCallback();
   const only = stacked({ only_playing: true }, makeHass(), mc.MediaMiniCard);
