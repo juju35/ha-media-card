@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.2.0 - 2026-11-13
+
+### Features
+- **Jellyfin**: an episode shows its series and episode (*Series · S2E5*), a film shows *Movie*, the subtitle names the client app (the session's device model) and a session with no artwork draws a TV.
+- `hide_idle_sessions` (default on): Jellyfin sessions with nothing playing are left out of `players` (named in the line at the bottom) and of the rooms.
+- **Alexa Media Player**: *Last called* badge, the Echo's next alarm, timer and reminder in one line, a do-not-disturb button (its *Do not disturb* switch), Alexa speaker groups (*Everywhere*, multiroom) shown as groups; the mini card and the stacked players get the compact line.
+- Alexa content in `favorites` documented (`AMAZON_MUSIC`, `TUNEIN`… or `custom` for a voice command).
+- Visual editors: the *Hide idle Jellyfin sessions* option; the new texts in the 22 languages.
+- Other players render exactly as before.
+
 ## 1.1.0 - 2026-11-13
 
 ### Features

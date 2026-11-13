@@ -26,6 +26,17 @@ export const shots = [
   ...pair("card-players-playing", { type: "media-card", width: 460, config: { players: PLAYERS, only_playing: true } }),
   ...pair("mini-card-players", { type: "media-mini-card", width: 380, config: { players: PLAYERS } }),
   ...pair("mini-card-players-open", { type: "media-mini-card", width: 380, config: { players: PLAYERS }, clicks: ['[data-action="expand_player"][data-target="media_player.lounge"]'] }),
+  // Jellyfin (an episode, the client app in the subtitle) and Alexa Media Player (last called, next alarm and timer,
+  // do not disturb), with the extra mock players; stacked, the idle Jellyfin session is left out.
+  ...pair("card-jellyfin", { type: "media-card", width: 460, extras: true, config: { entity: "media_player.living_room_tv" } }),
+  ...pair("card-alexa", { type: "media-card", width: 460, extras: true, config: { entity: "media_player.kitchen_echo" } }),
+  ...pair("mini-card-alexa", { type: "media-mini-card", width: 380, extras: true, config: { entity: "media_player.kitchen_echo" } }),
+  ...pair("card-players-jellyfin-alexa", {
+    type: "media-card",
+    width: 460,
+    extras: true,
+    config: { players: ["media_player.kitchen_echo", "media_player.living_room_tv", "media_player.web_browser", "media_player.everywhere"] },
+  }),
   // Narrow cards: the full card at 6 of 12 columns of a phone's Sections view, the mini card likewise.
   ...pair("card-narrow", { type: "media-card", width: 238, config: { entity: LIVING, collapsed: ALL } }),
   ...pair("mini-card-narrow", { type: "media-mini-card", width: 170, config: { entity: LIVING } }),

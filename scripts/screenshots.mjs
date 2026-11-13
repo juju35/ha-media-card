@@ -6,7 +6,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
-import { NOW, QUEUE, entities, states } from "./mock-states.mjs";
+import { NOW, QUEUE, devices, entities, states, withExtras } from "./mock-states.mjs";
 import { unchanged } from "./pixels.mjs";
 import { shots, gifs } from "./screenshot-list.mjs";
 
@@ -64,9 +64,11 @@ const page_html = (theme, width) => `<!doctype html><html><head><meta charset="u
 </style></head><body><div id="root"></div></body></html>`;
 
 // Opens a card on a fresh page (its script declares top-level names, which cannot be evaluated twice in one page)
-// and mounts it with the mock hass; `overrides` patch the mock states for this shot only. Date.now() is frozen to the
+// and mounts it with the mock hass; `overrides` patch the mock states for this shot only, `extras` adds the Jellyfin
+// and Alexa players (and their device registry). Date.now() is frozen to the
 // mock's NOW, so the progress bars and times are the same on every run.
-async function openCard(browser, { file, type, config, theme, width, overrides }) {
+async function openCard(browser, { file, type, config, theme, width, overrides, extras }) {
+  const home = extras ? withExtras() : { states, entities };
   const page = await browser.newPage({ deviceScaleFactor: 2, viewport: { width: 1000, height: 2000 } });
   page.on("pageerror", (err) => {
     console.error(`pageerror (${file}): ${err.message}`);
@@ -77,17 +79,17 @@ async function openCard(browser, { file, type, config, theme, width, overrides }
   await page.addScriptTag({ content: HA_CARD });
   await page.addScriptTag({ content: cardJs });
   await page.evaluate(
-    ({ type, config, states, entities, overrides, theme, QUEUE }) => {
+    ({ type, config, states, entities, devices, overrides, theme, QUEUE }) => {
       for (const [id, o] of Object.entries(overrides || {})) states[id] = { ...states[id], ...o };
       const el = document.createElement(type);
       el.setConfig({ type: `custom:${type}`, ...config });
       el.hass = {
-        states, entities, devices: {}, language: "en", locale: { language: "en" }, themes: { darkMode: theme === "dark" }, callService: async () => {},
+        states, entities, devices, language: "en", locale: { language: "en" }, themes: { darkMode: theme === "dark" }, callService: async () => {},
         callWS: async (msg) => ({ response: { [msg.service_data.entity_id]: QUEUE } }),
       };
       document.getElementById("root").appendChild(el);
     },
-    { type, config, states, entities, overrides, theme, QUEUE }
+    { type, config, states: { ...home.states }, entities: home.entities, devices: extras ? devices : {}, overrides, theme, QUEUE }
   );
   return page;
 }
