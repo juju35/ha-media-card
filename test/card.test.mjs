@@ -305,6 +305,33 @@ test("folding: a tap elsewhere (pointer), not a drag that ends outside; leaving 
   mini.disconnectedCallback();
 });
 
+test("the hidden players hide again when the card folds back, and no rewrite happens under a press", () => {
+  const c = stacked({ only_playing: true }, makeHass(), mc.MediaMiniCard);
+  c.connectedCallback();
+  const n = () => (html(c).match(/class="pitem/g) || []).length;
+  assert.equal(n(), 2);
+  click(c, { action: "toggle_hidden" });
+  assert.equal(n(), 3, "shown in the compact list");
+  c._outside.tap({ composedPath: () => [] });
+  assert.equal(n(), 2, "a tap elsewhere hides them again");
+  click(c, { action: "zoom" });
+  click(c, { action: "toggle_hidden" });
+  c._unzoom.tap({ composedPath: () => [] });
+  assert.equal(n(), 2, "back to compact: hidden again");
+  click(c, { action: "toggle_hidden" });
+  c.disconnectedCallback();
+  c.connectedCallback();
+  assert.equal(n(), 2, "left and back: hidden again");
+  // A press in the card holds the rewrites until its click.
+  const before = html(c);
+  c._pressing = true;
+  c.hass = makeHass(withState("media_player.office", { state: "playing" }));
+  assert.equal(html(c), before, "no rewrite under the pointer");
+  click(c, { action: "toggle_hidden" });
+  assert.notEqual(html(c), before, "the click renders at once");
+  c.disconnectedCallback();
+});
+
 test("an unavailable player gets disabled buttons, and a click on them does nothing", () => {
   const hass = makeHass(withState(LIVING, { state: "unavailable" }));
   for (const Card of [mc.MediaCard, mc.MediaMiniCard]) {

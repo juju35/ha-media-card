@@ -1368,11 +1368,34 @@ class MediaBase extends HTMLElement {
     root.addEventListener("input", (ev) => this._onInput(ev));
     root.addEventListener("change", (ev) => this._onChange(ev));
     root.addEventListener("pointerdown", (ev) => {
+      this._byPointer = true;
+      // No rewrite of the card between the press and the release: Home Assistant updates the card several times a
+      // second, and a rewrite under the pointer replaces the element pressed, so that the click lands on the card
+      // itself and does nothing (a button or a « show the hidden players » row that does not react). The pending
+      // render is done once released (after the click).
+      this._pressing = true;
+      window.addEventListener("pointerup", this._onPressEnd, true);
+      window.addEventListener("pointercancel", this._onPressEnd, true);
       if (ev.target?.type !== "range") return;
       this._dragging = true;
       window.addEventListener("pointerup", this._onRelease, true);
       window.addEventListener("pointercancel", this._onRelease, true);
     });
+    root.addEventListener("keydown", () => {
+      this._byPointer = false;
+    });
+    this._onPressEnd = () => {
+      window.removeEventListener("pointerup", this._onPressEnd, true);
+      window.removeEventListener("pointercancel", this._onPressEnd, true);
+      setTimeout(() => {
+        if (!this._pressing) return;
+        this._pressing = false;
+        if (this._dirty && !this._dragging) {
+          this._dirty = false;
+          this._update();
+        }
+      }, 0);
+    };
     // A slider released without a new value fires no change: the card would stay frozen. The flag is dropped once
     // the release is over (after the change event, which comes in the same task), and the pending render done.
     this._onRelease = () => {
@@ -1423,8 +1446,9 @@ class MediaBase extends HTMLElement {
   connectedCallback() {
     // A click elsewhere on the page folds the sections back to their defaults and closes the popup.
     this._outside ??= watchOutside(this, () => {
-      if (!this._toggled?.size && !this._confirm) return;
+      if (!this._toggled?.size && !this._confirm && !this._showHidden) return;
       this._toggled = new Map();
+      this._showHidden = false;
       if (this._confirm) this._closeConfirm();
       else this._update();
     });
@@ -1446,6 +1470,10 @@ class MediaBase extends HTMLElement {
     // back unfolded or with its popup open.
     this._toggled = new Map();
     this._confirm = null;
+    this._showHidden = false;
+    this._pressing = false;
+    window.removeEventListener("pointerup", this._onPressEnd, true);
+    window.removeEventListener("pointercancel", this._onPressEnd, true);
     window.removeEventListener("pointerup", this._onRelease, true);
     window.removeEventListener("pointercancel", this._onRelease, true);
     clearTimeout(this._pendingTimer);
@@ -1482,7 +1510,7 @@ class MediaBase extends HTMLElement {
   _update() {
     if (!this._hass || !this._config) return;
     // No rewrite under a slider being dragged: it would drop it from under the pointer. Done once released.
-    if (this._dragging) {
+    if (this._dragging || this._pressing) {
       this._dirty = true;
       return;
     }
@@ -1494,7 +1522,7 @@ class MediaBase extends HTMLElement {
     if (html === this._html) return this._afterRender();
     const focused = this._confirm && this.shadowRoot.activeElement?.dataset?.action;
     const focusedKey = this._confirm && this.shadowRoot.activeElement?.dataset?.value;
-    const kept = this._confirm ? null : this._focusedSpot();
+    const kept = this._confirm || this._byPointer ? null : this._focusedSpot();
     this._html = html;
     this.shadowRoot.innerHTML = html;
     this._afterRender(true);
@@ -1632,6 +1660,8 @@ class MediaBase extends HTMLElement {
   }
 
   _onClick(ev) {
+    this._pressing = false;
+    if (ev.detail === 0) this._byPointer = false;
     const path = ev.composedPath();
     const el = path.find((n) => n.dataset && (n.dataset.entity || n.dataset.action));
     if (!this._confirm && Date.now() - (this._confirmClosedAt ?? 0) < CONFIRM_GUARD_MS) {
@@ -2366,8 +2396,11 @@ class MediaMiniCard extends MediaCard {
 
   _setZoom(on) {
     this._zoomed = on;
-    // Back to the compact list: a player opened from the stack closes too.
-    if (!on && isStacked(this._config)) this._active = null;
+    // Back to the compact list: a player opened from the stack closes too, and the hidden players hide again.
+    if (!on && isStacked(this._config)) {
+      this._active = null;
+      this._showHidden = false;
+    }
     this._update();
     this.dispatchEvent(new CustomEvent("iron-resize", { bubbles: true, composed: true }));
   }
