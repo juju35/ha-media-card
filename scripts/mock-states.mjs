@@ -120,6 +120,146 @@ export const QUEUE = {
   },
 };
 
+// Jellyfin sessions and Alexa Media Player Echo speakers, kept apart from the home above (whose players, tests and
+// captures stay as they are): `withExtras()` returns the home with them, and `devices` the device registry.
+export const devices = {};
+export const extraStates = {};
+export const extraEntities = {};
+const extra = (id, platform, name, state, features, attributes = {}, device = {}) => {
+  const device_id = `${id}_device`;
+  extraEntities[id] = { entity_id: id, platform, device_id };
+  extraStates[id] = { entity_id: id, state, attributes: { friendly_name: name, supported_features: features, ...attributes } };
+  devices[device_id] = { id: device_id, name, ...device };
+  return device_id;
+};
+const extraEntity = (id, platform, device_id, translation_key, state, attributes = {}) => {
+  extraEntities[id] = { entity_id: id, platform, device_id, translation_key };
+  extraStates[id] = { entity_id: id, state, attributes };
+};
+const JELLYFIN = PAUSE | SEEK | VOLUME_SET | VOLUME_MUTE | PLAY_MEDIA | STOP | PLAY | BROWSE;
+// Alexa Media Player: SUPPORT_ALEXA (play, pause, stop, previous, next, volume set / mute, play media).
+const ALEXA = PAUSE | VOLUME_SET | VOLUME_MUTE | PREV | NEXT | PLAY_MEDIA | STOP | PLAY | SHUFFLE | REPEAT;
+export const EXTRA_FEATURES = { jellyfin: JELLYFIN, alexa: ALEXA };
+
+// Jellyfin: an episode on the living room TV app, and a web browser session left open with nothing playing.
+extra(
+  "media_player.living_room_tv",
+  "jellyfin",
+  "Living room TV",
+  "playing",
+  JELLYFIN,
+  {
+    entity_picture: ART.sea,
+    media_content_type: "tvshow",
+    media_title: "The Lighthouse Keeper",
+    media_series_title: "Harbor Tales",
+    media_season: 2,
+    media_episode: 5,
+    media_duration: 2640,
+    media_position: 1210,
+    media_position_updated_at: at,
+    volume_level: 0.6,
+    is_volume_muted: false,
+  },
+  { manufacturer: "Jellyfin", model: "Jellyfin Android TV" },
+);
+extra("media_player.web_browser", "jellyfin", "Web browser", "idle", JELLYFIN, {}, { manufacturer: "Jellyfin", model: "Jellyfin Web" });
+
+// Alexa Media Player: a kitchen Echo playing a station (the last one spoken to), with its do-not-disturb switch and
+// its next alarm and timer, and the "Everywhere" speaker group.
+const echo = extra(
+  "media_player.kitchen_echo",
+  "alexa_media",
+  "Kitchen Echo",
+  "playing",
+  ALEXA,
+  {
+    entity_picture: ART.jazz,
+    media_content_type: "music",
+    media_title: "Morning Jazz",
+    media_artist: "Harbor FM",
+    volume_level: 0.35,
+    is_volume_muted: false,
+    last_called: true,
+    last_called_summary: "play morning jazz",
+  },
+  { manufacturer: "Amazon", model: "Echo Dot (5th Gen)" },
+);
+extraEntity("switch.kitchen_echo_do_not_disturb_switch", "alexa_media", echo, "do_not_disturb", "off");
+extraEntity("sensor.kitchen_echo_next_alarm", "alexa_media", echo, "next_alarm", new Date(NOW + 20 * 3600_000).toISOString(), { device_class: "timestamp" });
+extraEntity("sensor.kitchen_echo_next_timer", "alexa_media", echo, "next_timer", new Date(NOW + 12 * 60_000).toISOString(), { device_class: "timestamp" });
+extraEntity("sensor.kitchen_echo_next_reminder", "alexa_media", echo, "next_reminder", "unavailable", { device_class: "timestamp" });
+extra("media_player.everywhere", "alexa_media", "Everywhere", "idle", ALEXA, { last_called: false }, { manufacturer: "Amazon", model: "Speaker Group" });
+
+// Apple TV (core apple_tv): an Apple TV box playing an episode in an app (its apps as sources) with its remote
+// entity, and a HomePod playing music. pyatv names the models "Apple TV 4K", "HomePod", "HomePod Mini"…
+const APPLE_TV = PAUSE | SEEK | VOLUME_SET | PREV | NEXT | TURN_ON | TURN_OFF | PLAY_MEDIA | VOLUME_STEP | SELECT_SOURCE | STOP | PLAY | BROWSE;
+const HOMEPOD = PAUSE | SEEK | VOLUME_SET | PREV | NEXT | TURN_ON | TURN_OFF | PLAY_MEDIA | VOLUME_STEP | STOP | PLAY | SHUFFLE | REPEAT;
+EXTRA_FEATURES.apple_tv = APPLE_TV;
+EXTRA_FEATURES.homepod = HOMEPOD;
+const atv = extra(
+  "media_player.family_room_apple_tv",
+  "apple_tv",
+  "Family room Apple TV",
+  "playing",
+  APPLE_TV,
+  {
+    app_id: "com.example.tv",
+    app_name: "TV",
+    source_list: ["TV", "Music", "Photos", "Arcade"],
+    media_content_type: "tvshow",
+    media_title: "The Long Crossing",
+    media_series_title: "Northern Lights",
+    media_season: "1",
+    media_episode: "4",
+    media_duration: 2900,
+    media_position: 640,
+    media_position_updated_at: at,
+    volume_level: 0.4,
+  },
+  { manufacturer: "Apple", model: "Apple TV 4K (gen 3)" },
+);
+extraEntity("remote.family_room_apple_tv", "apple_tv", atv, undefined, "on");
+extra(
+  "media_player.study_homepod",
+  "apple_tv",
+  "Study HomePod",
+  "playing",
+  HOMEPOD,
+  { media_content_type: "music", media_title: "Slow Tides", media_artist: "The Quiet Harbors", media_duration: 212, media_position: 40, media_position_updated_at: at, volume_level: 0.3 },
+  { manufacturer: "Apple", model: "HomePod (gen 2)" },
+);
+
+// One player per drawn device family, playing with no artwork (the pictures and their animations).
+export const FAMILY_PLAYERS = {};
+for (const [family, platform, model, maker] of [
+  ["echo", "alexa_media", "Echo (Gen2)", "Amazon"],
+  ["echo_studio", "alexa_media", "Echo Studio", "Amazon"],
+  ["echo_dot", "alexa_media", "Echo Dot (Gen5)", "Amazon"],
+  ["echo_dot_puck", "alexa_media", "Echo Dot (Gen3)", "Amazon"],
+  ["echo_pop", "alexa_media", "Echo Pop", "Amazon"],
+  ["echo_show", "alexa_media", "Echo Show 10 (Gen3)", "Amazon"],
+  ["echo_show_small", "alexa_media", "Echo Show 5 (Gen2)", "Amazon"],
+  ["homepod", "apple_tv", "HomePod", "Apple"],
+  ["homepod_mini", "apple_tv", "HomePod Mini", "Apple"],
+  ["apple_tv", "apple_tv", "Apple TV 4K", "Apple"],
+]) {
+  const id = `media_player.demo_${family}`;
+  FAMILY_PLAYERS[family] = id;
+  extra(
+    id,
+    platform,
+    `Demo ${family.replace(/_/g, " ")}`,
+    "playing",
+    platform === "alexa_media" ? ALEXA : family === "apple_tv" ? APPLE_TV : HOMEPOD,
+    { media_title: "Evening Mix", media_artist: "Harbor FM", volume_level: 0.4 },
+    { manufacturer: maker, model },
+  );
+}
+
+// The home with the Jellyfin and Alexa players (states and entity registry).
+export const withExtras = () => ({ states: { ...states, ...extraStates }, entities: { ...entities, ...extraEntities } });
+
 // Answers of hass.callWS: the queue of a Music Assistant player.
 export const callWS = async (msg) => {
   if (msg?.type === "call_service" && msg.domain === "music_assistant" && msg.service === "get_queue") {

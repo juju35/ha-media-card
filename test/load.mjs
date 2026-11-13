@@ -111,7 +111,7 @@ export const load = () => {
   vm.createContext(sandbox);
   return vm.runInContext(
     `${source}
-    ({ F, has, fmtTime, position, volPct, statusClass, kindOf, esc, lang, findPlayer, roomIds, favoritesOf, isMusicAssistant, STRINGS, SECTIONS,
+    ({ F, has, fmtTime, position, volPct, statusClass, kindOf, esc, lang, findPlayer, roomIds, favoritesOf, isMusicAssistant, STRINGS, SECTIONS, pictureFamily, DEVICE_PICTURES,
        MediaCard: customElements.get("media-card"), MediaMiniCard: customElements.get("media-mini-card"),
        MediaCardEditor: customElements.get("media-card-editor"), MediaMiniCardEditor: customElements.get("media-mini-card-editor"), window, document })`,
     sandbox,

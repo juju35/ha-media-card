@@ -30,9 +30,12 @@ The cards work on top of the integrations you already use, and draw only what ea
 - **Speaker groups**: a link button per room joins it to the group or takes it out (`media_player.join` / `unjoin`); **Ungroup all** asks first, in a popup at the top of the card; the subtitle tells who the player plays with
 - **Source** and **sound mode** chips (inputs of a receiver, Sonos favorites and line-in, Spotify Connect devices…)
 - **Queue** of Music Assistant players: current and next track with their artwork, and the queue length; a click on the next track skips to it
-- **Favorites**: your own list (any `play_media` content: radio, playlist, Music Assistant URI…) and the Sonos favorites, played on the shown player
+- **Favorites**: your own list (any `play_media` content: radio, playlist, Music Assistant URI, Alexa content…) and the Sonos favorites, played on the shown player
+- **Jellyfin**: an episode shows its series and episode ("Harbor Tales · S2E5"), a film says so, the client app is in the subtitle, and idle sessions stay out of the way (`hide_idle_sessions`)
+- **Alexa Media Player** (Echo): "Last called" badge, next alarm, timer and reminder, a do-not-disturb button, and Alexa speaker groups shown as groups
+- **Apple TV and HomePod**: the app playing in the subtitle, the episode (*Series · S1E4*), the apps as sources, an optional **remote** (`show_remote`); a HomePod is a speaker
 - **Animated**: the record slides out of the sleeve and turns while playing, the equalizer bounces, glows while paused, a ring turns while buffering, the drawn speaker beats, the TV screen glows, the playing rooms of a group ring (see [Animations](#animations)); `prefers-reduced-motion` stops them
-- Drawn **speaker, TV and receiver** pictures for a player without artwork, following its `device_class`
+- Drawn **speaker, TV and receiver** pictures for a player without artwork, following its `device_class`, and **device pictures** by model for Echo speakers and displays, HomePods and Apple TV boxes (see [Drawn pictures](#drawn-pictures))
 - Header icon of the kind of player (speaker, speaker group, TV, receiver) in a tinted circle colored by its state, and a state chip on the title line
 - Collapsible sections (source, queue and favorites folded by default); a click elsewhere on the page folds them back
 - Detail button on the mini card (top right): it switches the mini card to the full card's content and back; a click anywhere outside the card brings the compact view back
@@ -52,9 +55,11 @@ Any `media_player` entity works: the card reads what the player supports. These 
 | [Music Assistant](https://www.home-assistant.io/integrations/music_assistant/) (core) | Playback, seek, shuffle / repeat, volume per room, **groups** (players that can sync), **queue** (current and next track, queue length, through `music_assistant.get_queue`), favorites with Music Assistant URIs in the `favorites` option. Music Assistant also brings AirPlay, Chromecast, Squeezelite, DLNA and Snapcast speakers |
 | [Squeezebox (Lyrion Music Server)](https://www.home-assistant.io/integrations/squeezebox/) (core) | Playback, seek, shuffle / repeat, volume, **sync groups** (join / unjoin) |
 | [Google Cast](https://www.home-assistant.io/integrations/cast/) (core) | Playback, seek, volume, app name; Google Home speaker groups are players of their own (no join) |
-| [Apple TV](https://www.home-assistant.io/integrations/apple_tv/) (core: Apple TV, HomePod, AirPlay) | Playback, volume, sources (apps) |
+| [Apple TV](https://www.home-assistant.io/integrations/apple_tv/) (core: Apple TV, HomePod, AirPlay) | Playback, volume, the **app playing** in the subtitle (else the device's model), the **apps as sources**, the **episode** as *Series · S1E4*, a drawn box or speaker by model; an optional **remote** (`show_remote: true`): direction pad, select, menu, home and play / pause through the device's `remote` entity (`remote.send_command`). A **HomePod** is a speaker (volume and playback as it supports them); the integration has no grouping, so there is no join button |
 | [Spotify](https://www.home-assistant.io/integrations/spotify/) (core) | Playback, seek, shuffle / repeat, volume, **Spotify Connect devices** as sources |
 | [Bluesound](https://www.home-assistant.io/integrations/bluesound/), [HEOS](https://www.home-assistant.io/integrations/heos/), [LinkPlay](https://www.home-assistant.io/integrations/linkplay/), [Yamaha MusicCast](https://www.home-assistant.io/integrations/yamaha_musiccast/), [Snapcast](https://www.home-assistant.io/integrations/snapcast/) (core) | Playback, volume, sources, **groups** (join / unjoin) |
+| [Jellyfin](https://www.home-assistant.io/integrations/jellyfin/) (core) | One player per client session: the **episode** as *Series · S2E5* (or *Movie*), the **client app** in the subtitle (the session's device model, e.g. *Jellyfin Android TV*), a drawn TV when there is no artwork; **idle sessions** (an app left open, nothing playing) are left out of `players` and of the rooms (`hide_idle_sessions`) |
+| [Alexa Media Player](https://github.com/alandtse/alexa_media_player) (custom) | Echo speakers and groups: playback, volume, **Last called** badge (`last_called`), the **next alarm, timer and reminder** of the Echo (its *Next alarm / timer / reminder* sensors) in one line, a **do-not-disturb** button (its *Do not disturb* switch), **speaker groups** (*Everywhere*, multiroom groups) shown as groups (Alexa cannot join or unjoin speakers from Home Assistant), and Alexa content in `favorites` (`AMAZON_MUSIC`, `TUNEIN`, `SPOTIFY`…, or `custom` for a voice command) |
 | Receivers and TVs ([Denon AVR](https://www.home-assistant.io/integrations/denonavr/), [Yamaha](https://www.home-assistant.io/integrations/yamaha/), [Samsung TV](https://www.home-assistant.io/integrations/samsungtv/), [LG webOS](https://www.home-assistant.io/integrations/webostv/)…) | Power, volume, **sources** and **sound modes**, drawn receiver or TV picture |
 
 ## Prerequisites
@@ -182,6 +187,8 @@ language: fr
 | `players` | both | — | Two `media_player` entities or more, shown together (see [Several players](#several-players)); takes the place of `entity` |
 | `only_playing` | both | `false` | With `players`: only the players that are playing (or buffering); the others are summed up in one line at the bottom, which shows them on click. When none plays, the one that changed last is shown |
 | `include_paused` | both | `false` | With `only_playing`: paused players count as playing |
+| `show_remote` | both | `false` | Apple TV: a remote section (direction pad, select, menu, home, play / pause) sent to the device's `remote` entity; on the mini card, in its detailed view |
+| `hide_idle_sessions` | both | `true` | Jellyfin: leave the sessions with nothing playing out of `players` (named in the line at the bottom) and of the rooms |
 | `title` | both | Player name | Card title |
 | `show_title` | both | `true` | Show the title in the header (e.g. `false` under a section heading of your own) |
 | `show_subtitle` | both | `true` | Show the subtitle (group members, app or source) under the title |
@@ -195,7 +202,7 @@ language: fr
 | `show_source` | full | `true` | Source and sound mode section (players that support them) |
 | `show_queue` | full | `true` | Queue section (Music Assistant players) |
 | `show_favorites` | full | `true` | Favorites section (players that can play media) |
-| `collapsed` | full | `[source, queue, favorites]` | Sections folded by default, among `rooms`, `source`, `queue` and `favorites` (`[]` to unfold everything). Click a section title (or Tab to it and press Enter or Space) to fold or unfold it; a click elsewhere on the page folds them back |
+| `collapsed` | full | `[source, queue, favorites]` | Sections folded by default, among `rooms`, `source`, `queue`, `favorites` and `remote` (`[]` to unfold everything). Click a section title (or Tab to it and press Enter or Space) to fold or unfold it; a click elsewhere on the page folds them back |
 | `favorites` | full | — | Your favorites, played with `media_player.play_media`: a list of `name`, `media_content_id`, `media_content_type` (default `music`) and an optional `image` |
 | `favorites_entity` | full | Sonos favorites sensor | Sensor whose `items` attribute lists favorites as `{ id: title }` (found by itself for a Sonos player) |
 | `language` | both | Auto | Force language: `en`, `fr`, `de`, `es`, `sr`, `sr-Latn`, `it`, `nl`, `pt`, `pl`, `ro`, `da`, `sv`, `bg`, `ru`, `uk`, `hu`, `sk`, `cs`, `sl`, `lv` or `el` (auto-detects from HA settings) |
@@ -234,6 +241,78 @@ The mini card lists them one per row; a click on a row unfolds it:
 |---|---|
 | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/mini-card-players.png" alt="mini card, several players" width="380"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/mini-card-players-dark.png" alt="mini card, several players dark" width="380"> |
 | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/mini-card-players-open.png" alt="mini card, a row unfolded" width="380"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/mini-card-players-open-dark.png" alt="mini card, a row unfolded dark" width="380"> |
+
+### Jellyfin and Alexa
+
+A Jellyfin session shows the episode and the client app; an Echo its *Last called* badge, its next alarm and timer, and a do-not-disturb button. Stacked with other players, an idle Jellyfin session (here a web browser left open) is left out and named at the bottom:
+
+| Jellyfin | Alexa |
+|---|---|
+| <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/card-jellyfin.png" alt="Jellyfin session" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/card-alexa.png" alt="Echo speaker" width="400"> |
+| <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/card-jellyfin-dark.png" alt="Jellyfin session dark" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/card-alexa-dark.png" alt="Echo speaker dark" width="400"> |
+
+| Several players | Mini card |
+|---|---|
+| <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/card-players-jellyfin-alexa.png" alt="Echo, Jellyfin and an Alexa group" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/mini-card-alexa.png" alt="mini card, Echo" width="380"> |
+| <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/card-players-jellyfin-alexa-dark.png" alt="Echo, Jellyfin and an Alexa group dark" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/mini-card-alexa-dark.png" alt="mini card, Echo dark" width="380"> |
+
+Alexa favorites go through `media_player.play_media` like any other: a music provider and a search, or a voice command.
+
+```yaml
+type: custom:media-card
+entity: media_player.kitchen_echo
+favorites:
+  - name: Morning jazz
+    media_content_id: morning jazz playlist
+    media_content_type: AMAZON_MUSIC
+  - name: Radio
+    media_content_id: France Inter
+    media_content_type: TUNEIN
+  - name: Good night
+    media_content_id: turn off the lights and play rain sounds
+    media_content_type: custom
+```
+
+The do-not-disturb switch and the next alarm, timer and reminder sensors are found on the Echo's device (Alexa Media Player creates them; a disabled sensor is simply not shown).
+
+### Apple TV and HomePod
+
+The Apple TV shows the app playing, the episode and its apps as sources; `show_remote: true` adds the remote. A HomePod is a speaker:
+
+| Apple TV | HomePod |
+|---|---|
+| <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/card-apple-tv.png" alt="Apple TV with the remote" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/card-homepod.png" alt="HomePod" width="400"> |
+| <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/card-apple-tv-dark.png" alt="Apple TV with the remote dark" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/card-homepod-dark.png" alt="HomePod dark" width="400"> |
+
+```yaml
+type: custom:media-card
+entity: media_player.living_room_apple_tv
+show_remote: true
+```
+
+### Drawn pictures
+
+With no artwork, the card draws the device. Echo speakers and displays, HomePods and Apple TV boxes get a picture of their own, chosen from the **model** of their device in Home Assistant's device registry (tolerant: case, spacing and generation suffix do not matter); any other player keeps the speaker, TV or receiver picture of its `device_class`. These are original, stylized silhouettes of the general shape of each device, with no logo or brand. Only their lights move, and only while playing (a soft pulse, stopped by `prefers-reduced-motion`); the bodies follow the light or dark theme.
+
+| Family | Models | Light |
+|---|---|---|
+| Cylinder | Echo (Gen1, Gen2), Echo Plus | cyan ring on top |
+| Large cylinder | Echo Studio | light slit on top |
+| Sphere | Echo Dot (Gen4, Gen5, Clock), Echo (Gen4) | cyan ring at the base |
+| Puck | Echo Dot (Gen1 to Gen3) | cyan ring on top |
+| Half sphere | Echo Pop | light bar on the front |
+| Display | Echo Show 10, 15, Show (Gen1, Gen2) | screen and light bar |
+| Small display | Echo Show 5, 8, Echo Spot | screen and light bar |
+| Tall mesh speaker | HomePod, HomePod (gen 2) | violet halo on top |
+| Small mesh speaker | HomePod Mini | violet top surface (seen from above in the full card, straight on in the mini card) |
+| Streaming box | Apple TV, Apple TV 4K | blinking status light, a small screen with a play triangle while playing |
+
+| | | | | |
+|---|---|---|---|---|
+| <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/picture-echo.gif" alt="cylinder" width="170"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/picture-echo-studio.gif" alt="large cylinder" width="170"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/picture-echo-dot.gif" alt="sphere" width="170"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/picture-echo-dot-puck.gif" alt="puck" width="170"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/picture-echo-pop.gif" alt="half sphere" width="170"> |
+| <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/picture-echo-show.gif" alt="display" width="170"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/picture-echo-show-small.gif" alt="small display" width="170"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/picture-homepod.gif" alt="tall mesh speaker" width="170"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/picture-homepod-mini.gif" alt="small mesh speaker" width="170"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/picture-apple-tv.gif" alt="streaming box" width="170"> |
+
+Each one has a dark twin (`picture-…-dark.gif`); the small mesh speaker straight on in the mini card: `picture-homepod-mini-front.gif`.
 
 ## Screenshots
 

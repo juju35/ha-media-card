@@ -66,6 +66,22 @@ const ICONS = {
   source: "M14,12L10,8V11H2V13H10V16M20,18V6C20,4.89 19.1,4 18,4H6A2,2 0 0,0 4,6V9H6V6H18V18H6V15H4V18A2,2 0 0,0 6,20H18A2,2 0 0,0 20,18Z",
   sound_mode: "M10,20H14V4H10V20M4,20H8V12H4V20M16,9V20H20V9H16Z",
   close: "M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z",
+  // mdi:alarm, mdi:timer-outline, mdi:bell-outline, mdi:minus-circle-outline (Alexa)
+  alarm:
+    "M12,20A7,7 0 0,1 5,13A7,7 0 0,1 12,6A7,7 0 0,1 19,13A7,7 0 0,1 12,20M12,4A9,9 0 0,0 3,13A9,9 0 0,0 12,22A9,9 0 0,0 21,13A9,9 0 0,0 12,4M12.5,8H11V14L15.75,16.85L16.5,15.62L12.5,13.25V8M7.88,3.39L6.6,1.86L2,5.71L3.29,7.24L7.88,3.39M22,5.72L17.4,1.86L16.11,3.39L20.71,7.25L22,5.72Z",
+  timer:
+    "M12,20A7,7 0 0,1 5,13A7,7 0 0,1 12,6A7,7 0 0,1 19,13A7,7 0 0,1 12,20M19.03,7.39L20.45,5.97C20,5.46 19.55,5 19.04,4.56L17.62,6C16.07,4.74 14.12,4 12,4A9,9 0 0,0 3,13A9,9 0 0,0 12,22C17,22 21,17.97 21,13C21,10.88 20.26,8.93 19.03,7.39M11,14H13V8H11M15,1H9V3H15V1Z",
+  reminder:
+    "M10,21H14A2,2 0 0,1 12,23A2,2 0 0,1 10,21M21,19V20H3V19L5,17V11C5,7.9 7.03,5.17 10,4.29C10,4.19 10,4.1 10,4A2,2 0 0,1 12,2A2,2 0 0,1 14,4C14,4.1 14,4.19 14,4.29C16.97,5.17 19,7.9 19,11V17L21,19M17,11A5,5 0 0,0 12,6A5,5 0 0,0 7,11V18H17V11Z",
+  dnd: "M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M7,13H17V11H7",
+  // Apple TV remote: mdi:remote, mdi:chevron-up / -left, mdi:circle-outline, mdi:home-outline, mdi:play-pause
+  remote:
+    "M12,0C8.96,0 6.21,1.23 4.22,3.22L5.63,4.63C7.26,3 9.5,2 12,2C14.5,2 16.74,3 18.36,4.64L19.77,3.23C17.79,1.23 15.04,0 12,0M7.05,6.05L8.46,7.46C9.37,6.56 10.62,6 12,6C13.38,6 14.63,6.56 15.54,7.46L16.95,6.05C15.68,4.78 13.93,4 12,4C10.07,4 8.32,4.78 7.05,6.05M12,15A2,2 0 0,1 10,13A2,2 0 0,1 12,11A2,2 0 0,1 14,13A2,2 0 0,1 12,15M15,9H9A1,1 0 0,0 8,10V22A1,1 0 0,0 9,23H15A1,1 0 0,0 16,22V10A1,1 0 0,0 15,9Z",
+  chevron_up: "M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z",
+  chevron_left: "M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z",
+  select: "M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z",
+  home: "M12 5.69L17 10.19V18H15V12H9V18H7V10.19L12 5.69M12 3L2 12H5V20H11V14H13V20H19V12H22L12 3Z",
+  play_pause: "M3,5V19L11,12M13,19H16V5H13M18,5V19H21V5",
   chevron_down: "M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z",
   chevron_right: "M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z",
   back: "M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z",
@@ -94,7 +110,7 @@ const PLATFORMS = {
   dlna_dmr: "DLNA",
 };
 
-const SECTIONS = ["rooms", "source", "queue", "favorites"];
+const SECTIONS = ["rooms", "source", "queue", "favorites", "remote"];
 const DEFAULT_COLLAPSED = ["source", "queue", "favorites"];
 // A join / unjoin only shows in group_members on the integration's next update: the requested membership is shown
 // meanwhile, until the player reports it or the delay runs out.
@@ -116,6 +132,8 @@ const STRINGS = {
     show_source: "Show source and sound mode", show_queue: "Show queue", show_favorites: "Show favorites", collapsed: "Sections folded by default", favorites_entity: "Favorites sensor (Sonos)",
     zoom: "Detail button", zoom_helper: "Top right button: switches to the full card and back", language: "Language", lang_auto: "Automatic (Home Assistant language)",
     media: "Media", players: "Players (several, stacked in the card)", players_helper: "Two or more: one block per player, one under the other", only_playing: "Only the players that are playing", include_paused: "Paused players too", n_playing: "{n} playing", players_count: "{n} players", more_players: "{n} more: {names}", back: "Back to all players",
+    movie: "Movie", last_called: "Last called", next_alarm: "Alarm", next_timer: "Timer", next_reminder: "Reminder", dnd: "Do not disturb", speaker_group: "Speaker group", hide_idle_sessions: "Hide idle Jellyfin sessions",
+    remote: "Remote", r_up: "Up", r_down: "Down", r_left: "Left", r_right: "Right", r_select: "Select", r_menu: "Menu", r_home: "Home", r_play_pause: "Play / pause", show_remote: "Show the remote (Apple TV)",
   },
   fr: {
     st_playing: "Lecture", st_paused: "En pause", st_idle: "Inactif", st_on: "Allumé", st_off: "Éteint", st_standby: "Veille", st_buffering: "Chargement", st_unavailable: "Indisponible", st_unknown: "Inconnu",
@@ -131,6 +149,8 @@ const STRINGS = {
     show_source: "Afficher la source et le mode son", show_queue: "Afficher la file d'attente", show_favorites: "Afficher les favoris", collapsed: "Sections repliées par défaut", favorites_entity: "Capteur des favoris (Sonos)",
     zoom: "Bouton détail", zoom_helper: "Bouton en haut à droite : bascule vers la carte complète et revient", language: "Langue", lang_auto: "Automatique (langue de Home Assistant)",
     media: "Médias", players: "Lecteurs (plusieurs, empilés dans la carte)", players_helper: "Deux ou plus : un bloc par lecteur, l'un sous l'autre", only_playing: "Seulement les lecteurs en lecture", include_paused: "Les lecteurs en pause aussi", n_playing: "{n} en lecture", players_count: "{n} lecteurs", more_players: "{n} de plus : {names}", back: "Retour à tous les lecteurs",
+    movie: "Film", last_called: "Dernier appelé", next_alarm: "Alarme", next_timer: "Minuteur", next_reminder: "Rappel", dnd: "Ne pas déranger", speaker_group: "Groupe d'enceintes", hide_idle_sessions: "Masquer les sessions Jellyfin inactives",
+    remote: "Télécommande", r_up: "Haut", r_down: "Bas", r_left: "Gauche", r_right: "Droite", r_select: "Valider", r_menu: "Menu", r_home: "Accueil", r_play_pause: "Lecture / pause", show_remote: "Afficher la télécommande (Apple TV)",
   },
   de: {
     st_playing: "Wiedergabe", st_paused: "Pausiert", st_idle: "Untätig", st_on: "An", st_off: "Aus", st_standby: "Standby", st_buffering: "Puffern", st_unavailable: "Nicht verfügbar", st_unknown: "Unbekannt",
@@ -146,6 +166,8 @@ const STRINGS = {
     show_source: "Quelle und Klangmodus anzeigen", show_queue: "Warteschlange anzeigen", show_favorites: "Favoriten anzeigen", collapsed: "Standardmäßig eingeklappte Abschnitte", favorites_entity: "Favoriten-Sensor (Sonos)",
     zoom: "Detailtaste", zoom_helper: "Taste oben rechts: wechselt zur vollständigen Karte und zurück", language: "Sprache", lang_auto: "Automatisch (Sprache von Home Assistant)",
     media: "Medien", players: "Player (mehrere, in der Karte gestapelt)", players_helper: "Zwei oder mehr: ein Block pro Player, untereinander", only_playing: "Nur Player, die gerade abspielen", include_paused: "Auch pausierte Player", n_playing: "{n} spielen", players_count: "{n} Player", more_players: "{n} weitere: {names}", back: "Zurück zu allen Playern",
+    movie: "Film", last_called: "Zuletzt angesprochen", next_alarm: "Wecker", next_timer: "Timer", next_reminder: "Erinnerung", dnd: "Nicht stören", speaker_group: "Lautsprechergruppe", hide_idle_sessions: "Inaktive Jellyfin-Sitzungen ausblenden",
+    remote: "Fernbedienung", r_up: "Hoch", r_down: "Runter", r_left: "Links", r_right: "Rechts", r_select: "Auswählen", r_menu: "Menü", r_home: "Home", r_play_pause: "Wiedergabe / Pause", show_remote: "Fernbedienung anzeigen (Apple TV)",
   },
   es: {
     st_playing: "Reproduciendo", st_paused: "En pausa", st_idle: "Inactivo", st_on: "Encendido", st_off: "Apagado", st_standby: "En espera", st_buffering: "Cargando", st_unavailable: "No disponible", st_unknown: "Desconocido",
@@ -161,6 +183,8 @@ const STRINGS = {
     show_source: "Mostrar fuente y modo de sonido", show_queue: "Mostrar cola", show_favorites: "Mostrar favoritos", collapsed: "Secciones plegadas por defecto", favorites_entity: "Sensor de favoritos (Sonos)",
     zoom: "Botón de detalle", zoom_helper: "Botón arriba a la derecha: cambia a la tarjeta completa y vuelve", language: "Idioma", lang_auto: "Automático (idioma de Home Assistant)",
     media: "Multimedia", players: "Reproductores (varios, apilados en la tarjeta)", players_helper: "Dos o más: un bloque por reproductor, uno debajo de otro", only_playing: "Solo los reproductores en reproducción", include_paused: "También los reproductores en pausa", n_playing: "{n} reproduciendo", players_count: "{n} reproductores", more_players: "{n} más: {names}", back: "Volver a todos los reproductores",
+    movie: "Película", last_called: "Último llamado", next_alarm: "Alarma", next_timer: "Temporizador", next_reminder: "Recordatorio", dnd: "No molestar", speaker_group: "Grupo de altavoces", hide_idle_sessions: "Ocultar sesiones de Jellyfin inactivas",
+    remote: "Mando", r_up: "Arriba", r_down: "Abajo", r_left: "Izquierda", r_right: "Derecha", r_select: "Seleccionar", r_menu: "Menú", r_home: "Inicio", r_play_pause: "Reproducir / pausa", show_remote: "Mostrar el mando (Apple TV)",
   },
   it: {
     st_playing: "In riproduzione", st_paused: "In pausa", st_idle: "Inattivo", st_on: "Acceso", st_off: "Spento", st_standby: "Standby", st_buffering: "Caricamento", st_unavailable: "Non disponibile", st_unknown: "Sconosciuto",
@@ -176,6 +200,8 @@ const STRINGS = {
     show_source: "Mostra sorgente e modalità audio", show_queue: "Mostra coda", show_favorites: "Mostra preferiti", collapsed: "Sezioni chiuse per impostazione predefinita", favorites_entity: "Sensore dei preferiti (Sonos)",
     zoom: "Pulsante dettagli", zoom_helper: "Pulsante in alto a destra: passa alla scheda completa e ritorna", language: "Lingua", lang_auto: "Automatica (lingua di Home Assistant)",
     media: "Media", players: "Lettori (più lettori, impilati nella scheda)", players_helper: "Due o più: un blocco per lettore, uno sotto l'altro", only_playing: "Solo i lettori in riproduzione", include_paused: "Anche i lettori in pausa", n_playing: "{n} in riproduzione", players_count: "{n} lettori", more_players: "Altri {n}: {names}", back: "Torna a tutti i lettori",
+    movie: "Film", last_called: "Ultimo chiamato", next_alarm: "Sveglia", next_timer: "Timer", next_reminder: "Promemoria", dnd: "Non disturbare", speaker_group: "Gruppo di altoparlanti", hide_idle_sessions: "Nascondi le sessioni Jellyfin inattive",
+    remote: "Telecomando", r_up: "Su", r_down: "Giù", r_left: "Sinistra", r_right: "Destra", r_select: "Seleziona", r_menu: "Menu", r_home: "Home", r_play_pause: "Riproduci / pausa", show_remote: "Mostra il telecomando (Apple TV)",
   },
   nl: {
     st_playing: "Speelt af", st_paused: "Gepauzeerd", st_idle: "Inactief", st_on: "Aan", st_off: "Uit", st_standby: "Stand-by", st_buffering: "Bufferen", st_unavailable: "Niet beschikbaar", st_unknown: "Onbekend",
@@ -191,6 +217,8 @@ const STRINGS = {
     show_source: "Bron en geluidsmodus tonen", show_queue: "Wachtrij tonen", show_favorites: "Favorieten tonen", collapsed: "Standaard ingeklapte secties", favorites_entity: "Favorietensensor (Sonos)",
     zoom: "Detailknop", zoom_helper: "Knop rechtsboven: schakelt naar de volledige kaart en terug", language: "Taal", lang_auto: "Automatisch (taal van Home Assistant)",
     media: "Media", players: "Spelers (meerdere, gestapeld in de kaart)", players_helper: "Twee of meer: één blok per speler, onder elkaar", only_playing: "Alleen spelers die afspelen", include_paused: "Ook gepauzeerde spelers", n_playing: "{n} spelen af", players_count: "{n} spelers", more_players: "Nog {n}: {names}", back: "Terug naar alle spelers",
+    movie: "Film", last_called: "Laatst aangesproken", next_alarm: "Wekker", next_timer: "Timer", next_reminder: "Herinnering", dnd: "Niet storen", speaker_group: "Speakergroep", hide_idle_sessions: "Inactieve Jellyfin-sessies verbergen",
+    remote: "Afstandsbediening", r_up: "Omhoog", r_down: "Omlaag", r_left: "Links", r_right: "Rechts", r_select: "Selecteren", r_menu: "Menu", r_home: "Home", r_play_pause: "Afspelen / pauze", show_remote: "Afstandsbediening tonen (Apple TV)",
   },
   pt: {
     st_playing: "A reproduzir", st_paused: "Em pausa", st_idle: "Inativo", st_on: "Ligado", st_off: "Desligado", st_standby: "Em espera", st_buffering: "A carregar", st_unavailable: "Indisponível", st_unknown: "Desconhecido",
@@ -206,6 +234,8 @@ const STRINGS = {
     show_source: "Mostrar fonte e modo de som", show_queue: "Mostrar fila", show_favorites: "Mostrar favoritos", collapsed: "Secções recolhidas por omissão", favorites_entity: "Sensor de favoritos (Sonos)",
     zoom: "Botão de detalhe", zoom_helper: "Botão no canto superior direito: muda para o cartão completo e volta", language: "Idioma", lang_auto: "Automático (idioma do Home Assistant)",
     media: "Multimédia", players: "Leitores (vários, empilhados no cartão)", players_helper: "Dois ou mais: um bloco por leitor, um por baixo do outro", only_playing: "Só os leitores em reprodução", include_paused: "Também os leitores em pausa", n_playing: "{n} a reproduzir", players_count: "{n} leitores", more_players: "Mais {n}: {names}", back: "Voltar a todos os leitores",
+    movie: "Filme", last_called: "Último chamado", next_alarm: "Alarme", next_timer: "Temporizador", next_reminder: "Lembrete", dnd: "Não incomodar", speaker_group: "Grupo de colunas", hide_idle_sessions: "Ocultar sessões Jellyfin inativas",
+    remote: "Comando", r_up: "Cima", r_down: "Baixo", r_left: "Esquerda", r_right: "Direita", r_select: "Selecionar", r_menu: "Menu", r_home: "Início", r_play_pause: "Reproduzir / pausa", show_remote: "Mostrar o comando (Apple TV)",
   },
   pl: {
     st_playing: "Odtwarzanie", st_paused: "Wstrzymano", st_idle: "Bezczynny", st_on: "Włączony", st_off: "Wyłączony", st_standby: "Czuwanie", st_buffering: "Buforowanie", st_unavailable: "Niedostępny", st_unknown: "Nieznany",
@@ -221,6 +251,8 @@ const STRINGS = {
     show_source: "Pokaż źródło i tryb dźwięku", show_queue: "Pokaż kolejkę", show_favorites: "Pokaż ulubione", collapsed: "Sekcje domyślnie zwinięte", favorites_entity: "Czujnik ulubionych (Sonos)",
     zoom: "Przycisk szczegółów", zoom_helper: "Przycisk w prawym górnym rogu: przełącza na pełną kartę i z powrotem", language: "Język", lang_auto: "Automatycznie (język Home Assistant)",
     media: "Multimedia", players: "Odtwarzacze (kilka, jeden pod drugim na karcie)", players_helper: "Dwa lub więcej: jeden blok na odtwarzacz, jeden pod drugim", only_playing: "Tylko odtwarzacze, które odtwarzają", include_paused: "Także wstrzymane odtwarzacze", n_playing: "Odtwarza: {n}", players_count: "Odtwarzacze: {n}", more_players: "Jeszcze {n}: {names}", back: "Wróć do wszystkich odtwarzaczy",
+    movie: "Film", last_called: "Ostatnio wywołany", next_alarm: "Alarm", next_timer: "Minutnik", next_reminder: "Przypomnienie", dnd: "Nie przeszkadzać", speaker_group: "Grupa głośników", hide_idle_sessions: "Ukryj nieaktywne sesje Jellyfin",
+    remote: "Pilot", r_up: "W górę", r_down: "W dół", r_left: "W lewo", r_right: "W prawo", r_select: "Wybierz", r_menu: "Menu", r_home: "Ekran główny", r_play_pause: "Odtwarzaj / pauza", show_remote: "Pokaż pilota (Apple TV)",
   },
   sr: {
     st_playing: "Репродукција", st_paused: "Паузирано", st_idle: "Неактиван", st_on: "Укључен", st_off: "Искључен", st_standby: "Мировање", st_buffering: "Учитавање", st_unavailable: "Недоступан", st_unknown: "Непознато",
@@ -236,6 +268,8 @@ const STRINGS = {
     show_source: "Прикажи извор и режим звука", show_queue: "Прикажи ред", show_favorites: "Прикажи омиљено", collapsed: "Подразумевано скупљени одељци", favorites_entity: "Сензор омиљених (Sonos)",
     zoom: "Тастер за детаље", zoom_helper: "Тастер горе десно: прелази на пуну картицу и назад", language: "Језик", lang_auto: "Аутоматски (језик Home Assistant-а)",
     media: "Медији", players: "Плејери (више њих, један испод другог у картици)", players_helper: "Два или више: један блок по плејеру, један испод другог", only_playing: "Само плејери који репродукују", include_paused: "И паузирани плејери", n_playing: "{n} репродукује", players_count: "Плејера: {n}", more_players: "Још {n}: {names}", back: "Назад на све плејере",
+    movie: "Филм", last_called: "Последњи позван", next_alarm: "Аларм", next_timer: "Тајмер", next_reminder: "Подсетник", dnd: "Не узнемиравај", speaker_group: "Група звучника", hide_idle_sessions: "Сакриј неактивне Jellyfin сесије",
+    remote: "Даљински", r_up: "Горе", r_down: "Доле", r_left: "Лево", r_right: "Десно", r_select: "Изабери", r_menu: "Мени", r_home: "Почетна", r_play_pause: "Пусти / пауза", show_remote: "Прикажи даљински (Apple TV)",
   },
   "sr-Latn": {
     st_playing: "Reprodukcija", st_paused: "Pauzirano", st_idle: "Neaktivan", st_on: "Uključen", st_off: "Isključen", st_standby: "Mirovanje", st_buffering: "Učitavanje", st_unavailable: "Nedostupan", st_unknown: "Nepoznato",
@@ -251,6 +285,8 @@ const STRINGS = {
     show_source: "Prikaži izvor i režim zvuka", show_queue: "Prikaži red", show_favorites: "Prikaži omiljeno", collapsed: "Podrazumevano skupljeni odeljci", favorites_entity: "Senzor omiljenih (Sonos)",
     zoom: "Taster za detalje", zoom_helper: "Taster gore desno: prelazi na punu karticu i nazad", language: "Jezik", lang_auto: "Automatski (jezik Home Assistant-a)",
     media: "Mediji", players: "Plejeri (više njih, jedan ispod drugog u kartici)", players_helper: "Dva ili više: jedan blok po plejeru, jedan ispod drugog", only_playing: "Samo plejeri koji reprodukuju", include_paused: "I pauzirani plejeri", n_playing: "{n} reprodukuje", players_count: "Plejera: {n}", more_players: "Još {n}: {names}", back: "Nazad na sve plejere",
+    movie: "Film", last_called: "Poslednji pozvan", next_alarm: "Alarm", next_timer: "Tajmer", next_reminder: "Podsetnik", dnd: "Ne uznemiravaj", speaker_group: "Grupa zvučnika", hide_idle_sessions: "Sakrij neaktivne Jellyfin sesije",
+    remote: "Daljinski", r_up: "Gore", r_down: "Dole", r_left: "Levo", r_right: "Desno", r_select: "Izaberi", r_menu: "Meni", r_home: "Početna", r_play_pause: "Pusti / pauza", show_remote: "Prikaži daljinski (Apple TV)",
   },
   ro: {
     st_playing: "Redare", st_paused: "În pauză", st_idle: "Inactiv", st_on: "Pornit", st_off: "Oprit", st_standby: "Standby", st_buffering: "Se încarcă", st_unavailable: "Indisponibil", st_unknown: "Necunoscut",
@@ -266,6 +302,8 @@ const STRINGS = {
     show_source: "Afișează sursa și modul sunet", show_queue: "Afișează coada", show_favorites: "Afișează favoritele", collapsed: "Secțiuni restrânse implicit", favorites_entity: "Senzor de favorite (Sonos)",
     zoom: "Buton detalii", zoom_helper: "Butonul din dreapta sus: trece la cardul complet și înapoi", language: "Limbă", lang_auto: "Automat (limba Home Assistant)",
     media: "Media", players: "Playere (mai multe, stivuite în card)", players_helper: "Două sau mai multe: un bloc pe player, unul sub altul", only_playing: "Doar playerele care redau", include_paused: "Și playerele în pauză", n_playing: "{n} redau", players_count: "{n} playere", more_players: "Încă {n}: {names}", back: "Înapoi la toate playerele",
+    movie: "Film", last_called: "Ultimul apelat", next_alarm: "Alarmă", next_timer: "Cronometru", next_reminder: "Memento", dnd: "Nu deranjați", speaker_group: "Grup de boxe", hide_idle_sessions: "Ascunde sesiunile Jellyfin inactive",
+    remote: "Telecomandă", r_up: "Sus", r_down: "Jos", r_left: "Stânga", r_right: "Dreapta", r_select: "Selectează", r_menu: "Meniu", r_home: "Acasă", r_play_pause: "Redare / pauză", show_remote: "Afișează telecomanda (Apple TV)",
   },
   da: {
     st_playing: "Afspiller", st_paused: "Sat på pause", st_idle: "Inaktiv", st_on: "Tændt", st_off: "Slukket", st_standby: "Standby", st_buffering: "Buffer", st_unavailable: "Utilgængelig", st_unknown: "Ukendt",
@@ -281,6 +319,8 @@ const STRINGS = {
     show_source: "Vis kilde og lydtilstand", show_queue: "Vis kø", show_favorites: "Vis favoritter", collapsed: "Sektioner foldet sammen som standard", favorites_entity: "Favoritsensor (Sonos)",
     zoom: "Detaljeknap", zoom_helper: "Knap øverst til højre: skifter til det fulde kort og tilbage", language: "Sprog", lang_auto: "Automatisk (Home Assistants sprog)",
     media: "Medier", players: "Afspillere (flere, stablet i kortet)", players_helper: "To eller flere: én blok pr. afspiller, under hinanden", only_playing: "Kun afspillere, der afspiller", include_paused: "Også afspillere på pause", n_playing: "{n} afspiller", players_count: "{n} afspillere", more_players: "{n} mere: {names}", back: "Tilbage til alle afspillere",
+    movie: "Film", last_called: "Sidst kaldt", next_alarm: "Alarm", next_timer: "Timer", next_reminder: "Påmindelse", dnd: "Forstyr ikke", speaker_group: "Højttalergruppe", hide_idle_sessions: "Skjul inaktive Jellyfin-sessioner",
+    remote: "Fjernbetjening", r_up: "Op", r_down: "Ned", r_left: "Venstre", r_right: "Højre", r_select: "Vælg", r_menu: "Menu", r_home: "Hjem", r_play_pause: "Afspil / pause", show_remote: "Vis fjernbetjeningen (Apple TV)",
   },
   sv: {
     st_playing: "Spelar", st_paused: "Pausad", st_idle: "Inaktiv", st_on: "På", st_off: "Av", st_standby: "Viloläge", st_buffering: "Buffrar", st_unavailable: "Otillgänglig", st_unknown: "Okänd",
@@ -296,6 +336,8 @@ const STRINGS = {
     show_source: "Visa källa och ljudläge", show_queue: "Visa kö", show_favorites: "Visa favoriter", collapsed: "Sektioner hopfällda som standard", favorites_entity: "Favoritsensor (Sonos)",
     zoom: "Detaljknapp", zoom_helper: "Knappen uppe till höger: växlar till hela kortet och tillbaka", language: "Språk", lang_auto: "Automatiskt (Home Assistants språk)",
     media: "Media", players: "Spelare (flera, staplade i kortet)", players_helper: "Två eller fler: ett block per spelare, under varandra", only_playing: "Bara spelare som spelar", include_paused: "Även pausade spelare", n_playing: "{n} spelar", players_count: "{n} spelare", more_players: "{n} till: {names}", back: "Tillbaka till alla spelare",
+    movie: "Film", last_called: "Senast anropad", next_alarm: "Alarm", next_timer: "Timer", next_reminder: "Påminnelse", dnd: "Stör ej", speaker_group: "Högtalargrupp", hide_idle_sessions: "Dölj inaktiva Jellyfin-sessioner",
+    remote: "Fjärrkontroll", r_up: "Upp", r_down: "Ned", r_left: "Vänster", r_right: "Höger", r_select: "Välj", r_menu: "Meny", r_home: "Hem", r_play_pause: "Spela / pausa", show_remote: "Visa fjärrkontrollen (Apple TV)",
   },
   bg: {
     st_playing: "Възпроизвежда", st_paused: "На пауза", st_idle: "Неактивен", st_on: "Включен", st_off: "Изключен", st_standby: "Готовност", st_buffering: "Зареждане", st_unavailable: "Недостъпен", st_unknown: "Неизвестно",
@@ -311,6 +353,8 @@ const STRINGS = {
     show_source: "Покажи източника и звуковия режим", show_queue: "Покажи опашката", show_favorites: "Покажи любимите", collapsed: "Свити по подразбиране секции", favorites_entity: "Сензор за любими (Sonos)",
     zoom: "Бутон за подробности", zoom_helper: "Бутон горе вдясно: превключва към пълната карта и обратно", language: "Език", lang_auto: "Автоматично (езикът на Home Assistant)",
     media: "Медия", players: "Плейъри (няколко, един под друг в картата)", players_helper: "Два или повече: по един блок за плейър, един под друг", only_playing: "Само плейърите, които възпроизвеждат", include_paused: "И плейърите на пауза", n_playing: "Възпроизвеждат: {n}", players_count: "Плейъри: {n}", more_players: "Още {n}: {names}", back: "Назад към всички плейъри",
+    movie: "Филм", last_called: "Последно извикан", next_alarm: "Аларма", next_timer: "Таймер", next_reminder: "Напомняне", dnd: "Не безпокойте", speaker_group: "Група високоговорители", hide_idle_sessions: "Скриване на неактивните сесии на Jellyfin",
+    remote: "Дистанционно", r_up: "Нагоре", r_down: "Надолу", r_left: "Наляво", r_right: "Надясно", r_select: "Избор", r_menu: "Меню", r_home: "Начало", r_play_pause: "Пускане / пауза", show_remote: "Показване на дистанционното (Apple TV)",
   },
   ru: {
     st_playing: "Воспроизведение", st_paused: "Пауза", st_idle: "Бездействует", st_on: "Включён", st_off: "Выключен", st_standby: "Ожидание", st_buffering: "Буферизация", st_unavailable: "Недоступен", st_unknown: "Неизвестно",
@@ -326,6 +370,8 @@ const STRINGS = {
     show_source: "Показывать источник и звуковой режим", show_queue: "Показывать очередь", show_favorites: "Показывать избранное", collapsed: "Свёрнутые по умолчанию разделы", favorites_entity: "Датчик избранного (Sonos)",
     zoom: "Кнопка подробностей", zoom_helper: "Кнопка справа вверху: переключает на полную карточку и обратно", language: "Язык", lang_auto: "Автоматически (язык Home Assistant)",
     media: "Медиа", players: "Плееры (несколько, друг под другом в карточке)", players_helper: "Два или больше: по блоку на плеер, друг под другом", only_playing: "Только воспроизводящие плееры", include_paused: "И плееры на паузе", n_playing: "Воспроизводят: {n}", players_count: "Плееров: {n}", more_players: "Ещё {n}: {names}", back: "Назад ко всем плеерам",
+    movie: "Фильм", last_called: "Последний вызванный", next_alarm: "Будильник", next_timer: "Таймер", next_reminder: "Напоминание", dnd: "Не беспокоить", speaker_group: "Группа колонок", hide_idle_sessions: "Скрывать неактивные сеансы Jellyfin",
+    remote: "Пульт", r_up: "Вверх", r_down: "Вниз", r_left: "Влево", r_right: "Вправо", r_select: "Выбрать", r_menu: "Меню", r_home: "Домой", r_play_pause: "Воспроизведение / пауза", show_remote: "Показывать пульт (Apple TV)",
   },
   uk: {
     st_playing: "Відтворення", st_paused: "Пауза", st_idle: "Неактивний", st_on: "Увімкнено", st_off: "Вимкнено", st_standby: "Очікування", st_buffering: "Буферизація", st_unavailable: "Недоступний", st_unknown: "Невідомо",
@@ -341,6 +387,8 @@ const STRINGS = {
     show_source: "Показувати джерело й звуковий режим", show_queue: "Показувати чергу", show_favorites: "Показувати обране", collapsed: "Типово згорнуті розділи", favorites_entity: "Датчик обраного (Sonos)",
     zoom: "Кнопка подробиць", zoom_helper: "Кнопка праворуч угорі: перемикає на повну картку й назад", language: "Мова", lang_auto: "Автоматично (мова Home Assistant)",
     media: "Медіа", players: "Плеєри (кілька, один під одним у картці)", players_helper: "Два чи більше: по блоку на плеєр, один під одним", only_playing: "Лише плеєри, що відтворюють", include_paused: "І плеєри на паузі", n_playing: "Відтворюють: {n}", players_count: "Плеєрів: {n}", more_players: "Ще {n}: {names}", back: "Назад до всіх плеєрів",
+    movie: "Фільм", last_called: "Останній викликаний", next_alarm: "Будильник", next_timer: "Таймер", next_reminder: "Нагадування", dnd: "Не турбувати", speaker_group: "Група колонок", hide_idle_sessions: "Приховувати неактивні сеанси Jellyfin",
+    remote: "Пульт", r_up: "Вгору", r_down: "Вниз", r_left: "Ліворуч", r_right: "Праворуч", r_select: "Вибрати", r_menu: "Меню", r_home: "Додому", r_play_pause: "Відтворення / пауза", show_remote: "Показувати пульт (Apple TV)",
   },
   hu: {
     st_playing: "Lejátszás", st_paused: "Szüneteltetve", st_idle: "Tétlen", st_on: "Be", st_off: "Ki", st_standby: "Készenlét", st_buffering: "Pufferelés", st_unavailable: "Nem elérhető", st_unknown: "Ismeretlen",
@@ -356,6 +404,8 @@ const STRINGS = {
     show_source: "Forrás és hangmód megjelenítése", show_queue: "Lejátszási sor megjelenítése", show_favorites: "Kedvencek megjelenítése", collapsed: "Alapértelmezésben összecsukott részek", favorites_entity: "Kedvencek érzékelő (Sonos)",
     zoom: "Részletek gomb", zoom_helper: "Jobb felső gomb: a teljes kártyára vált és vissza", language: "Nyelv", lang_auto: "Automatikus (Home Assistant nyelve)",
     media: "Média", players: "Lejátszók (több, egymás alatt a kártyán)", players_helper: "Kettő vagy több: lejátszónként egy blokk, egymás alatt", only_playing: "Csak a lejátszást végző lejátszók", include_paused: "A szüneteltetett lejátszók is", n_playing: "{n} játszik", players_count: "{n} lejátszó", more_players: "Még {n}: {names}", back: "Vissza az összes lejátszóhoz",
+    movie: "Film", last_called: "Utoljára megszólítva", next_alarm: "Ébresztő", next_timer: "Időzítő", next_reminder: "Emlékeztető", dnd: "Ne zavarjanak", speaker_group: "Hangszórócsoport", hide_idle_sessions: "Inaktív Jellyfin-munkamenetek elrejtése",
+    remote: "Távirányító", r_up: "Fel", r_down: "Le", r_left: "Balra", r_right: "Jobbra", r_select: "Kiválasztás", r_menu: "Menü", r_home: "Kezdőlap", r_play_pause: "Lejátszás / szünet", show_remote: "Távirányító megjelenítése (Apple TV)",
   },
   sk: {
     st_playing: "Prehráva sa", st_paused: "Pozastavené", st_idle: "Nečinný", st_on: "Zapnutý", st_off: "Vypnutý", st_standby: "Pohotovosť", st_buffering: "Načítava sa", st_unavailable: "Nedostupný", st_unknown: "Neznámy",
@@ -371,6 +421,8 @@ const STRINGS = {
     show_source: "Zobraziť zdroj a režim zvuku", show_queue: "Zobraziť poradie", show_favorites: "Zobraziť obľúbené", collapsed: "Predvolene zbalené sekcie", favorites_entity: "Senzor obľúbených (Sonos)",
     zoom: "Tlačidlo podrobností", zoom_helper: "Tlačidlo vpravo hore: prepne na úplnú kartu a späť", language: "Jazyk", lang_auto: "Automaticky (jazyk Home Assistant)",
     media: "Médiá", players: "Prehrávače (viaceré, pod sebou v karte)", players_helper: "Dva alebo viac: jeden blok na prehrávač, pod sebou", only_playing: "Len prehrávače, ktoré prehrávajú", include_paused: "Aj pozastavené prehrávače", n_playing: "Prehráva: {n}", players_count: "Prehrávače: {n}", more_players: "Ďalšie {n}: {names}", back: "Späť na všetky prehrávače",
+    movie: "Film", last_called: "Naposledy oslovený", next_alarm: "Budík", next_timer: "Časovač", next_reminder: "Pripomienka", dnd: "Nerušiť", speaker_group: "Skupina reproduktorov", hide_idle_sessions: "Skryť neaktívne relácie Jellyfin",
+    remote: "Diaľkový ovládač", r_up: "Hore", r_down: "Dole", r_left: "Vľavo", r_right: "Vpravo", r_select: "Vybrať", r_menu: "Ponuka", r_home: "Domov", r_play_pause: "Prehrať / pozastaviť", show_remote: "Zobraziť diaľkový ovládač (Apple TV)",
   },
   cs: {
     st_playing: "Přehrává se", st_paused: "Pozastaveno", st_idle: "Nečinný", st_on: "Zapnuto", st_off: "Vypnuto", st_standby: "Pohotovost", st_buffering: "Načítání", st_unavailable: "Nedostupný", st_unknown: "Neznámý",
@@ -386,6 +438,8 @@ const STRINGS = {
     show_source: "Zobrazit zdroj a režim zvuku", show_queue: "Zobrazit frontu", show_favorites: "Zobrazit oblíbené", collapsed: "Výchozí sbalené sekce", favorites_entity: "Senzor oblíbených (Sonos)",
     zoom: "Tlačítko podrobností", zoom_helper: "Tlačítko vpravo nahoře: přepne na úplnou kartu a zpět", language: "Jazyk", lang_auto: "Automaticky (jazyk Home Assistant)",
     media: "Média", players: "Přehrávače (více, pod sebou v kartě)", players_helper: "Dva a více: jeden blok na přehrávač, pod sebou", only_playing: "Jen přehrávače, které přehrávají", include_paused: "I pozastavené přehrávače", n_playing: "Přehrává: {n}", players_count: "Přehrávače: {n}", more_players: "Dalších {n}: {names}", back: "Zpět na všechny přehrávače",
+    movie: "Film", last_called: "Naposledy oslovený", next_alarm: "Budík", next_timer: "Časovač", next_reminder: "Připomínka", dnd: "Nerušit", speaker_group: "Skupina reproduktorů", hide_idle_sessions: "Skrýt neaktivní relace Jellyfin",
+    remote: "Dálkový ovladač", r_up: "Nahoru", r_down: "Dolů", r_left: "Vlevo", r_right: "Vpravo", r_select: "Vybrat", r_menu: "Nabídka", r_home: "Domů", r_play_pause: "Přehrát / pozastavit", show_remote: "Zobrazit dálkový ovladač (Apple TV)",
   },
   sl: {
     st_playing: "Predvajanje", st_paused: "Začasno ustavljeno", st_idle: "Nedejaven", st_on: "Vklopljen", st_off: "Izklopljen", st_standby: "Pripravljenost", st_buffering: "Nalaganje", st_unavailable: "Ni na voljo", st_unknown: "Neznano",
@@ -401,6 +455,8 @@ const STRINGS = {
     show_source: "Prikaži vir in zvočni način", show_queue: "Prikaži čakalno vrsto", show_favorites: "Prikaži priljubljene", collapsed: "Privzeto strnjeni razdelki", favorites_entity: "Senzor priljubljenih (Sonos)",
     zoom: "Gumb za podrobnosti", zoom_helper: "Gumb zgoraj desno: preklopi na polno kartico in nazaj", language: "Jezik", lang_auto: "Samodejno (jezik Home Assistanta)",
     media: "Predstavnost", players: "Predvajalniki (več, drug pod drugim na kartici)", players_helper: "Dva ali več: en blok na predvajalnik, drug pod drugim", only_playing: "Samo predvajalniki, ki predvajajo", include_paused: "Tudi zaustavljeni predvajalniki", n_playing: "Predvaja: {n}", players_count: "Predvajalniki: {n}", more_players: "Še {n}: {names}", back: "Nazaj na vse predvajalnike",
+    movie: "Film", last_called: "Nazadnje poklican", next_alarm: "Budilka", next_timer: "Časovnik", next_reminder: "Opomnik", dnd: "Ne moti", speaker_group: "Skupina zvočnikov", hide_idle_sessions: "Skrij neaktivne seje Jellyfin",
+    remote: "Daljinec", r_up: "Gor", r_down: "Dol", r_left: "Levo", r_right: "Desno", r_select: "Izberi", r_menu: "Meni", r_home: "Domov", r_play_pause: "Predvajaj / premor", show_remote: "Prikaži daljinec (Apple TV)",
   },
   lv: {
     st_playing: "Atskaņo", st_paused: "Pauzēts", st_idle: "Dīkstāvē", st_on: "Ieslēgts", st_off: "Izslēgts", st_standby: "Gaidstāve", st_buffering: "Ielādē", st_unavailable: "Nav pieejams", st_unknown: "Nezināms",
@@ -416,6 +472,8 @@ const STRINGS = {
     show_source: "Rādīt avotu un skaņas režīmu", show_queue: "Rādīt rindu", show_favorites: "Rādīt izlasi", collapsed: "Pēc noklusējuma sakļautās sadaļas", favorites_entity: "Izlases sensors (Sonos)",
     zoom: "Detaļu poga", zoom_helper: "Poga augšējā labajā stūrī: pārslēdz uz pilno karti un atpakaļ", language: "Valoda", lang_auto: "Automātiski (Home Assistant valoda)",
     media: "Multivide", players: "Atskaņotāji (vairāki, kartē cits zem cita)", players_helper: "Divi vai vairāk: viens bloks katram atskaņotājam, cits zem cita", only_playing: "Tikai atskaņotāji, kas atskaņo", include_paused: "Arī pauzētie atskaņotāji", n_playing: "Atskaņo: {n}", players_count: "Atskaņotāji: {n}", more_players: "Vēl {n}: {names}", back: "Atpakaļ uz visiem atskaņotājiem",
+    movie: "Filma", last_called: "Pēdējais uzrunātais", next_alarm: "Modinātājs", next_timer: "Taimeris", next_reminder: "Atgādinājums", dnd: "Netraucēt", speaker_group: "Skaļruņu grupa", hide_idle_sessions: "Slēpt neaktīvās Jellyfin sesijas",
+    remote: "Tālvadība", r_up: "Augšup", r_down: "Lejup", r_left: "Pa kreisi", r_right: "Pa labi", r_select: "Izvēlēties", r_menu: "Izvēlne", r_home: "Sākums", r_play_pause: "Atskaņot / pauze", show_remote: "Rādīt tālvadību (Apple TV)",
   },
   el: {
     st_playing: "Αναπαραγωγή", st_paused: "Σε παύση", st_idle: "Αδρανές", st_on: "Ενεργό", st_off: "Ανενεργό", st_standby: "Αναμονή", st_buffering: "Φόρτωση", st_unavailable: "Μη διαθέσιμο", st_unknown: "Άγνωστο",
@@ -431,6 +489,8 @@ const STRINGS = {
     show_source: "Εμφάνιση πηγής και λειτουργίας ήχου", show_queue: "Εμφάνιση ουράς", show_favorites: "Εμφάνιση αγαπημένων", collapsed: "Ενότητες κλειστές από προεπιλογή", favorites_entity: "Αισθητήρας αγαπημένων (Sonos)",
     zoom: "Κουμπί λεπτομερειών", zoom_helper: "Κουμπί πάνω δεξιά: μεταβαίνει στην πλήρη κάρτα και πίσω", language: "Γλώσσα", lang_auto: "Αυτόματα (γλώσσα του Home Assistant)",
     media: "Πολυμέσα", players: "Αναπαραγωγείς (πολλοί, ο ένας κάτω από τον άλλο)", players_helper: "Δύο ή περισσότεροι: ένα μπλοκ ανά αναπαραγωγέα, ο ένας κάτω από τον άλλο", only_playing: "Μόνο οι αναπαραγωγείς που παίζουν", include_paused: "Και οι αναπαραγωγείς σε παύση", n_playing: "{n} σε αναπαραγωγή", players_count: "{n} αναπαραγωγείς", more_players: "Ακόμη {n}: {names}", back: "Πίσω σε όλους τους αναπαραγωγείς",
+    movie: "Ταινία", last_called: "Τελευταία κλήση", next_alarm: "Ξυπνητήρι", next_timer: "Χρονόμετρο", next_reminder: "Υπενθύμιση", dnd: "Μην ενοχλείτε", speaker_group: "Ομάδα ηχείων", hide_idle_sessions: "Απόκρυψη ανενεργών συνεδριών Jellyfin",
+    remote: "Τηλεχειριστήριο", r_up: "Πάνω", r_down: "Κάτω", r_left: "Αριστερά", r_right: "Δεξιά", r_select: "Επιλογή", r_menu: "Μενού", r_home: "Αρχική", r_play_pause: "Αναπαραγωγή / παύση", show_remote: "Εμφάνιση τηλεχειριστηρίου (Apple TV)",
   },
 };
 
@@ -514,9 +574,99 @@ const kindOf = (s) => {
 
 const platformOf = (hass, id) => hass?.entities?.[id]?.platform || "";
 const nameOf = (hass, id) => hass?.states?.[id]?.attributes?.friendly_name || id;
+const deviceOf = (hass, id) => {
+  const d = hass?.entities?.[id]?.device_id;
+  return d ? hass?.devices?.[d] || null : null;
+};
+
+// Jellyfin (core): one player per client session, with no device_class; its device's model is the client app.
+const isJellyfin = (hass, id) => platformOf(hass, id) === "jellyfin";
+// Alexa Media Player (custom alexa_media): a group of Echo speakers ("Everywhere", multiroom) has the model
+// "Speaker Group" (WHA device family); Alexa cannot join or unjoin speakers from Home Assistant.
+const isAlexa = (hass, id) => platformOf(hass, id) === "alexa_media";
+const isAlexaGroup = (hass, id) => {
+  if (!isAlexa(hass, id)) return false;
+  const model = String(deviceOf(hass, id)?.model || "");
+  return model === "Speaker Group" || /^WHA\b/.test(model);
+};
+
+// Apple TV (core apple_tv): Apple TV boxes, HomePods and AirPlay speakers; the device's model tells them apart.
+const isAppleTv = (hass, id) => platformOf(hass, id) === "apple_tv";
+
+// Remote entity of an Apple TV (the same device), whose remote.send_command takes up, down, left, right, select,
+// menu, home and play_pause (pyatv's remote control).
+const remoteOf = (hass, id) => {
+  if (!isAppleTv(hass, id)) return null;
+  const device = hass.entities?.[id]?.device_id;
+  const base = id.slice(id.indexOf(".") + 1);
+  const e = Object.values(hass.entities || {}).find(
+    (x) => x?.platform === "apple_tv" && String(x.entity_id).startsWith("remote.") && ((device && x.device_id === device) || x.entity_id === `remote.${base}`),
+  );
+  return e && hass.states?.[e.entity_id] ? e.entity_id : null;
+};
+
+// Picture family of a player's device (its model in the device registry), "" for a generic picture.
+const familyOf = (hass, id) => {
+  const d = deviceOf(hass, id);
+  return d ? pictureFamily(d.model, d.manufacturer, platformOf(hass, id)) : "";
+};
+const SCREEN_FAMILIES = new Set(["apple_tv", "echo_show", "echo_show_small"]);
+
+// Kind of device of a player (header icon, generic picture): its device_class first, then its device's model; a
+// Jellyfin session is a screen, an Apple TV device with apps (sources) too.
+const kindFor = (hass, id, s) => {
+  if (s?.attributes?.device_class) return kindOf(s);
+  const family = familyOf(hass, id);
+  if (family) return SCREEN_FAMILIES.has(family) ? "tv" : "speaker";
+  if (isJellyfin(hass, id)) return "tv";
+  if (isAppleTv(hass, id)) return Array.isArray(s?.attributes?.source_list) && s.attributes.source_list.length ? "tv" : "speaker";
+  return kindOf(s);
+};
+
+// A Jellyfin session with nothing playing (an app left open somewhere): left out of the stack and of the rooms
+// while `hide_idle_sessions` is on (default).
+const idleSession = (hass, config, id) => config?.hide_idle_sessions !== false && isJellyfin(hass, id) && !isActive(hass?.states?.[id]);
+
+// The Alexa entities of an Echo device: the do-not-disturb switch and the next alarm, timer and reminder sensors.
+// Found on the same device by their translation key, else by the entity ids Alexa Media Player gives them.
+const ALEXA_EXTRAS = { dnd: ["switch", "do_not_disturb"], alarm: ["sensor", "next_alarm"], timer: ["sensor", "next_timer"], reminder: ["sensor", "next_reminder"] };
+const alexaExtras = (hass, id) => {
+  if (!isAlexa(hass, id)) return null;
+  const device = hass.entities?.[id]?.device_id;
+  const base = id.slice(id.indexOf(".") + 1);
+  const all = Object.values(hass.entities || {});
+  const out = {};
+  for (const [key, [domain, tkey]] of Object.entries(ALEXA_EXTRAS)) {
+    const e = all.find(
+      (x) =>
+        x?.platform === "alexa_media" &&
+        String(x.entity_id).startsWith(`${domain}.`) &&
+        ((device && x.device_id === device && x.translation_key === tkey) || x.entity_id === `${domain}.${base}_${tkey}` || x.entity_id === `${domain}.${base}_${tkey}_switch`),
+    );
+    if (e && hass.states?.[e.entity_id]) out[key] = e.entity_id;
+  }
+  return out;
+};
 
 // Brand accent of the integrations that have one; the theme's primary color otherwise.
-const ACCENTS = { spotify: "#1db954", plex: "#e5a00d", jellyfin: "#aa5cc3", music_assistant: "#3a8fde" };
+const ACCENTS = { spotify: "#1db954", plex: "#e5a00d", jellyfin: "#aa5cc3", music_assistant: "#3a8fde", alexa_media: "#00a8e1" };
+
+// Apple TV remote section: its style goes with it too.
+const REMOTE_STYLE = `
+  .remote { display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap; padding: 4px 0; }
+  .dpad { display: grid; grid-template-columns: repeat(3, 44px); grid-template-rows: repeat(3, 44px); gap: 4px; place-items: center; }
+  .remote-keys { display: flex; flex-direction: column; gap: 8px; }`;
+
+// Alexa row (badge, next alarm / timer / reminder, do not disturb): its style goes with it, so that the other
+// players render exactly as before.
+const ALEXA_STYLE = `
+  .alexa { display: flex; align-items: center; gap: 8px; min-width: 0; font-size: 12px; color: var(--secondary-text-color); }
+  .alexa-info { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; flex: 1; min-width: 0; }
+  .alexa .next { display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; }
+  .alexa .next .icon { width: 16px; height: 16px; flex: none; }
+  .alexa .tag { padding: 0 8px; border: 1px solid var(--mc-accent, var(--primary-color)); border-radius: 10px; color: var(--mc-accent, var(--primary-color)); font-size: 11px; font-weight: 500; line-height: 18px; white-space: nowrap; }
+  .alexa.compact { gap: 6px; }
+  .alexa.compact .alexa-info { gap: 2px 8px; }`;
 const accentStyle = (hass, id) => {
   const a = ACCENTS[platformOf(hass, id)];
   return a ? `:host { --mc-accent: ${a}; }` : "";
@@ -559,8 +709,12 @@ const isPlaying = (s) => s?.state === "playing" || s?.state === "buffering";
 // paused ones with `include_paused`); the others are counted in `hidden`. When none of them plays, the one that
 // changed last (the last one active) is shown, else the first one.
 const stackedPlayers = (hass, config) => {
-  const ids = listedPlayers(config).filter((id) => hass?.states?.[id]);
-  if (!config.only_playing) return { shown: ids, hidden: [] };
+  const listed = listedPlayers(config).filter((id) => hass?.states?.[id]);
+  // Idle Jellyfin sessions join the hidden ones (unless every listed player is one of them).
+  const idle = listed.filter((id) => idleSession(hass, config, id));
+  const ids = idle.length < listed.length ? listed.filter((id) => !idle.includes(id)) : listed;
+  const asleep = ids === listed ? [] : idle;
+  if (!config.only_playing) return { shown: ids, hidden: asleep };
   const on = (id) => isPlaying(hass.states[id]) || (config.include_paused === true && hass.states[id].state === "paused");
   let shown = ids.filter(on);
   if (!shown.length && ids.length) {
@@ -568,7 +722,7 @@ const stackedPlayers = (hass, config) => {
     const last = ids.filter((id) => !offline(hass.states[id])).sort((a, b) => changed(b) - changed(a))[0];
     shown = [last || ids[0]];
   }
-  return { shown, hidden: ids.filter((id) => !shown.includes(id)) };
+  return { shown, hidden: [...ids.filter((id) => !shown.includes(id)), ...asleep] };
 };
 
 const groupOf = (s) => (Array.isArray(s?.attributes?.group_members) ? s.attributes.group_members : []);
@@ -577,7 +731,7 @@ const groupOf = (s) => (Array.isArray(s?.attributes?.group_members) ? s.attribut
 // integration that can group too (the speakers it can be joined with).
 const roomIds = (hass, config, mainId) => {
   const listed = (Array.isArray(config.entities) ? config.entities : []).map((e) => (typeof e === "string" ? e : e?.entity)).filter(Boolean);
-  if (listed.length) return [...new Set([mainId, ...listed])].filter((id) => hass.states[id]);
+  if (listed.length) return [...new Set([mainId, ...listed])].filter((id) => hass.states[id] && (id === mainId || !idleSession(hass, config, id)));
   const main = hass.states[mainId];
   if (!has(main, F.GROUPING)) return [];
   const platform = platformOf(hass, mainId);
@@ -674,6 +828,182 @@ const receiverSvg = (on, f) => `<svg class="pic" viewBox="0 0 140 120" aria-hidd
 </svg>`;
 
 const PICTURES = { speaker: speakerSvg, tv: tvSvg, receiver: receiverSvg };
+
+// Device pictures by model family: original, stylized silhouettes of the general shape of a device (a sphere, a
+// cylinder, a box), with no logo, brand or product name, drawn for this card. Only their lights move, and only
+// while playing: a soft pulse (mc-glow, 1.8 s), stopped by prefers-reduced-motion. The body follows the theme's
+// grays (FINISH); the lights keep their own color: cyan rings for the cylinders and spheres, a violet top for the
+// mesh speakers. `front`: the straight-on view of the mini card (where a family has one).
+const LIGHT = { cyan: "#22c3e6", violet: "#9b6dff" };
+const svgPic = (body) => `<svg class="pic" viewBox="0 0 140 120" aria-hidden="true">${body}</svg>`;
+const shadow = (rx, y = 112) => `<ellipse cx="70" cy="${y}" rx="${rx}" ry="4" fill="#000" opacity=".14"/>`;
+const lit = (on) => (on ? ` class="glow"` : "");
+const lightOpacity = (on) => (on ? 1 : 0.22);
+// Fine horizontal lines of a fabric cover.
+const fabric = (x, y, w, h, f, step = 5) =>
+  Array.from({ length: Math.floor(h / step) }, (_, i) => `<line x1="${x}" y1="${(y + (i + 0.5) * step).toFixed(1)}" x2="${x + w}" y2="${(y + (i + 0.5) * step).toFixed(1)}" stroke="${f[2]}" stroke-width=".7" opacity=".5"/>`).join(
+    "",
+  );
+// Rows of small dots of a mesh cover that follow the curve of a sphere (centre cx, cy, radius r) from y0 to y1.
+const meshDots = (cx, cy, r, y0, y1, f, gap = 6) => {
+  const out = [];
+  for (let y = y0 + gap / 2; y < y1; y += gap) {
+    const w = Math.sqrt(Math.max(0, r * r - (y - cy) ** 2)) - 3;
+    const n = Math.max(1, Math.round((Math.PI * w) / gap / 1.6));
+    for (let i = 0; i <= n; i++) {
+      const x = cx + w * Math.sin(-Math.PI / 2 + (Math.PI * i) / n);
+      out.push(`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r=".95" fill="${f[2]}" opacity=".55"/>`);
+    }
+  }
+  return out.join("");
+};
+
+// Classic cylinder: a fabric body with a cyan light ring on its top edge.
+const cylinderSvg = (on, f) =>
+  svgPic(`${shadow(28)}
+  <path d="M48 16V102a22 6 0 0 0 44 0V16z" fill="${f[1]}" stroke="${f[2]}" stroke-width="1.2"/>
+  ${fabric(50, 40, 40, 62, f)}
+  <ellipse cx="70" cy="16" rx="22" ry="6" fill="${f[0]}" stroke="${f[2]}" stroke-width="1.2"/>
+  <ellipse${lit(on)} cx="70" cy="16" rx="19" ry="4.2" fill="none" stroke="${LIGHT.cyan}" stroke-width="3" opacity="${lightOpacity(on)}"/>`);
+
+// Large cylinder with rounded corners and a light slit at the top.
+const studioSvg = (on, f) =>
+  svgPic(`${shadow(40)}
+  <rect x="32" y="14" width="76" height="96" rx="16" fill="${f[1]}" stroke="${f[2]}" stroke-width="1.2"/>
+  ${fabric(36, 34, 68, 70, f)}
+  <rect x="36" y="16" width="68" height="14" rx="7" fill="${f[0]}" opacity=".7"/>
+  <rect${lit(on)} x="46" y="21" width="48" height="4" rx="2" fill="${LIGHT.cyan}" opacity="${lightOpacity(on)}"/>`);
+
+// Sphere with a cyan light ring along its base.
+const sphereSvg = (on, f) =>
+  svgPic(`${shadow(36, 110)}
+  <path d="M33 96a42 42 0 1 1 74 0z" fill="${f[1]}" stroke="${f[2]}" stroke-width="1.2"/>
+  ${meshDots(70, 70, 42, 34, 92, f)}
+  <path d="M33 96h74a37 7 0 0 1 -74 0z" fill="${f[0]}" stroke="${f[2]}"/>
+  <path${lit(on)} d="M36 98a34 5 0 0 0 68 0" fill="none" stroke="${LIGHT.cyan}" stroke-width="3" stroke-linecap="round" opacity="${lightOpacity(on)}"/>`);
+
+// Low puck (older small speaker): a short cylinder with a cyan light ring on its top.
+const puckSvg = (on, f) =>
+  svgPic(`${shadow(46, 96)}
+  <path d="M24 60v22a46 12 0 0 0 92 0V60z" fill="${f[1]}" stroke="${f[2]}" stroke-width="1.2"/>
+  ${fabric(26, 66, 88, 16, f, 4)}
+  <ellipse cx="70" cy="60" rx="46" ry="12" fill="${f[0]}" stroke="${f[2]}" stroke-width="1.2"/>
+  <ellipse${lit(on)} cx="70" cy="60" rx="42" ry="10" fill="none" stroke="${LIGHT.cyan}" stroke-width="3" opacity="${lightOpacity(on)}"/>
+  <g fill="${f[2]}" opacity=".6"><circle cx="56" cy="58" r="2.2"/><circle cx="70" cy="55" r="2.2"/><circle cx="84" cy="58" r="2.2"/><circle cx="70" cy="64" r="2.2"/></g>`);
+
+// Half sphere on its flat side, with a light bar on its front.
+const domeSvg = (on, f) =>
+  svgPic(`${shadow(46, 104)}
+  <path d="M24 100a46 46 0 0 1 92 0z" fill="${f[1]}" stroke="${f[2]}" stroke-width="1.2"/>
+  ${meshDots(70, 100, 46, 58, 98, f)}
+  <rect x="24" y="99" width="92" height="5" rx="2.5" fill="${f[0]}" stroke="${f[2]}"/>
+  <rect${lit(on)} x="54" y="92" width="32" height="4" rx="2" fill="${LIGHT.cyan}" opacity="${lightOpacity(on)}"/>`);
+
+// Smart display: a screen leaning back on a trapezoid base; a blue screen with a few white lines, a light bar below
+// (`big`: the wider variant).
+const displaySvg = (big) => (on, f) => {
+  const w = big ? 110 : 78;
+  const x = 70 - w / 2;
+  return svgPic(`${shadow(w / 2 - 6, 108)}
+  <path d="M${x + 10} 106L${x + 20} 62H${x + w - 20}L${x + w - 10} 106z" fill="${f[1]}" stroke="${f[2]}" stroke-width="1.2"/>
+  ${fabric(x + 16, 68, w - 32, 36, f)}
+  <path d="M${x} 16H${x + w}l-6 62H${x + 6}z" fill="${f[1]}" stroke="${f[2]}" stroke-width="1.2"/>
+  <path d="M${x + 5} 20H${x + w - 5}l-5 50H${x + 10}z" fill="${on ? "#1f5fbf" : "#101317"}"/>
+  ${
+    on
+      ? `<g stroke="#fff" stroke-linecap="round" opacity=".85"><line x1="${x + 18}" y1="34" x2="${x + w * 0.55}" y2="34" stroke-width="3"/><line x1="${x + 18}" y1="44" x2="${x + w * 0.42}" y2="44" stroke-width="2"/><line x1="${x + 18}" y1="54" x2="${x + w * 0.62}" y2="54" stroke-width="2"/></g>`
+      : ""
+  }
+  <rect${lit(on)} x="${x + 18}" y="73" width="${w - 36}" height="3" rx="1.5" fill="${LIGHT.cyan}" opacity="${lightOpacity(on)}"/>`);
+};
+
+// Tall mesh speaker: a cylinder with very rounded edges, fine horizontal mesh lines, a violet halo on top.
+const meshTallSvg = (on, f) =>
+  svgPic(`${shadow(36)}
+  <rect x="38" y="12" width="64" height="98" rx="28" fill="${f[1]}" stroke="${f[2]}" stroke-width="1.2"/>
+  ${fabric(42, 28, 56, 70, f, 3.5)}
+  <ellipse cx="70" cy="20" rx="22" ry="5" fill="${f[0]}" stroke="${f[2]}"/>
+  <ellipse${lit(on)} cx="70" cy="20" rx="14" ry="3" fill="${LIGHT.violet}" opacity="${on ? 0.95 : 0.2}"/>`);
+
+// Small mesh speaker: a nearly whole sphere cut flat at the top (its touch surface) and at the bottom (where it
+// stands), with rows of mesh dots. Seen slightly from above (the full card: the top ellipse, its glowing surface and
+// small + and − marks), or straight on (`front`, the mini card: the top is a flat line with its light).
+const meshSmallSvg = (on, f, front = false) => {
+  const cx = 70;
+  const cy = 66;
+  const r = 44;
+  const top = 30;
+  const bottom = 104;
+  const half = (y) => Math.sqrt(r * r - (y - cy) ** 2);
+  const tw = half(top);
+  const bw = half(bottom);
+  const body = `M${cx - tw} ${top}A${r} ${r} 0 0 0 ${cx - bw} ${bottom}H${cx + bw}A${r} ${r} 0 0 0 ${cx + tw} ${top}z`;
+  const topFace = front
+    ? `<rect x="${cx - tw}" y="${top - 1.5}" width="${tw * 2}" height="3" rx="1.5" fill="${f[0]}" stroke="${f[2]}" stroke-width=".8"/>
+       <rect${lit(on)} x="${cx - tw + 6}" y="${top - 1}" width="${tw * 2 - 12}" height="2" rx="1" fill="${LIGHT.violet}" opacity="${lightOpacity(on)}"/>`
+    : `<ellipse cx="${cx}" cy="${top}" rx="${tw}" ry="7" fill="${f[0]}" stroke="${f[2]}" stroke-width="1"/>
+       <ellipse${lit(on)} cx="${cx}" cy="${top}" rx="${tw - 5}" ry="4.6" fill="${LIGHT.violet}" opacity="${on ? 0.9 : 0.18}"/>
+       <g stroke="#fff" stroke-width="1.4" stroke-linecap="round" opacity="${on ? 0.95 : 0.7}"><line x1="${cx - 13}" y1="${top}" x2="${cx - 9}" y2="${top}"/><line x1="${cx + 9}" y1="${top}" x2="${cx + 13}" y2="${top}"/><line x1="${cx + 11}" y1="${top - 2}" x2="${cx + 11}" y2="${top + 2}"/></g>`;
+  return svgPic(`${shadow(bw + 6, bottom + 4)}
+  <path d="${body}" fill="${f[1]}" stroke="${f[2]}" stroke-width="1.2"/>
+  ${meshDots(cx, cy, r, top + (front ? 2 : 6), bottom - 2, f)}
+  <path d="M${cx - bw} ${bottom}H${cx + bw}" stroke="${f[2]}" stroke-width="1.2"/>
+  ${topFace}`);
+};
+
+// Streaming box: a low square box with rounded corners and a small white status light that blinks; while a video
+// plays, a small stylized screen with a play triangle shows above it.
+const boxSvg = (on, f) =>
+  svgPic(`${shadow(42, 108)}
+  ${
+    on
+      ? `<rect x="34" y="8" width="72" height="44" rx="5" fill="#101317" stroke="${f[2]}"/><rect class="glow" x="38" y="12" width="64" height="36" rx="3" fill="#1f5fbf"/><path d="M64 22L80 30L64 38z" fill="#fff"/>`
+      : ""
+  }
+  <path d="M30 72L42 62H110L98 72z" fill="${f[0]}" stroke="${f[2]}" stroke-width="1.2" stroke-linejoin="round"/>
+  <rect x="30" y="72" width="68" height="32" rx="6" fill="${f[1]}" stroke="${f[2]}" stroke-width="1.2"/>
+  <path d="M98 72L110 62V94Q110 98 106 100L98 104z" fill="${f[1]}" stroke="${f[2]}" stroke-width="1.2" stroke-linejoin="round" opacity=".85"/>
+  <circle${lit(on)} cx="38" cy="96" r="2" fill="${on ? "#fff" : f[2]}" stroke="${f[2]}" stroke-width=".5"/>`);
+
+const DEVICE_PICTURES = {
+  echo: cylinderSvg,
+  echo_studio: studioSvg,
+  echo_dot: sphereSvg,
+  echo_dot_puck: puckSvg,
+  echo_pop: domeSvg,
+  echo_show: displaySvg(true),
+  echo_show_small: displaySvg(false),
+  homepod: meshTallSvg,
+  homepod_mini: meshSmallSvg,
+  apple_tv: boxSvg,
+};
+
+// Model (device registry) → picture family: tolerant (case, spacing, generation suffix), Amazon and Apple devices
+// only (manufacturer, or the integration when the manufacturer is not set). Anything else keeps the generic picture.
+const AMAZON_MODELS = [
+  [/echo\s*(show\s*(5|8)\b|spot)/i, "echo_show_small"],
+  [/echo\s*show/i, "echo_show"],
+  [/echo\s*studio/i, "echo_studio"],
+  [/echo\s*pop/i, "echo_pop"],
+  [/echo\s*dot(?!.*clock).*(gen\s*[1-3]\b|\b[1-3](st|nd|rd)\s*gen)/i, "echo_dot_puck"],
+  [/echo\s*dot/i, "echo_dot"],
+  [/^echo\s*\(?\s*(gen\s*[45]|[45]th\s*gen)/i, "echo_dot"],
+  [/^echo(\s*plus)?(\s*\(.*\))?\s*$/i, "echo"],
+];
+const APPLE_MODELS = [
+  [/homepod\s*mini/i, "homepod_mini"],
+  [/homepod/i, "homepod"],
+  [/apple\s*tv/i, "apple_tv"],
+];
+const pictureFamily = (model, manufacturer, platform = "") => {
+  const m = String(model || "").trim();
+  if (!m) return "";
+  const maker = String(manufacturer || "").toLowerCase();
+  const amazon = maker ? maker.includes("amazon") : platform === "alexa_media";
+  const apple = maker ? maker.includes("apple") : platform === "apple_tv";
+  const list = [...(amazon ? AMAZON_MODELS : []), ...(apple ? APPLE_MODELS : [])];
+  return list.find(([re]) => re.test(m))?.[1] || "";
+};
 
 // ---------------------------------------------------------------------------
 // Styles
@@ -1039,7 +1369,10 @@ class MediaBase extends HTMLElement {
     const { id } = findPlayer(h, this._config, this._active);
     if (!id) return null;
     const ids = [id, ...roomIds(h, this._config, id), ...groupOf(h.states[id]), favoritesSensor(h, this._config, id), ...listedPlayers(this._config)];
-    return [h.entities, h.language, h.locale, h.themes?.darkMode, this._active, ...ids.map((i) => h.states[i])];
+    // Alexa: the switch and sensors of each Echo shown.
+    // Apple TV: its remote entity.
+    const extras = ids.flatMap((i) => (i ? [...Object.values(alexaExtras(h, i) || {}), remoteOf(h, i)] : []));
+    return [h.entities, h.devices, h.language, h.locale, h.themes?.darkMode, this._active, ...[...ids, ...extras].map((i) => h.states[i])];
   }
 
   connectedCallback() {
@@ -1290,6 +1623,12 @@ class MediaBase extends HTMLElement {
         this._toggled = new Map(this._toggled).set(key, !this._toggled?.get(key));
         return this._update();
       }
+      case "remote":
+        // Apple TV: the target is the device's remote entity, the value the command.
+        return this._call("send_command", { entity_id: id, command: el.dataset.value }, null, "remote");
+      case "dnd":
+        // Alexa: the target is the Echo's do-not-disturb switch.
+        return this._call("toggle", { entity_id: id }, null, "switch");
       case "play":
       case "pause":
       case "stop":
@@ -1423,13 +1762,18 @@ class MediaBase extends HTMLElement {
     const members = groupOf(s).filter((m) => m !== id && this._s(m));
     if (members.length) return this._t("grouped", { names: members.map((m) => nameOf(this._hass, m)).join(", ") });
     const a = s?.attributes || {};
+    // Jellyfin: the client app of the session (its device's model); Alexa: a speaker group says so.
+    if (isJellyfin(this._hass, id)) return [deviceOf(this._hass, id)?.model, PLATFORMS.jellyfin].filter(Boolean).join(" · ");
+    if (isAlexaGroup(this._hass, id)) return this._t("speaker_group");
+    // Apple TV integration: the app playing, else the device's model (an Apple TV box, a HomePod).
+    if (isAppleTv(this._hass, id)) return a.app_name || a.source || deviceOf(this._hass, id)?.model || PLATFORMS.apple_tv;
     return a.app_name || a.source || PLATFORMS[platformOf(this._hass, id)] || "";
   }
 
   _header(id, s) {
     const c = this._config;
     const cls = statusClass(s?.state);
-    const icon = groupOf(s).length > 1 ? ICONS.speakers : ICONS[kindOf(s)];
+    const icon = groupOf(s).length > 1 || isAlexaGroup(this._hass, id) ? ICONS.speakers : ICONS[kindFor(this._hass, id, s)];
     const sub = this._subtitle(id, s);
     const back = isStacked(c) && this._active ? this._iconButton("back", ICONS.back, this._t("back"), "zoom back") : "";
     return `
@@ -1445,14 +1789,16 @@ class MediaBase extends HTMLElement {
   }
 
   // Artwork (or the drawn picture of the device when there is none), with the playback animation over it.
-  _art(id, s, { vinyl = false } = {}) {
+  _art(id, s, { vinyl = false, front = false } = {}) {
     const art = artOf(this._hass, s);
     const st = s?.state;
     const label = esc(s?.attributes?.media_title || nameOf(this._hass, id));
     if (!art) {
-      const on = st === "playing" || (st === "on" && kindOf(s) !== "speaker");
+      const kind = kindFor(this._hass, id, s);
+      const on = st === "playing" || (st === "on" && kind !== "speaker");
       const f = FINISH[this._hass.themes?.darkMode ? "dark" : "light"];
-      return `<div class="pic-box clickable" role="button" tabindex="0" aria-label="${label}" data-entity="${esc(id)}">${PICTURES[kindOf(s)](on, f)}</div>`;
+      const draw = DEVICE_PICTURES[familyOf(this._hass, id)] || PICTURES[kind];
+      return `<div class="pic-box clickable" role="button" tabindex="0" aria-label="${label}" data-entity="${esc(id)}">${draw(on, f, front)}</div>`;
     }
     const over = st === "buffering" ? `<div class="spinner"></div>` : st === "playing" || st === "paused" ? `<div class="eq ${st}"><i></i><i></i><i></i><i></i></div>` : "";
     const box = `<div class="art clickable" role="button" tabindex="0" aria-label="${label}" data-entity="${esc(id)}"><img src="${esc(art)}" alt="">${over}</div>`;
@@ -1461,10 +1807,65 @@ class MediaBase extends HTMLElement {
     return `<div class="art-wrap${disc ? " vinyl-on" : ""}">${disc}${box}</div>`;
   }
 
-  _meta(s) {
+  // Date and time of an Alexa alarm, timer or reminder: the time today, with the day otherwise.
+  _when(iso) {
+    const t = Date.parse(iso);
+    if (!Number.isFinite(t)) return "";
+    const d = new Date(t);
+    const same = d.toDateString() === new Date(Date.now()).toDateString();
+    const opts = same ? { hour: "2-digit", minute: "2-digit" } : { weekday: "short", hour: "2-digit", minute: "2-digit" };
+    try {
+      return new Intl.DateTimeFormat(lang(this._hass, this._config), opts).format(d);
+    } catch (_e) {
+      return d.toLocaleString();
+    }
+  }
+
+  // Alexa: "Last called" badge, the next alarm, timer and reminder of the Echo, and its do-not-disturb switch.
+  _alexaRow(id, s, compact = false) {
+    const x = alexaExtras(this._hass, id);
+    if (!x) return "";
+    const items = [];
+    if (s?.attributes?.last_called === true) items.push(`<span class="tag">${esc(this._t("last_called"))}</span>`);
+    for (const key of ["alarm", "timer", "reminder"]) {
+      const st = x[key] ? this._s(x[key]) : null;
+      const when = st && !offline(st) ? this._when(st.state) : "";
+      if (!when) continue;
+      const label = this._t(`next_${key}`);
+      items.push(
+        `<span class="next" title="${esc(`${label} ${when}`)}">${svgIcon(ICONS[key])}${compact ? "" : `<span>${esc(label)}</span>`}<span>${esc(when)}</span></span>`,
+      );
+    }
+    const sw = x.dnd ? this._s(x.dnd) : null;
+    const dnd = sw ? this._btn("dnd", ICONS.dnd, this._t("dnd"), { on: sw.state === "on", target: x.dnd, disabled: offline(sw) }) : "";
+    if (!items.length && !dnd) return "";
+    return `<div class="alexa${compact ? " compact" : ""}"><style>${ALEXA_STYLE}</style><div class="alexa-info">${items.join("")}</div>${dnd}</div>`;
+  }
+
+  // Second line of a Jellyfin or Apple TV item: "Series · S1E3" for an episode, "Movie" for a film; nothing else changes.
+  _videoLine(id, s) {
+    if (!(isJellyfin(this._hass, id) || isAppleTv(this._hass, id)) || !isActive(s)) return "";
+    const a = s.attributes || {};
+    const type = String(a.media_content_type || "");
+    if (a.media_series_title || type === "tvshow" || type === "episode") {
+      const n = (v) => (v === undefined || v === null || v === "" ? "" : String(v));
+      const code = `${n(a.media_season) ? `S${n(a.media_season)}` : ""}${n(a.media_episode) ? `E${n(a.media_episode)}` : ""}`;
+      return [a.media_series_title, code].filter(Boolean).join(" · ");
+    }
+    return type === "movie" ? this._t("movie") : "";
+  }
+
+  // Second line of a player in a list (rooms, stacked rows): the track and its artist, or the episode line.
+  _rowSub(id, s) {
+    const a = s?.attributes || {};
+    if (!isActive(s) || !a.media_title) return this._stateText(s);
+    return [a.media_title, this._videoLine(id, s) || a.media_artist].filter(Boolean).join(" · ");
+  }
+
+  _meta(s, id = "") {
     const a = s?.attributes || {};
     const title = a.media_title || (s?.state === "on" || s?.state === "idle" ? a.source || a.app_name : "") || this._t("nothing_playing");
-    const artist = a.media_artist || a.media_album_artist || a.media_series_title || a.media_channel || "";
+    const artist = (id && this._videoLine(id, s)) || a.media_artist || a.media_album_artist || a.media_series_title || a.media_channel || "";
     const extra = [a.media_album_name];
     if (Number(a.queue_size) > 1 && Number.isFinite(Number(a.queue_position))) extra.push(this._t("track_of", { n: a.queue_position, total: a.queue_size }));
     const album = extra.filter(Boolean).join(" · ");
@@ -1586,10 +1987,12 @@ class MediaCard extends MediaBase {
     if (error) return this._errorCard(error);
     const c = this._config;
     const art = artOf(this._hass, s);
-    const parts = [`<div class="hero">${this._art(id, s, { vinyl: true })}${this._meta(s)}</div>`];
+    const parts = [`<div class="hero">${this._art(id, s, { vinyl: true })}${this._meta(s, id)}</div>`];
     if (c.show_progress !== false) parts.push(this._progress(id, s));
     if (c.show_controls !== false) parts.push(`<div class="controls">${this._controls(s)}</div>`);
+    parts.push(this._alexaRow(id, s));
     if (c.show_volume !== false) parts.push(this._volume(id, s));
+    if (c.show_remote === true) parts.push(this._remote(id));
     if (c.show_rooms !== false) parts.push(this._rooms(id, s));
     if (c.show_source !== false) parts.push(this._sources(id, s));
     if (c.show_queue !== false) parts.push(this._queueSection(id));
@@ -1659,13 +2062,14 @@ class MediaCard extends MediaBase {
       const parts = [
         `<div class="player-head">${this._art(id, s)}<div class="player-main"><div class="player-name clickable" role="button" tabindex="0" data-action="show_player" data-target="${esc(
           id,
-        )}" title="${esc(this._t("show_player", { name }))}"><span>${esc(name)}</span>${svgIcon(ICONS.chevron_right)}</div>${this._meta(s)}</div>${this._stateChip(id, s)}</div>`,
+        )}" title="${esc(this._t("show_player", { name }))}"><span>${esc(name)}</span>${svgIcon(ICONS.chevron_right)}</div>${this._meta(s, id)}</div>${this._stateChip(id, s)}</div>`,
       ];
       if (c.show_progress !== false) parts.push(this._progress(id, s, true, true));
       if (c.show_controls !== false) {
         const controls = this._controls(s, false, { target: id, big: false });
         if (controls) parts.push(`<div class="controls">${controls}</div>`);
       }
+      parts.push(this._alexaRow(id, s, true));
       if (c.show_volume !== false) parts.push(this._volume(id, s));
       return `<div class="player">${parts.filter(Boolean).join("")}</div>`;
     });
@@ -1689,15 +2093,14 @@ class MediaCard extends MediaBase {
         const isMain = rid === mainId;
         const member = isMain || this._isMember(mainId, rid);
         const name = nameOf(this._hass, rid);
-        const a = s?.attributes || {};
-        const sub = isActive(s) && a.media_title ? [a.media_title, a.media_artist].filter(Boolean).join(" · ") : this._stateText(s);
+        const sub = this._rowSub(rid, s);
         const ring = member && members.length > 1 && main?.state === "playing" && s?.state === "playing" ? " ring" : "";
         const link =
           !isMain && canGroup && has(s, F.GROUPING)
             ? this._btn(member ? "leave" : "join", ICONS.link, this._t(member ? "leave" : "join", { name }), { on: member, target: rid, disabled: offline(s) })
             : "";
         return `<div class="room${isMain ? " current" : ""}">
-          <div class="room-icon ${statusClass(s?.state)}${ring}">${svgIcon(ICONS[kindOf(s)])}</div>
+          <div class="room-icon ${statusClass(s?.state)}${ring}">${svgIcon(ICONS[kindFor(this._hass, rid, s)])}</div>
           <div class="room-main">
             <div class="room-name clickable" role="button" tabindex="0" data-action="show_player" data-target="${esc(rid)}" title="${esc(this._t("show_player", { name }))}">${esc(name)}</div>
             <div class="room-sub">${esc(sub)}</div>
@@ -1803,6 +2206,24 @@ class MediaCard extends MediaBase {
       );
   }
 
+  // Apple TV remote (`show_remote`): a direction pad with select, then menu, home and play / pause, sent to the
+  // device's remote entity (remote.send_command).
+  _remote(id) {
+    const rid = remoteOf(this._hass, id);
+    if (!rid) return "";
+    const disabled = offline(this._s(rid));
+    const key = (cmd, icon) => this._btn("remote", ICONS[icon], this._t(`r_${cmd}`), { target: rid, value: cmd, disabled });
+    return this._section(
+      "remote",
+      ICONS.remote,
+      this._t("remote"),
+      () => `<style>${REMOTE_STYLE}</style><div class="remote">
+        <div class="dpad"><i></i>${key("up", "chevron_up")}<i></i>${key("left", "chevron_left")}${key("select", "select")}${key("right", "chevron_right")}<i></i>${key("down", "chevron_down")}<i></i></div>
+        <div class="remote-keys">${key("menu", "back")}${key("home", "home")}${key("play_pause", "play_pause")}</div>
+      </div>`,
+    );
+  }
+
   _favorites(id, s) {
     const favs = favoritesOf(this._hass, this._config, id);
     if (!favs.length || !has(s, F.PLAY_MEDIA)) return "";
@@ -1882,8 +2303,8 @@ class MediaMiniCard extends MediaCard {
       <ha-card>
         ${this._header(id, s)}
         <div class="content">
-          <div class="row">${this._art(id, s)}${this._meta(s)}${controls ? `<div class="controls">${controls}</div>` : ""}</div>
-          ${c.show_progress !== false ? this._progress(id, s, false) : ""}
+          <div class="row">${this._art(id, s, { front: true })}${this._meta(s, id)}${controls ? `<div class="controls">${controls}</div>` : ""}</div>
+          ${c.show_progress !== false ? this._progress(id, s, false) : ""}${this._alexaRow(id, s, true)}
           ${c.show_volume !== false ? this._volume(id, s) : ""}
         </div>
       </ha-card>`;
@@ -1897,9 +2318,8 @@ class MediaMiniCard extends MediaCard {
     const c = this._config;
     const rows = ids.map((id) => {
       const s = this._s(id);
-      const a = s?.attributes || {};
       const open = !!this._toggled?.get(`player:${id}`);
-      const sub = isActive(s) && a.media_title ? [a.media_title, a.media_artist].filter(Boolean).join(" · ") : this._stateText(s);
+      const sub = this._rowSub(id, s);
       const play = !open && c.show_controls !== false && !isOff(s) ? this._playButton(s, { target: id }) : "";
       const v = volPct(s);
       const vol =
@@ -1910,13 +2330,14 @@ class MediaMiniCard extends MediaCard {
         ? [
             c.show_progress !== false ? this._progress(id, s, true, true) : "",
             c.show_controls !== false ? `<div class="controls">${this._controls(s, false, { target: id, big: false })}</div>` : "",
+            this._alexaRow(id, s, true),
             c.show_volume !== false ? this._volume(id, s) : "",
           ]
             .filter((p) => p && p !== '<div class="controls"></div>')
             .join("")
         : "";
       return `<div class="pitem${open ? " open" : ""}">
-          <div class="prow">${this._art(id, s)}<div class="prow-main clickable" role="button" tabindex="0" data-action="expand_player" data-target="${esc(id)}" aria-expanded="${open}"><div class="prow-name">${esc(
+          <div class="prow">${this._art(id, s, { front: true })}<div class="prow-main clickable" role="button" tabindex="0" data-action="expand_player" data-target="${esc(id)}" aria-expanded="${open}"><div class="prow-name">${esc(
             nameOf(this._hass, id),
           )}</div><div class="prow-sub">${esc(sub)}</div></div>${play}${vol}</div>${detail}
         </div>`;
@@ -2052,8 +2473,10 @@ class MediaCardEditor extends MediaEditorBase {
       ["show_source", true],
       ["show_queue", true],
       ["show_favorites", true],
+      ["show_remote", false],
       ["only_playing", false],
       ["include_paused", false],
+      ["hide_idle_sessions", true],
     ];
   }
 
@@ -2089,8 +2512,10 @@ class MediaMiniCardEditor extends MediaEditorBase {
       ["show_controls", true],
       ["show_volume", true],
       ["zoom", true],
+      ["show_remote", false],
       ["only_playing", false],
       ["include_paused", false],
+      ["hide_idle_sessions", true],
     ];
   }
 
