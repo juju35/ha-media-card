@@ -230,6 +230,25 @@ extra(
   { manufacturer: "Apple", model: "HomePod (gen 2)" },
 );
 
+// Philips TV (core philips_js): a TV on an app (its channels and apps as sources) with its remote, its Ambilight
+// light, its Ambilight + Hue and screen switches and its recording sensors on the same device.
+const PHILIPS = PAUSE | VOLUME_SET | VOLUME_MUTE | PREV | NEXT | TURN_ON | TURN_OFF | PLAY_MEDIA | VOLUME_STEP | SELECT_SOURCE | STOP | PLAY | BROWSE;
+const ptv = extra(
+  "media_player.bedroom_philips_tv",
+  "philips_js",
+  "Bedroom Philips TV",
+  "on",
+  PHILIPS,
+  { device_class: "tv", source: "Netflix", source_list: ["TV", "Netflix", "YouTube", "HDMI 1"], app_name: "Netflix", volume_level: 0.25 },
+  { manufacturer: "Philips", model: "55PUS6753/12" },
+);
+extraEntity("remote.bedroom_philips_tv_remote", "philips_js", ptv, "remote", "on");
+extraEntity("light.bedroom_philips_tv_ambilight", "philips_js", ptv, "ambilight", "on");
+extraEntity("switch.bedroom_philips_tv_ambilight_hue", "philips_js", ptv, "ambilight_hue", "off");
+extraEntity("switch.bedroom_philips_tv_screen_state", "philips_js", ptv, "screen_state", "on");
+extraEntity("binary_sensor.bedroom_philips_tv_recording_ongoing", "philips_js", ptv, "recording_ongoing", "on");
+extraEntity("binary_sensor.bedroom_philips_tv_new_recording_available", "philips_js", ptv, "recording_new", "off");
+
 // One player per drawn device family, playing with no artwork (the pictures and their animations).
 export const FAMILY_PLAYERS = {};
 for (const [family, platform, model, maker] of [
