@@ -7,7 +7,10 @@
 - `hide_idle_sessions` (default on): Jellyfin sessions with nothing playing are left out of `players` (named in the line at the bottom) and of the rooms.
 - **Alexa Media Player**: *Last called* badge, the Echo's next alarm, timer and reminder in one line, a do-not-disturb button (its *Do not disturb* switch), Alexa speaker groups (*Everywhere*, multiroom) shown as groups; the mini card and the stacked players get the compact line.
 - Alexa content in `favorites` documented (`AMAZON_MUSIC`, `TUNEIN`… or `custom` for a voice command).
-- Visual editors: the *Hide idle Jellyfin sessions* option; the new texts in the 22 languages.
+- **Apple TV**: the app playing in the subtitle (else the device's model), the episode (*Series · S1E4*), the apps as sources, and an optional **remote** (`show_remote`): direction pad, select, menu, home and play / pause through the device's `remote` entity.
+- **HomePod**: a speaker, with the controls it supports and no join button (the integration has no grouping).
+- **Device pictures**: with no artwork, Echo speakers and displays, HomePods and Apple TV boxes are drawn from their device model (cylinder, large cylinder, sphere, puck, half sphere, display, small display, tall and small mesh speakers, streaming box): original stylized silhouettes with no logo or brand, whose lights pulse while playing; the small mesh speaker is seen from above in the full card and straight on in the mini card.
+- Visual editors: the *Hide idle Jellyfin sessions* and *Show the remote* options; the new texts in the 22 languages.
 - Other players render exactly as before.
 
 ## 1.1.0 - 2026-11-13
