@@ -1387,8 +1387,9 @@ class MediaBase extends HTMLElement {
     this._onPressEnd = () => {
       window.removeEventListener("pointerup", this._onPressEnd, true);
       window.removeEventListener("pointercancel", this._onPressEnd, true);
+      // After the click (which may have rendered already, or not: a click beside every button renders nothing), the
+      // update held during the press is drawn now rather than at the next one from Home Assistant.
       setTimeout(() => {
-        if (!this._pressing) return;
         this._pressing = false;
         if (this._dirty && !this._dragging) {
           this._dirty = false;

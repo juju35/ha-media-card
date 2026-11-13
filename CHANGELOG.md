@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.3.3 - 2026-11-13
+
+### Fixes
+- An update held while a press was in progress is drawn right after the release, even when the click hits no button. Before, it waited for the next update from Home Assistant.
+
 ## 1.3.2 - 2026-11-13
 
 ### Fixes
