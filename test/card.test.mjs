@@ -442,6 +442,38 @@ test("visual editors: stub config, and defaults kept out of the YAML", () => {
   assert.equal(FEATURES.music_assistant & mc.F.GROUPING, mc.F.GROUPING);
 });
 
+const editorForm = (Editor, config) => {
+  const ed = new Editor();
+  ed.setConfig(config);
+  const form = { listeners: {}, addEventListener(t, f) { this.listeners[t] = f; } };
+  const doc = mc.document;
+  const create = doc.createElement;
+  doc.createElement = (t) => (t === "ha-form" ? form : create(t));
+  ed.appendChild = () => {};
+  ed.hass = makeHass();
+  doc.createElement = create;
+  const events = [];
+  ed.dispatchEvent = (e) => events.push(e);
+  return { form, events };
+};
+const schemaNames = (schema) => schema.flatMap((s) => (s.schema ? schemaNames(s.schema) : [s.name]));
+
+test("visual editors: the mini card offers the full card's options its detail view uses", () => {
+  const full = schemaNames(editorForm(mc.MediaCardEditor, { entity: LIVING }).form.schema);
+  const mini = schemaNames(editorForm(mc.MediaMiniCardEditor, { entity: LIVING }).form.schema);
+  for (const n of full) assert.ok(mini.includes(n), n);
+  for (const n of ["zoom", "entities", "collapsed", "favorites_entity", "show_rooms", "show_queue", "show_favorites", "show_background"]) assert.ok(mini.includes(n), n);
+  assert.ok(!mini.includes("favorites") && !full.includes("favorites"), "favorites stay YAML only");
+});
+
+test("visual editors: `- entity:` items are handed over as ids and kept as objects", () => {
+  const rooms = [{ entity: "media_player.lounge" }, "media_player.office"];
+  const { form, events } = editorForm(mc.MediaMiniCardEditor, { entity: LIVING, entities: rooms });
+  assert.deepEqual([...form.data.entities], ["media_player.lounge", "media_player.office"]);
+  form.listeners["value-changed"]({ stopPropagation() {}, detail: { value: { entity: LIVING, entities: ["media_player.lounge", "media_player.office", "media_player.kitchen"] } } });
+  assert.deepEqual(JSON.parse(JSON.stringify(events[0].detail.config.entities)), [{ entity: "media_player.lounge" }, "media_player.office", "media_player.kitchen"]);
+});
+
 // Several players (`players`): stacked in the full card, listed in the mini card.
 const PLAYERS = ["media_player.living_room", "media_player.lounge", "media_player.office"];
 const stacked = (config = {}, hass = makeHass(), Card = mc.MediaCard) => {

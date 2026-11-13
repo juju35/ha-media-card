@@ -213,16 +213,16 @@ language: fr
 | `show_progress` | both | `true` | Progress bar and times (only while a track with a duration plays) |
 | `show_controls` | both | `true` | Transport buttons; the mini card keeps previous, play / pause and next |
 | `show_volume` | both | `true` | Volume slider (or - / + buttons) and mute |
-| `zoom` | mini | `true` | Detail button at the top right of the mini card: it shows the full card's content (with the same options, so `entities`, `favorites`, `collapsed`… can be set on the mini card too) and switches back; `false` removes the button |
-| `show_background` | full | `true` | Blurred artwork behind the whole card |
-| `entities` | full | Players the shown one can group with | Rooms of the card: a list of `media_player` entities (or `- entity: media_player.x`), listed after the shown player |
-| `show_rooms` | full | `true` | Rooms section: volume per room, join / leave the group, Ungroup all |
-| `show_source` | full | `true` | Source and sound mode section (players that support them) |
-| `show_queue` | full | `true` | Queue section (Music Assistant players) |
-| `show_favorites` | full | `true` | Favorites section (players that can play media) |
-| `collapsed` | full | `[source, queue, favorites]` | Sections folded by default, among `rooms`, `source`, `queue`, `favorites` and `remote` (`[]` to unfold everything). Click a section title (or Tab to it and press Enter or Space) to fold or unfold it; a click elsewhere on the page folds them back |
-| `favorites` | full | — | Your favorites, played with `media_player.play_media`: a list of `name`, `media_content_id`, `media_content_type` (default `music`) and an optional `image` |
-| `favorites_entity` | full | Sonos favorites sensor | Sensor whose `items` attribute lists favorites as `{ id: title }` (found by itself for a Sonos player) |
+| `zoom` | mini | `true` | Detail button at the top right of the mini card: it shows the full card's content (with the same options, so `entities`, `favorites`, `collapsed`… can be set on the mini card too, in YAML or, but for `favorites`, in its visual editor) and switches back; `false` removes the button |
+| `show_background` | both | `true` | Blurred artwork behind the whole card |
+| `entities` | both | Players the shown one can group with | Rooms of the card: a list of `media_player` entities (or `- entity: media_player.x`), listed after the shown player |
+| `show_rooms` | both | `true` | Rooms section: volume per room, join / leave the group, Ungroup all |
+| `show_source` | both | `true` | Source and sound mode section (players that support them) |
+| `show_queue` | both | `true` | Queue section (Music Assistant players) |
+| `show_favorites` | both | `true` | Favorites section (players that can play media) |
+| `collapsed` | both | `[source, queue, favorites]` | Sections folded by default, among `rooms`, `source`, `queue`, `favorites` and `remote` (`[]` to unfold everything). Click a section title (or Tab to it and press Enter or Space) to fold or unfold it; a click elsewhere on the page folds them back |
+| `favorites` | both | — | Your favorites, played with `media_player.play_media`: a list of `name`, `media_content_id`, `media_content_type` (default `music`) and an optional `image`. YAML only (the visual editor keeps it) |
+| `favorites_entity` | both | Sonos favorites sensor | Sensor whose `items` attribute lists favorites as `{ id: title }` (found by itself for a Sonos player) |
 | `language` | both | Auto | Force language: `en`, `fr`, `de`, `es`, `sr`, `sr-Latn`, `it`, `nl`, `pt`, `pl`, `ro`, `da`, `sv`, `bg`, `ru`, `uk`, `hu`, `sk`, `cs`, `sl`, `lv` or `el` (auto-detects from HA settings) |
 
 ### Rooms and groups

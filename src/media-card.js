@@ -2581,6 +2581,9 @@ const LANGUAGES = [
 const HELPERS = { zoom: "zoom_helper", players: "players_helper" };
 
 // Several players stacked in the card (both editors).
+// Lists of players that accept `- entity: media_player.x` as well as plain ids in the YAML.
+const ENTITY_LISTS = ["players", "entities"];
+
 const PLAYERS_FIELD = { name: "players", selector: { entity: { domain: "media_player", multiple: true } } };
 
 class MediaEditorBase extends HTMLElement {
@@ -2631,6 +2634,12 @@ class MediaEditorBase extends HTMLElement {
       this._form.addEventListener("value-changed", (ev) => {
         ev.stopPropagation();
         const config = { ...ev.detail.value };
+        // The players and rooms keep their YAML form (`- entity: media_player.x`) when they were objects.
+        for (const k of ENTITY_LISTS) {
+          if (!Array.isArray(config[k])) continue;
+          const prev = new Map([].concat(this._config[k] || []).map((e) => [typeof e === "string" ? e : e?.entity, e]));
+          config[k] = config[k].map((id) => prev.get(id) ?? id);
+        }
         const defaults = { ...Object.fromEntries(toggles), ...this.constructor.defaults };
         // Keep the YAML minimal: drop empty values and options left at their default.
         for (const [k, v] of Object.entries(config)) {
@@ -2644,6 +2653,8 @@ class MediaEditorBase extends HTMLElement {
     }
     const data = { ...this.constructor.defaults, ...this._config };
     for (const [name, def] of toggles) if (data[name] === undefined) data[name] = def;
+    // The entity pickers take entity ids: `- entity: media_player.x` items are handed over as their id.
+    for (const k of ENTITY_LISTS) if (Array.isArray(data[k])) data[k] = data[k].map((e) => (typeof e === "string" ? e : e?.entity)).filter(Boolean);
     if (!data.entity && !listedPlayers(data).length) data.entity = MediaCard.getStubConfig(this._hass).entity;
     this._form.hass = this._hass;
     // A new data or schema object re-renders the whole form: only when the config or the language changed.
@@ -2702,24 +2713,14 @@ class MediaCardEditor extends MediaEditorBase {
   }
 }
 
-class MediaMiniCardEditor extends MediaEditorBase {
+// The mini card's detail button shows the full card: its editor offers the full card's options as well (rooms,
+// folded sections, favorites sensor and the sections' toggles), on top of its own.
+class MediaMiniCardEditor extends MediaCardEditor {
+  // The full card's toggles, with the detail button after the volume.
   static get toggles() {
-    return [
-      ["show_title", true],
-      ["show_subtitle", true],
-      ["show_progress", true],
-      ["show_controls", true],
-      ["show_volume", true],
-      ["zoom", true],
-      ["show_remote", false],
-      ["only_playing", false],
-      ["include_paused", false],
-      ["hide_idle_sessions", true],
-    ];
-  }
-
-  static extraFields() {
-    return [PLAYERS_FIELD];
+    const full = MediaCardEditor.toggles;
+    const at = full.findIndex(([name]) => name === "show_volume") + 1;
+    return [...full.slice(0, at), ["zoom", true], ...full.slice(at)];
   }
 }
 
