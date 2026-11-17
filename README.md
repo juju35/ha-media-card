@@ -212,7 +212,7 @@ language: fr
 | `hide_idle_sessions` | both | `true` | Jellyfin: leave the sessions with nothing playing out of `players` (named in the line at the bottom) and of the rooms |
 | `title` | both | Player name | Card title |
 | `illustration` | both | `true` | Illustrated header: the media room with the player's drawn device, the title on its wall and the state in the icon's colour and the subtitle; `false` keeps the classic header (icon, title, state chip) |
-| `illustration_theme` | both | `auto` | Day or night picture of the illustration: `auto` follows `sun.sun` (else the dark theme), `day` or `night` forces one |
+| `illustration_theme` | both | `auto` | Day or night picture of the illustration: `auto` is night when `sun.sun` is below the horizon or the theme is dark, `day` or `night` forces one |
 | `show_title` | both | `true` | Show the title in the header (e.g. `false` under a section heading of your own) |
 | `show_subtitle` | both | `true` | Show the subtitle (group members, app or source) under the title |
 | `show_progress` | both | `true` | Progress bar and times (only while a track with a duration plays) |

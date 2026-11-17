@@ -417,12 +417,15 @@ test("the illustrated header: media room, the player's own device, state pill in
   assert.match(html(newCard({}, makeHass(withState(LIVING, { state: "paused" })))), /<div class="type-icon warn clickable"/);
   assert.match(html(newCard({}, makeHass(withState(LIVING, { state: "idle" })))), /<div class="type-icon idle clickable"/);
   assert.match(html(newCard({}, makeHass(withState(LIVING, { state: "unavailable" })))), /<div class="type-icon crit clickable"/);
-  // Night: forced, from the sun, else from the dark theme; day forced over it.
+  // Night: forced, else from the sun below the horizon or the dark theme (even with the sun up); day forced over it.
   assert.match(html(newCard({ illustration_theme: "night" })), /<div class="banner night">/);
   const sun = (state) => ({ ...states, "sun.sun": { entity_id: "sun.sun", state, attributes: {} } });
   assert.match(html(newCard({}, makeHass(sun("below_horizon")))), /<div class="banner night">/);
   assert.match(html(newCard({}, makeHass(states, { themes: { darkMode: true } }))), /<div class="banner night">/);
   assert.match(html(newCard({ illustration_theme: "day" }, makeHass(sun("below_horizon")))), /<div class="banner">/);
+  assert.match(html(newCard({}, makeHass(sun("above_horizon"), { themes: { darkMode: true } }))), /<div class="banner night">/);
+  assert.match(html(newCard({}, makeHass(sun("above_horizon"), { themes: { darkMode: false } }))), /<div class="banner">/);
+  assert.match(html(newCard({ illustration_theme: "day" }, makeHass(sun("above_horizon"), { themes: { darkMode: true } }))), /<div class="banner">/);
 });
 
 test("the illustrated header: unique picture ids per card, on the mini card too", () => {

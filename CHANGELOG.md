@@ -5,7 +5,8 @@
 ### Features
 - **Illustrated header** on the full and mini cards (90 px, as in the other ha-* cards): a media room (TV console, plant, a 10 px parquet strip edge to edge) with the player's own drawn device standing big in front (its model's picture, else the speaker, TV or receiver), animated as in the card. The TV behind it shows a moving equalizer while playing, a resting one while paused, and goes dark when off; a TV player stands on the console itself, with a framed picture and a floor lamp beside it.
 - The round header icon takes the player's state colour (playing, paused in amber, idle or off in grey, unavailable in red); the state is a pill right after the title (a dot and its label in the same colour; on its own line under the subtitle when the title row is too narrow, its dot alone on the narrowest cards), not repeated in the subtitle, and a click on the icon or the pill opens the player. The mini card's expand / collapse button is a 24 px frosted round button in the banner's top-right corner, the room moving left of it.
-- Night picture with the sun (`sun.sun`, else the dark theme); `illustration_theme: day | night` forces one, `illustration: false` keeps the classic header. Both options are in the visual editors, their labels in the 22 languages.
+- Night picture with the sun (`sun.sun`) or the dark theme; `illustration_theme: day | night` forces one, `illustration: false` keeps the classic header. Both options are in the visual editors, their labels in the 22 languages.
+- Night picture with the dark theme even while the sun is up.
 ## 1.4.1 - 2026-11-14
 
 ### Fixes

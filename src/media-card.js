@@ -1086,13 +1086,13 @@ const pictureFamily = (model, manufacturer, platform = "") => {
 // Scene picture 200 × 80, anchored bottom right; on a narrow card its left (the decor) is cut, never the device.
 // ---------------------------------------------------------------------------
 
-// Night picture: forced by illustration_theme, else the sun below the horizon, else Home Assistant's dark mode.
+// Night picture: forced by illustration_theme, else the sun below the horizon or Home Assistant's dark theme (dark mode alone without a valid sun.sun).
 const isNight = (hass, config) => {
   const theme = config?.illustration_theme;
   if (theme === "night") return true;
   if (theme === "day") return false;
   const sun = hass?.states?.["sun.sun"];
-  if (sun && sun.state !== "unavailable" && sun.state !== "unknown") return sun.state === "below_horizon";
+  if (sun && sun.state !== "unavailable" && sun.state !== "unknown") return sun.state === "below_horizon" || !!hass?.themes?.darkMode;
   return !!hass?.themes?.darkMode;
 };
 
