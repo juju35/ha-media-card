@@ -363,7 +363,18 @@ With no artwork, the card draws the device. Echo speakers and displays, HomePods
 | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/picture-echo.gif" alt="cylinder" width="170"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/picture-echo-studio.gif" alt="large cylinder" width="170"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/picture-echo-dot.gif" alt="sphere" width="170"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/picture-echo-dot-puck.gif" alt="puck" width="170"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/picture-echo-pop.gif" alt="half sphere" width="170"> |
 | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/picture-echo-show.gif" alt="display" width="170"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/picture-echo-show-small.gif" alt="small display" width="170"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/picture-homepod.gif" alt="tall mesh speaker" width="170"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/picture-homepod-mini.gif" alt="small mesh speaker" width="170"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/picture-apple-tv.gif" alt="streaming box" width="170"> |
 
-Each one has a dark twin (`picture-…-dark.gif`); the small mesh speaker straight on in the mini card: `picture-homepod-mini-front.gif`.
+In the dark theme:
+
+| | | | | |
+|---|---|---|---|---|
+| <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/picture-echo-dark.gif" alt="cylinder dark" width="170"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/picture-echo-studio-dark.gif" alt="large cylinder dark" width="170"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/picture-echo-dot-dark.gif" alt="sphere dark" width="170"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/picture-echo-dot-puck-dark.gif" alt="puck dark" width="170"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/picture-echo-pop-dark.gif" alt="half sphere dark" width="170"> |
+| <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/picture-echo-show-dark.gif" alt="display dark" width="170"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/picture-echo-show-small-dark.gif" alt="small display dark" width="170"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/picture-homepod-dark.gif" alt="tall mesh speaker dark" width="170"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/picture-homepod-mini-dark.gif" alt="small mesh speaker dark" width="170"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/picture-apple-tv-dark.gif" alt="streaming box dark" width="170"> |
+
+The small mesh speaker straight on, in the mini card:
+
+| Light | Dark |
+|---|---|
+| <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/picture-homepod-mini-front.gif" alt="small mesh speaker in the mini card" width="380"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/picture-homepod-mini-front-dark.gif" alt="small mesh speaker in the mini card dark" width="380"> |
 
 ## Screenshots
 
