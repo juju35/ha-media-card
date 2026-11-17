@@ -144,6 +144,7 @@ const STRINGS = {
     media: "Media", players: "Players (several, stacked in the card)", players_helper: "Two or more: one block per player, one under the other", only_playing: "Only the players that are playing", include_paused: "Paused players too", n_playing: "{n} playing", players_count: "{n} players", more_players: "{n} more: {names}", back: "Back to all players",
     movie: "Movie", last_called: "Last called", next_alarm: "Alarm", next_timer: "Timer", next_reminder: "Reminder", dnd: "Do not disturb", speaker_group: "Speaker group", hide_idle_sessions: "Hide idle Jellyfin sessions",
     remote: "Remote", r_up: "Up", r_down: "Down", r_left: "Left", r_right: "Right", r_select: "Select", r_menu: "Menu", r_home: "Home", r_play_pause: "Play / pause", show_remote: "Show the remote (Apple TV, Philips TV)", close_remote: "Close the remote", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Screen on or off", recording: "Recording", new_recording: "New recording",
+    illustration: "Animated illustration", illustration_theme: "Illustration theme", theme_auto: "Automatic (sun or dark theme)", theme_day: "Day", theme_night: "Night",
   },
   fr: {
     st_playing: "Lecture", st_paused: "En pause", st_idle: "Inactif", st_on: "Allumé", st_off: "Éteint", st_standby: "Veille", st_buffering: "Chargement", st_unavailable: "Indisponible", st_unknown: "Inconnu",
@@ -161,6 +162,7 @@ const STRINGS = {
     media: "Médias", players: "Lecteurs (plusieurs, empilés dans la carte)", players_helper: "Deux ou plus : un bloc par lecteur, l'un sous l'autre", only_playing: "Seulement les lecteurs en lecture", include_paused: "Les lecteurs en pause aussi", n_playing: "{n} en lecture", players_count: "{n} lecteurs", more_players: "{n} de plus : {names}", back: "Retour à tous les lecteurs",
     movie: "Film", last_called: "Dernier appelé", next_alarm: "Alarme", next_timer: "Minuteur", next_reminder: "Rappel", dnd: "Ne pas déranger", speaker_group: "Groupe d'enceintes", hide_idle_sessions: "Masquer les sessions Jellyfin inactives",
     remote: "Télécommande", r_up: "Haut", r_down: "Bas", r_left: "Gauche", r_right: "Droite", r_select: "Valider", r_menu: "Menu", r_home: "Accueil", r_play_pause: "Lecture / pause", show_remote: "Afficher la télécommande (Apple TV, Philips TV)", close_remote: "Fermer la télécommande", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Allumer ou éteindre l'écran", recording: "Enregistrement en cours", new_recording: "Nouvel enregistrement",
+    illustration: "Illustration animée", illustration_theme: "Thème de l’illustration", theme_auto: "Automatique (soleil ou thème sombre)", theme_day: "Jour", theme_night: "Nuit",
   },
   de: {
     st_playing: "Wiedergabe", st_paused: "Pausiert", st_idle: "Untätig", st_on: "An", st_off: "Aus", st_standby: "Standby", st_buffering: "Puffern", st_unavailable: "Nicht verfügbar", st_unknown: "Unbekannt",
@@ -178,6 +180,7 @@ const STRINGS = {
     media: "Medien", players: "Player (mehrere, in der Karte gestapelt)", players_helper: "Zwei oder mehr: ein Block pro Player, untereinander", only_playing: "Nur Player, die gerade abspielen", include_paused: "Auch pausierte Player", n_playing: "{n} spielen", players_count: "{n} Player", more_players: "{n} weitere: {names}", back: "Zurück zu allen Playern",
     movie: "Film", last_called: "Zuletzt angesprochen", next_alarm: "Wecker", next_timer: "Timer", next_reminder: "Erinnerung", dnd: "Nicht stören", speaker_group: "Lautsprechergruppe", hide_idle_sessions: "Inaktive Jellyfin-Sitzungen ausblenden",
     remote: "Fernbedienung", r_up: "Hoch", r_down: "Runter", r_left: "Links", r_right: "Rechts", r_select: "Auswählen", r_menu: "Menü", r_home: "Home", r_play_pause: "Wiedergabe / Pause", show_remote: "Fernbedienung anzeigen (Apple TV, Philips TV)", close_remote: "Fernbedienung schließen", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Bildschirm ein- oder ausschalten", recording: "Aufnahme läuft", new_recording: "Neue Aufnahme",
+    illustration: "Animierte Illustration", illustration_theme: "Thema der Illustration", theme_auto: "Automatisch (Sonne oder dunkles Design)", theme_day: "Tag", theme_night: "Nacht",
   },
   es: {
     st_playing: "Reproduciendo", st_paused: "En pausa", st_idle: "Inactivo", st_on: "Encendido", st_off: "Apagado", st_standby: "En espera", st_buffering: "Cargando", st_unavailable: "No disponible", st_unknown: "Desconocido",
@@ -195,6 +198,7 @@ const STRINGS = {
     media: "Multimedia", players: "Reproductores (varios, apilados en la tarjeta)", players_helper: "Dos o más: un bloque por reproductor, uno debajo de otro", only_playing: "Solo los reproductores en reproducción", include_paused: "También los reproductores en pausa", n_playing: "{n} reproduciendo", players_count: "{n} reproductores", more_players: "{n} más: {names}", back: "Volver a todos los reproductores",
     movie: "Película", last_called: "Último llamado", next_alarm: "Alarma", next_timer: "Temporizador", next_reminder: "Recordatorio", dnd: "No molestar", speaker_group: "Grupo de altavoces", hide_idle_sessions: "Ocultar sesiones de Jellyfin inactivas",
     remote: "Mando", r_up: "Arriba", r_down: "Abajo", r_left: "Izquierda", r_right: "Derecha", r_select: "Seleccionar", r_menu: "Menú", r_home: "Inicio", r_play_pause: "Reproducir / pausa", show_remote: "Mostrar el mando (Apple TV, Philips TV)", close_remote: "Cerrar el mando", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Encender o apagar la pantalla", recording: "Grabando", new_recording: "Nueva grabación",
+    illustration: "Ilustración animada", illustration_theme: "Tema de la ilustración", theme_auto: "Automático (sol o tema oscuro)", theme_day: "Día", theme_night: "Noche",
   },
   it: {
     st_playing: "In riproduzione", st_paused: "In pausa", st_idle: "Inattivo", st_on: "Acceso", st_off: "Spento", st_standby: "Standby", st_buffering: "Caricamento", st_unavailable: "Non disponibile", st_unknown: "Sconosciuto",
@@ -212,6 +216,7 @@ const STRINGS = {
     media: "Media", players: "Lettori (più lettori, impilati nella scheda)", players_helper: "Due o più: un blocco per lettore, uno sotto l'altro", only_playing: "Solo i lettori in riproduzione", include_paused: "Anche i lettori in pausa", n_playing: "{n} in riproduzione", players_count: "{n} lettori", more_players: "Altri {n}: {names}", back: "Torna a tutti i lettori",
     movie: "Film", last_called: "Ultimo chiamato", next_alarm: "Sveglia", next_timer: "Timer", next_reminder: "Promemoria", dnd: "Non disturbare", speaker_group: "Gruppo di altoparlanti", hide_idle_sessions: "Nascondi le sessioni Jellyfin inattive",
     remote: "Telecomando", r_up: "Su", r_down: "Giù", r_left: "Sinistra", r_right: "Destra", r_select: "Seleziona", r_menu: "Menu", r_home: "Home", r_play_pause: "Riproduci / pausa", show_remote: "Mostra il telecomando (Apple TV, Philips TV)", close_remote: "Chiudi il telecomando", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Accendi o spegni lo schermo", recording: "Registrazione in corso", new_recording: "Nuova registrazione",
+    illustration: "Illustrazione animata", illustration_theme: "Tema dell’illustrazione", theme_auto: "Automatico (sole o tema scuro)", theme_day: "Giorno", theme_night: "Notte",
   },
   nl: {
     st_playing: "Speelt af", st_paused: "Gepauzeerd", st_idle: "Inactief", st_on: "Aan", st_off: "Uit", st_standby: "Stand-by", st_buffering: "Bufferen", st_unavailable: "Niet beschikbaar", st_unknown: "Onbekend",
@@ -229,6 +234,7 @@ const STRINGS = {
     media: "Media", players: "Spelers (meerdere, gestapeld in de kaart)", players_helper: "Twee of meer: één blok per speler, onder elkaar", only_playing: "Alleen spelers die afspelen", include_paused: "Ook gepauzeerde spelers", n_playing: "{n} spelen af", players_count: "{n} spelers", more_players: "Nog {n}: {names}", back: "Terug naar alle spelers",
     movie: "Film", last_called: "Laatst aangesproken", next_alarm: "Wekker", next_timer: "Timer", next_reminder: "Herinnering", dnd: "Niet storen", speaker_group: "Speakergroep", hide_idle_sessions: "Inactieve Jellyfin-sessies verbergen",
     remote: "Afstandsbediening", r_up: "Omhoog", r_down: "Omlaag", r_left: "Links", r_right: "Rechts", r_select: "Selecteren", r_menu: "Menu", r_home: "Home", r_play_pause: "Afspelen / pauze", show_remote: "Afstandsbediening tonen (Apple TV, Philips TV)", close_remote: "Afstandsbediening sluiten", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Scherm aan of uit", recording: "Opname bezig", new_recording: "Nieuwe opname",
+    illustration: "Geanimeerde illustratie", illustration_theme: "Thema van de illustratie", theme_auto: "Automatisch (zon of donker thema)", theme_day: "Dag", theme_night: "Nacht",
   },
   pt: {
     st_playing: "A reproduzir", st_paused: "Em pausa", st_idle: "Inativo", st_on: "Ligado", st_off: "Desligado", st_standby: "Em espera", st_buffering: "A carregar", st_unavailable: "Indisponível", st_unknown: "Desconhecido",
@@ -246,6 +252,7 @@ const STRINGS = {
     media: "Multimédia", players: "Leitores (vários, empilhados no cartão)", players_helper: "Dois ou mais: um bloco por leitor, um por baixo do outro", only_playing: "Só os leitores em reprodução", include_paused: "Também os leitores em pausa", n_playing: "{n} a reproduzir", players_count: "{n} leitores", more_players: "Mais {n}: {names}", back: "Voltar a todos os leitores",
     movie: "Filme", last_called: "Último chamado", next_alarm: "Alarme", next_timer: "Temporizador", next_reminder: "Lembrete", dnd: "Não incomodar", speaker_group: "Grupo de colunas", hide_idle_sessions: "Ocultar sessões Jellyfin inativas",
     remote: "Comando", r_up: "Cima", r_down: "Baixo", r_left: "Esquerda", r_right: "Direita", r_select: "Selecionar", r_menu: "Menu", r_home: "Início", r_play_pause: "Reproduzir / pausa", show_remote: "Mostrar o comando (Apple TV, Philips TV)", close_remote: "Fechar o comando", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Ligar ou desligar o ecrã", recording: "A gravar", new_recording: "Nova gravação",
+    illustration: "Ilustração animada", illustration_theme: "Tema da ilustração", theme_auto: "Automático (sol ou tema escuro)", theme_day: "Dia", theme_night: "Noite",
   },
   pl: {
     st_playing: "Odtwarzanie", st_paused: "Wstrzymano", st_idle: "Bezczynny", st_on: "Włączony", st_off: "Wyłączony", st_standby: "Czuwanie", st_buffering: "Buforowanie", st_unavailable: "Niedostępny", st_unknown: "Nieznany",
@@ -263,6 +270,7 @@ const STRINGS = {
     media: "Multimedia", players: "Odtwarzacze (kilka, jeden pod drugim na karcie)", players_helper: "Dwa lub więcej: jeden blok na odtwarzacz, jeden pod drugim", only_playing: "Tylko odtwarzacze, które odtwarzają", include_paused: "Także wstrzymane odtwarzacze", n_playing: "Odtwarza: {n}", players_count: "Odtwarzacze: {n}", more_players: "Jeszcze {n}: {names}", back: "Wróć do wszystkich odtwarzaczy",
     movie: "Film", last_called: "Ostatnio wywołany", next_alarm: "Alarm", next_timer: "Minutnik", next_reminder: "Przypomnienie", dnd: "Nie przeszkadzać", speaker_group: "Grupa głośników", hide_idle_sessions: "Ukryj nieaktywne sesje Jellyfin",
     remote: "Pilot", r_up: "W górę", r_down: "W dół", r_left: "W lewo", r_right: "W prawo", r_select: "Wybierz", r_menu: "Menu", r_home: "Ekran główny", r_play_pause: "Odtwarzaj / pauza", show_remote: "Pokaż pilota (Apple TV, Philips TV)", close_remote: "Zamknij pilota", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Włącz lub wyłącz ekran", recording: "Nagrywanie", new_recording: "Nowe nagranie",
+    illustration: "Animowana ilustracja", illustration_theme: "Motyw ilustracji", theme_auto: "Automatycznie (słońce lub ciemny motyw)", theme_day: "Dzień", theme_night: "Noc",
   },
   sr: {
     st_playing: "Репродукција", st_paused: "Паузирано", st_idle: "Неактиван", st_on: "Укључен", st_off: "Искључен", st_standby: "Мировање", st_buffering: "Учитавање", st_unavailable: "Недоступан", st_unknown: "Непознато",
@@ -280,6 +288,7 @@ const STRINGS = {
     media: "Медији", players: "Плејери (више њих, један испод другог у картици)", players_helper: "Два или више: један блок по плејеру, један испод другог", only_playing: "Само плејери који репродукују", include_paused: "И паузирани плејери", n_playing: "{n} репродукује", players_count: "Плејера: {n}", more_players: "Још {n}: {names}", back: "Назад на све плејере",
     movie: "Филм", last_called: "Последњи позван", next_alarm: "Аларм", next_timer: "Тајмер", next_reminder: "Подсетник", dnd: "Не узнемиравај", speaker_group: "Група звучника", hide_idle_sessions: "Сакриј неактивне Jellyfin сесије",
     remote: "Даљински", r_up: "Горе", r_down: "Доле", r_left: "Лево", r_right: "Десно", r_select: "Изабери", r_menu: "Мени", r_home: "Почетна", r_play_pause: "Пусти / пауза", show_remote: "Прикажи даљински (Apple TV, Philips TV)", close_remote: "Затвори даљински", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Укључи или искључи екран", recording: "Снимање", new_recording: "Нови снимак",
+    illustration: "Анимирана илустрација", illustration_theme: "Тема илустрације", theme_auto: "Аутоматски (сунце или тамна тема)", theme_day: "Дан", theme_night: "Ноћ",
   },
   "sr-Latn": {
     st_playing: "Reprodukcija", st_paused: "Pauzirano", st_idle: "Neaktivan", st_on: "Uključen", st_off: "Isključen", st_standby: "Mirovanje", st_buffering: "Učitavanje", st_unavailable: "Nedostupan", st_unknown: "Nepoznato",
@@ -297,6 +306,7 @@ const STRINGS = {
     media: "Mediji", players: "Plejeri (više njih, jedan ispod drugog u kartici)", players_helper: "Dva ili više: jedan blok po plejeru, jedan ispod drugog", only_playing: "Samo plejeri koji reprodukuju", include_paused: "I pauzirani plejeri", n_playing: "{n} reprodukuje", players_count: "Plejera: {n}", more_players: "Još {n}: {names}", back: "Nazad na sve plejere",
     movie: "Film", last_called: "Poslednji pozvan", next_alarm: "Alarm", next_timer: "Tajmer", next_reminder: "Podsetnik", dnd: "Ne uznemiravaj", speaker_group: "Grupa zvučnika", hide_idle_sessions: "Sakrij neaktivne Jellyfin sesije",
     remote: "Daljinski", r_up: "Gore", r_down: "Dole", r_left: "Levo", r_right: "Desno", r_select: "Izaberi", r_menu: "Meni", r_home: "Početna", r_play_pause: "Pusti / pauza", show_remote: "Prikaži daljinski (Apple TV, Philips TV)", close_remote: "Zatvori daljinski", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Uključi ili isključi ekran", recording: "Snimanje", new_recording: "Novi snimak",
+    illustration: "Animirana ilustracija", illustration_theme: "Tema ilustracije", theme_auto: "Automatski (sunce ili tamna tema)", theme_day: "Dan", theme_night: "Noć",
   },
   ro: {
     st_playing: "Redare", st_paused: "În pauză", st_idle: "Inactiv", st_on: "Pornit", st_off: "Oprit", st_standby: "Standby", st_buffering: "Se încarcă", st_unavailable: "Indisponibil", st_unknown: "Necunoscut",
@@ -314,6 +324,7 @@ const STRINGS = {
     media: "Media", players: "Playere (mai multe, stivuite în card)", players_helper: "Două sau mai multe: un bloc pe player, unul sub altul", only_playing: "Doar playerele care redau", include_paused: "Și playerele în pauză", n_playing: "{n} redau", players_count: "{n} playere", more_players: "Încă {n}: {names}", back: "Înapoi la toate playerele",
     movie: "Film", last_called: "Ultimul apelat", next_alarm: "Alarmă", next_timer: "Cronometru", next_reminder: "Memento", dnd: "Nu deranjați", speaker_group: "Grup de boxe", hide_idle_sessions: "Ascunde sesiunile Jellyfin inactive",
     remote: "Telecomandă", r_up: "Sus", r_down: "Jos", r_left: "Stânga", r_right: "Dreapta", r_select: "Selectează", r_menu: "Meniu", r_home: "Acasă", r_play_pause: "Redare / pauză", show_remote: "Afișează telecomanda (Apple TV, Philips TV)", close_remote: "Închide telecomanda", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Pornește sau oprește ecranul", recording: "Înregistrare în curs", new_recording: "Înregistrare nouă",
+    illustration: "Ilustrație animată", illustration_theme: "Tema ilustrației", theme_auto: "Automat (soare sau temă întunecată)", theme_day: "Zi", theme_night: "Noapte",
   },
   da: {
     st_playing: "Afspiller", st_paused: "Sat på pause", st_idle: "Inaktiv", st_on: "Tændt", st_off: "Slukket", st_standby: "Standby", st_buffering: "Buffer", st_unavailable: "Utilgængelig", st_unknown: "Ukendt",
@@ -331,6 +342,7 @@ const STRINGS = {
     media: "Medier", players: "Afspillere (flere, stablet i kortet)", players_helper: "To eller flere: én blok pr. afspiller, under hinanden", only_playing: "Kun afspillere, der afspiller", include_paused: "Også afspillere på pause", n_playing: "{n} afspiller", players_count: "{n} afspillere", more_players: "{n} mere: {names}", back: "Tilbage til alle afspillere",
     movie: "Film", last_called: "Sidst kaldt", next_alarm: "Alarm", next_timer: "Timer", next_reminder: "Påmindelse", dnd: "Forstyr ikke", speaker_group: "Højttalergruppe", hide_idle_sessions: "Skjul inaktive Jellyfin-sessioner",
     remote: "Fjernbetjening", r_up: "Op", r_down: "Ned", r_left: "Venstre", r_right: "Højre", r_select: "Vælg", r_menu: "Menu", r_home: "Hjem", r_play_pause: "Afspil / pause", show_remote: "Vis fjernbetjeningen (Apple TV, Philips TV)", close_remote: "Luk fjernbetjeningen", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Tænd eller sluk skærmen", recording: "Optager", new_recording: "Ny optagelse",
+    illustration: "Animeret illustration", illustration_theme: "Illustrationens tema", theme_auto: "Automatisk (sol eller mørkt tema)", theme_day: "Dag", theme_night: "Nat",
   },
   sv: {
     st_playing: "Spelar", st_paused: "Pausad", st_idle: "Inaktiv", st_on: "På", st_off: "Av", st_standby: "Viloläge", st_buffering: "Buffrar", st_unavailable: "Otillgänglig", st_unknown: "Okänd",
@@ -348,6 +360,7 @@ const STRINGS = {
     media: "Media", players: "Spelare (flera, staplade i kortet)", players_helper: "Två eller fler: ett block per spelare, under varandra", only_playing: "Bara spelare som spelar", include_paused: "Även pausade spelare", n_playing: "{n} spelar", players_count: "{n} spelare", more_players: "{n} till: {names}", back: "Tillbaka till alla spelare",
     movie: "Film", last_called: "Senast anropad", next_alarm: "Alarm", next_timer: "Timer", next_reminder: "Påminnelse", dnd: "Stör ej", speaker_group: "Högtalargrupp", hide_idle_sessions: "Dölj inaktiva Jellyfin-sessioner",
     remote: "Fjärrkontroll", r_up: "Upp", r_down: "Ned", r_left: "Vänster", r_right: "Höger", r_select: "Välj", r_menu: "Meny", r_home: "Hem", r_play_pause: "Spela / pausa", show_remote: "Visa fjärrkontrollen (Apple TV, Philips TV)", close_remote: "Stäng fjärrkontrollen", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Slå på eller av skärmen", recording: "Spelar in", new_recording: "Ny inspelning",
+    illustration: "Animerad illustration", illustration_theme: "Illustrationens tema", theme_auto: "Automatiskt (sol eller mörkt tema)", theme_day: "Dag", theme_night: "Natt",
   },
   bg: {
     st_playing: "Възпроизвежда", st_paused: "На пауза", st_idle: "Неактивен", st_on: "Включен", st_off: "Изключен", st_standby: "Готовност", st_buffering: "Зареждане", st_unavailable: "Недостъпен", st_unknown: "Неизвестно",
@@ -365,6 +378,7 @@ const STRINGS = {
     media: "Медия", players: "Плейъри (няколко, един под друг в картата)", players_helper: "Два или повече: по един блок за плейър, един под друг", only_playing: "Само плейърите, които възпроизвеждат", include_paused: "И плейърите на пауза", n_playing: "Възпроизвеждат: {n}", players_count: "Плейъри: {n}", more_players: "Още {n}: {names}", back: "Назад към всички плейъри",
     movie: "Филм", last_called: "Последно извикан", next_alarm: "Аларма", next_timer: "Таймер", next_reminder: "Напомняне", dnd: "Не безпокойте", speaker_group: "Група високоговорители", hide_idle_sessions: "Скриване на неактивните сесии на Jellyfin",
     remote: "Дистанционно", r_up: "Нагоре", r_down: "Надолу", r_left: "Наляво", r_right: "Надясно", r_select: "Избор", r_menu: "Меню", r_home: "Начало", r_play_pause: "Пускане / пауза", show_remote: "Показване на дистанционното (Apple TV, Philips TV)", close_remote: "Затваряне на дистанционното", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Включване или изключване на екрана", recording: "Записва", new_recording: "Нов запис",
+    illustration: "Анимирана илюстрация", illustration_theme: "Тема на илюстрацията", theme_auto: "Автоматично (слънце или тъмна тема)", theme_day: "Ден", theme_night: "Нощ",
   },
   ru: {
     st_playing: "Воспроизведение", st_paused: "Пауза", st_idle: "Бездействует", st_on: "Включён", st_off: "Выключен", st_standby: "Ожидание", st_buffering: "Буферизация", st_unavailable: "Недоступен", st_unknown: "Неизвестно",
@@ -382,6 +396,7 @@ const STRINGS = {
     media: "Медиа", players: "Плееры (несколько, друг под другом в карточке)", players_helper: "Два или больше: по блоку на плеер, друг под другом", only_playing: "Только воспроизводящие плееры", include_paused: "И плееры на паузе", n_playing: "Воспроизводят: {n}", players_count: "Плееров: {n}", more_players: "Ещё {n}: {names}", back: "Назад ко всем плеерам",
     movie: "Фильм", last_called: "Последний вызванный", next_alarm: "Будильник", next_timer: "Таймер", next_reminder: "Напоминание", dnd: "Не беспокоить", speaker_group: "Группа колонок", hide_idle_sessions: "Скрывать неактивные сеансы Jellyfin",
     remote: "Пульт", r_up: "Вверх", r_down: "Вниз", r_left: "Влево", r_right: "Вправо", r_select: "Выбрать", r_menu: "Меню", r_home: "Домой", r_play_pause: "Воспроизведение / пауза", show_remote: "Показывать пульт (Apple TV, Philips TV)", close_remote: "Закрыть пульт", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Включить или выключить экран", recording: "Идёт запись", new_recording: "Новая запись",
+    illustration: "Анимированная иллюстрация", illustration_theme: "Тема иллюстрации", theme_auto: "Автоматически (солнце или тёмная тема)", theme_day: "День", theme_night: "Ночь",
   },
   uk: {
     st_playing: "Відтворення", st_paused: "Пауза", st_idle: "Неактивний", st_on: "Увімкнено", st_off: "Вимкнено", st_standby: "Очікування", st_buffering: "Буферизація", st_unavailable: "Недоступний", st_unknown: "Невідомо",
@@ -399,6 +414,7 @@ const STRINGS = {
     media: "Медіа", players: "Плеєри (кілька, один під одним у картці)", players_helper: "Два чи більше: по блоку на плеєр, один під одним", only_playing: "Лише плеєри, що відтворюють", include_paused: "І плеєри на паузі", n_playing: "Відтворюють: {n}", players_count: "Плеєрів: {n}", more_players: "Ще {n}: {names}", back: "Назад до всіх плеєрів",
     movie: "Фільм", last_called: "Останній викликаний", next_alarm: "Будильник", next_timer: "Таймер", next_reminder: "Нагадування", dnd: "Не турбувати", speaker_group: "Група колонок", hide_idle_sessions: "Приховувати неактивні сеанси Jellyfin",
     remote: "Пульт", r_up: "Вгору", r_down: "Вниз", r_left: "Ліворуч", r_right: "Праворуч", r_select: "Вибрати", r_menu: "Меню", r_home: "Додому", r_play_pause: "Відтворення / пауза", show_remote: "Показувати пульт (Apple TV, Philips TV)", close_remote: "Закрити пульт", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Увімкнути або вимкнути екран", recording: "Триває запис", new_recording: "Новий запис",
+    illustration: "Анімована ілюстрація", illustration_theme: "Тема ілюстрації", theme_auto: "Автоматично (сонце або темна тема)", theme_day: "День", theme_night: "Ніч",
   },
   hu: {
     st_playing: "Lejátszás", st_paused: "Szüneteltetve", st_idle: "Tétlen", st_on: "Be", st_off: "Ki", st_standby: "Készenlét", st_buffering: "Pufferelés", st_unavailable: "Nem elérhető", st_unknown: "Ismeretlen",
@@ -416,6 +432,7 @@ const STRINGS = {
     media: "Média", players: "Lejátszók (több, egymás alatt a kártyán)", players_helper: "Kettő vagy több: lejátszónként egy blokk, egymás alatt", only_playing: "Csak a lejátszást végző lejátszók", include_paused: "A szüneteltetett lejátszók is", n_playing: "{n} játszik", players_count: "{n} lejátszó", more_players: "Még {n}: {names}", back: "Vissza az összes lejátszóhoz",
     movie: "Film", last_called: "Utoljára megszólítva", next_alarm: "Ébresztő", next_timer: "Időzítő", next_reminder: "Emlékeztető", dnd: "Ne zavarjanak", speaker_group: "Hangszórócsoport", hide_idle_sessions: "Inaktív Jellyfin-munkamenetek elrejtése",
     remote: "Távirányító", r_up: "Fel", r_down: "Le", r_left: "Balra", r_right: "Jobbra", r_select: "Kiválasztás", r_menu: "Menü", r_home: "Kezdőlap", r_play_pause: "Lejátszás / szünet", show_remote: "Távirányító megjelenítése (Apple TV, Philips TV)", close_remote: "Távirányító bezárása", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Képernyő be- vagy kikapcsolása", recording: "Felvétel folyamatban", new_recording: "Új felvétel",
+    illustration: "Animált illusztráció", illustration_theme: "Az illusztráció témája", theme_auto: "Automatikus (nap vagy sötét téma)", theme_day: "Nappal", theme_night: "Éjszaka",
   },
   sk: {
     st_playing: "Prehráva sa", st_paused: "Pozastavené", st_idle: "Nečinný", st_on: "Zapnutý", st_off: "Vypnutý", st_standby: "Pohotovosť", st_buffering: "Načítava sa", st_unavailable: "Nedostupný", st_unknown: "Neznámy",
@@ -433,6 +450,7 @@ const STRINGS = {
     media: "Médiá", players: "Prehrávače (viaceré, pod sebou v karte)", players_helper: "Dva alebo viac: jeden blok na prehrávač, pod sebou", only_playing: "Len prehrávače, ktoré prehrávajú", include_paused: "Aj pozastavené prehrávače", n_playing: "Prehráva: {n}", players_count: "Prehrávače: {n}", more_players: "Ďalšie {n}: {names}", back: "Späť na všetky prehrávače",
     movie: "Film", last_called: "Naposledy oslovený", next_alarm: "Budík", next_timer: "Časovač", next_reminder: "Pripomienka", dnd: "Nerušiť", speaker_group: "Skupina reproduktorov", hide_idle_sessions: "Skryť neaktívne relácie Jellyfin",
     remote: "Diaľkový ovládač", r_up: "Hore", r_down: "Dole", r_left: "Vľavo", r_right: "Vpravo", r_select: "Vybrať", r_menu: "Ponuka", r_home: "Domov", r_play_pause: "Prehrať / pozastaviť", show_remote: "Zobraziť diaľkový ovládač (Apple TV, Philips TV)", close_remote: "Zavrieť diaľkový ovládač", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Zapnúť alebo vypnúť obrazovku", recording: "Nahráva sa", new_recording: "Nová nahrávka",
+    illustration: "Animovaná ilustrácia", illustration_theme: "Téma ilustrácie", theme_auto: "Automaticky (slnko alebo tmavá téma)", theme_day: "Deň", theme_night: "Noc",
   },
   cs: {
     st_playing: "Přehrává se", st_paused: "Pozastaveno", st_idle: "Nečinný", st_on: "Zapnuto", st_off: "Vypnuto", st_standby: "Pohotovost", st_buffering: "Načítání", st_unavailable: "Nedostupný", st_unknown: "Neznámý",
@@ -450,6 +468,7 @@ const STRINGS = {
     media: "Média", players: "Přehrávače (více, pod sebou v kartě)", players_helper: "Dva a více: jeden blok na přehrávač, pod sebou", only_playing: "Jen přehrávače, které přehrávají", include_paused: "I pozastavené přehrávače", n_playing: "Přehrává: {n}", players_count: "Přehrávače: {n}", more_players: "Dalších {n}: {names}", back: "Zpět na všechny přehrávače",
     movie: "Film", last_called: "Naposledy oslovený", next_alarm: "Budík", next_timer: "Časovač", next_reminder: "Připomínka", dnd: "Nerušit", speaker_group: "Skupina reproduktorů", hide_idle_sessions: "Skrýt neaktivní relace Jellyfin",
     remote: "Dálkový ovladač", r_up: "Nahoru", r_down: "Dolů", r_left: "Vlevo", r_right: "Vpravo", r_select: "Vybrat", r_menu: "Nabídka", r_home: "Domů", r_play_pause: "Přehrát / pozastavit", show_remote: "Zobrazit dálkový ovladač (Apple TV, Philips TV)", close_remote: "Zavřít dálkový ovladač", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Zapnout nebo vypnout obrazovku", recording: "Nahrává se", new_recording: "Nová nahrávka",
+    illustration: "Animovaná ilustrace", illustration_theme: "Motiv ilustrace", theme_auto: "Automaticky (slunce nebo tmavý motiv)", theme_day: "Den", theme_night: "Noc",
   },
   sl: {
     st_playing: "Predvajanje", st_paused: "Začasno ustavljeno", st_idle: "Nedejaven", st_on: "Vklopljen", st_off: "Izklopljen", st_standby: "Pripravljenost", st_buffering: "Nalaganje", st_unavailable: "Ni na voljo", st_unknown: "Neznano",
@@ -467,6 +486,7 @@ const STRINGS = {
     media: "Predstavnost", players: "Predvajalniki (več, drug pod drugim na kartici)", players_helper: "Dva ali več: en blok na predvajalnik, drug pod drugim", only_playing: "Samo predvajalniki, ki predvajajo", include_paused: "Tudi zaustavljeni predvajalniki", n_playing: "Predvaja: {n}", players_count: "Predvajalniki: {n}", more_players: "Še {n}: {names}", back: "Nazaj na vse predvajalnike",
     movie: "Film", last_called: "Nazadnje poklican", next_alarm: "Budilka", next_timer: "Časovnik", next_reminder: "Opomnik", dnd: "Ne moti", speaker_group: "Skupina zvočnikov", hide_idle_sessions: "Skrij neaktivne seje Jellyfin",
     remote: "Daljinec", r_up: "Gor", r_down: "Dol", r_left: "Levo", r_right: "Desno", r_select: "Izberi", r_menu: "Meni", r_home: "Domov", r_play_pause: "Predvajaj / premor", show_remote: "Prikaži daljinec (Apple TV, Philips TV)", close_remote: "Zapri daljinec", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Vklopi ali izklopi zaslon", recording: "Snemanje", new_recording: "Nov posnetek",
+    illustration: "Animirana ilustracija", illustration_theme: "Tema ilustracije", theme_auto: "Samodejno (sonce ali temna tema)", theme_day: "Dan", theme_night: "Noč",
   },
   lv: {
     st_playing: "Atskaņo", st_paused: "Pauzēts", st_idle: "Dīkstāvē", st_on: "Ieslēgts", st_off: "Izslēgts", st_standby: "Gaidstāve", st_buffering: "Ielādē", st_unavailable: "Nav pieejams", st_unknown: "Nezināms",
@@ -484,6 +504,7 @@ const STRINGS = {
     media: "Multivide", players: "Atskaņotāji (vairāki, kartē cits zem cita)", players_helper: "Divi vai vairāk: viens bloks katram atskaņotājam, cits zem cita", only_playing: "Tikai atskaņotāji, kas atskaņo", include_paused: "Arī pauzētie atskaņotāji", n_playing: "Atskaņo: {n}", players_count: "Atskaņotāji: {n}", more_players: "Vēl {n}: {names}", back: "Atpakaļ uz visiem atskaņotājiem",
     movie: "Filma", last_called: "Pēdējais uzrunātais", next_alarm: "Modinātājs", next_timer: "Taimeris", next_reminder: "Atgādinājums", dnd: "Netraucēt", speaker_group: "Skaļruņu grupa", hide_idle_sessions: "Slēpt neaktīvās Jellyfin sesijas",
     remote: "Tālvadība", r_up: "Augšup", r_down: "Lejup", r_left: "Pa kreisi", r_right: "Pa labi", r_select: "Izvēlēties", r_menu: "Izvēlne", r_home: "Sākums", r_play_pause: "Atskaņot / pauze", show_remote: "Rādīt tālvadību (Apple TV, Philips TV)", close_remote: "Aizvērt tālvadību", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Ieslēgt vai izslēgt ekrānu", recording: "Notiek ierakstīšana", new_recording: "Jauns ieraksts",
+    illustration: "Animēta ilustrācija", illustration_theme: "Ilustrācijas motīvs", theme_auto: "Automātiski (saule vai tumšā tēma)", theme_day: "Diena", theme_night: "Nakts",
   },
   el: {
     st_playing: "Αναπαραγωγή", st_paused: "Σε παύση", st_idle: "Αδρανές", st_on: "Ενεργό", st_off: "Ανενεργό", st_standby: "Αναμονή", st_buffering: "Φόρτωση", st_unavailable: "Μη διαθέσιμο", st_unknown: "Άγνωστο",
@@ -501,6 +522,7 @@ const STRINGS = {
     media: "Πολυμέσα", players: "Αναπαραγωγείς (πολλοί, ο ένας κάτω από τον άλλο)", players_helper: "Δύο ή περισσότεροι: ένα μπλοκ ανά αναπαραγωγέα, ο ένας κάτω από τον άλλο", only_playing: "Μόνο οι αναπαραγωγείς που παίζουν", include_paused: "Και οι αναπαραγωγείς σε παύση", n_playing: "{n} σε αναπαραγωγή", players_count: "{n} αναπαραγωγείς", more_players: "Ακόμη {n}: {names}", back: "Πίσω σε όλους τους αναπαραγωγείς",
     movie: "Ταινία", last_called: "Τελευταία κλήση", next_alarm: "Ξυπνητήρι", next_timer: "Χρονόμετρο", next_reminder: "Υπενθύμιση", dnd: "Μην ενοχλείτε", speaker_group: "Ομάδα ηχείων", hide_idle_sessions: "Απόκρυψη ανενεργών συνεδριών Jellyfin",
     remote: "Τηλεχειριστήριο", r_up: "Πάνω", r_down: "Κάτω", r_left: "Αριστερά", r_right: "Δεξιά", r_select: "Επιλογή", r_menu: "Μενού", r_home: "Αρχική", r_play_pause: "Αναπαραγωγή / παύση", show_remote: "Εμφάνιση τηλεχειριστηρίου (Apple TV, Philips TV)", close_remote: "Κλείσιμο τηλεχειριστηρίου", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Ενεργοποίηση ή απενεργοποίηση οθόνης", recording: "Εγγραφή σε εξέλιξη", new_recording: "Νέα εγγραφή",
+    illustration: "Κινούμενη εικονογράφηση", illustration_theme: "Θέμα εικονογράφησης", theme_auto: "Αυτόματα (ήλιος ή σκοτεινό θέμα)", theme_day: "Ημέρα", theme_night: "Νύχτα",
   },
 };
 
@@ -1055,6 +1077,162 @@ const pictureFamily = (model, manufacturer, platform = "") => {
 };
 
 // ---------------------------------------------------------------------------
+// The illustrated header ("banner"): a media room drawn at the right of a 90 px banner (the title on the wall at
+// its left), over a 10 px parquet strip edge to edge. The device in front is the card's own picture of the player
+// (DEVICE_PICTURES by model family, else the generic speaker, TV or receiver), drawn big: standing on the floor
+// (a tall speaker) or on the TV console. Behind it, a TV on the console shows an equalizer while playing (none
+// when the device is itself a TV: a framed picture and a floor lamp instead). Night when sun.sun is below the horizon or
+// with the dark theme; `illustration_theme: day | night` forces one, `illustration: false` keeps the classic header.
+// Scene picture 200 × 80, anchored bottom right; on a narrow card its left (the decor) is cut, never the device.
+// ---------------------------------------------------------------------------
+
+// Night picture: forced by illustration_theme, else the sun below the horizon or Home Assistant's dark theme (dark mode alone without a valid sun.sun).
+const isNight = (hass, config) => {
+  const theme = config?.illustration_theme;
+  if (theme === "night") return true;
+  if (theme === "day") return false;
+  const sun = hass?.states?.["sun.sun"];
+  if (sun && sun.state !== "unavailable" && sun.state !== "unknown") return sun.state === "below_horizon" || !!hass?.themes?.darkMode;
+  return !!hass?.themes?.darkMode;
+};
+
+// Player state → colour of the banner icon: playing in the active colour, paused amber, on green, unavailable red,
+// anything else (idle, off, standby) neutral grey.
+const iconClass = (state) => {
+  switch (state) {
+    case "playing":
+    case "buffering":
+      return "active";
+    case "paused":
+      return "warn";
+    case "on":
+      return "ok";
+    case "unavailable":
+      return "crit";
+    default:
+      return "idle";
+  }
+};
+
+// Where and how big the device stands in the scene: [height of its 140 × 120 picture, y of its feet in the
+// picture, on the floor (true) or on the console]. Sized so that each one reads big beside the console.
+const SCENE_FLOOR = 80;
+const SCENE_CONSOLE = 62;
+const devicePlace = (kind, family) => {
+  if (!family && kind === "speaker") return [76, 114, true];
+  if (!family && kind === "receiver") return [70, 96, false];
+  return [64, 112, false];
+};
+
+// The device's picture placed in the scene, its gradient ids made unique to this card (`uid`), with no box behind.
+const sceneDevice = (svg, kind, family, uid) => {
+  const [h, feet, floor] = devicePlace(kind, family);
+  const k = h / 120;
+  const w = 140 * k;
+  const y = (floor ? SCENE_FLOOR : SCENE_CONSOLE) - feet * k;
+  return svg
+    .replace(/id="mc-/g, `id="mc${uid}-`)
+    .replace(/url\(#mc-/g, `url(#mc${uid}-`)
+    .replace(/<svg class="pic"/, `<svg class="mc-dev" x="${(158 - w / 2).toFixed(1)}" y="${y.toFixed(1)}" width="${w.toFixed(1)}" height="${h}"`);
+};
+
+// The room: a plant, the TV console, and the TV behind the device (its screen: off, lit, or an equalizer that
+// moves while playing and rests while paused) or, when the device is a TV, a framed picture and a floor lamp.
+const sceneSvg = ({ device, tv, screen }) => {
+  const bars = [0, 1, 2, 3, 4, 5, 6]
+    .map((i) => `<rect class="${screen === "play" ? `meter m${i % 4}` : ""}" x="${57 + i * 7}" y="${24 + ((i * 5) % 9)}" width="4" height="${16 - ((i * 5) % 9)}" rx="1"/>`)
+    .join("");
+  const back = tv
+    ? `<rect class="mc-tv" x="44" y="10" width="64" height="40" rx="2"/>
+       <rect class="mc-screen${screen === "off" ? "" : " lit"}" x="47" y="13" width="58" height="34"/>
+       ${screen === "play" || screen === "pause" ? `<g class="mc-bars${screen === "pause" ? " glow" : ""}">${bars}</g>` : ""}
+       <rect class="mc-tv" x="70" y="50" width="12" height="12"/>`
+    : `<rect class="mc-frame" x="56" y="14" width="34" height="26" rx="1"/><rect class="mc-canvas" x="59" y="17" width="28" height="20"/>
+       <path class="mc-hill" d="M59 37l8-9 6 6 5-4 9 7z"/><circle class="mc-sunlet" cx="81" cy="22" r="2.6"/>
+       <g class="mc-lamp"><path class="mc-beam" d="M101 26h10l6 36H95z"/><path class="mc-shade" d="M100 26h12l-3-10h-6z"/><rect class="mc-pole" x="105.3" y="26" width="1.4" height="36"/></g>`;
+  return `<svg class="mc-scene" viewBox="0 0 200 80" preserveAspectRatio="xMaxYMax slice" aria-hidden="true" focusable="false">
+    <g class="mc-plant"><path class="mc-stem" d="M23 62V44M23 54l-5-6M23 50l6-7"/><path class="mc-leaf" d="M22 62c-9-4-12-15-5-22 3 9 7 13 5 22zM24 62c2-11 11-18 19-15-4 9-11 13-19 15zM23 62c-6-9-4-22 2-29 3 11 3 20-2 29z"/><path class="mc-pot" d="M16 62h14l-2 18H18z"/></g>
+    ${back}
+    <rect class="mc-console" x="34" y="62" width="166" height="5" rx="1"/><rect class="mc-cabinet" x="38" y="67" width="158" height="13"/>
+    <rect class="mc-console" x="38" y="73" width="158" height="1"/><rect class="mc-console" x="116" y="67" width="1" height="13"/>
+    ${device}
+  </svg><div class="mc-floor" aria-hidden="true"></div>`;
+};
+
+// The width of an element's whole text in its own font, in fractional pixels (scrollWidth is rounded).
+let textCtx;
+const textWidth = (el) => {
+  const cs = getComputedStyle(el);
+  textCtx ??= document.createElement("canvas").getContext?.("2d");
+  if (!textCtx) return el.scrollWidth;
+  textCtx.font = `${cs.fontStyle} ${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
+  const pad = (parseFloat(cs.paddingLeft) || 0) + (parseFloat(cs.paddingRight) || 0);
+  return Math.max(el.scrollWidth, textCtx.measureText(el.textContent.trim()).width + pad);
+};
+
+const SCENE_STYLE = `
+  .banner { position: relative; overflow: hidden; height: 90px; --mc-scene-w: min(200px, 40%); color: #2b2622; background: #f2eee8; }
+  .banner.night { color: #fff; background: #2a2f3d; }
+  .mc-scene { position: absolute; right: var(--mc-btn, 0px); bottom: 10px; height: 80px; width: var(--mc-scene-w);
+              -webkit-mask-image: linear-gradient(90deg, transparent, #000 16px); mask-image: linear-gradient(90deg, transparent, #000 16px); }
+  .mc-dev { overflow: visible; }
+  /* The parquet: a 10 px strip under the whole banner, edge to edge. */
+  .mc-floor { position: absolute; left: 0; right: 0; bottom: 0; height: 10px; background: repeating-linear-gradient(90deg, #c99a6b 0 38px, #b98a5c 38px 40px);
+              box-shadow: inset 0 2px 0 #a97c50; }
+  .night .mc-floor { background: repeating-linear-gradient(90deg, #4a3a2c 0 38px, #3e3024 38px 40px); box-shadow: inset 0 2px 0 #34281e; }
+  .mc-tv { fill: #20242c; }
+  .mc-screen { fill: #15181e; } .mc-screen.lit { fill: #2c3442; } .night .mc-screen.lit { fill: #3d5a8a; }
+  .mc-bars { fill: #5f8fd8; } .night .mc-bars { fill: #7fb3ff; }
+  .mc-console { fill: #c9b79c; } .mc-cabinet { fill: #d9c9ad; }
+  .night .mc-console { fill: #3c4558; } .night .mc-cabinet { fill: #323a4c; }
+  .mc-leaf { fill: #7cb87a; } .night .mc-leaf { fill: #3e6a4a; }
+  .mc-pot { fill: #b0855a; } .night .mc-pot { fill: #7a5c40; }
+  .mc-frame { fill: #b0855a; } .night .mc-frame { fill: #6e5440; }
+  .mc-canvas { fill: #cfe6f5; } .night .mc-canvas { fill: #34476a; }
+  .mc-hill { fill: #8cc084; } .night .mc-hill { fill: #3e6a4a; }
+  .mc-sunlet { fill: #ffd65a; } .night .mc-sunlet { fill: #f4f1dc; }
+  .mc-shade { fill: #e8dcc6; stroke: #c9b79c; stroke-width: .6; } .night .mc-shade { fill: #ffd27a; stroke: #b4935a; }
+  .mc-pole { fill: #8a7a66; }
+  .mc-stem { stroke: #6f9b5a; stroke-width: 1; fill: none; } .night .mc-stem { stroke: #34573d; }
+  .mc-beam { fill: #ffd27a; opacity: 0; } .night .mc-beam { opacity: .16; }
+  /* The title and subtitle on the wall at the left; the round icon tinted by the player's state. */
+  .htext { position: absolute; left: 12px; top: 0; bottom: 10px; right: calc(var(--mc-scene-w) + var(--mc-btn, 0px) + 4px); display: flex; align-items: center; gap: 10px; min-width: 0; }
+  .htext .titles { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+  .banner .type-icon { background: rgba(255,255,255,.62); box-shadow: inset 0 0 0 1px rgba(43,38,34,.12); }
+  .banner.night .type-icon { background: rgba(255,255,255,.12); box-shadow: inset 0 0 0 1px rgba(255,255,255,.14); }
+  .banner .type-icon .icon { fill: color-mix(in srgb, var(--c, var(--mc-idle)) 78%, #2b2622); }
+  .banner.night .type-icon .icon { fill: color-mix(in srgb, var(--c, var(--mc-idle)) 72%, #fff); }
+  .banner .name { font-weight: 600; }
+  .banner .sub { font-size: 13px; color: #5e554c; }
+  .banner.night .sub { color: rgba(255,255,255,.8); }
+  /* The title row: the name, then the status pill right after it, when the whole name and the pill's whole label fit
+     there (measured, see _fitPill); otherwise the pill takes a line of its own under the subtitle, which keeps one
+     line, and when that does not fit above the floor (or on the narrowest cards) only its dot stays. */
+  .htext .trow { display: flex; align-items: center; gap: 8px; min-width: 0; }
+  .htext .trow > .name { flex: 0 1 auto; min-width: 4.5ch; }
+  .banner .chip.bst { flex: none; max-width: none; gap: 5px; padding: 1px 8px; font-size: 11px; font-weight: 500; line-height: 16px;
+                      background: color-mix(in srgb, var(--c, var(--mc-idle)) 18%, rgba(255,255,255,.78)); color: color-mix(in srgb, var(--c, var(--mc-idle)) 45%, #0d2a45); }
+  .banner.night .chip.bst { background: color-mix(in srgb, var(--c, var(--mc-idle)) 30%, rgba(8,18,38,.55)); color: color-mix(in srgb, var(--c, var(--mc-idle)) 35%, #ffffff); }
+  .banner .chip.bst .dot { width: 7px; height: 7px; }
+  .htext .titles.below .trow { display: contents; }
+  .htext .titles.below .trow > .chip.bst { order: 2; align-self: flex-start; margin-top: 1px; }
+  .htext .titles.below .sub { order: 1; }
+  .htext .titles.dot-only .chip.bst { padding: 4px; } .htext .titles.dot-only .chip.bst .chip-text { display: none; }
+  @container (max-width: 200px) { .banner .chip.bst { padding: 4px; } .banner .chip.bst .chip-text { display: none; } }
+  /* The detail button: a 24 px frosted round in the banner's top-right corner; the room moves left of it. */
+  .banner:has(> .zoom) { --mc-btn: 32px; }
+  .banner > .zoom { position: absolute; z-index: 2; top: 5px; right: 5px; width: 24px; height: 24px; margin: 0; color: #33506b;
+                    background: rgba(255,255,255,.55); box-shadow: inset 0 0 0 1px rgba(255,255,255,.7); backdrop-filter: blur(4px); }
+  .banner > .zoom:hover { background: rgba(255,255,255,.75); color: #33506b; }
+  .banner.night > .zoom { color: #fff; background: rgba(255,255,255,.12); box-shadow: inset 0 0 0 1px rgba(255,255,255,.2); }
+  .banner.night > .zoom:hover { background: rgba(255,255,255,.22); color: #fff; }
+  .banner .zoom.back { position: static; flex: none; margin: 0 -4px 0 -4px; }
+  /* Narrow card: the decor gives way to the title (the device stays whole), then the sky alone stays. */
+  @container (max-width: 300px) { .banner { --mc-scene-w: 36%; } }
+  @container (max-width: 220px) { .mc-scene { display: none; } .htext { right: calc(var(--mc-btn, 0px) + 8px); } }
+`;
+
+// ---------------------------------------------------------------------------
 // Styles
 // ---------------------------------------------------------------------------
 
@@ -1396,11 +1574,15 @@ const REPEAT_NEXT = { off: "all", all: "one", one: "off" };
 // Cards
 // ---------------------------------------------------------------------------
 
+let mediaUid = 0;
+
 class MediaBase extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
     this._html = "";
+    // Keeps the ids of the banner's pictures apart from those of the body (the same device drawn twice).
+    this._uid = ++mediaUid;
     const root = this.shadowRoot;
     root.addEventListener("click", (ev) => this._onClick(ev));
     root.addEventListener("keydown", (ev) => this._onKeyDown(ev));
@@ -1481,7 +1663,7 @@ class MediaBase extends HTMLElement {
     // Alexa: the switch and sensors of each Echo shown.
     // Apple TV and Philips TV: the remote entity; Philips TV: Ambilight, its switches and recording sensors.
     const extras = ids.flatMap((i) => (i ? [...Object.values(alexaExtras(h, i) || {}), ...Object.values(philipsExtras(h, i) || {}), remoteOf(h, i)] : []));
-    return [h.entities, h.devices, h.language, h.locale, h.themes?.darkMode, this._active, ...[...ids, ...extras].map((i) => h.states[i])];
+    return [h.entities, h.devices, h.language, h.locale, h.themes?.darkMode, h.states?.["sun.sun"]?.state, this._active, ...[...ids, ...extras].map((i) => h.states[i])];
   }
 
   connectedCallback() {
@@ -1500,11 +1682,15 @@ class MediaBase extends HTMLElement {
     // The position moves on its own while playing: only the progress bar and its time are updated every second.
     clearInterval(this._ticker);
     this._ticker = setInterval(() => this._tick(), 1000);
+    if (!this._fitObserver && typeof ResizeObserver === "function") this._fitObserver = new ResizeObserver(() => this._fitPill());
+    document.fonts?.ready?.then(() => this._fitPill());
+    this._fitObserver?.observe(this);
   }
 
   disconnectedCallback() {
     clearInterval(this._ticker);
     this._ticker = null;
+    this._fitObserver?.disconnect();
     this._outside?.off();
     window.removeEventListener("keydown", this._onKey);
     // Left (another dashboard view, a conditional card hidden): back to the defaults, so that the card does not come
@@ -1566,6 +1752,7 @@ class MediaBase extends HTMLElement {
     const kept = this._confirm || this._byPointer ? null : this._focusedSpot();
     this._html = html;
     this.shadowRoot.innerHTML = html;
+    this._fitPill();
     this._afterRender(true);
     if (kept) this._focusables(kept.key)[kept.index]?.focus({ preventScroll: true });
     if (this._confirm) {
@@ -1931,6 +2118,14 @@ class MediaBase extends HTMLElement {
     const icon = groupOf(s).length > 1 || isAlexaGroup(this._hass, id) ? ICONS.speakers : ICONS[kindFor(this._hass, id, s)];
     const sub = this._subtitle(id, s);
     const back = isStacked(c) && this._active ? this._iconButton("back", ICONS.back, this._t("back"), "zoom back") : "";
+    if (c.illustration !== false) {
+      // The state in a pill right after the name, in the icon's colour; the rest of the line under it.
+      const name = esc(c.title && !this._active ? c.title : nameOf(this._hass, id));
+      const pill = this._pill(this._stateText(s), iconClass(s?.state), id);
+      return this._banner(id, s, `${back}${this._bannerIcon(icon, iconClass(s?.state), id, this._stateText(s))}<div class="titles"><div class="trow"><div class="name">${name}</div>${pill}</div>${
+        sub ? `<div class="sub" title="${esc(sub)}">${esc(sub)}</div>` : ""
+      }</div>`);
+    }
     return `
       <div class="header">${back}
         <div class="type-icon ${cls}">${svgIcon(icon)}</div>
@@ -1941,6 +2136,31 @@ class MediaBase extends HTMLElement {
         ${this._stateChip(id, s)}
         ${this._zoomButton()}
       </div>`;
+  }
+
+  // The banner: the media room with the player's device in front, the title on its wall (`text`).
+  _banner(id, s, text) {
+    const st = s?.state;
+    const kind = s ? kindFor(this._hass, id, s) : "speaker";
+    const family = s ? familyOf(this._hass, id) : "";
+    const on = st === "playing" || (st === "on" && kind !== "speaker");
+    const draw = DEVICE_PICTURES[family] || PICTURES[kind];
+    const screen = st === "playing" || st === "buffering" ? "play" : st === "paused" ? "pause" : st === "on" || st === "idle" ? "lit" : "off";
+    const device = sceneDevice(draw(on, FINISH.dark), kind, family, this._uid);
+    const night = isNight(this._hass, this._config);
+    return `<div class="banner${night ? " night" : ""}">${sceneSvg({ device, tv: !(!family && kind === "tv"), screen })}<div class="htext">${text}</div>${this._zoomButton()}</div>`;
+  }
+
+  // The banner's styles, only when it is shown (the mini card leaves more of its width to the title).
+  _sceneStyle(mini = false) {
+    if (this._config.illustration === false) return "";
+    return mini ? `${SCENE_STYLE} .banner { --mc-scene-w: min(200px, 36%); }` : SCENE_STYLE;
+  }
+
+  // Round icon of the banner, tinted by the state; a click opens the player's more-info (`id`).
+  _bannerIcon(icon, cls, id, label) {
+    const open = id ? ` clickable" role="button" tabindex="0" data-entity="${esc(id)}" title="${esc(label)}" aria-label="${esc(label)}` : "";
+    return `<div class="type-icon ${cls}${open}">${svgIcon(icon)}</div>`;
   }
 
   // Artwork (or the drawn picture of the device when there is none), with the playback animation over it.
@@ -2183,7 +2403,7 @@ class MediaCard extends MediaBase {
     if (c.show_queue !== false) parts.push(this._queueSection(id));
     if (c.show_favorites !== false) parts.push(this._favorites(id, s));
     const bg = art && c.show_background !== false ? `<div class="backdrop-art" style="background-image:url('${cssUrl(art)}')"></div>` : "";
-    return `<style>${ANIM_STYLE}${BASE_STYLE}${FULL_STYLE}${accentStyle(this._hass, id)}</style>
+    return `<style>${ANIM_STYLE}${BASE_STYLE}${FULL_STYLE}${this._sceneStyle()}${accentStyle(this._hass, id)}</style>
       <ha-card>${bg}
         ${this._header(id, s)}
         <div class="content">${parts.filter((p) => p && p !== '<div class="controls"></div>').join("")}</div>
@@ -2207,6 +2427,13 @@ class MediaCard extends MediaBase {
     const n = all.filter(isPlaying).length;
     const cls = n ? "active" : all.some((s) => s.state === "paused") ? "warn" : all.some((s) => !offline(s) && !isOff(s)) ? "ok" : "idle";
     const text = n ? this._t("n_playing", { n }) : this._t("nothing_playing");
+    if (c.illustration !== false) {
+      // The device of the first player that plays (else the first one) stands in the room.
+      const first = all.find(isPlaying) || all[0];
+      const fid = first?.entity_id || listedPlayers(c)[0];
+      const sub = this._t("players_count", { n: all.length });
+      return this._banner(fid, first, `${this._bannerIcon(ICONS.speakers, cls, "", "")}<div class="titles"><div class="trow"><div class="name">${esc(c.title || this._t("media"))}</div>${this._pill(text, cls)}</div><div class="sub" title="${esc(sub)}">${esc(sub)}</div></div>`);
+    }
     return `
       <div class="header">
         <div class="type-icon ${cls}">${svgIcon(ICONS.speakers)}</div>
@@ -2226,6 +2453,48 @@ class MediaCard extends MediaBase {
     return `<div class="more-players clickable" role="button" tabindex="0" data-action="toggle_hidden" aria-expanded="${!!this._showHidden}">${svgIcon(ICONS.speakers)}<span>${esc(
       label,
     )}</span>${svgIcon(ICONS.chevron_down, "chevron")}</div>`;
+  }
+
+  // Status pill of the banner: a dot and the label in the colour class `cls`; a click opens `id`'s more-info.
+  _pill(text, cls, id) {
+    const open = id ? ` clickable" role="button" tabindex="0" data-entity="${esc(id)}` : "";
+    return `<span class="chip bst ${cls}${open}" title="${esc(text)}" aria-label="${esc(text)}"><span class="dot"></span><span class="chip-text">${esc(text)}</span></span>`;
+  }
+
+  // The banner's status pill, measured after each render and on a new width (in every language): it sits on the
+  // title's row, right after the title, only when the whole title and the pill's whole label fit there; otherwise it
+  // takes a line of its own under the subtitle (.below), the title whole on its row (cut only when it does not fit
+  // alone) and the subtitle on one line. When the three lines do not fit in the banner above the ground strip, or
+  // the label does not fit its line, the pill shows its dot alone (.dot-only): beside the title when the whole title
+  // leaves it room, else under the subtitle.
+  _fitPill() {
+    for (const t of this.shadowRoot?.querySelectorAll?.(".htext .titles") || []) {
+      const row = t.querySelector(".trow");
+      const chips = row ? [...row.querySelectorAll(":scope > .bst")] : [];
+      if (!chips[0]?.getBoundingClientRect) continue;
+      t.classList.remove("below", "dot-only");
+      const name = row.querySelector(".name");
+      const gap = parseFloat(getComputedStyle(row).columnGap) || 0;
+      const outer = (c) => c.getBoundingClientRect().width + (parseFloat(getComputedStyle(c).marginLeft) || 0) + (parseFloat(getComputedStyle(c).marginRight) || 0);
+      const others = [...row.children].filter((c) => c !== name && !chips.includes(c) && c.getClientRects().length);
+      const room = row.getBoundingClientRect().width - others.reduce((w, c) => w + outer(c) + gap, 0);
+      const title = name && getComputedStyle(name).display !== "none" ? textWidth(name) + gap : 0;
+      const pills = () => chips.reduce((w, c) => w + c.getBoundingClientRect().width, gap * (chips.length - 1));
+      if (title + pills() <= room) continue;
+      t.classList.add("below");
+      const banner = t.closest(".banner") || t;
+      const ground = banner.querySelector(".mc-floor");
+      const floor = ground ? ground.getBoundingClientRect().top : banner.getBoundingClientRect().bottom;
+      const box = t.getBoundingClientRect();
+      // Whole: the label not cut and the pill not past the title block (into the picture).
+      const whole = chips.every((c) => {
+        const tx = c.querySelector(".chip-text");
+        return (!tx || tx.scrollWidth <= tx.clientWidth + 0.5) && c.getBoundingClientRect().right <= box.right + 0.5;
+      });
+      if (whole && box.bottom <= floor + 0.5 && box.top >= banner.getBoundingClientRect().top - 0.5) continue;
+      t.classList.add("dot-only");
+      if (title + pills() <= room) t.classList.remove("below");
+    }
   }
 
   _stateChip(id, s) {
@@ -2260,7 +2529,7 @@ class MediaCard extends MediaBase {
       if (c.show_volume !== false) parts.push(this._volume(id, s));
       return `<div class="player">${parts.filter(Boolean).join("")}</div>`;
     });
-    return `<style>${ANIM_STYLE}${BASE_STYLE}${FULL_STYLE}${STACK_STYLE}</style>
+    return `<style>${ANIM_STYLE}${BASE_STYLE}${FULL_STYLE}${STACK_STYLE}${this._sceneStyle()}</style>
       <ha-card>
         ${this._stackHeader()}
         <div class="content"><div class="players">${blocks.join("")}</div>${this._hiddenRow(hidden)}</div>
@@ -2497,7 +2766,7 @@ class MediaMiniCard extends MediaCard {
     const rid = c.show_remote === true ? remoteOf(this._hass, id) : null;
     const remote = rid ? this._btn("open_remote", ICONS.remote, this._t("remote"), { target: rid, disabled: offline(this._s(rid)) }) : "";
     const controls = (remote || "") + (c.show_controls !== false ? this._controls(s, true) : "");
-    return `<style>${ANIM_STYLE}${BASE_STYLE}${MINI_STYLE}${accentStyle(this._hass, id)}</style>
+    return `<style>${ANIM_STYLE}${BASE_STYLE}${MINI_STYLE}${this._sceneStyle(true)}${accentStyle(this._hass, id)}</style>
       <ha-card>
         ${this._header(id, s)}
         <div class="content">
@@ -2541,7 +2810,7 @@ class MediaMiniCard extends MediaCard {
           )}</div><div class="prow-sub">${esc(sub)}</div></div>${play}${vol}</div>${detail}
         </div>`;
     });
-    return `<style>${ANIM_STYLE}${BASE_STYLE}${MINI_STYLE}${STACK_STYLE}${LIST_STYLE}</style>
+    return `<style>${ANIM_STYLE}${BASE_STYLE}${MINI_STYLE}${STACK_STYLE}${LIST_STYLE}${this._sceneStyle(true)}</style>
       <ha-card>
         ${this._stackHeader()}
         <div class="content"><div class="plist">${rows.join("")}</div>${this._hiddenRow(hidden)}</div>
@@ -2673,6 +2942,7 @@ class MediaEditorBase extends HTMLElement {
 class MediaCardEditor extends MediaEditorBase {
   static get toggles() {
     return [
+      ["illustration", true],
       ["show_title", true],
       ["show_subtitle", true],
       ["show_background", true],
@@ -2691,11 +2961,12 @@ class MediaCardEditor extends MediaEditorBase {
   }
 
   static get defaults() {
-    return { collapsed: DEFAULT_COLLAPSED };
+    return { collapsed: DEFAULT_COLLAPSED, illustration_theme: "auto" };
   }
 
   static extraFields(tr) {
     return [
+      { name: "illustration_theme", selector: { select: { mode: "dropdown", options: ["auto", "day", "night"].map((v) => ({ value: v, label: tr(`theme_${v}`) })) } } },
       PLAYERS_FIELD,
       { name: "entities", selector: { entity: { domain: "media_player", multiple: true } } },
       {

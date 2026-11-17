@@ -393,12 +393,50 @@ test("without an entity, the first playing player is shown; errors are reported"
   assert.throws(() => new mc.MediaCard().setConfig({ entity: "light.kitchen" }));
 });
 
-test("the header: 40 px icon in a tinted circle, state chip on the title line, title options", () => {
-  const card = newCard();
+test("the classic header (illustration: false): 40 px icon in a tinted circle, state chip on the title line, title options", () => {
+  const card = newCard({ illustration: false });
   const h = html(card);
+  assert.doesNotMatch(h, /class="banner/);
   assert.match(h, /<div class="type-icon active">/);
   assert.match(h, /<span class="chip clickable active" role="button" tabindex="0" data-entity="media_player\.living_room" title="Playing"/);
+  assert.match(newCard({ title: "Music", illustration: false }).shadowRoot.innerHTML, /<div class="name">Music<\/div>/);
+});
+
+test("the illustrated header: media room, the player's own device, state pill in the icon colour after the title", () => {
+  const h = html(newCard());
+  assert.match(h, /<div class="banner">/);
+  assert.match(h, /<svg class="mc-scene" viewBox="0 0 200 80"/);
+  assert.match(h, /<div class="mc-floor"/, "the 10 px ground strip");
+  assert.match(h, /<svg class="mc-dev" x="[\d.]+" y="[\d.]+" width="[\d.]+" height="\d+"/, "the device picture, placed big in the scene");
+  assert.match(h, /class="meter m0"/, "the TV's equalizer moves while playing");
+  assert.match(h, /<div class="type-icon active clickable" role="button" tabindex="0" data-entity="media_player\.living_room"/);
+  assert.match(h, /<div class="trow"><div class="name">[^<]+<\/div><span class="chip bst active clickable" role="button" tabindex="0" data-entity="media_player\.living_room" title="Playing" aria-label="Playing"><span class="dot"><\/span><span class="chip-text">Playing<\/span><\/span><\/div>/);
+  assert.match(h, /<div class="sub" title="[^"]+">With [^<]+<\/div>/, "the state is in the pill, not repeated in the subtitle");
   assert.match(newCard({ title: "Music" }).shadowRoot.innerHTML, /<div class="name">Music<\/div>/);
+  // Icon colour by state: paused amber, idle grey, unavailable red.
+  assert.match(html(newCard({}, makeHass(withState(LIVING, { state: "paused" })))), /<div class="type-icon warn clickable"/);
+  assert.match(html(newCard({}, makeHass(withState(LIVING, { state: "idle" })))), /<div class="type-icon idle clickable"/);
+  assert.match(html(newCard({}, makeHass(withState(LIVING, { state: "unavailable" })))), /<div class="type-icon crit clickable"/);
+  // Night: forced, else from the sun below the horizon or the dark theme (even with the sun up); day forced over it.
+  assert.match(html(newCard({ illustration_theme: "night" })), /<div class="banner night">/);
+  const sun = (state) => ({ ...states, "sun.sun": { entity_id: "sun.sun", state, attributes: {} } });
+  assert.match(html(newCard({}, makeHass(sun("below_horizon")))), /<div class="banner night">/);
+  assert.match(html(newCard({}, makeHass(states, { themes: { darkMode: true } }))), /<div class="banner night">/);
+  assert.match(html(newCard({ illustration_theme: "day" }, makeHass(sun("below_horizon")))), /<div class="banner">/);
+  assert.match(html(newCard({}, makeHass(sun("above_horizon"), { themes: { darkMode: true } }))), /<div class="banner night">/);
+  assert.match(html(newCard({}, makeHass(sun("above_horizon"), { themes: { darkMode: false } }))), /<div class="banner">/);
+  assert.match(html(newCard({ illustration_theme: "day" }, makeHass(sun("above_horizon"), { themes: { darkMode: true } }))), /<div class="banner">/);
+});
+
+test("the illustrated header: unique picture ids per card, on the mini card too", () => {
+  const a = html(newCard({ entity: "media_player.bathroom" }));
+  const b = html(newCard({ entity: "media_player.bathroom" }));
+  const ids = (h) => [...h.matchAll(/<svg class="mc-dev"[\s\S]*?id="([^"]+)"/g)].map((m) => m[1]);
+  assert.ok(ids(a).length && ids(b).length);
+  assert.notEqual(ids(a)[0], ids(b)[0]);
+  const mini = html(newCard({}, makeHass(), mc.MediaMiniCard));
+  assert.match(mini, /<div class="banner[^"]*">/);
+  assert.match(mini, /--mc-scene-w: min\(200px, 36%\)/);
 });
 
 test("the card speaks the language of Home Assistant or of its option", () => {
@@ -489,7 +527,8 @@ test("players: one block per player, under a common header, each with its own co
   assert.equal((h.match(/<div class="player">/g) || []).length, 3);
   assert.match(h, /<div class="name">Media<\/div>/, "default title");
   assert.match(h, /3 players/);
-  assert.match(h, /<span class="chip active" title="2 playing">/, "playing count in the header chip");
+  assert.match(h, /<span class="chip-text">2 playing<\/span><\/span><\/div><div class="sub" title="3 players">3 players<\/div>/, "playing count in the banner's pill");
+  assert.match(stacked({ illustration: false }).shadowRoot.innerHTML, /<span class="chip active" title="2 playing">/, "playing count in the classic header chip");
   assert.match(h, /Midnight Avenue/);
   assert.match(h, /Golden Hour/);
   assert.match(h, /data-progress="media_player\.lounge"/, "each bar names its player");
