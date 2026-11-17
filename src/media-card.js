@@ -1159,6 +1159,17 @@ const sceneSvg = ({ device, tv, screen }) => {
   </svg><div class="mc-floor" aria-hidden="true"></div>`;
 };
 
+// The width of an element's whole text in its own font, in fractional pixels (scrollWidth is rounded).
+let textCtx;
+const textWidth = (el) => {
+  const cs = getComputedStyle(el);
+  textCtx ??= document.createElement("canvas").getContext?.("2d");
+  if (!textCtx) return el.scrollWidth;
+  textCtx.font = `${cs.fontStyle} ${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
+  const pad = (parseFloat(cs.paddingLeft) || 0) + (parseFloat(cs.paddingRight) || 0);
+  return Math.max(el.scrollWidth, textCtx.measureText(el.textContent.trim()).width + pad);
+};
+
 const SCENE_STYLE = `
   .banner { position: relative; overflow: hidden; height: 90px; --mc-scene-w: min(200px, 40%); color: #2b2622; background: #f2eee8; }
   .banner.night { color: #fff; background: #2a2f3d; }
@@ -1194,9 +1205,9 @@ const SCENE_STYLE = `
   .banner .name { font-weight: 600; }
   .banner .sub { font-size: 13px; color: #5e554c; }
   .banner.night .sub { color: rgba(255,255,255,.8); }
-  /* The title row: the name, then the status pill right after it (the name gives way first, down to 4 characters);
-     when it does not fit (measured, see _fitPill) or on a narrow card, the pill takes a line of its own under the
-     subtitle, and on the narrowest cards only its dot stays. */
+  /* The title row: the name, then the status pill right after it, when the whole name and the pill's whole label fit
+     there (measured, see _fitPill); otherwise the pill takes a line of its own under the subtitle, which keeps one
+     line, and when that does not fit above the floor (or on the narrowest cards) only its dot stays. */
   .htext .trow { display: flex; align-items: center; gap: 8px; min-width: 0; }
   .htext .trow > .name { flex: 0 1 auto; min-width: 4.5ch; }
   .banner .chip.bst { flex: none; max-width: none; gap: 5px; padding: 1px 8px; font-size: 11px; font-weight: 500; line-height: 16px;
@@ -1206,7 +1217,7 @@ const SCENE_STYLE = `
   .htext .titles.below .trow { display: contents; }
   .htext .titles.below .trow > .chip.bst { order: 2; align-self: flex-start; margin-top: 1px; }
   .htext .titles.below .sub { order: 1; }
-  @container (max-width: 260px) { .htext .trow { display: contents; } .htext .trow > .chip.bst { order: 2; align-self: flex-start; margin-top: 1px; } .htext .sub { order: 1; } }
+  .htext .titles.dot-only .chip.bst { padding: 4px; } .htext .titles.dot-only .chip.bst .chip-text { display: none; }
   @container (max-width: 200px) { .banner .chip.bst { padding: 4px; } .banner .chip.bst .chip-text { display: none; } }
   /* The detail button: a 24 px frosted round in the banner's top-right corner; the room moves left of it. */
   .banner:has(> .zoom) { --mc-btn: 32px; }
@@ -1672,6 +1683,7 @@ class MediaBase extends HTMLElement {
     clearInterval(this._ticker);
     this._ticker = setInterval(() => this._tick(), 1000);
     if (!this._fitObserver && typeof ResizeObserver === "function") this._fitObserver = new ResizeObserver(() => this._fitPill());
+    document.fonts?.ready?.then(() => this._fitPill());
     this._fitObserver?.observe(this);
   }
 
@@ -2111,7 +2123,7 @@ class MediaBase extends HTMLElement {
       const name = esc(c.title && !this._active ? c.title : nameOf(this._hass, id));
       const pill = this._pill(this._stateText(s), iconClass(s?.state), id);
       return this._banner(id, s, `${back}${this._bannerIcon(icon, iconClass(s?.state), id, this._stateText(s))}<div class="titles"><div class="trow"><div class="name">${name}</div>${pill}</div>${
-        sub ? `<div class="sub">${esc(sub)}</div>` : ""
+        sub ? `<div class="sub" title="${esc(sub)}">${esc(sub)}</div>` : ""
       }</div>`);
     }
     return `
@@ -2420,7 +2432,7 @@ class MediaCard extends MediaBase {
       const first = all.find(isPlaying) || all[0];
       const fid = first?.entity_id || listedPlayers(c)[0];
       const sub = this._t("players_count", { n: all.length });
-      return this._banner(fid, first, `${this._bannerIcon(ICONS.speakers, cls, "", "")}<div class="titles"><div class="trow"><div class="name">${esc(c.title || this._t("media"))}</div>${this._pill(text, cls)}</div><div class="sub">${esc(sub)}</div></div>`);
+      return this._banner(fid, first, `${this._bannerIcon(ICONS.speakers, cls, "", "")}<div class="titles"><div class="trow"><div class="name">${esc(c.title || this._t("media"))}</div>${this._pill(text, cls)}</div><div class="sub" title="${esc(sub)}">${esc(sub)}</div></div>`);
     }
     return `
       <div class="header">
@@ -2449,14 +2461,40 @@ class MediaCard extends MediaBase {
     return `<span class="chip bst ${cls}${open}" title="${esc(text)}" aria-label="${esc(text)}"><span class="dot"></span><span class="chip-text">${esc(text)}</span></span>`;
   }
 
-  // The banner's status pill keeps its whole label: when it does not fit beside the name (already down to four
-  // characters), it takes a line of its own under the subtitle.
+  // The banner's status pill, measured after each render and on a new width (in every language): it sits on the
+  // title's row, right after the title, only when the whole title and the pill's whole label fit there; otherwise it
+  // takes a line of its own under the subtitle (.below), the title whole on its row (cut only when it does not fit
+  // alone) and the subtitle on one line. When the three lines do not fit in the banner above the ground strip, or
+  // the label does not fit its line, the pill shows its dot alone (.dot-only): beside the title when the whole title
+  // leaves it room, else under the subtitle.
   _fitPill() {
-    const t = this.shadowRoot?.querySelector(".htext .titles");
-    if (!t?.classList) return;
-    t.classList.remove("below");
-    const tx = t.querySelector(".bst .chip-text");
-    if (tx && tx.scrollWidth > tx.clientWidth + 0.5) t.classList.add("below");
+    for (const t of this.shadowRoot?.querySelectorAll?.(".htext .titles") || []) {
+      const row = t.querySelector(".trow");
+      const chips = row ? [...row.querySelectorAll(":scope > .bst")] : [];
+      if (!chips[0]?.getBoundingClientRect) continue;
+      t.classList.remove("below", "dot-only");
+      const name = row.querySelector(".name");
+      const gap = parseFloat(getComputedStyle(row).columnGap) || 0;
+      const outer = (c) => c.getBoundingClientRect().width + (parseFloat(getComputedStyle(c).marginLeft) || 0) + (parseFloat(getComputedStyle(c).marginRight) || 0);
+      const others = [...row.children].filter((c) => c !== name && !chips.includes(c) && c.getClientRects().length);
+      const room = row.getBoundingClientRect().width - others.reduce((w, c) => w + outer(c) + gap, 0);
+      const title = name && getComputedStyle(name).display !== "none" ? textWidth(name) + gap : 0;
+      const pills = () => chips.reduce((w, c) => w + c.getBoundingClientRect().width, gap * (chips.length - 1));
+      if (title + pills() <= room) continue;
+      t.classList.add("below");
+      const banner = t.closest(".banner") || t;
+      const ground = banner.querySelector(".mc-floor");
+      const floor = ground ? ground.getBoundingClientRect().top : banner.getBoundingClientRect().bottom;
+      const box = t.getBoundingClientRect();
+      // Whole: the label not cut and the pill not past the title block (into the picture).
+      const whole = chips.every((c) => {
+        const tx = c.querySelector(".chip-text");
+        return (!tx || tx.scrollWidth <= tx.clientWidth + 0.5) && c.getBoundingClientRect().right <= box.right + 0.5;
+      });
+      if (whole && box.bottom <= floor + 0.5 && box.top >= banner.getBoundingClientRect().top - 0.5) continue;
+      t.classList.add("dot-only");
+      if (title + pills() <= room) t.classList.remove("below");
+    }
   }
 
   _stateChip(id, s) {
