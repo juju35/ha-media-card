@@ -35,7 +35,7 @@ test("Jellyfin: an episode shows its series and episode, the client app in the s
   const h = html(card({ entity: TV }));
   assert.match(h, /<div class="track" title="The Lighthouse Keeper">The Lighthouse Keeper<\/div>/);
   assert.match(h, /<div class="artist">Harbor Tales · S2E5<\/div>/);
-  assert.match(h, /<div class="sub">Jellyfin Android TV · Jellyfin<\/div>/);
+  assert.match(h, /<div class="sub">[^<]*· Jellyfin Android TV · Jellyfin<\/div>/);
 });
 
 test("Jellyfin: a film says so; with no artwork the session draws a TV", () => {
@@ -98,7 +98,7 @@ test("Alexa: the next timer shows the time today, the day otherwise", () => {
 
 test("Alexa: the speaker group is shown as one, with no join button", () => {
   const h = html(card({ entity: GROUP }));
-  assert.match(h, /<div class="sub">Speaker group<\/div>/);
+  assert.match(h, /<div class="sub">[^<]*· Speaker group<\/div>/);
   assert.doesNotMatch(h, /data-action="join"/);
 });
 
@@ -133,7 +133,7 @@ const REMOTE = "remote.family_room_apple_tv";
 
 test("Apple TV: the app in the subtitle, the episode, its apps as sources, a drawn box with no artwork", () => {
   const h = html(card({ entity: ATV }));
-  assert.match(h, /<div class="sub">TV<\/div>/);
+  assert.match(h, /<div class="sub">[^<]*· TV<\/div>/);
   assert.match(h, /<div class="artist">Northern Lights · S1E4<\/div>/);
   assert.match(h, /Arcade/);
   assert.match(h, /M30 72L42 62H110L98 72z/, "the drawn streaming box");
