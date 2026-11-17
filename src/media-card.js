@@ -1160,9 +1160,9 @@ const sceneSvg = ({ device, tv, screen }) => {
 };
 
 const SCENE_STYLE = `
-  .banner { position: relative; overflow: hidden; height: 90px; --mc-scene-w: min(200px, 55%); color: #2b2622; background: #f2eee8; }
+  .banner { position: relative; overflow: hidden; height: 90px; --mc-scene-w: min(200px, 40%); color: #2b2622; background: #f2eee8; }
   .banner.night { color: #fff; background: #2a2f3d; }
-  .mc-scene { position: absolute; right: 0; bottom: 10px; height: 80px; width: var(--mc-scene-w);
+  .mc-scene { position: absolute; right: var(--mc-btn, 0px); bottom: 10px; height: 80px; width: var(--mc-scene-w);
               -webkit-mask-image: linear-gradient(90deg, transparent, #000 16px); mask-image: linear-gradient(90deg, transparent, #000 16px); }
   .mc-dev { overflow: visible; }
   /* The parquet: a 10 px strip under the whole banner, edge to edge. */
@@ -1185,7 +1185,7 @@ const SCENE_STYLE = `
   .mc-stem { stroke: #6f9b5a; stroke-width: 1; fill: none; } .night .mc-stem { stroke: #34573d; }
   .mc-beam { fill: #ffd27a; opacity: 0; } .night .mc-beam { opacity: .16; }
   /* The title and subtitle on the wall at the left; the round icon tinted by the player's state. */
-  .htext { position: absolute; left: 12px; top: 0; bottom: 10px; right: calc(var(--mc-scene-w) + 4px); display: flex; align-items: center; gap: 10px; min-width: 0; }
+  .htext { position: absolute; left: 12px; top: 0; bottom: 10px; right: calc(var(--mc-scene-w) + var(--mc-btn, 0px) + 4px); display: flex; align-items: center; gap: 10px; min-width: 0; }
   .htext .titles { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
   .banner .type-icon { background: rgba(255,255,255,.62); box-shadow: inset 0 0 0 1px rgba(43,38,34,.12); }
   .banner.night .type-icon { background: rgba(255,255,255,.12); box-shadow: inset 0 0 0 1px rgba(255,255,255,.14); }
@@ -1194,12 +1194,31 @@ const SCENE_STYLE = `
   .banner .name { font-weight: 600; }
   .banner .sub { font-size: 13px; color: #5e554c; }
   .banner.night .sub { color: rgba(255,255,255,.8); }
-  .banner .zoom { position: absolute; top: 6px; right: 6px; margin: 0; color: #2b2622; background: rgba(255,255,255,.55); }
-  .banner.night .zoom { color: #fff; background: rgba(20,24,34,.5); }
+  /* The title row: the name, then the status pill right after it (the name gives way first, down to 4 characters);
+     when it does not fit (measured, see _fitPill) or on a narrow card, the pill takes a line of its own under the
+     subtitle, and on the narrowest cards only its dot stays. */
+  .htext .trow { display: flex; align-items: center; gap: 8px; min-width: 0; }
+  .htext .trow > .name { flex: 0 1 auto; min-width: 4.5ch; }
+  .banner .chip.bst { flex: none; max-width: none; gap: 5px; padding: 1px 8px; font-size: 11px; font-weight: 500; line-height: 16px;
+                      background: color-mix(in srgb, var(--c, var(--mc-idle)) 18%, rgba(255,255,255,.78)); color: color-mix(in srgb, var(--c, var(--mc-idle)) 45%, #0d2a45); }
+  .banner.night .chip.bst { background: color-mix(in srgb, var(--c, var(--mc-idle)) 30%, rgba(8,18,38,.55)); color: color-mix(in srgb, var(--c, var(--mc-idle)) 35%, #ffffff); }
+  .banner .chip.bst .dot { width: 7px; height: 7px; }
+  .htext .titles.below .trow { display: contents; }
+  .htext .titles.below .trow > .chip.bst { order: 2; align-self: flex-start; margin-top: 1px; }
+  .htext .titles.below .sub { order: 1; }
+  @container (max-width: 260px) { .htext .trow { display: contents; } .htext .trow > .chip.bst { order: 2; align-self: flex-start; margin-top: 1px; } .htext .sub { order: 1; } }
+  @container (max-width: 200px) { .banner .chip.bst { padding: 4px; } .banner .chip.bst .chip-text { display: none; } }
+  /* The detail button: a 24 px frosted round in the banner's top-right corner; the room moves left of it. */
+  .banner:has(> .zoom) { --mc-btn: 32px; }
+  .banner > .zoom { position: absolute; z-index: 2; top: 5px; right: 5px; width: 24px; height: 24px; margin: 0; color: #33506b;
+                    background: rgba(255,255,255,.55); box-shadow: inset 0 0 0 1px rgba(255,255,255,.7); backdrop-filter: blur(4px); }
+  .banner > .zoom:hover { background: rgba(255,255,255,.75); color: #33506b; }
+  .banner.night > .zoom { color: #fff; background: rgba(255,255,255,.12); box-shadow: inset 0 0 0 1px rgba(255,255,255,.2); }
+  .banner.night > .zoom:hover { background: rgba(255,255,255,.22); color: #fff; }
   .banner .zoom.back { position: static; flex: none; margin: 0 -4px 0 -4px; }
   /* Narrow card: the decor gives way to the title (the device stays whole), then the sky alone stays. */
-  @container (max-width: 300px) { .banner { --mc-scene-w: 42%; } }
-  @container (max-width: 220px) { .mc-scene { display: none; } .htext { right: 36px; } }
+  @container (max-width: 300px) { .banner { --mc-scene-w: 36%; } }
+  @container (max-width: 220px) { .mc-scene { display: none; } .htext { right: calc(var(--mc-btn, 0px) + 8px); } }
 `;
 
 // ---------------------------------------------------------------------------
@@ -1652,11 +1671,14 @@ class MediaBase extends HTMLElement {
     // The position moves on its own while playing: only the progress bar and its time are updated every second.
     clearInterval(this._ticker);
     this._ticker = setInterval(() => this._tick(), 1000);
+    if (!this._fitObserver && typeof ResizeObserver === "function") this._fitObserver = new ResizeObserver(() => this._fitPill());
+    this._fitObserver?.observe(this);
   }
 
   disconnectedCallback() {
     clearInterval(this._ticker);
     this._ticker = null;
+    this._fitObserver?.disconnect();
     this._outside?.off();
     window.removeEventListener("keydown", this._onKey);
     // Left (another dashboard view, a conditional card hidden): back to the defaults, so that the card does not come
@@ -1718,6 +1740,7 @@ class MediaBase extends HTMLElement {
     const kept = this._confirm || this._byPointer ? null : this._focusedSpot();
     this._html = html;
     this.shadowRoot.innerHTML = html;
+    this._fitPill();
     this._afterRender(true);
     if (kept) this._focusables(kept.key)[kept.index]?.focus({ preventScroll: true });
     if (this._confirm) {
@@ -2084,10 +2107,11 @@ class MediaBase extends HTMLElement {
     const sub = this._subtitle(id, s);
     const back = isStacked(c) && this._active ? this._iconButton("back", ICONS.back, this._t("back"), "zoom back") : "";
     if (c.illustration !== false) {
+      // The state in a pill right after the name, in the icon's colour; the rest of the line under it.
       const name = esc(c.title && !this._active ? c.title : nameOf(this._hass, id));
-      const line = [this._stateText(s), sub].filter(Boolean).join(" · ");
-      return this._banner(id, s, `${back}${this._bannerIcon(icon, iconClass(s?.state), id, this._stateText(s))}<div class="titles"><div class="name">${name}</div>${
-        line ? `<div class="sub">${esc(line)}</div>` : ""
+      const pill = this._pill(this._stateText(s), iconClass(s?.state), id);
+      return this._banner(id, s, `${back}${this._bannerIcon(icon, iconClass(s?.state), id, this._stateText(s))}<div class="titles"><div class="trow"><div class="name">${name}</div>${pill}</div>${
+        sub ? `<div class="sub">${esc(sub)}</div>` : ""
       }</div>`);
     }
     return `
@@ -2118,7 +2142,7 @@ class MediaBase extends HTMLElement {
   // The banner's styles, only when it is shown (the mini card leaves more of its width to the title).
   _sceneStyle(mini = false) {
     if (this._config.illustration === false) return "";
-    return mini ? `${SCENE_STYLE} .banner { --mc-scene-w: min(200px, 46%); }` : SCENE_STYLE;
+    return mini ? `${SCENE_STYLE} .banner { --mc-scene-w: min(200px, 36%); }` : SCENE_STYLE;
   }
 
   // Round icon of the banner, tinted by the state; a click opens the player's more-info (`id`).
@@ -2395,8 +2419,8 @@ class MediaCard extends MediaBase {
       // The device of the first player that plays (else the first one) stands in the room.
       const first = all.find(isPlaying) || all[0];
       const fid = first?.entity_id || listedPlayers(c)[0];
-      const sub = `${text} · ${this._t("players_count", { n: all.length })}`;
-      return this._banner(fid, first, `${this._bannerIcon(ICONS.speakers, cls, "", "")}<div class="titles"><div class="name">${esc(c.title || this._t("media"))}</div><div class="sub">${esc(sub)}</div></div>`);
+      const sub = this._t("players_count", { n: all.length });
+      return this._banner(fid, first, `${this._bannerIcon(ICONS.speakers, cls, "", "")}<div class="titles"><div class="trow"><div class="name">${esc(c.title || this._t("media"))}</div>${this._pill(text, cls)}</div><div class="sub">${esc(sub)}</div></div>`);
     }
     return `
       <div class="header">
@@ -2417,6 +2441,22 @@ class MediaCard extends MediaBase {
     return `<div class="more-players clickable" role="button" tabindex="0" data-action="toggle_hidden" aria-expanded="${!!this._showHidden}">${svgIcon(ICONS.speakers)}<span>${esc(
       label,
     )}</span>${svgIcon(ICONS.chevron_down, "chevron")}</div>`;
+  }
+
+  // Status pill of the banner: a dot and the label in the colour class `cls`; a click opens `id`'s more-info.
+  _pill(text, cls, id) {
+    const open = id ? ` clickable" role="button" tabindex="0" data-entity="${esc(id)}` : "";
+    return `<span class="chip bst ${cls}${open}" title="${esc(text)}" aria-label="${esc(text)}"><span class="dot"></span><span class="chip-text">${esc(text)}</span></span>`;
+  }
+
+  // The banner's status pill keeps its whole label: when it does not fit beside the name (already down to four
+  // characters), it takes a line of its own under the subtitle.
+  _fitPill() {
+    const t = this.shadowRoot?.querySelector(".htext .titles");
+    if (!t?.classList) return;
+    t.classList.remove("below");
+    const tx = t.querySelector(".bst .chip-text");
+    if (tx && tx.scrollWidth > tx.clientWidth + 0.5) t.classList.add("below");
   }
 
   _stateChip(id, s) {
