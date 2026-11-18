@@ -141,7 +141,7 @@ const STRINGS = {
     show_background: "Blurred artwork background", show_progress: "Show progress", show_controls: "Show control buttons", show_volume: "Show volume", show_rooms: "Show rooms and groups",
     show_source: "Show source and sound mode", show_queue: "Show queue", show_favorites: "Show favorites", collapsed: "Sections folded by default", favorites_entity: "Favorites sensor (Sonos)",
     zoom: "Detail button", zoom_helper: "Top right button: switches to the full card and back", language: "Language", lang_auto: "Automatic (Home Assistant language)",
-    media: "Media", players: "Players (several, stacked in the card)", players_helper: "Two or more: one block per player, one under the other", only_playing: "Only the players that are playing", include_paused: "Paused players too", n_playing: "{n} playing", players_count: "{n} players", more_players: "{n} more: {names}", back: "Back to all players",
+    media: "Media", players: "Players (several, stacked in the card)", players_helper: "Two or more: one block per player, one under the other", only_playing: "Only the players that are playing", include_paused: "Paused players too", hide_when_idle: "Hide the card when nothing is playing", n_playing: "{n} playing", players_count: "{n} players", more_players: "{n} more: {names}", back: "Back to all players",
     movie: "Movie", last_called: "Last called", next_alarm: "Alarm", next_timer: "Timer", next_reminder: "Reminder", dnd: "Do not disturb", speaker_group: "Speaker group", hide_idle_sessions: "Hide idle Jellyfin sessions",
     remote: "Remote", r_up: "Up", r_down: "Down", r_left: "Left", r_right: "Right", r_select: "Select", r_menu: "Menu", r_home: "Home", r_play_pause: "Play / pause", show_remote: "Show the remote (Apple TV, Philips TV)", close_remote: "Close the remote", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Screen on or off", recording: "Recording", new_recording: "New recording",
     illustration: "Animated illustration", illustration_theme: "Illustration theme", theme_auto: "Automatic (follows the theme)", theme_day: "Day", theme_night: "Night",
@@ -159,7 +159,7 @@ const STRINGS = {
     show_background: "Fond flouté de la pochette", show_progress: "Afficher la progression", show_controls: "Afficher les boutons de commande", show_volume: "Afficher le volume", show_rooms: "Afficher les pièces et groupes",
     show_source: "Afficher la source et le mode son", show_queue: "Afficher la file d'attente", show_favorites: "Afficher les favoris", collapsed: "Sections repliées par défaut", favorites_entity: "Capteur des favoris (Sonos)",
     zoom: "Bouton détail", zoom_helper: "Bouton en haut à droite : bascule vers la carte complète et revient", language: "Langue", lang_auto: "Automatique (langue de Home Assistant)",
-    media: "Médias", players: "Lecteurs (plusieurs, empilés dans la carte)", players_helper: "Deux ou plus : un bloc par lecteur, l'un sous l'autre", only_playing: "Seulement les lecteurs en lecture", include_paused: "Les lecteurs en pause aussi", n_playing: "{n} en lecture", players_count: "{n} lecteurs", more_players: "{n} de plus : {names}", back: "Retour à tous les lecteurs",
+    media: "Médias", players: "Lecteurs (plusieurs, empilés dans la carte)", players_helper: "Deux ou plus : un bloc par lecteur, l'un sous l'autre", only_playing: "Seulement les lecteurs en lecture", include_paused: "Les lecteurs en pause aussi", hide_when_idle: "Masquer la carte quand rien n'est en lecture", n_playing: "{n} en lecture", players_count: "{n} lecteurs", more_players: "{n} de plus : {names}", back: "Retour à tous les lecteurs",
     movie: "Film", last_called: "Dernier appelé", next_alarm: "Alarme", next_timer: "Minuteur", next_reminder: "Rappel", dnd: "Ne pas déranger", speaker_group: "Groupe d'enceintes", hide_idle_sessions: "Masquer les sessions Jellyfin inactives",
     remote: "Télécommande", r_up: "Haut", r_down: "Bas", r_left: "Gauche", r_right: "Droite", r_select: "Valider", r_menu: "Menu", r_home: "Accueil", r_play_pause: "Lecture / pause", show_remote: "Afficher la télécommande (Apple TV, Philips TV)", close_remote: "Fermer la télécommande", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Allumer ou éteindre l'écran", recording: "Enregistrement en cours", new_recording: "Nouvel enregistrement",
     illustration: "Illustration animée", illustration_theme: "Thème de l’illustration", theme_auto: "Automatique (suit le thème)", theme_day: "Jour", theme_night: "Nuit",
@@ -177,7 +177,7 @@ const STRINGS = {
     show_background: "Unscharfer Cover-Hintergrund", show_progress: "Fortschritt anzeigen", show_controls: "Steuertasten anzeigen", show_volume: "Lautstärke anzeigen", show_rooms: "Räume und Gruppen anzeigen",
     show_source: "Quelle und Klangmodus anzeigen", show_queue: "Warteschlange anzeigen", show_favorites: "Favoriten anzeigen", collapsed: "Standardmäßig eingeklappte Abschnitte", favorites_entity: "Favoriten-Sensor (Sonos)",
     zoom: "Detailtaste", zoom_helper: "Taste oben rechts: wechselt zur vollständigen Karte und zurück", language: "Sprache", lang_auto: "Automatisch (Sprache von Home Assistant)",
-    media: "Medien", players: "Player (mehrere, in der Karte gestapelt)", players_helper: "Zwei oder mehr: ein Block pro Player, untereinander", only_playing: "Nur Player, die gerade abspielen", include_paused: "Auch pausierte Player", n_playing: "{n} spielen", players_count: "{n} Player", more_players: "{n} weitere: {names}", back: "Zurück zu allen Playern",
+    media: "Medien", players: "Player (mehrere, in der Karte gestapelt)", players_helper: "Zwei oder mehr: ein Block pro Player, untereinander", only_playing: "Nur Player, die gerade abspielen", include_paused: "Auch pausierte Player", hide_when_idle: "Karte ausblenden, wenn nichts abgespielt wird", n_playing: "{n} spielen", players_count: "{n} Player", more_players: "{n} weitere: {names}", back: "Zurück zu allen Playern",
     movie: "Film", last_called: "Zuletzt angesprochen", next_alarm: "Wecker", next_timer: "Timer", next_reminder: "Erinnerung", dnd: "Nicht stören", speaker_group: "Lautsprechergruppe", hide_idle_sessions: "Inaktive Jellyfin-Sitzungen ausblenden",
     remote: "Fernbedienung", r_up: "Hoch", r_down: "Runter", r_left: "Links", r_right: "Rechts", r_select: "Auswählen", r_menu: "Menü", r_home: "Home", r_play_pause: "Wiedergabe / Pause", show_remote: "Fernbedienung anzeigen (Apple TV, Philips TV)", close_remote: "Fernbedienung schließen", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Bildschirm ein- oder ausschalten", recording: "Aufnahme läuft", new_recording: "Neue Aufnahme",
     illustration: "Animierte Illustration", illustration_theme: "Thema der Illustration", theme_auto: "Automatisch (folgt dem Design)", theme_day: "Tag", theme_night: "Nacht",
@@ -195,7 +195,7 @@ const STRINGS = {
     show_background: "Fondo difuminado de la carátula", show_progress: "Mostrar progreso", show_controls: "Mostrar botones de control", show_volume: "Mostrar volumen", show_rooms: "Mostrar habitaciones y grupos",
     show_source: "Mostrar fuente y modo de sonido", show_queue: "Mostrar cola", show_favorites: "Mostrar favoritos", collapsed: "Secciones plegadas por defecto", favorites_entity: "Sensor de favoritos (Sonos)",
     zoom: "Botón de detalle", zoom_helper: "Botón arriba a la derecha: cambia a la tarjeta completa y vuelve", language: "Idioma", lang_auto: "Automático (idioma de Home Assistant)",
-    media: "Multimedia", players: "Reproductores (varios, apilados en la tarjeta)", players_helper: "Dos o más: un bloque por reproductor, uno debajo de otro", only_playing: "Solo los reproductores en reproducción", include_paused: "También los reproductores en pausa", n_playing: "{n} reproduciendo", players_count: "{n} reproductores", more_players: "{n} más: {names}", back: "Volver a todos los reproductores",
+    media: "Multimedia", players: "Reproductores (varios, apilados en la tarjeta)", players_helper: "Dos o más: un bloque por reproductor, uno debajo de otro", only_playing: "Solo los reproductores en reproducción", include_paused: "También los reproductores en pausa", hide_when_idle: "Ocultar la tarjeta cuando no se reproduce nada", n_playing: "{n} reproduciendo", players_count: "{n} reproductores", more_players: "{n} más: {names}", back: "Volver a todos los reproductores",
     movie: "Película", last_called: "Último llamado", next_alarm: "Alarma", next_timer: "Temporizador", next_reminder: "Recordatorio", dnd: "No molestar", speaker_group: "Grupo de altavoces", hide_idle_sessions: "Ocultar sesiones de Jellyfin inactivas",
     remote: "Mando", r_up: "Arriba", r_down: "Abajo", r_left: "Izquierda", r_right: "Derecha", r_select: "Seleccionar", r_menu: "Menú", r_home: "Inicio", r_play_pause: "Reproducir / pausa", show_remote: "Mostrar el mando (Apple TV, Philips TV)", close_remote: "Cerrar el mando", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Encender o apagar la pantalla", recording: "Grabando", new_recording: "Nueva grabación",
     illustration: "Ilustración animada", illustration_theme: "Tema de la ilustración", theme_auto: "Automático (sigue el tema)", theme_day: "Día", theme_night: "Noche",
@@ -213,7 +213,7 @@ const STRINGS = {
     show_background: "Sfondo sfocato della copertina", show_progress: "Mostra avanzamento", show_controls: "Mostra pulsanti di controllo", show_volume: "Mostra volume", show_rooms: "Mostra stanze e gruppi",
     show_source: "Mostra sorgente e modalità audio", show_queue: "Mostra coda", show_favorites: "Mostra preferiti", collapsed: "Sezioni chiuse per impostazione predefinita", favorites_entity: "Sensore dei preferiti (Sonos)",
     zoom: "Pulsante dettagli", zoom_helper: "Pulsante in alto a destra: passa alla scheda completa e ritorna", language: "Lingua", lang_auto: "Automatica (lingua di Home Assistant)",
-    media: "Media", players: "Lettori (più lettori, impilati nella scheda)", players_helper: "Due o più: un blocco per lettore, uno sotto l'altro", only_playing: "Solo i lettori in riproduzione", include_paused: "Anche i lettori in pausa", n_playing: "{n} in riproduzione", players_count: "{n} lettori", more_players: "Altri {n}: {names}", back: "Torna a tutti i lettori",
+    media: "Media", players: "Lettori (più lettori, impilati nella scheda)", players_helper: "Due o più: un blocco per lettore, uno sotto l'altro", only_playing: "Solo i lettori in riproduzione", include_paused: "Anche i lettori in pausa", hide_when_idle: "Nascondi la scheda quando non è in riproduzione nulla", n_playing: "{n} in riproduzione", players_count: "{n} lettori", more_players: "Altri {n}: {names}", back: "Torna a tutti i lettori",
     movie: "Film", last_called: "Ultimo chiamato", next_alarm: "Sveglia", next_timer: "Timer", next_reminder: "Promemoria", dnd: "Non disturbare", speaker_group: "Gruppo di altoparlanti", hide_idle_sessions: "Nascondi le sessioni Jellyfin inattive",
     remote: "Telecomando", r_up: "Su", r_down: "Giù", r_left: "Sinistra", r_right: "Destra", r_select: "Seleziona", r_menu: "Menu", r_home: "Home", r_play_pause: "Riproduci / pausa", show_remote: "Mostra il telecomando (Apple TV, Philips TV)", close_remote: "Chiudi il telecomando", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Accendi o spegni lo schermo", recording: "Registrazione in corso", new_recording: "Nuova registrazione",
     illustration: "Illustrazione animata", illustration_theme: "Tema dell’illustrazione", theme_auto: "Automatico (segue il tema)", theme_day: "Giorno", theme_night: "Notte",
@@ -231,7 +231,7 @@ const STRINGS = {
     show_background: "Vervaagde hoesachtergrond", show_progress: "Voortgang tonen", show_controls: "Bedieningsknoppen tonen", show_volume: "Volume tonen", show_rooms: "Ruimtes en groepen tonen",
     show_source: "Bron en geluidsmodus tonen", show_queue: "Wachtrij tonen", show_favorites: "Favorieten tonen", collapsed: "Standaard ingeklapte secties", favorites_entity: "Favorietensensor (Sonos)",
     zoom: "Detailknop", zoom_helper: "Knop rechtsboven: schakelt naar de volledige kaart en terug", language: "Taal", lang_auto: "Automatisch (taal van Home Assistant)",
-    media: "Media", players: "Spelers (meerdere, gestapeld in de kaart)", players_helper: "Twee of meer: één blok per speler, onder elkaar", only_playing: "Alleen spelers die afspelen", include_paused: "Ook gepauzeerde spelers", n_playing: "{n} spelen af", players_count: "{n} spelers", more_players: "Nog {n}: {names}", back: "Terug naar alle spelers",
+    media: "Media", players: "Spelers (meerdere, gestapeld in de kaart)", players_helper: "Twee of meer: één blok per speler, onder elkaar", only_playing: "Alleen spelers die afspelen", include_paused: "Ook gepauzeerde spelers", hide_when_idle: "Kaart verbergen als er niets wordt afgespeeld", n_playing: "{n} spelen af", players_count: "{n} spelers", more_players: "Nog {n}: {names}", back: "Terug naar alle spelers",
     movie: "Film", last_called: "Laatst aangesproken", next_alarm: "Wekker", next_timer: "Timer", next_reminder: "Herinnering", dnd: "Niet storen", speaker_group: "Speakergroep", hide_idle_sessions: "Inactieve Jellyfin-sessies verbergen",
     remote: "Afstandsbediening", r_up: "Omhoog", r_down: "Omlaag", r_left: "Links", r_right: "Rechts", r_select: "Selecteren", r_menu: "Menu", r_home: "Home", r_play_pause: "Afspelen / pauze", show_remote: "Afstandsbediening tonen (Apple TV, Philips TV)", close_remote: "Afstandsbediening sluiten", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Scherm aan of uit", recording: "Opname bezig", new_recording: "Nieuwe opname",
     illustration: "Geanimeerde illustratie", illustration_theme: "Thema van de illustratie", theme_auto: "Automatisch (volgt het thema)", theme_day: "Dag", theme_night: "Nacht",
@@ -249,7 +249,7 @@ const STRINGS = {
     show_background: "Fundo desfocado da capa", show_progress: "Mostrar progresso", show_controls: "Mostrar botões de controlo", show_volume: "Mostrar volume", show_rooms: "Mostrar divisões e grupos",
     show_source: "Mostrar fonte e modo de som", show_queue: "Mostrar fila", show_favorites: "Mostrar favoritos", collapsed: "Secções recolhidas por omissão", favorites_entity: "Sensor de favoritos (Sonos)",
     zoom: "Botão de detalhe", zoom_helper: "Botão no canto superior direito: muda para o cartão completo e volta", language: "Idioma", lang_auto: "Automático (idioma do Home Assistant)",
-    media: "Multimédia", players: "Leitores (vários, empilhados no cartão)", players_helper: "Dois ou mais: um bloco por leitor, um por baixo do outro", only_playing: "Só os leitores em reprodução", include_paused: "Também os leitores em pausa", n_playing: "{n} a reproduzir", players_count: "{n} leitores", more_players: "Mais {n}: {names}", back: "Voltar a todos os leitores",
+    media: "Multimédia", players: "Leitores (vários, empilhados no cartão)", players_helper: "Dois ou mais: um bloco por leitor, um por baixo do outro", only_playing: "Só os leitores em reprodução", include_paused: "Também os leitores em pausa", hide_when_idle: "Ocultar o cartão quando nada está a ser reproduzido", n_playing: "{n} a reproduzir", players_count: "{n} leitores", more_players: "Mais {n}: {names}", back: "Voltar a todos os leitores",
     movie: "Filme", last_called: "Último chamado", next_alarm: "Alarme", next_timer: "Temporizador", next_reminder: "Lembrete", dnd: "Não incomodar", speaker_group: "Grupo de colunas", hide_idle_sessions: "Ocultar sessões Jellyfin inativas",
     remote: "Comando", r_up: "Cima", r_down: "Baixo", r_left: "Esquerda", r_right: "Direita", r_select: "Selecionar", r_menu: "Menu", r_home: "Início", r_play_pause: "Reproduzir / pausa", show_remote: "Mostrar o comando (Apple TV, Philips TV)", close_remote: "Fechar o comando", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Ligar ou desligar o ecrã", recording: "A gravar", new_recording: "Nova gravação",
     illustration: "Ilustração animada", illustration_theme: "Tema da ilustração", theme_auto: "Automático (segue o tema)", theme_day: "Dia", theme_night: "Noite",
@@ -267,7 +267,7 @@ const STRINGS = {
     show_background: "Rozmyte tło z okładki", show_progress: "Pokaż postęp", show_controls: "Pokaż przyciski sterowania", show_volume: "Pokaż głośność", show_rooms: "Pokaż pomieszczenia i grupy",
     show_source: "Pokaż źródło i tryb dźwięku", show_queue: "Pokaż kolejkę", show_favorites: "Pokaż ulubione", collapsed: "Sekcje domyślnie zwinięte", favorites_entity: "Czujnik ulubionych (Sonos)",
     zoom: "Przycisk szczegółów", zoom_helper: "Przycisk w prawym górnym rogu: przełącza na pełną kartę i z powrotem", language: "Język", lang_auto: "Automatycznie (język Home Assistant)",
-    media: "Multimedia", players: "Odtwarzacze (kilka, jeden pod drugim na karcie)", players_helper: "Dwa lub więcej: jeden blok na odtwarzacz, jeden pod drugim", only_playing: "Tylko odtwarzacze, które odtwarzają", include_paused: "Także wstrzymane odtwarzacze", n_playing: "Odtwarza: {n}", players_count: "Odtwarzacze: {n}", more_players: "Jeszcze {n}: {names}", back: "Wróć do wszystkich odtwarzaczy",
+    media: "Multimedia", players: "Odtwarzacze (kilka, jeden pod drugim na karcie)", players_helper: "Dwa lub więcej: jeden blok na odtwarzacz, jeden pod drugim", only_playing: "Tylko odtwarzacze, które odtwarzają", include_paused: "Także wstrzymane odtwarzacze", hide_when_idle: "Ukryj kartę, gdy nic nie jest odtwarzane", n_playing: "Odtwarza: {n}", players_count: "Odtwarzacze: {n}", more_players: "Jeszcze {n}: {names}", back: "Wróć do wszystkich odtwarzaczy",
     movie: "Film", last_called: "Ostatnio wywołany", next_alarm: "Alarm", next_timer: "Minutnik", next_reminder: "Przypomnienie", dnd: "Nie przeszkadzać", speaker_group: "Grupa głośników", hide_idle_sessions: "Ukryj nieaktywne sesje Jellyfin",
     remote: "Pilot", r_up: "W górę", r_down: "W dół", r_left: "W lewo", r_right: "W prawo", r_select: "Wybierz", r_menu: "Menu", r_home: "Ekran główny", r_play_pause: "Odtwarzaj / pauza", show_remote: "Pokaż pilota (Apple TV, Philips TV)", close_remote: "Zamknij pilota", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Włącz lub wyłącz ekran", recording: "Nagrywanie", new_recording: "Nowe nagranie",
     illustration: "Animowana ilustracja", illustration_theme: "Motyw ilustracji", theme_auto: "Automatycznie (według motywu)", theme_day: "Dzień", theme_night: "Noc",
@@ -285,7 +285,7 @@ const STRINGS = {
     show_background: "Замућена позадина омота", show_progress: "Прикажи напредак", show_controls: "Прикажи командне тастере", show_volume: "Прикажи јачину звука", show_rooms: "Прикажи просторије и групе",
     show_source: "Прикажи извор и режим звука", show_queue: "Прикажи ред", show_favorites: "Прикажи омиљено", collapsed: "Подразумевано скупљени одељци", favorites_entity: "Сензор омиљених (Sonos)",
     zoom: "Тастер за детаље", zoom_helper: "Тастер горе десно: прелази на пуну картицу и назад", language: "Језик", lang_auto: "Аутоматски (језик Home Assistant-а)",
-    media: "Медији", players: "Плејери (више њих, један испод другог у картици)", players_helper: "Два или више: један блок по плејеру, један испод другог", only_playing: "Само плејери који репродукују", include_paused: "И паузирани плејери", n_playing: "{n} репродукује", players_count: "Плејера: {n}", more_players: "Још {n}: {names}", back: "Назад на све плејере",
+    media: "Медији", players: "Плејери (више њих, један испод другог у картици)", players_helper: "Два или више: један блок по плејеру, један испод другог", only_playing: "Само плејери који репродукују", include_paused: "И паузирани плејери", hide_when_idle: "Сакриј картицу када се ништа не репродукује", n_playing: "{n} репродукује", players_count: "Плејера: {n}", more_players: "Још {n}: {names}", back: "Назад на све плејере",
     movie: "Филм", last_called: "Последњи позван", next_alarm: "Аларм", next_timer: "Тајмер", next_reminder: "Подсетник", dnd: "Не узнемиравај", speaker_group: "Група звучника", hide_idle_sessions: "Сакриј неактивне Jellyfin сесије",
     remote: "Даљински", r_up: "Горе", r_down: "Доле", r_left: "Лево", r_right: "Десно", r_select: "Изабери", r_menu: "Мени", r_home: "Почетна", r_play_pause: "Пусти / пауза", show_remote: "Прикажи даљински (Apple TV, Philips TV)", close_remote: "Затвори даљински", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Укључи или искључи екран", recording: "Снимање", new_recording: "Нови снимак",
     illustration: "Анимирана илустрација", illustration_theme: "Тема илустрације", theme_auto: "Аутоматски (прати тему)", theme_day: "Дан", theme_night: "Ноћ",
@@ -303,7 +303,7 @@ const STRINGS = {
     show_background: "Zamućena pozadina omota", show_progress: "Prikaži napredak", show_controls: "Prikaži komandne tastere", show_volume: "Prikaži jačinu zvuka", show_rooms: "Prikaži prostorije i grupe",
     show_source: "Prikaži izvor i režim zvuka", show_queue: "Prikaži red", show_favorites: "Prikaži omiljeno", collapsed: "Podrazumevano skupljeni odeljci", favorites_entity: "Senzor omiljenih (Sonos)",
     zoom: "Taster za detalje", zoom_helper: "Taster gore desno: prelazi na punu karticu i nazad", language: "Jezik", lang_auto: "Automatski (jezik Home Assistant-a)",
-    media: "Mediji", players: "Plejeri (više njih, jedan ispod drugog u kartici)", players_helper: "Dva ili više: jedan blok po plejeru, jedan ispod drugog", only_playing: "Samo plejeri koji reprodukuju", include_paused: "I pauzirani plejeri", n_playing: "{n} reprodukuje", players_count: "Plejera: {n}", more_players: "Još {n}: {names}", back: "Nazad na sve plejere",
+    media: "Mediji", players: "Plejeri (više njih, jedan ispod drugog u kartici)", players_helper: "Dva ili više: jedan blok po plejeru, jedan ispod drugog", only_playing: "Samo plejeri koji reprodukuju", include_paused: "I pauzirani plejeri", hide_when_idle: "Sakrij karticu kada se ništa ne reprodukuje", n_playing: "{n} reprodukuje", players_count: "Plejera: {n}", more_players: "Još {n}: {names}", back: "Nazad na sve plejere",
     movie: "Film", last_called: "Poslednji pozvan", next_alarm: "Alarm", next_timer: "Tajmer", next_reminder: "Podsetnik", dnd: "Ne uznemiravaj", speaker_group: "Grupa zvučnika", hide_idle_sessions: "Sakrij neaktivne Jellyfin sesije",
     remote: "Daljinski", r_up: "Gore", r_down: "Dole", r_left: "Levo", r_right: "Desno", r_select: "Izaberi", r_menu: "Meni", r_home: "Početna", r_play_pause: "Pusti / pauza", show_remote: "Prikaži daljinski (Apple TV, Philips TV)", close_remote: "Zatvori daljinski", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Uključi ili isključi ekran", recording: "Snimanje", new_recording: "Novi snimak",
     illustration: "Animirana ilustracija", illustration_theme: "Tema ilustracije", theme_auto: "Automatski (prati temu)", theme_day: "Dan", theme_night: "Noć",
@@ -321,7 +321,7 @@ const STRINGS = {
     show_background: "Fundal estompat al copertei", show_progress: "Afișează progresul", show_controls: "Afișează butoanele de comandă", show_volume: "Afișează volumul", show_rooms: "Afișează camerele și grupurile",
     show_source: "Afișează sursa și modul sunet", show_queue: "Afișează coada", show_favorites: "Afișează favoritele", collapsed: "Secțiuni restrânse implicit", favorites_entity: "Senzor de favorite (Sonos)",
     zoom: "Buton detalii", zoom_helper: "Butonul din dreapta sus: trece la cardul complet și înapoi", language: "Limbă", lang_auto: "Automat (limba Home Assistant)",
-    media: "Media", players: "Playere (mai multe, stivuite în card)", players_helper: "Două sau mai multe: un bloc pe player, unul sub altul", only_playing: "Doar playerele care redau", include_paused: "Și playerele în pauză", n_playing: "{n} redau", players_count: "{n} playere", more_players: "Încă {n}: {names}", back: "Înapoi la toate playerele",
+    media: "Media", players: "Playere (mai multe, stivuite în card)", players_helper: "Două sau mai multe: un bloc pe player, unul sub altul", only_playing: "Doar playerele care redau", include_paused: "Și playerele în pauză", hide_when_idle: "Ascunde cardul când nu se redă nimic", n_playing: "{n} redau", players_count: "{n} playere", more_players: "Încă {n}: {names}", back: "Înapoi la toate playerele",
     movie: "Film", last_called: "Ultimul apelat", next_alarm: "Alarmă", next_timer: "Cronometru", next_reminder: "Memento", dnd: "Nu deranjați", speaker_group: "Grup de boxe", hide_idle_sessions: "Ascunde sesiunile Jellyfin inactive",
     remote: "Telecomandă", r_up: "Sus", r_down: "Jos", r_left: "Stânga", r_right: "Dreapta", r_select: "Selectează", r_menu: "Meniu", r_home: "Acasă", r_play_pause: "Redare / pauză", show_remote: "Afișează telecomanda (Apple TV, Philips TV)", close_remote: "Închide telecomanda", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Pornește sau oprește ecranul", recording: "Înregistrare în curs", new_recording: "Înregistrare nouă",
     illustration: "Ilustrație animată", illustration_theme: "Tema ilustrației", theme_auto: "Automat (urmează tema)", theme_day: "Zi", theme_night: "Noapte",
@@ -339,7 +339,7 @@ const STRINGS = {
     show_background: "Sløret coverbaggrund", show_progress: "Vis forløb", show_controls: "Vis betjeningsknapper", show_volume: "Vis lydstyrke", show_rooms: "Vis rum og grupper",
     show_source: "Vis kilde og lydtilstand", show_queue: "Vis kø", show_favorites: "Vis favoritter", collapsed: "Sektioner foldet sammen som standard", favorites_entity: "Favoritsensor (Sonos)",
     zoom: "Detaljeknap", zoom_helper: "Knap øverst til højre: skifter til det fulde kort og tilbage", language: "Sprog", lang_auto: "Automatisk (Home Assistants sprog)",
-    media: "Medier", players: "Afspillere (flere, stablet i kortet)", players_helper: "To eller flere: én blok pr. afspiller, under hinanden", only_playing: "Kun afspillere, der afspiller", include_paused: "Også afspillere på pause", n_playing: "{n} afspiller", players_count: "{n} afspillere", more_players: "{n} mere: {names}", back: "Tilbage til alle afspillere",
+    media: "Medier", players: "Afspillere (flere, stablet i kortet)", players_helper: "To eller flere: én blok pr. afspiller, under hinanden", only_playing: "Kun afspillere, der afspiller", include_paused: "Også afspillere på pause", hide_when_idle: "Skjul kortet, når intet afspilles", n_playing: "{n} afspiller", players_count: "{n} afspillere", more_players: "{n} mere: {names}", back: "Tilbage til alle afspillere",
     movie: "Film", last_called: "Sidst kaldt", next_alarm: "Alarm", next_timer: "Timer", next_reminder: "Påmindelse", dnd: "Forstyr ikke", speaker_group: "Højttalergruppe", hide_idle_sessions: "Skjul inaktive Jellyfin-sessioner",
     remote: "Fjernbetjening", r_up: "Op", r_down: "Ned", r_left: "Venstre", r_right: "Højre", r_select: "Vælg", r_menu: "Menu", r_home: "Hjem", r_play_pause: "Afspil / pause", show_remote: "Vis fjernbetjeningen (Apple TV, Philips TV)", close_remote: "Luk fjernbetjeningen", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Tænd eller sluk skærmen", recording: "Optager", new_recording: "Ny optagelse",
     illustration: "Animeret illustration", illustration_theme: "Illustrationens tema", theme_auto: "Automatisk (følger temaet)", theme_day: "Dag", theme_night: "Nat",
@@ -357,7 +357,7 @@ const STRINGS = {
     show_background: "Suddig omslagsbakgrund", show_progress: "Visa förlopp", show_controls: "Visa kontrollknappar", show_volume: "Visa volym", show_rooms: "Visa rum och grupper",
     show_source: "Visa källa och ljudläge", show_queue: "Visa kö", show_favorites: "Visa favoriter", collapsed: "Sektioner hopfällda som standard", favorites_entity: "Favoritsensor (Sonos)",
     zoom: "Detaljknapp", zoom_helper: "Knappen uppe till höger: växlar till hela kortet och tillbaka", language: "Språk", lang_auto: "Automatiskt (Home Assistants språk)",
-    media: "Media", players: "Spelare (flera, staplade i kortet)", players_helper: "Två eller fler: ett block per spelare, under varandra", only_playing: "Bara spelare som spelar", include_paused: "Även pausade spelare", n_playing: "{n} spelar", players_count: "{n} spelare", more_players: "{n} till: {names}", back: "Tillbaka till alla spelare",
+    media: "Media", players: "Spelare (flera, staplade i kortet)", players_helper: "Två eller fler: ett block per spelare, under varandra", only_playing: "Bara spelare som spelar", include_paused: "Även pausade spelare", hide_when_idle: "Dölj kortet när inget spelas", n_playing: "{n} spelar", players_count: "{n} spelare", more_players: "{n} till: {names}", back: "Tillbaka till alla spelare",
     movie: "Film", last_called: "Senast anropad", next_alarm: "Alarm", next_timer: "Timer", next_reminder: "Påminnelse", dnd: "Stör ej", speaker_group: "Högtalargrupp", hide_idle_sessions: "Dölj inaktiva Jellyfin-sessioner",
     remote: "Fjärrkontroll", r_up: "Upp", r_down: "Ned", r_left: "Vänster", r_right: "Höger", r_select: "Välj", r_menu: "Meny", r_home: "Hem", r_play_pause: "Spela / pausa", show_remote: "Visa fjärrkontrollen (Apple TV, Philips TV)", close_remote: "Stäng fjärrkontrollen", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Slå på eller av skärmen", recording: "Spelar in", new_recording: "Ny inspelning",
     illustration: "Animerad illustration", illustration_theme: "Illustrationens tema", theme_auto: "Automatiskt (följer temat)", theme_day: "Dag", theme_night: "Natt",
@@ -375,7 +375,7 @@ const STRINGS = {
     show_background: "Размит фон от обложката", show_progress: "Покажи напредъка", show_controls: "Покажи бутоните за управление", show_volume: "Покажи силата на звука", show_rooms: "Покажи стаите и групите",
     show_source: "Покажи източника и звуковия режим", show_queue: "Покажи опашката", show_favorites: "Покажи любимите", collapsed: "Свити по подразбиране секции", favorites_entity: "Сензор за любими (Sonos)",
     zoom: "Бутон за подробности", zoom_helper: "Бутон горе вдясно: превключва към пълната карта и обратно", language: "Език", lang_auto: "Автоматично (езикът на Home Assistant)",
-    media: "Медия", players: "Плейъри (няколко, един под друг в картата)", players_helper: "Два или повече: по един блок за плейър, един под друг", only_playing: "Само плейърите, които възпроизвеждат", include_paused: "И плейърите на пауза", n_playing: "Възпроизвеждат: {n}", players_count: "Плейъри: {n}", more_players: "Още {n}: {names}", back: "Назад към всички плейъри",
+    media: "Медия", players: "Плейъри (няколко, един под друг в картата)", players_helper: "Два или повече: по един блок за плейър, един под друг", only_playing: "Само плейърите, които възпроизвеждат", include_paused: "И плейърите на пауза", hide_when_idle: "Скриване на картата, когато нищо не се възпроизвежда", n_playing: "Възпроизвеждат: {n}", players_count: "Плейъри: {n}", more_players: "Още {n}: {names}", back: "Назад към всички плейъри",
     movie: "Филм", last_called: "Последно извикан", next_alarm: "Аларма", next_timer: "Таймер", next_reminder: "Напомняне", dnd: "Не безпокойте", speaker_group: "Група високоговорители", hide_idle_sessions: "Скриване на неактивните сесии на Jellyfin",
     remote: "Дистанционно", r_up: "Нагоре", r_down: "Надолу", r_left: "Наляво", r_right: "Надясно", r_select: "Избор", r_menu: "Меню", r_home: "Начало", r_play_pause: "Пускане / пауза", show_remote: "Показване на дистанционното (Apple TV, Philips TV)", close_remote: "Затваряне на дистанционното", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Включване или изключване на екрана", recording: "Записва", new_recording: "Нов запис",
     illustration: "Анимирана илюстрация", illustration_theme: "Тема на илюстрацията", theme_auto: "Автоматично (следва темата)", theme_day: "Ден", theme_night: "Нощ",
@@ -393,7 +393,7 @@ const STRINGS = {
     show_background: "Размытый фон обложки", show_progress: "Показывать прогресс", show_controls: "Показывать кнопки управления", show_volume: "Показывать громкость", show_rooms: "Показывать комнаты и группы",
     show_source: "Показывать источник и звуковой режим", show_queue: "Показывать очередь", show_favorites: "Показывать избранное", collapsed: "Свёрнутые по умолчанию разделы", favorites_entity: "Датчик избранного (Sonos)",
     zoom: "Кнопка подробностей", zoom_helper: "Кнопка справа вверху: переключает на полную карточку и обратно", language: "Язык", lang_auto: "Автоматически (язык Home Assistant)",
-    media: "Медиа", players: "Плееры (несколько, друг под другом в карточке)", players_helper: "Два или больше: по блоку на плеер, друг под другом", only_playing: "Только воспроизводящие плееры", include_paused: "И плееры на паузе", n_playing: "Воспроизводят: {n}", players_count: "Плееров: {n}", more_players: "Ещё {n}: {names}", back: "Назад ко всем плеерам",
+    media: "Медиа", players: "Плееры (несколько, друг под другом в карточке)", players_helper: "Два или больше: по блоку на плеер, друг под другом", only_playing: "Только воспроизводящие плееры", include_paused: "И плееры на паузе", hide_when_idle: "Скрывать карточку, когда ничего не воспроизводится", n_playing: "Воспроизводят: {n}", players_count: "Плееров: {n}", more_players: "Ещё {n}: {names}", back: "Назад ко всем плеерам",
     movie: "Фильм", last_called: "Последний вызванный", next_alarm: "Будильник", next_timer: "Таймер", next_reminder: "Напоминание", dnd: "Не беспокоить", speaker_group: "Группа колонок", hide_idle_sessions: "Скрывать неактивные сеансы Jellyfin",
     remote: "Пульт", r_up: "Вверх", r_down: "Вниз", r_left: "Влево", r_right: "Вправо", r_select: "Выбрать", r_menu: "Меню", r_home: "Домой", r_play_pause: "Воспроизведение / пауза", show_remote: "Показывать пульт (Apple TV, Philips TV)", close_remote: "Закрыть пульт", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Включить или выключить экран", recording: "Идёт запись", new_recording: "Новая запись",
     illustration: "Анимированная иллюстрация", illustration_theme: "Тема иллюстрации", theme_auto: "Автоматически (по теме)", theme_day: "День", theme_night: "Ночь",
@@ -411,7 +411,7 @@ const STRINGS = {
     show_background: "Розмитий фон обкладинки", show_progress: "Показувати прогрес", show_controls: "Показувати кнопки керування", show_volume: "Показувати гучність", show_rooms: "Показувати кімнати й групи",
     show_source: "Показувати джерело й звуковий режим", show_queue: "Показувати чергу", show_favorites: "Показувати обране", collapsed: "Типово згорнуті розділи", favorites_entity: "Датчик обраного (Sonos)",
     zoom: "Кнопка подробиць", zoom_helper: "Кнопка праворуч угорі: перемикає на повну картку й назад", language: "Мова", lang_auto: "Автоматично (мова Home Assistant)",
-    media: "Медіа", players: "Плеєри (кілька, один під одним у картці)", players_helper: "Два чи більше: по блоку на плеєр, один під одним", only_playing: "Лише плеєри, що відтворюють", include_paused: "І плеєри на паузі", n_playing: "Відтворюють: {n}", players_count: "Плеєрів: {n}", more_players: "Ще {n}: {names}", back: "Назад до всіх плеєрів",
+    media: "Медіа", players: "Плеєри (кілька, один під одним у картці)", players_helper: "Два чи більше: по блоку на плеєр, один під одним", only_playing: "Лише плеєри, що відтворюють", include_paused: "І плеєри на паузі", hide_when_idle: "Приховувати картку, коли нічого не відтворюється", n_playing: "Відтворюють: {n}", players_count: "Плеєрів: {n}", more_players: "Ще {n}: {names}", back: "Назад до всіх плеєрів",
     movie: "Фільм", last_called: "Останній викликаний", next_alarm: "Будильник", next_timer: "Таймер", next_reminder: "Нагадування", dnd: "Не турбувати", speaker_group: "Група колонок", hide_idle_sessions: "Приховувати неактивні сеанси Jellyfin",
     remote: "Пульт", r_up: "Вгору", r_down: "Вниз", r_left: "Ліворуч", r_right: "Праворуч", r_select: "Вибрати", r_menu: "Меню", r_home: "Додому", r_play_pause: "Відтворення / пауза", show_remote: "Показувати пульт (Apple TV, Philips TV)", close_remote: "Закрити пульт", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Увімкнути або вимкнути екран", recording: "Триває запис", new_recording: "Новий запис",
     illustration: "Анімована ілюстрація", illustration_theme: "Тема ілюстрації", theme_auto: "Автоматично (за темою)", theme_day: "День", theme_night: "Ніч",
@@ -429,7 +429,7 @@ const STRINGS = {
     show_background: "Elmosott borító háttér", show_progress: "Haladás megjelenítése", show_controls: "Vezérlőgombok megjelenítése", show_volume: "Hangerő megjelenítése", show_rooms: "Helyiségek és csoportok megjelenítése",
     show_source: "Forrás és hangmód megjelenítése", show_queue: "Lejátszási sor megjelenítése", show_favorites: "Kedvencek megjelenítése", collapsed: "Alapértelmezésben összecsukott részek", favorites_entity: "Kedvencek érzékelő (Sonos)",
     zoom: "Részletek gomb", zoom_helper: "Jobb felső gomb: a teljes kártyára vált és vissza", language: "Nyelv", lang_auto: "Automatikus (Home Assistant nyelve)",
-    media: "Média", players: "Lejátszók (több, egymás alatt a kártyán)", players_helper: "Kettő vagy több: lejátszónként egy blokk, egymás alatt", only_playing: "Csak a lejátszást végző lejátszók", include_paused: "A szüneteltetett lejátszók is", n_playing: "{n} játszik", players_count: "{n} lejátszó", more_players: "Még {n}: {names}", back: "Vissza az összes lejátszóhoz",
+    media: "Média", players: "Lejátszók (több, egymás alatt a kártyán)", players_helper: "Kettő vagy több: lejátszónként egy blokk, egymás alatt", only_playing: "Csak a lejátszást végző lejátszók", include_paused: "A szüneteltetett lejátszók is", hide_when_idle: "A kártya elrejtése, ha semmi sem szól", n_playing: "{n} játszik", players_count: "{n} lejátszó", more_players: "Még {n}: {names}", back: "Vissza az összes lejátszóhoz",
     movie: "Film", last_called: "Utoljára megszólítva", next_alarm: "Ébresztő", next_timer: "Időzítő", next_reminder: "Emlékeztető", dnd: "Ne zavarjanak", speaker_group: "Hangszórócsoport", hide_idle_sessions: "Inaktív Jellyfin-munkamenetek elrejtése",
     remote: "Távirányító", r_up: "Fel", r_down: "Le", r_left: "Balra", r_right: "Jobbra", r_select: "Kiválasztás", r_menu: "Menü", r_home: "Kezdőlap", r_play_pause: "Lejátszás / szünet", show_remote: "Távirányító megjelenítése (Apple TV, Philips TV)", close_remote: "Távirányító bezárása", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Képernyő be- vagy kikapcsolása", recording: "Felvétel folyamatban", new_recording: "Új felvétel",
     illustration: "Animált illusztráció", illustration_theme: "Az illusztráció témája", theme_auto: "Automatikus (a témát követi)", theme_day: "Nappal", theme_night: "Éjszaka",
@@ -447,7 +447,7 @@ const STRINGS = {
     show_background: "Rozmazané pozadie obalu", show_progress: "Zobraziť priebeh", show_controls: "Zobraziť ovládacie tlačidlá", show_volume: "Zobraziť hlasitosť", show_rooms: "Zobraziť miestnosti a skupiny",
     show_source: "Zobraziť zdroj a režim zvuku", show_queue: "Zobraziť poradie", show_favorites: "Zobraziť obľúbené", collapsed: "Predvolene zbalené sekcie", favorites_entity: "Senzor obľúbených (Sonos)",
     zoom: "Tlačidlo podrobností", zoom_helper: "Tlačidlo vpravo hore: prepne na úplnú kartu a späť", language: "Jazyk", lang_auto: "Automaticky (jazyk Home Assistant)",
-    media: "Médiá", players: "Prehrávače (viaceré, pod sebou v karte)", players_helper: "Dva alebo viac: jeden blok na prehrávač, pod sebou", only_playing: "Len prehrávače, ktoré prehrávajú", include_paused: "Aj pozastavené prehrávače", n_playing: "Prehráva: {n}", players_count: "Prehrávače: {n}", more_players: "Ďalšie {n}: {names}", back: "Späť na všetky prehrávače",
+    media: "Médiá", players: "Prehrávače (viaceré, pod sebou v karte)", players_helper: "Dva alebo viac: jeden blok na prehrávač, pod sebou", only_playing: "Len prehrávače, ktoré prehrávajú", include_paused: "Aj pozastavené prehrávače", hide_when_idle: "Skryť kartu, keď sa nič neprehráva", n_playing: "Prehráva: {n}", players_count: "Prehrávače: {n}", more_players: "Ďalšie {n}: {names}", back: "Späť na všetky prehrávače",
     movie: "Film", last_called: "Naposledy oslovený", next_alarm: "Budík", next_timer: "Časovač", next_reminder: "Pripomienka", dnd: "Nerušiť", speaker_group: "Skupina reproduktorov", hide_idle_sessions: "Skryť neaktívne relácie Jellyfin",
     remote: "Diaľkový ovládač", r_up: "Hore", r_down: "Dole", r_left: "Vľavo", r_right: "Vpravo", r_select: "Vybrať", r_menu: "Ponuka", r_home: "Domov", r_play_pause: "Prehrať / pozastaviť", show_remote: "Zobraziť diaľkový ovládač (Apple TV, Philips TV)", close_remote: "Zavrieť diaľkový ovládač", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Zapnúť alebo vypnúť obrazovku", recording: "Nahráva sa", new_recording: "Nová nahrávka",
     illustration: "Animovaná ilustrácia", illustration_theme: "Téma ilustrácie", theme_auto: "Automaticky (podľa témy)", theme_day: "Deň", theme_night: "Noc",
@@ -465,7 +465,7 @@ const STRINGS = {
     show_background: "Rozmazané pozadí obalu", show_progress: "Zobrazit průběh", show_controls: "Zobrazit ovládací tlačítka", show_volume: "Zobrazit hlasitost", show_rooms: "Zobrazit místnosti a skupiny",
     show_source: "Zobrazit zdroj a režim zvuku", show_queue: "Zobrazit frontu", show_favorites: "Zobrazit oblíbené", collapsed: "Výchozí sbalené sekce", favorites_entity: "Senzor oblíbených (Sonos)",
     zoom: "Tlačítko podrobností", zoom_helper: "Tlačítko vpravo nahoře: přepne na úplnou kartu a zpět", language: "Jazyk", lang_auto: "Automaticky (jazyk Home Assistant)",
-    media: "Média", players: "Přehrávače (více, pod sebou v kartě)", players_helper: "Dva a více: jeden blok na přehrávač, pod sebou", only_playing: "Jen přehrávače, které přehrávají", include_paused: "I pozastavené přehrávače", n_playing: "Přehrává: {n}", players_count: "Přehrávače: {n}", more_players: "Dalších {n}: {names}", back: "Zpět na všechny přehrávače",
+    media: "Média", players: "Přehrávače (více, pod sebou v kartě)", players_helper: "Dva a více: jeden blok na přehrávač, pod sebou", only_playing: "Jen přehrávače, které přehrávají", include_paused: "I pozastavené přehrávače", hide_when_idle: "Skrýt kartu, když se nic nepřehrává", n_playing: "Přehrává: {n}", players_count: "Přehrávače: {n}", more_players: "Dalších {n}: {names}", back: "Zpět na všechny přehrávače",
     movie: "Film", last_called: "Naposledy oslovený", next_alarm: "Budík", next_timer: "Časovač", next_reminder: "Připomínka", dnd: "Nerušit", speaker_group: "Skupina reproduktorů", hide_idle_sessions: "Skrýt neaktivní relace Jellyfin",
     remote: "Dálkový ovladač", r_up: "Nahoru", r_down: "Dolů", r_left: "Vlevo", r_right: "Vpravo", r_select: "Vybrat", r_menu: "Nabídka", r_home: "Domů", r_play_pause: "Přehrát / pozastavit", show_remote: "Zobrazit dálkový ovladač (Apple TV, Philips TV)", close_remote: "Zavřít dálkový ovladač", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Zapnout nebo vypnout obrazovku", recording: "Nahrává se", new_recording: "Nová nahrávka",
     illustration: "Animovaná ilustrace", illustration_theme: "Motiv ilustrace", theme_auto: "Automaticky (podle motivu)", theme_day: "Den", theme_night: "Noc",
@@ -483,7 +483,7 @@ const STRINGS = {
     show_background: "Zamegljeno ozadje naslovnice", show_progress: "Prikaži napredek", show_controls: "Prikaži gumbe za upravljanje", show_volume: "Prikaži glasnost", show_rooms: "Prikaži prostore in skupine",
     show_source: "Prikaži vir in zvočni način", show_queue: "Prikaži čakalno vrsto", show_favorites: "Prikaži priljubljene", collapsed: "Privzeto strnjeni razdelki", favorites_entity: "Senzor priljubljenih (Sonos)",
     zoom: "Gumb za podrobnosti", zoom_helper: "Gumb zgoraj desno: preklopi na polno kartico in nazaj", language: "Jezik", lang_auto: "Samodejno (jezik Home Assistanta)",
-    media: "Predstavnost", players: "Predvajalniki (več, drug pod drugim na kartici)", players_helper: "Dva ali več: en blok na predvajalnik, drug pod drugim", only_playing: "Samo predvajalniki, ki predvajajo", include_paused: "Tudi zaustavljeni predvajalniki", n_playing: "Predvaja: {n}", players_count: "Predvajalniki: {n}", more_players: "Še {n}: {names}", back: "Nazaj na vse predvajalnike",
+    media: "Predstavnost", players: "Predvajalniki (več, drug pod drugim na kartici)", players_helper: "Dva ali več: en blok na predvajalnik, drug pod drugim", only_playing: "Samo predvajalniki, ki predvajajo", include_paused: "Tudi zaustavljeni predvajalniki", hide_when_idle: "Skrij kartico, ko se nič ne predvaja", n_playing: "Predvaja: {n}", players_count: "Predvajalniki: {n}", more_players: "Še {n}: {names}", back: "Nazaj na vse predvajalnike",
     movie: "Film", last_called: "Nazadnje poklican", next_alarm: "Budilka", next_timer: "Časovnik", next_reminder: "Opomnik", dnd: "Ne moti", speaker_group: "Skupina zvočnikov", hide_idle_sessions: "Skrij neaktivne seje Jellyfin",
     remote: "Daljinec", r_up: "Gor", r_down: "Dol", r_left: "Levo", r_right: "Desno", r_select: "Izberi", r_menu: "Meni", r_home: "Domov", r_play_pause: "Predvajaj / premor", show_remote: "Prikaži daljinec (Apple TV, Philips TV)", close_remote: "Zapri daljinec", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Vklopi ali izklopi zaslon", recording: "Snemanje", new_recording: "Nov posnetek",
     illustration: "Animirana ilustracija", illustration_theme: "Tema ilustracije", theme_auto: "Samodejno (sledi temi)", theme_day: "Dan", theme_night: "Noč",
@@ -501,7 +501,7 @@ const STRINGS = {
     show_background: "Izpludināts vāciņa fons", show_progress: "Rādīt progresu", show_controls: "Rādīt vadības pogas", show_volume: "Rādīt skaļumu", show_rooms: "Rādīt telpas un grupas",
     show_source: "Rādīt avotu un skaņas režīmu", show_queue: "Rādīt rindu", show_favorites: "Rādīt izlasi", collapsed: "Pēc noklusējuma sakļautās sadaļas", favorites_entity: "Izlases sensors (Sonos)",
     zoom: "Detaļu poga", zoom_helper: "Poga augšējā labajā stūrī: pārslēdz uz pilno karti un atpakaļ", language: "Valoda", lang_auto: "Automātiski (Home Assistant valoda)",
-    media: "Multivide", players: "Atskaņotāji (vairāki, kartē cits zem cita)", players_helper: "Divi vai vairāk: viens bloks katram atskaņotājam, cits zem cita", only_playing: "Tikai atskaņotāji, kas atskaņo", include_paused: "Arī pauzētie atskaņotāji", n_playing: "Atskaņo: {n}", players_count: "Atskaņotāji: {n}", more_players: "Vēl {n}: {names}", back: "Atpakaļ uz visiem atskaņotājiem",
+    media: "Multivide", players: "Atskaņotāji (vairāki, kartē cits zem cita)", players_helper: "Divi vai vairāk: viens bloks katram atskaņotājam, cits zem cita", only_playing: "Tikai atskaņotāji, kas atskaņo", include_paused: "Arī pauzētie atskaņotāji", hide_when_idle: "Slēpt karti, kad nekas netiek atskaņots", n_playing: "Atskaņo: {n}", players_count: "Atskaņotāji: {n}", more_players: "Vēl {n}: {names}", back: "Atpakaļ uz visiem atskaņotājiem",
     movie: "Filma", last_called: "Pēdējais uzrunātais", next_alarm: "Modinātājs", next_timer: "Taimeris", next_reminder: "Atgādinājums", dnd: "Netraucēt", speaker_group: "Skaļruņu grupa", hide_idle_sessions: "Slēpt neaktīvās Jellyfin sesijas",
     remote: "Tālvadība", r_up: "Augšup", r_down: "Lejup", r_left: "Pa kreisi", r_right: "Pa labi", r_select: "Izvēlēties", r_menu: "Izvēlne", r_home: "Sākums", r_play_pause: "Atskaņot / pauze", show_remote: "Rādīt tālvadību (Apple TV, Philips TV)", close_remote: "Aizvērt tālvadību", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Ieslēgt vai izslēgt ekrānu", recording: "Notiek ierakstīšana", new_recording: "Jauns ieraksts",
     illustration: "Animēta ilustrācija", illustration_theme: "Ilustrācijas motīvs", theme_auto: "Automātiski (atbilstoši tēmai)", theme_day: "Diena", theme_night: "Nakts",
@@ -519,7 +519,7 @@ const STRINGS = {
     show_background: "Θολό φόντο εξωφύλλου", show_progress: "Εμφάνιση προόδου", show_controls: "Εμφάνιση κουμπιών ελέγχου", show_volume: "Εμφάνιση έντασης", show_rooms: "Εμφάνιση δωματίων και ομάδων",
     show_source: "Εμφάνιση πηγής και λειτουργίας ήχου", show_queue: "Εμφάνιση ουράς", show_favorites: "Εμφάνιση αγαπημένων", collapsed: "Ενότητες κλειστές από προεπιλογή", favorites_entity: "Αισθητήρας αγαπημένων (Sonos)",
     zoom: "Κουμπί λεπτομερειών", zoom_helper: "Κουμπί πάνω δεξιά: μεταβαίνει στην πλήρη κάρτα και πίσω", language: "Γλώσσα", lang_auto: "Αυτόματα (γλώσσα του Home Assistant)",
-    media: "Πολυμέσα", players: "Αναπαραγωγείς (πολλοί, ο ένας κάτω από τον άλλο)", players_helper: "Δύο ή περισσότεροι: ένα μπλοκ ανά αναπαραγωγέα, ο ένας κάτω από τον άλλο", only_playing: "Μόνο οι αναπαραγωγείς που παίζουν", include_paused: "Και οι αναπαραγωγείς σε παύση", n_playing: "{n} σε αναπαραγωγή", players_count: "{n} αναπαραγωγείς", more_players: "Ακόμη {n}: {names}", back: "Πίσω σε όλους τους αναπαραγωγείς",
+    media: "Πολυμέσα", players: "Αναπαραγωγείς (πολλοί, ο ένας κάτω από τον άλλο)", players_helper: "Δύο ή περισσότεροι: ένα μπλοκ ανά αναπαραγωγέα, ο ένας κάτω από τον άλλο", only_playing: "Μόνο οι αναπαραγωγείς που παίζουν", include_paused: "Και οι αναπαραγωγείς σε παύση", hide_when_idle: "Απόκρυψη της κάρτας όταν δεν παίζει τίποτα", n_playing: "{n} σε αναπαραγωγή", players_count: "{n} αναπαραγωγείς", more_players: "Ακόμη {n}: {names}", back: "Πίσω σε όλους τους αναπαραγωγείς",
     movie: "Ταινία", last_called: "Τελευταία κλήση", next_alarm: "Ξυπνητήρι", next_timer: "Χρονόμετρο", next_reminder: "Υπενθύμιση", dnd: "Μην ενοχλείτε", speaker_group: "Ομάδα ηχείων", hide_idle_sessions: "Απόκρυψη ανενεργών συνεδριών Jellyfin",
     remote: "Τηλεχειριστήριο", r_up: "Πάνω", r_down: "Κάτω", r_left: "Αριστερά", r_right: "Δεξιά", r_select: "Επιλογή", r_menu: "Μενού", r_home: "Αρχική", r_play_pause: "Αναπαραγωγή / παύση", show_remote: "Εμφάνιση τηλεχειριστηρίου (Apple TV, Philips TV)", close_remote: "Κλείσιμο τηλεχειριστηρίου", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Ενεργοποίηση ή απενεργοποίηση οθόνης", recording: "Εγγραφή σε εξέλιξη", new_recording: "Νέα εγγραφή",
     illustration: "Κινούμενη εικονογράφηση", illustration_theme: "Θέμα εικονογράφησης", theme_auto: "Αυτόματο (ακολουθεί το θέμα)", theme_day: "Ημέρα", theme_night: "Νύχτα",
@@ -1652,6 +1652,52 @@ class MediaBase extends HTMLElement {
     return this._hass;
   }
 
+  // Set by Home Assistant on the cards of a dashboard being edited and in the card editor's preview: a card hidden
+  // by `hide_when_idle` stays visible there, so that it can still be found and edited.
+  set preview(value) {
+    this._preview = !!value;
+    this._update();
+  }
+
+  get preview() {
+    return !!this._preview;
+  }
+
+  set editMode(value) {
+    this._editMode = !!value;
+    this._update();
+  }
+
+  get editMode() {
+    return !!this._editMode;
+  }
+
+  // `hide_when_idle`: none of the card's players plays nor is paused (the main player, the one shown, or every player
+  // of `players`). Never while the dashboard is edited.
+  _idleHidden() {
+    const c = this._config;
+    if (c.hide_when_idle !== true || this._preview || this._editMode) return false;
+    const ids = isStacked(c) ? listedPlayers(c) : [findPlayer(this._hass, c).id, this._active];
+    return !ids.some((id) => isActive(this._s(id)));
+  }
+
+  // Shows or hides the card itself: the `hidden` attribute, and the event Home Assistant listens to so that the
+  // dashboard grid gives the space back (sections view) and takes it again. Leaving the screen this way drops the
+  // unfolded sections and the popup, as when the card leaves the page.
+  _setIdleHidden(hide) {
+    if (hide === !!this._idleHide) return;
+    this._idleHide = hide;
+    this.toggleAttribute?.("hidden", hide);
+    if (hide) {
+      this._toggled = new Map();
+      this._confirm = null;
+      this._showHidden = false;
+      window.removeEventListener("keydown", this._onKey);
+      this._html = "";
+    }
+    this.dispatchEvent(new CustomEvent("card-visibility-changed", { detail: { value: !hide }, bubbles: true, composed: true }));
+  }
+
   _deps() {
     const h = this._hass;
     if (!h || !this._config) return null;
@@ -1737,6 +1783,11 @@ class MediaBase extends HTMLElement {
     // No rewrite under a slider being dragged: it would drop it from under the pointer. Done once released.
     if (this._dragging || this._pressing) {
       this._dirty = true;
+      return;
+    }
+    this._setIdleHidden(this._idleHidden());
+    if (this._idleHide) {
+      this.shadowRoot.innerHTML = "";
       return;
     }
     let html = this._render();
@@ -2362,6 +2413,7 @@ class MediaCard extends MediaBase {
   }
 
   getCardSize() {
+    if (this._idleHide) return 0;
     return isStacked(this._config) && !this._active ? 1 + 3 * listedPlayers(this._config).length : 7;
   }
 
@@ -2954,6 +3006,7 @@ class MediaCardEditor extends MediaEditorBase {
       ["show_remote", false],
       ["only_playing", false],
       ["include_paused", false],
+      ["hide_when_idle", false],
       ["hide_idle_sessions", true],
     ];
   }
