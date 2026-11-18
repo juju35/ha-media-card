@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.6.1 - 2026-11-18
+
+### Fixes
+- Speaker groups: a member that its integration leaves `idle` while the group plays (Music Assistant keeps every member but the leader idle) now shows the leader's playing, paused or buffering state — its room rings, the mini card offers *Pause*, and `only_playing` / `hide_when_idle` keep it. Commands still target the member itself. Thanks @nvcs (#26).
+
 ## 1.6.0 - 2026-11-18
 
 ### Features
