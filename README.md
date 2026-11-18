@@ -37,7 +37,7 @@ The cards work on top of the integrations you already use, and draw only what ea
 ## Features
 
 - Two cards: a full **Media Card** (`custom:media-card`) and a compact **Media Mini Card** (`custom:media-mini-card`)
-- **Illustrated header** on both cards: a 90 px media room (TV console, plant, parquet strip) with the player's own drawn device standing big in front (the model's picture, else a speaker, TV or receiver); the TV behind it shows an equalizer while playing; the round icon takes the state's colour (playing, paused in amber, idle or off in grey, unavailable in red); day or night with the sun (`illustration_theme`), or the classic header with `illustration: false`
+- **Illustrated header** on both cards: a 90 px media room (TV console, plant, parquet strip) with the player's own drawn device standing big in front (the model's picture, else a speaker, TV or receiver); the TV behind it shows an equalizer while playing; the round icon takes the state's colour (playing, paused in amber, idle or off in grey, unavailable in red); day or night with the Home Assistant theme (`illustration_theme`), or the classic header with `illustration: false`
 - Artwork with a **blurred artwork background** behind the whole card (`show_background`), title, artist, album, and "Track 3 of 12" when the player tells its queue position (Sonos)
 - **Progress** bar with elapsed and total time, moving every second while playing; click it to seek, or focus it and use the arrow keys (10 s), Home and End
 - **Controls**: power, shuffle, previous, play / pause (or stop), next, repeat (off → all → one), each one only when the player supports it
@@ -212,7 +212,7 @@ language: fr
 | `hide_idle_sessions` | both | `true` | Jellyfin: leave the sessions with nothing playing out of `players` (named in the line at the bottom) and of the rooms |
 | `title` | both | Player name | Card title |
 | `illustration` | both | `true` | Illustrated header: the media room with the player's drawn device, the title on its wall and the state in the icon's colour and the subtitle; `false` keeps the classic header (icon, title, state chip) |
-| `illustration_theme` | both | `auto` | Day or night picture of the illustration: `auto` is night when `sun.sun` is below the horizon or the theme is dark, `day` or `night` forces one |
+| `illustration_theme` | both | `auto` | Day or night picture of the illustration: `auto` (follows the Home Assistant theme: night with a dark theme, day with a light theme), `day` or `night` forces one |
 | `show_title` | both | `true` | Show the title in the header (e.g. `false` under a section heading of your own) |
 | `show_subtitle` | both | `true` | Show the subtitle (group members, app or source) under the title |
 | `show_progress` | both | `true` | Progress bar and times (only while a track with a duration plays) |
