@@ -786,7 +786,10 @@ const stackedPlayers = (hass, config) => {
   const ids = idle.length < listed.length ? listed.filter((id) => !idle.includes(id)) : listed;
   const asleep = ids === listed ? [] : idle;
   if (!config.only_playing) return { shown: ids, hidden: asleep };
-  const on = (id) => isPlaying(hass.states[id]) || (config.include_paused === true && hass.states[id].state === "paused");
+  const on = (id) => {
+    const s = memberState(hass.states, id);
+    return isPlaying(s) || (config.include_paused === true && s.state === "paused");
+  };
   let shown = ids.filter(on);
   if (!shown.length && ids.length) {
     const changed = (id) => Date.parse(hass.states[id].last_changed) || 0;
@@ -797,6 +800,18 @@ const stackedPlayers = (hass, config) => {
 };
 
 const groupOf = (s) => (Array.isArray(s?.attributes?.group_members) ? s.attributes.group_members : []);
+
+// The state a player is shown with. A member of a group can keep its own state while the group plays: Music Assistant
+// leaves every member but the leader `idle` while the leader plays. Such a member (idle or on, listed in the group of
+// its leader, the first of its group_members) takes the leader's playing, paused or buffering state.
+const memberState = (states, id) => {
+  const s = states?.[id];
+  const leaderId = groupOf(s)[0];
+  if (!leaderId || leaderId === id || (s.state !== "idle" && s.state !== "on")) return s;
+  const leader = states[leaderId];
+  if (!isActive(leader) || !groupOf(leader).includes(id)) return s;
+  return { ...s, state: leader.state };
+};
 
 // Rooms of the card: the `entities` option, else, for a player that can group, every player of the same
 // integration that can group too (the speakers it can be joined with).
@@ -1769,7 +1784,7 @@ class MediaBase extends HTMLElement {
   }
 
   _s(id) {
-    return id ? this._hass.states[id] : undefined;
+    return id ? memberState(this._hass.states, id) : undefined;
   }
 
   // Service call whose failure Home Assistant already reports (toast): handled here so that it does not end up as

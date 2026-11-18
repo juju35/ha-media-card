@@ -187,6 +187,20 @@ test("rooms: every speaker that can group, with its volume, and join / leave", (
   assert.deepEqual(hass.calls.at(-1), ["media_player", "unjoin", { entity_id: "media_player.kitchen" }]);
 });
 
+test("a group member left idle by its integration shows the leader's state", () => {
+  // Music Assistant keeps every member but the leader idle while the group plays.
+  const st = withState("media_player.kitchen", { state: "idle" });
+  const rings = (h) => h.match(/class="room-icon active ring"/g)?.length || 0;
+  assert.equal(rings(html(newCard({}, makeHass(st)))), 2, "both members of the playing group ring");
+  const mini = newCard({ entity: "media_player.kitchen" }, makeHass(st), mc.MediaMiniCard);
+  assert.match(html(mini), /data-action="pause"/, "the member offers pause, as the group plays");
+  const paused = { ...st, [LIVING]: { ...st[LIVING], state: "paused" } };
+  assert.match(html(newCard({ entity: "media_player.kitchen" }, makeHass(paused), mc.MediaMiniCard)), /data-action="play"/);
+  // Not listed in the leader's group: its own state stays.
+  const alone = { ...st, [LIVING]: { ...st[LIVING], attributes: { ...st[LIVING].attributes, group_members: [LIVING] } } };
+  assert.doesNotMatch(html(newCard({ entity: "media_player.kitchen" }, makeHass(alone), mc.MediaMiniCard)), /data-action="pause"/);
+});
+
 test("ungroup all asks first, in a popup at the top of the card", () => {
   const hass = makeHass();
   const card = newCard({}, hass);
