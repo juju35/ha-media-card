@@ -43,6 +43,7 @@ The cards work on top of the integrations you already use, and draw only what ea
 - **Controls**: power, shuffle, previous, play / pause (or stop), next, repeat (off → all → one), each one only when the player supports it
 - **Volume** slider with the whole percentage, mute, or - / + buttons for a player that only steps its volume
 - **Several players** (`players`): the full card stacks a block per player (artwork, track, progress, controls, volume), the mini card lists them one per row; `only_playing` keeps only the ones that are playing (see [Several players](#several-players))
+- **Hide when idle** (`hide_when_idle`): the card disappears from the dashboard while nothing is playing nor paused, and comes back with the first track (still shown while the dashboard is edited)
 - **Rooms**: every speaker the shown player can be grouped with (same integration, grouping supported) or the players of the `entities` option, each with its state, its track, its own volume and mute; a click on a room's name shows that player in the card
 - **Speaker groups**: a link button per room joins it to the group or takes it out (`media_player.join` / `unjoin`); **Ungroup all** asks first, in a popup at the top of the card; the subtitle tells who the player plays with
 - **Source** and **sound mode** chips (inputs of a receiver, Sonos favorites and line-in, Spotify Connect devices…)
@@ -208,6 +209,7 @@ language: fr
 | `players` | both | — | Two `media_player` entities or more, shown together (see [Several players](#several-players)); takes the place of `entity` |
 | `only_playing` | both | `false` | With `players`: only the players that are playing (or buffering); the others are summed up in one line at the bottom, which shows them on click. When none plays, the one that changed last is shown |
 | `include_paused` | both | `false` | With `only_playing`: paused players count as playing |
+| `hide_when_idle` | both | `false` | Hide the whole card while nothing is playing nor paused: the player (or the one shown from the rooms), or every player of `players`. It shows again as soon as one plays; it stays visible while the dashboard is edited |
 | `show_remote` | both | `false` | Apple TV and Philips TV: a remote section (direction pad, select, menu, home, play / pause) sent to the device's `remote` entity; on the mini card, a remote button in the compact view opens it in a popup (and the detailed view keeps the section) |
 | `hide_idle_sessions` | both | `true` | Jellyfin: leave the sessions with nothing playing out of `players` (named in the line at the bottom) and of the rooms |
 | `title` | both | Player name | Card title |

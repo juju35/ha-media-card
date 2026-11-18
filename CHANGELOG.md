@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.6.0 - 2026-11-18
+
+### Features
+- `hide_when_idle` (both cards, in the visual editors, labels in the 22 languages): the card hides itself while nothing is playing nor paused — the player (or the room shown), or every player of `players` — and shows again with the first track. Home Assistant gives its space back in the sections view; it stays visible while the dashboard is edited and in the editor's preview.
+
 ## 1.5.1 - 2026-11-18
 
 ### Fixes

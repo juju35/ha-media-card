@@ -659,3 +659,42 @@ test("visual editors: players, only_playing and include_paused, left out of the 
     assert.deepEqual({ ...events[0].detail.config }, { players: PLAYERS, only_playing: true });
   }
 });
+
+test("hide_when_idle: the card hides itself when none of its players plays nor is paused, not while edited", () => {
+  const idle = (ids) => {
+    const st = { ...states };
+    for (const id of ids) st[id] = { ...st[id], state: "idle" };
+    return st;
+  };
+  const visible = (card) => !card.hidden && html(card) !== "";
+  const visibility = (card) => (card.events || []).filter((e) => e.type === "card-visibility-changed").map((e) => e.detail.value);
+  // One player.
+  const hass = makeHass(idle([LIVING]));
+  const card = new mc.MediaCard();
+  card.toggleAttribute = function (name, on) {
+    this[name] = on;
+  };
+  card.setConfig({ entity: LIVING, hide_when_idle: true });
+  card.hass = hass;
+  assert.equal(visible(card), false);
+  assert.equal(card.getCardSize(), 0);
+  assert.deepEqual(visibility(card), [false]);
+  card.hass = makeHass(withState(LIVING, { state: "paused" }));
+  assert.equal(visible(card), true, "a paused player keeps the card");
+  assert.deepEqual(visibility(card), [false, true]);
+  card.hass = hass;
+  card.preview = true;
+  assert.equal(visible(card), true, "shown in the editor's preview");
+  card.preview = false;
+  card.editMode = true;
+  assert.equal(visible(card), true, "shown while the dashboard is edited");
+  // Off by default.
+  assert.match(html(newCard({}, makeHass(idle([LIVING])))), /<ha-card/);
+  // Several players: hidden only when none of them plays.
+  for (const Card of [mc.MediaCard, mc.MediaMiniCard]) {
+    const one = stacked({ hide_when_idle: true }, makeHass(idle(PLAYERS.slice(1))), Card);
+    assert.match(html(one), /<ha-card/, "one player still plays");
+    const none = stacked({ hide_when_idle: true }, makeHass(idle(PLAYERS)), Card);
+    assert.equal(html(none), "");
+  }
+});
