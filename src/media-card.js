@@ -1564,6 +1564,65 @@ const isOutside = (card, ev) => {
 // the page. It counts when the press and the release are both outside the card (a slider dragged out of the card
 // does not fold it), and a scroll does not count (the browser cancels the pointer). Keyboard clicks still go through
 // the click event.
+// Patch the shadow DOM in place from the new HTML instead of rewriting it: a volume step, a new position or a
+// group change rewrote the whole card, so the artwork's <img> was decoded again (a blink, a frame without it in
+// WebKit), the drawn devices and animations started over and the dashboard moved under the finger. Nodes whose tag
+// is unchanged are kept and only the changed text and attributes are written. Children carrying a data-key are
+// matched by it wherever they moved, the others by position. A node marked data-live keeps the attributes the card
+// sets on it after the render (the record's slide and turn): its data-key carries everything its markup depends on.
+const patchAttrs = (cur, next) => {
+  if (next.hasAttribute("data-live")) return;
+  for (const { name } of [...cur.attributes]) if (!next.hasAttribute(name)) cur.removeAttribute(name);
+  for (const { name, value } of next.attributes) if (cur.getAttribute(name) !== value) cur.setAttribute(name, value);
+  // A slider the user moved no longer follows its value attribute: its value is set too.
+  if (cur.localName === "input" && cur.value !== (next.getAttribute("value") ?? cur.value)) cur.value = next.getAttribute("value");
+};
+const keyOf = (n) => (n.nodeType === 1 ? n.getAttribute("data-key") : null);
+const place = (parent, node, ref) => {
+  if (node === ref) return;
+  try {
+    // moveBefore (where supported) keeps the focus of a moved node.
+    if (parent.moveBefore && node.parentNode === parent) return parent.moveBefore(node, ref);
+  } catch (_e) {
+    /* fall back to insertBefore */
+  }
+  parent.insertBefore(node, ref);
+};
+const patchChildren = (cur, next) => {
+  const old = [...cur.childNodes];
+  const fresh = [...next.childNodes];
+  const byKey = new Map();
+  for (const o of old) {
+    const k = keyOf(o);
+    if (k !== null && !byKey.has(k)) byKey.set(k, o);
+  }
+  const used = new Set();
+  fresh.forEach((n, i) => {
+    const k = keyOf(n);
+    let o = k !== null ? byKey.get(k) : old[i];
+    if (!o || o.nodeType !== n.nodeType || o.nodeName !== n.nodeName || used.has(o) || (k === null && keyOf(o) !== null)) o = null;
+    const ref = cur.childNodes[i] ?? null;
+    if (!o) {
+      cur.insertBefore(n, ref);
+      return;
+    }
+    used.add(o);
+    place(cur, o, ref);
+    if (n.nodeType === 1) {
+      patchAttrs(o, n);
+      patchChildren(o, n);
+    } else if (o.nodeValue !== n.nodeValue) o.nodeValue = n.nodeValue;
+  });
+  for (const o of old) if (!used.has(o)) o.remove();
+};
+const morph = (root, html) => {
+  const tpl = document.createElement("template");
+  tpl.innerHTML = html;
+  // Without a real DOM (the unit tests' stand-ins), the HTML is written as it is.
+  if (!tpl.content || !root.childNodes) root.innerHTML = html;
+  else patchChildren(root, tpl.content);
+};
+
 const watchOutside = (card, handler) => {
   let downOutside = false;
   const onDown = (ev) => {
@@ -1838,7 +1897,7 @@ class MediaBase extends HTMLElement {
     const focusedKey = this._confirm && this.shadowRoot.activeElement?.dataset?.value;
     const kept = this._confirm || this._byPointer ? null : this._focusedSpot();
     this._html = html;
-    this.shadowRoot.innerHTML = html;
+    morph(this.shadowRoot, html);
     this._fitPill();
     this._afterRender(true);
     if (kept) this._focusables(kept.key)[kept.index]?.focus({ preventScroll: true });
@@ -1879,6 +1938,9 @@ class MediaBase extends HTMLElement {
     if (!fresh) return;
     const vinyl = this.shadowRoot.querySelector(".vinyl.playing");
     const s = this._s(this._id);
+    // A record kept by the patch goes on turning as it was.
+    if (vinyl && vinyl === this._vinyl) return;
+    this._vinyl = vinyl;
     if (!vinyl) {
       if (!isActive(s)) this._slid = null;
       return;
@@ -1900,17 +1962,19 @@ class MediaBase extends HTMLElement {
     };
     for (const el of this.shadowRoot.querySelectorAll("[data-progress]")) {
       const v = at(el, "progress");
-      if (v) el.style.width = `${((v.p / v.d) * 100).toFixed(2)}%`;
+      const w = v && `${((v.p / v.d) * 100).toFixed(2)}%`;
+      if (w && el.style.width !== w) el.style.width = w;
     }
+    // Written only when it changed: the 1 s ticker leaves the DOM alone while the time shown stays the same.
     for (const el of this.shadowRoot.querySelectorAll("[data-elapsed]")) {
       const v = at(el, "elapsed");
-      if (v) el.textContent = fmtTime(v.p);
+      if (v && el.textContent !== fmtTime(v.p)) el.textContent = fmtTime(v.p);
     }
     for (const el of this.shadowRoot.querySelectorAll('[role="slider"][data-action="seek"]')) {
       const v = at(el, "target");
       if (!v) continue;
-      el.setAttribute("aria-valuenow", String(Math.round(v.p)));
-      el.setAttribute("aria-valuetext", `${fmtTime(v.p)} / ${fmtTime(v.d)}`);
+      if (el.getAttribute("aria-valuenow") !== String(Math.round(v.p))) el.setAttribute("aria-valuenow", String(Math.round(v.p)));
+      if (el.getAttribute("aria-valuetext") !== `${fmtTime(v.p)} / ${fmtTime(v.d)}`) el.setAttribute("aria-valuetext", `${fmtTime(v.p)} / ${fmtTime(v.d)}`);
     }
   }
 
@@ -2265,7 +2329,9 @@ class MediaBase extends HTMLElement {
     const over = st === "buffering" ? `<div class="spinner"></div>` : st === "playing" || st === "paused" ? `<div class="eq ${st}"><i></i><i></i><i></i><i></i></div>` : "";
     const box = `<div class="art clickable" role="button" tabindex="0" aria-label="${label}" data-entity="${esc(id)}"><img src="${esc(art)}" alt="">${over}</div>`;
     if (!vinyl) return box;
-    const disc = isActive(s) ? `<div class="vinyl ${st === "playing" ? "playing" : ""}"></div>` : "";
+    const disc = isActive(s)
+      ? `<div class="vinyl ${st === "playing" ? "playing" : ""}" data-live data-key="${esc(`vinyl|${id}|${st}|${s?.attributes?.media_content_id ?? ""}|${s?.attributes?.media_title ?? ""}`)}"></div>`
+      : "";
     return `<div class="art-wrap${disc ? " vinyl-on" : ""}">${disc}${box}</div>`;
   }
 
