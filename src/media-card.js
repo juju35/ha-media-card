@@ -634,15 +634,32 @@ const REMOTE_COMMANDS = {
   philips_js: { up: "CursorUp", down: "CursorDown", left: "CursorLeft", right: "CursorRight", select: "Confirm", menu: "Back", home: "Home", play_pause: "PlayPause" },
 };
 const remoteCommand = (hass, rid, cmd) => REMOTE_COMMANDS[platformOf(hass, rid)]?.[cmd] || cmd;
+// Lookups in the entity registry, made once per registry: the card checks what it reads from it on every state
+// change of Home Assistant (to know whether to render), and a scan of every entity each time adds up on large
+// installs. The registry object is replaced when an entity is added, removed or changed.
+const registryMemo = new WeakMap();
+const fromRegistry = (hass, key, find) => {
+  const reg = hass?.entities;
+  if (!reg) return find();
+  let memo = registryMemo.get(reg);
+  if (!memo) registryMemo.set(reg, (memo = new Map()));
+  if (!memo.has(key)) memo.set(key, find());
+  return memo.get(key);
+};
+
 const remoteOf = (hass, id) => {
   const platform = platformOf(hass, id);
   if (!REMOTE_PLATFORMS.has(platform)) return null;
-  const device = hass.entities?.[id]?.device_id;
-  const base = id.slice(id.indexOf(".") + 1);
-  const e = Object.values(hass.entities || {}).find(
-    (x) => x?.platform === platform && String(x.entity_id).startsWith("remote.") && ((device && x.device_id === device) || x.entity_id === `remote.${base}`),
-  );
-  return e && hass.states?.[e.entity_id] ? e.entity_id : null;
+  const rid = fromRegistry(hass, `remote|${id}`, () => {
+    const device = hass.entities?.[id]?.device_id;
+    const base = id.slice(id.indexOf(".") + 1);
+    return (
+      Object.values(hass.entities || {}).find(
+        (x) => x?.platform === platform && String(x.entity_id).startsWith("remote.") && ((device && x.device_id === device) || x.entity_id === `remote.${base}`),
+      )?.entity_id || null
+    );
+  });
+  return rid && hass.states?.[rid] ? rid : null;
 };
 
 // Picture family of a player's device (its model in the device registry), "" for a generic picture.
@@ -671,19 +688,24 @@ const idleSession = (hass, config, id) => config?.hide_idle_sessions !== false &
 // their translation key, else by the entity ids the integration gives them (`<domain>.<player id>_<suffix>`).
 // `table` maps a key to [domain, translation key, entity id suffixes].
 const deviceExtras = (hass, id, platform, table) => {
-  const device = hass.entities?.[id]?.device_id;
-  const base = id.slice(id.indexOf(".") + 1);
-  const all = Object.values(hass.entities || {});
+  const found = fromRegistry(hass, `extras|${platform}|${id}`, () => {
+    const device = hass.entities?.[id]?.device_id;
+    const base = id.slice(id.indexOf(".") + 1);
+    const all = Object.values(hass.entities || {});
+    const ids = {};
+    for (const [key, [domain, tkey, suffixes]] of Object.entries(table)) {
+      const e = all.find(
+        (x) =>
+          x?.platform === platform &&
+          String(x.entity_id).startsWith(`${domain}.`) &&
+          ((device && x.device_id === device && x.translation_key === tkey) || suffixes.some((sfx) => x.entity_id === `${domain}.${base}_${sfx}`)),
+      );
+      if (e) ids[key] = e.entity_id;
+    }
+    return ids;
+  });
   const out = {};
-  for (const [key, [domain, tkey, suffixes]] of Object.entries(table)) {
-    const e = all.find(
-      (x) =>
-        x?.platform === platform &&
-        String(x.entity_id).startsWith(`${domain}.`) &&
-        ((device && x.device_id === device && x.translation_key === tkey) || suffixes.some((sfx) => x.entity_id === `${domain}.${base}_${sfx}`)),
-    );
-    if (e && hass.states?.[e.entity_id]) out[key] = e.entity_id;
-  }
+  for (const [key, eid] of Object.entries(found)) if (hass.states?.[eid]) out[key] = eid;
   return out;
 };
 
@@ -758,11 +780,13 @@ const playerIds = (hass) =>
 
 // The player to show: the room clicked in the card, else `entity`, else the first playing one, else the first one.
 const findPlayer = (hass, config, active) => {
-  const ids = playerIds(hass);
-  if (!ids.length) return { error: "no_player" };
   const listed = listedPlayers(config);
   const want = active || config.entity || (listed.length === 1 ? listed[0] : null);
-  if (want) return hass.states[want] ? { id: want } : { error: "unknown_entity" };
+  // A player given by the config: found without listing (and sorting) every player at each state change.
+  if (want && hass.states[want]) return { id: want };
+  const ids = playerIds(hass);
+  if (!ids.length) return { error: "no_player" };
+  if (want) return { error: "unknown_entity" };
   return { id: ids.find((id) => hass.states[id].state === "playing") || ids.find((id) => !offline(hass.states[id])) || ids[0] };
 };
 
@@ -839,11 +863,10 @@ const isMusicAssistant = (hass, id) => {
 const favoritesSensor = (hass, config, mainId) => {
   if (config.favorites_entity) return hass.states[config.favorites_entity] ? config.favorites_entity : null;
   if (platformOf(hass, mainId) !== "sonos") return null;
-  return (
-    Object.keys(hass.states).find(
-      (id) => id.startsWith("sensor.") && platformOf(hass, id) === "sonos" && hass.states[id].attributes?.items && typeof hass.states[id].attributes.items === "object",
-    ) || null
+  const sonos = fromRegistry(hass, "sonos-sensors", () =>
+    Object.keys(hass.entities || {}).filter((id) => id.startsWith("sensor.") && platformOf(hass, id) === "sonos"),
   );
+  return sonos.find((id) => hass.states[id]?.attributes?.items && typeof hass.states[id].attributes.items === "object") || null;
 };
 
 const favoritesOf = (hass, config, mainId) => {
