@@ -1618,8 +1618,9 @@ const patchChildren = (cur, next) => {
 const morph = (root, html) => {
   const tpl = document.createElement("template");
   tpl.innerHTML = html;
-  // Without a real DOM (the unit tests' stand-ins), the HTML is written as it is.
-  if (!tpl.content || !root.childNodes) root.innerHTML = html;
+  // Without a real DOM (the unit tests' stand-ins), the HTML is written as it is; so is the first render (nothing to
+  // keep yet): Chromium lays some text out a pixel apart when it comes from a template rather than from the parser.
+  if (!tpl.content || !root.childNodes || !root.firstChild) root.innerHTML = html;
   else patchChildren(root, tpl.content);
 };
 
