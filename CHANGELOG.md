@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.6.2 - 2026-11-20
+
+### Performance
+- The card checks on every state change of Home Assistant whether it has to render: the entities it finds in the entity registry (Alexa do-not-disturb switch and next alarm, timer and reminder sensors, Philips TV Ambilight and screen entities, Apple TV and Philips TV remotes, the Sonos favorites sensor) are now looked up once per registry instead of scanning every entity each time, and a player set with `entity` is no longer found by listing and sorting every player.
+
+### Maintenance
+- CI: the branch cleanup recognises the commits of the `juju35-screenshots` app.
+
 ## 1.6.1 - 2026-11-18
 
 ### Fixes
