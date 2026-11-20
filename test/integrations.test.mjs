@@ -77,6 +77,20 @@ test("Alexa: last called badge, next alarm and timer, do-not-disturb switch", ()
   assert.doesNotMatch(quiet, /Last called/);
 });
 
+test("Alexa: the Echo's entities are found once per registry, their states read at each render", () => {
+  const hass = makeHass();
+  const { [DND]: _gone, ...without } = hass.states;
+  const c = card({ entity: ECHO }, { ...hass, states: without });
+  assert.doesNotMatch(html(c), /data-action="dnd"/, "no switch state: no button");
+  // Same registry, the switch's state comes in: the button shows.
+  c.hass = { ...hass, states: { ...without, [DND]: hass.states[DND] } };
+  assert.match(html(c), /data-action="dnd"/);
+  // A new registry without the switch: looked up again, the button goes.
+  const { [DND]: _e, ...entities } = hass.entities;
+  c.hass = { ...hass, entities };
+  assert.doesNotMatch(html(c), /data-action="dnd"/);
+});
+
 test("Alexa: the do-not-disturb button toggles the Echo's switch", () => {
   const hass = makeHass();
   const c = card({ entity: ECHO }, hass);

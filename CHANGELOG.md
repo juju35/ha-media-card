@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.6.2 - 2026-11-20
+
+### Fixes
+- **The dashboard no longer jumps on state updates**: a volume step, a new position or a group change rewrote the whole card, so the artwork was loaded and decoded again (a blink, in Safari a frame without it), the drawn devices and the record restarted. The card is now patched in place: only the changed texts and values are written, the artwork, the record and the sliders stay the same nodes (a slider moved by hand still takes the new volume), and the 1 s progress ticker writes only when the time shown changes.
+
+### Performance
+- The card checks on every state change of Home Assistant whether it has to render: the entities it finds in the entity registry (Alexa do-not-disturb switch and next alarm, timer and reminder sensors, Philips TV Ambilight and screen entities, Apple TV and Philips TV remotes, the Sonos favorites sensor) are now looked up once per registry instead of scanning every entity each time, and a player set with `entity` is no longer found by listing and sorting every player.
+
+### Maintenance
+- CI: the branch cleanup recognises the commits of the `juju35-screenshots` app.
+- New browser test: state updates leave the cards' nodes and height alone.
+- CI: Validate runs in a Debian 12 container with Chromium, so the browser tests (status pill placement, no layout shift on updates) now run on every pull request instead of being skipped; a missing browser fails the job.
+
 ## 1.6.1 - 2026-11-18
 
 ### Fixes
