@@ -11,6 +11,7 @@
 ### Maintenance
 - CI: the branch cleanup recognises the commits of the `juju35-screenshots` app.
 - New browser test: state updates leave the cards' nodes and height alone.
+- CI: Validate runs in a Debian 12 container with Chromium, so the browser tests (status pill placement, no layout shift on updates) now run on every pull request instead of being skipped; a missing browser fails the job.
 
 ## 1.6.1 - 2026-11-18
 
