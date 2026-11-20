@@ -9,8 +9,12 @@ import { after, before, test } from "node:test";
 import { devices, entities, NOW, states } from "../scripts/mock-states.mjs";
 
 const src = readFileSync(new URL("../src/media-card.js", import.meta.url), "utf8");
-const HA_CARD = `customElements.define("ha-card", class extends HTMLElement { constructor() { super();
-  this.attachShadow({ mode: "open" }).innerHTML = "<style>:host{display:block;overflow:hidden}</style><slot></slot>"; } });`;
+// Home Assistant's <ha-card> is a Lit element: it renders its slot a few microtasks after it is attached, so that a
+// card rewritten from scratch measured its header (the status pill) in an empty frame. A plain stand-in hides that;
+// this one renders late, like Lit.
+const HA_CARD = `customElements.define("ha-card", class extends HTMLElement { connectedCallback() { if (this.shadowRoot) return;
+  const r = this.attachShadow({ mode: "open" });
+  Promise.resolve().then(() => Promise.resolve()).then(() => { r.innerHTML = "<style>:host{display:block;overflow:hidden}</style><slot></slot>"; }); } });`;
 let browser;
 let skip = false;
 before(async () => {
@@ -57,7 +61,12 @@ test("state updates patch the cards in place: nothing for others' entities, no n
         box.appendChild(el);
         await frame();
         if (zoom) el.shadowRoot.querySelector(".zoom").dispatchEvent(new MouseEvent("click", { bubbles: true, composed: true, detail: 1 }));
-        for (let i = 0; i < 3; i++) await frame();
+        const mount = new Set();
+        for (let i = 0; i < 3; i++) {
+          await frame();
+          mount.add(Math.round(el.getBoundingClientRect().height * 10) / 10);
+        }
+        if (mount.size !== 1) out.push(`${what}: height moved after it was shown: ${[...mount].join(" → ")}`);
         const r = el.shadowRoot;
         const nodes = [...r.querySelectorAll("*")];
         const height = el.getBoundingClientRect().height;
