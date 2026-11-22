@@ -3176,7 +3176,7 @@ for (const card of [
     description: "Compact media player: artwork, track, play / pause, next and volume.",
   },
 ]) {
-  if (!window.customCards.some((c) => c.type === card.type)) window.customCards.push({ ...card, preview: true, documentationURL: "https://github.com/juju35/ha-media-card" });
+  if (!window.customCards.some((c) => c.type === card.type)) window.customCards.push({ ...card, preview: false, documentationURL: "https://github.com/juju35/ha-media-card" });
 }
 
 console.info(`%c MEDIA-CARD %c v${VERSION} `, "color: white; background: #03a9f4; font-weight: 700;", "color: #03a9f4; background: white; font-weight: 700;");
