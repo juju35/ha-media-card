@@ -1,0 +1,19 @@
+// STRINGS — "ru"; a missing key falls back to English.
+export default {
+  st_playing: "Воспроизведение", st_paused: "Пауза", st_idle: "Бездействует", st_on: "Включён", st_off: "Выключен", st_standby: "Ожидание", st_buffering: "Буферизация", st_unavailable: "Недоступен", st_unknown: "Неизвестно",
+  play: "Воспроизвести", pause: "Пауза", stop: "Стоп", next: "Следующий трек", previous: "Предыдущий трек", shuffle: "Перемешать", repeat_off: "Без повтора", repeat_all: "Повторять все", repeat_one: "Повторять трек",
+  mute: "Выключить звук", unmute: "Включить звук", volume: "Громкость", volume_down: "Тише", volume_up: "Громче", power: "Включить или выключить", seek: "Позиция",
+  nothing_playing: "Ничего не воспроизводится", source: "Источник", sound_mode: "Звуковой режим", rooms: "Комнаты", join: "Добавить {name} в группу", leave: "Убрать {name} из группы",
+  grouped: "Вместе с: {names}", ungroup_all: "Разгруппировать все", confirm_ungroup: "Убрать все колонки из группы {name}?", queue: "Очередь", now_playing: "Сейчас играет", up_next: "Далее",
+  queue_loading: "Загрузка очереди…", queue_empty: "Очередь пуста.", queue_error: "Не удалось получить очередь.", queue_count: "Треков в очереди: {n}", favorites: "Избранное",
+  play_favorite: "Воспроизвести {name}", track_of: "Трек {n} из {total}", show_player: "Показать {name}", cancel: "Отмена", no_player: "Медиаплеер не найден.", unknown_entity: "Медиаплеер не найден",
+  zoom_in: "Подробнее", zoom_out: "Свернуть",
+  entity: "Медиаплеер", entities: "Комнаты (другие плееры, необязательно)", title: "Заголовок (необязательно, по умолчанию имя плеера)", show_title: "Показывать заголовок", show_subtitle: "Показывать подзаголовок",
+  show_background: "Размытый фон обложки", show_progress: "Показывать прогресс", show_controls: "Показывать кнопки управления", show_volume: "Показывать громкость", show_rooms: "Показывать комнаты и группы",
+  show_source: "Показывать источник и звуковой режим", show_queue: "Показывать очередь", show_favorites: "Показывать избранное", collapsed: "Свёрнутые по умолчанию разделы", favorites_entity: "Датчик избранного (Sonos)",
+  zoom: "Кнопка подробностей", zoom_helper: "Кнопка справа вверху: переключает на полную карточку и обратно", language: "Язык", lang_auto: "Автоматически (язык Home Assistant)",
+  media: "Медиа", players: "Плееры (несколько, друг под другом в карточке)", players_helper: "Два или больше: по блоку на плеер, друг под другом", only_playing: "Только воспроизводящие плееры", include_paused: "И плееры на паузе", hide_when_idle: "Скрывать карточку, когда ничего не воспроизводится", n_playing: "Воспроизводят: {n}", players_count: "Плееров: {n}", more_players: "Ещё {n}: {names}", back: "Назад ко всем плеерам",
+  movie: "Фильм", last_called: "Последний вызванный", next_alarm: "Будильник", next_timer: "Таймер", next_reminder: "Напоминание", dnd: "Не беспокоить", speaker_group: "Группа колонок", hide_idle_sessions: "Скрывать неактивные сеансы Jellyfin",
+  remote: "Пульт", r_up: "Вверх", r_down: "Вниз", r_left: "Влево", r_right: "Вправо", r_select: "Выбрать", r_menu: "Меню", r_home: "Домой", r_play_pause: "Воспроизведение / пауза", show_remote: "Показывать пульт (Apple TV, Philips TV)", close_remote: "Закрыть пульт", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Включить или выключить экран", recording: "Идёт запись", new_recording: "Новая запись",
+  illustration: "Анимированная иллюстрация", illustration_theme: "Тема иллюстрации", theme_auto: "Автоматически (по теме)", theme_day: "День", theme_night: "Ночь",
+};

@@ -4,11 +4,11 @@
 // element added or removed, the artwork's <img> and the record are the same nodes), its height holds on every frame,
 // and a slider the user moved takes the new volume. Skipped when Playwright or Chromium is not installed.
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
 import { after, before, test } from "node:test";
 import { devices, entities, NOW, states } from "../scripts/mock-states.mjs";
+import { source } from "./source.mjs";
 
-const src = readFileSync(new URL("../src/media-card.js", import.meta.url), "utf8");
+const src = source;
 // Home Assistant's <ha-card> is a Lit element: it renders its slot a few microtasks after it is attached, so that a
 // card rewritten from scratch measured its header (the status pill) in an empty frame. A plain stand-in hides that;
 // this one renders late, like Lit.

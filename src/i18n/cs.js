@@ -1,0 +1,19 @@
+// STRINGS — "cs"; a missing key falls back to English.
+export default {
+  st_playing: "Přehrává se", st_paused: "Pozastaveno", st_idle: "Nečinný", st_on: "Zapnuto", st_off: "Vypnuto", st_standby: "Pohotovost", st_buffering: "Načítání", st_unavailable: "Nedostupný", st_unknown: "Neznámý",
+  play: "Přehrát", pause: "Pozastavit", stop: "Zastavit", next: "Další skladba", previous: "Předchozí skladba", shuffle: "Náhodně", repeat_off: "Bez opakování", repeat_all: "Opakovat vše", repeat_one: "Opakovat skladbu",
+  mute: "Ztlumit", unmute: "Zapnout zvuk", volume: "Hlasitost", volume_down: "Tišeji", volume_up: "Hlasitěji", power: "Zapnout nebo vypnout", seek: "Pozice",
+  nothing_playing: "Nic se nepřehrává", source: "Zdroj", sound_mode: "Režim zvuku", rooms: "Místnosti", join: "Přidat {name} do skupiny", leave: "Odebrat {name} ze skupiny",
+  grouped: "S: {names}", ungroup_all: "Zrušit skupinu", confirm_ungroup: "Odebrat všechny reproduktory ze skupiny {name}?", queue: "Fronta", now_playing: "Právě hraje", up_next: "Následuje",
+  queue_loading: "Načítání fronty…", queue_empty: "Fronta je prázdná.", queue_error: "Frontu se nepodařilo získat.", queue_count: "Skladby ve frontě: {n}", favorites: "Oblíbené",
+  play_favorite: "Přehrát {name}", track_of: "Skladba {n} z {total}", show_player: "Zobrazit {name}", cancel: "Zrušit", no_player: "Nebyl nalezen žádný přehrávač médií.", unknown_entity: "Přehrávač médií nebyl nalezen",
+  zoom_in: "Zobrazit podrobnosti", zoom_out: "Zobrazit méně",
+  entity: "Přehrávač médií", entities: "Místnosti (další přehrávače, volitelné)", title: "Název (volitelný, výchozí je název přehrávače)", show_title: "Zobrazit název", show_subtitle: "Zobrazit podnadpis",
+  show_background: "Rozmazané pozadí obalu", show_progress: "Zobrazit průběh", show_controls: "Zobrazit ovládací tlačítka", show_volume: "Zobrazit hlasitost", show_rooms: "Zobrazit místnosti a skupiny",
+  show_source: "Zobrazit zdroj a režim zvuku", show_queue: "Zobrazit frontu", show_favorites: "Zobrazit oblíbené", collapsed: "Výchozí sbalené sekce", favorites_entity: "Senzor oblíbených (Sonos)",
+  zoom: "Tlačítko podrobností", zoom_helper: "Tlačítko vpravo nahoře: přepne na úplnou kartu a zpět", language: "Jazyk", lang_auto: "Automaticky (jazyk Home Assistant)",
+  media: "Média", players: "Přehrávače (více, pod sebou v kartě)", players_helper: "Dva a více: jeden blok na přehrávač, pod sebou", only_playing: "Jen přehrávače, které přehrávají", include_paused: "I pozastavené přehrávače", hide_when_idle: "Skrýt kartu, když se nic nepřehrává", n_playing: "Přehrává: {n}", players_count: "Přehrávače: {n}", more_players: "Dalších {n}: {names}", back: "Zpět na všechny přehrávače",
+  movie: "Film", last_called: "Naposledy oslovený", next_alarm: "Budík", next_timer: "Časovač", next_reminder: "Připomínka", dnd: "Nerušit", speaker_group: "Skupina reproduktorů", hide_idle_sessions: "Skrýt neaktivní relace Jellyfin",
+  remote: "Dálkový ovladač", r_up: "Nahoru", r_down: "Dolů", r_left: "Vlevo", r_right: "Vpravo", r_select: "Vybrat", r_menu: "Nabídka", r_home: "Domů", r_play_pause: "Přehrát / pozastavit", show_remote: "Zobrazit dálkový ovladač (Apple TV, Philips TV)", close_remote: "Zavřít dálkový ovladač", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Zapnout nebo vypnout obrazovku", recording: "Nahrává se", new_recording: "Nová nahrávka",
+  illustration: "Animovaná ilustrace", illustration_theme: "Motiv ilustrace", theme_auto: "Automaticky (podle motivu)", theme_day: "Den", theme_night: "Noc",
+};
