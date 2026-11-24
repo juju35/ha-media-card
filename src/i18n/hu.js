@@ -1,0 +1,19 @@
+// STRINGS — "hu"; a missing key falls back to English.
+export default {
+  st_playing: "Lejátszás", st_paused: "Szüneteltetve", st_idle: "Tétlen", st_on: "Be", st_off: "Ki", st_standby: "Készenlét", st_buffering: "Pufferelés", st_unavailable: "Nem elérhető", st_unknown: "Ismeretlen",
+  play: "Lejátszás", pause: "Szünet", stop: "Leállítás", next: "Következő szám", previous: "Előző szám", shuffle: "Véletlen sorrend", repeat_off: "Ismétlés ki", repeat_all: "Összes ismétlése", repeat_one: "Szám ismétlése",
+  mute: "Némítás", unmute: "Hang be", volume: "Hangerő", volume_down: "Halkítás", volume_up: "Hangosítás", power: "Be- vagy kikapcsolás", seek: "Pozíció",
+  nothing_playing: "Nincs lejátszás", source: "Forrás", sound_mode: "Hangmód", rooms: "Helyiségek", join: "{name} hozzáadása a csoporthoz", leave: "{name} eltávolítása a csoportból",
+  grouped: "Velük: {names}", ungroup_all: "Csoport bontása", confirm_ungroup: "Eltávolítod az összes hangszórót {name} csoportjából?", queue: "Lejátszási sor", now_playing: "Most szól", up_next: "Következik",
+  queue_loading: "Lejátszási sor betöltése…", queue_empty: "A lejátszási sor üres.", queue_error: "Nem sikerült lekérni a lejátszási sort.", queue_count: "Számok a sorban: {n}", favorites: "Kedvencek",
+  play_favorite: "{name} lejátszása", track_of: "{n}. szám / {total}", show_player: "{name} megjelenítése", cancel: "Mégse", no_player: "Nem található médialejátszó.", unknown_entity: "A médialejátszó nem található",
+  zoom_in: "Részletek", zoom_out: "Kevesebb",
+  entity: "Médialejátszó", entities: "Helyiségek (további lejátszók, opcionális)", title: "Cím (opcionális, alapértelmezés a lejátszó neve)", show_title: "Cím megjelenítése", show_subtitle: "Alcím megjelenítése",
+  show_background: "Elmosott borító háttér", show_progress: "Haladás megjelenítése", show_controls: "Vezérlőgombok megjelenítése", show_volume: "Hangerő megjelenítése", show_rooms: "Helyiségek és csoportok megjelenítése",
+  show_source: "Forrás és hangmód megjelenítése", show_queue: "Lejátszási sor megjelenítése", show_favorites: "Kedvencek megjelenítése", collapsed: "Alapértelmezésben összecsukott részek", favorites_entity: "Kedvencek érzékelő (Sonos)",
+  zoom: "Részletek gomb", zoom_helper: "Jobb felső gomb: a teljes kártyára vált és vissza", language: "Nyelv", lang_auto: "Automatikus (Home Assistant nyelve)",
+  media: "Média", players: "Lejátszók (több, egymás alatt a kártyán)", players_helper: "Kettő vagy több: lejátszónként egy blokk, egymás alatt", only_playing: "Csak a lejátszást végző lejátszók", include_paused: "A szüneteltetett lejátszók is", hide_when_idle: "A kártya elrejtése, ha semmi sem szól", n_playing: "{n} játszik", players_count: "{n} lejátszó", more_players: "Még {n}: {names}", back: "Vissza az összes lejátszóhoz",
+  movie: "Film", last_called: "Utoljára megszólítva", next_alarm: "Ébresztő", next_timer: "Időzítő", next_reminder: "Emlékeztető", dnd: "Ne zavarjanak", speaker_group: "Hangszórócsoport", hide_idle_sessions: "Inaktív Jellyfin-munkamenetek elrejtése",
+  remote: "Távirányító", r_up: "Fel", r_down: "Le", r_left: "Balra", r_right: "Jobbra", r_select: "Kiválasztás", r_menu: "Menü", r_home: "Kezdőlap", r_play_pause: "Lejátszás / szünet", show_remote: "Távirányító megjelenítése (Apple TV, Philips TV)", close_remote: "Távirányító bezárása", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Képernyő be- vagy kikapcsolása", recording: "Felvétel folyamatban", new_recording: "Új felvétel",
+  illustration: "Animált illusztráció", illustration_theme: "Az illusztráció témája", theme_auto: "Automatikus (a témát követi)", theme_day: "Nappal", theme_night: "Éjszaka",
+};

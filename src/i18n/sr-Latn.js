@@ -1,0 +1,19 @@
+// STRINGS — "sr-Latn"; a missing key falls back to English.
+export default {
+  st_playing: "Reprodukcija", st_paused: "Pauzirano", st_idle: "Neaktivan", st_on: "Uključen", st_off: "Isključen", st_standby: "Mirovanje", st_buffering: "Učitavanje", st_unavailable: "Nedostupan", st_unknown: "Nepoznato",
+  play: "Pusti", pause: "Pauza", stop: "Zaustavi", next: "Sledeća numera", previous: "Prethodna numera", shuffle: "Nasumično", repeat_off: "Bez ponavljanja", repeat_all: "Ponovi sve", repeat_one: "Ponovi numeru",
+  mute: "Isključi zvuk", unmute: "Uključi zvuk", volume: "Jačina zvuka", volume_down: "Tiše", volume_up: "Jače", power: "Uključi ili isključi", seek: "Pozicija",
+  nothing_playing: "Ništa se ne pušta", source: "Izvor", sound_mode: "Režim zvuka", rooms: "Prostorije", join: "Dodaj {name} u grupu", leave: "Ukloni {name} iz grupe",
+  grouped: "Sa: {names}", ungroup_all: "Razdvoji sve", confirm_ungroup: "Ukloniti sve zvučnike iz grupe {name}?", queue: "Red", now_playing: "Sada se pušta", up_next: "Sledeće",
+  queue_loading: "Učitavanje reda…", queue_empty: "Red je prazan.", queue_error: "Nije moguće učitati red.", queue_count: "Numere u redu: {n}", favorites: "Omiljeno",
+  play_favorite: "Pusti {name}", track_of: "Numera {n} od {total}", show_player: "Prikaži {name}", cancel: "Otkaži", no_player: "Nije pronađen medija plejer.", unknown_entity: "Medija plejer nije pronađen",
+  zoom_in: "Prikaži detalje", zoom_out: "Prikaži manje",
+  entity: "Medija plejer", entities: "Prostorije (drugi plejeri, opciono)", title: "Naslov (opciono, podrazumevano ime plejera)", show_title: "Prikaži naslov", show_subtitle: "Prikaži podnaslov",
+  show_background: "Zamućena pozadina omota", show_progress: "Prikaži napredak", show_controls: "Prikaži komandne tastere", show_volume: "Prikaži jačinu zvuka", show_rooms: "Prikaži prostorije i grupe",
+  show_source: "Prikaži izvor i režim zvuka", show_queue: "Prikaži red", show_favorites: "Prikaži omiljeno", collapsed: "Podrazumevano skupljeni odeljci", favorites_entity: "Senzor omiljenih (Sonos)",
+  zoom: "Taster za detalje", zoom_helper: "Taster gore desno: prelazi na punu karticu i nazad", language: "Jezik", lang_auto: "Automatski (jezik Home Assistant-a)",
+  media: "Mediji", players: "Plejeri (više njih, jedan ispod drugog u kartici)", players_helper: "Dva ili više: jedan blok po plejeru, jedan ispod drugog", only_playing: "Samo plejeri koji reprodukuju", include_paused: "I pauzirani plejeri", hide_when_idle: "Sakrij karticu kada se ništa ne reprodukuje", n_playing: "{n} reprodukuje", players_count: "Plejera: {n}", more_players: "Još {n}: {names}", back: "Nazad na sve plejere",
+  movie: "Film", last_called: "Poslednji pozvan", next_alarm: "Alarm", next_timer: "Tajmer", next_reminder: "Podsetnik", dnd: "Ne uznemiravaj", speaker_group: "Grupa zvučnika", hide_idle_sessions: "Sakrij neaktivne Jellyfin sesije",
+  remote: "Daljinski", r_up: "Gore", r_down: "Dole", r_left: "Levo", r_right: "Desno", r_select: "Izaberi", r_menu: "Meni", r_home: "Početna", r_play_pause: "Pusti / pauza", show_remote: "Prikaži daljinski (Apple TV, Philips TV)", close_remote: "Zatvori daljinski", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Uključi ili isključi ekran", recording: "Snimanje", new_recording: "Novi snimak",
+  illustration: "Animirana ilustracija", illustration_theme: "Tema ilustracije", theme_auto: "Automatski (prati temu)", theme_day: "Dan", theme_night: "Noć",
+};

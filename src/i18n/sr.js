@@ -1,0 +1,19 @@
+// STRINGS — "sr"; a missing key falls back to English.
+export default {
+  st_playing: "Репродукција", st_paused: "Паузирано", st_idle: "Неактиван", st_on: "Укључен", st_off: "Искључен", st_standby: "Мировање", st_buffering: "Учитавање", st_unavailable: "Недоступан", st_unknown: "Непознато",
+  play: "Пусти", pause: "Пауза", stop: "Заустави", next: "Следећа нумера", previous: "Претходна нумера", shuffle: "Насумично", repeat_off: "Без понављања", repeat_all: "Понови све", repeat_one: "Понови нумеру",
+  mute: "Искључи звук", unmute: "Укључи звук", volume: "Јачина звука", volume_down: "Тише", volume_up: "Јаче", power: "Укључи или искључи", seek: "Позиција",
+  nothing_playing: "Ништа се не пушта", source: "Извор", sound_mode: "Режим звука", rooms: "Просторије", join: "Додај {name} у групу", leave: "Уклони {name} из групе",
+  grouped: "Са: {names}", ungroup_all: "Раздвоји све", confirm_ungroup: "Уклонити све звучнике из групе {name}?", queue: "Ред", now_playing: "Сада се пушта", up_next: "Следеће",
+  queue_loading: "Учитавање реда…", queue_empty: "Ред је празан.", queue_error: "Није могуће учитати ред.", queue_count: "Нумере у реду: {n}", favorites: "Омиљено",
+  play_favorite: "Пусти {name}", track_of: "Нумера {n} од {total}", show_player: "Прикажи {name}", cancel: "Откажи", no_player: "Није пронађен медија плејер.", unknown_entity: "Медија плејер није пронађен",
+  zoom_in: "Прикажи детаље", zoom_out: "Прикажи мање",
+  entity: "Медија плејер", entities: "Просторије (други плејери, опционо)", title: "Наслов (опционо, подразумевано име плејера)", show_title: "Прикажи наслов", show_subtitle: "Прикажи поднаслов",
+  show_background: "Замућена позадина омота", show_progress: "Прикажи напредак", show_controls: "Прикажи командне тастере", show_volume: "Прикажи јачину звука", show_rooms: "Прикажи просторије и групе",
+  show_source: "Прикажи извор и режим звука", show_queue: "Прикажи ред", show_favorites: "Прикажи омиљено", collapsed: "Подразумевано скупљени одељци", favorites_entity: "Сензор омиљених (Sonos)",
+  zoom: "Тастер за детаље", zoom_helper: "Тастер горе десно: прелази на пуну картицу и назад", language: "Језик", lang_auto: "Аутоматски (језик Home Assistant-а)",
+  media: "Медији", players: "Плејери (више њих, један испод другог у картици)", players_helper: "Два или више: један блок по плејеру, један испод другог", only_playing: "Само плејери који репродукују", include_paused: "И паузирани плејери", hide_when_idle: "Сакриј картицу када се ништа не репродукује", n_playing: "{n} репродукује", players_count: "Плејера: {n}", more_players: "Још {n}: {names}", back: "Назад на све плејере",
+  movie: "Филм", last_called: "Последњи позван", next_alarm: "Аларм", next_timer: "Тајмер", next_reminder: "Подсетник", dnd: "Не узнемиравај", speaker_group: "Група звучника", hide_idle_sessions: "Сакриј неактивне Jellyfin сесије",
+  remote: "Даљински", r_up: "Горе", r_down: "Доле", r_left: "Лево", r_right: "Десно", r_select: "Изабери", r_menu: "Мени", r_home: "Почетна", r_play_pause: "Пусти / пауза", show_remote: "Прикажи даљински (Apple TV, Philips TV)", close_remote: "Затвори даљински", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Укључи или искључи екран", recording: "Снимање", new_recording: "Нови снимак",
+  illustration: "Анимирана илустрација", illustration_theme: "Тема илустрације", theme_auto: "Аутоматски (прати тему)", theme_day: "Дан", theme_night: "Ноћ",
+};

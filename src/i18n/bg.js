@@ -1,0 +1,19 @@
+// STRINGS — "bg"; a missing key falls back to English.
+export default {
+  st_playing: "Възпроизвежда", st_paused: "На пауза", st_idle: "Неактивен", st_on: "Включен", st_off: "Изключен", st_standby: "Готовност", st_buffering: "Зареждане", st_unavailable: "Недостъпен", st_unknown: "Неизвестно",
+  play: "Пусни", pause: "Пауза", stop: "Спри", next: "Следваща песен", previous: "Предишна песен", shuffle: "Разбъркано", repeat_off: "Без повторение", repeat_all: "Повтаряй всички", repeat_one: "Повтаряй песента",
+  mute: "Без звук", unmute: "Включи звука", volume: "Сила на звука", volume_down: "По-тихо", volume_up: "По-силно", power: "Включи или изключи", seek: "Позиция",
+  nothing_playing: "Нищо не се възпроизвежда", source: "Източник", sound_mode: "Звуков режим", rooms: "Стаи", join: "Добави {name} към групата", leave: "Премахни {name} от групата",
+  grouped: "С {names}", ungroup_all: "Разгрупирай всички", confirm_ungroup: "Да се премахнат ли всички тонколони от групата на {name}?", queue: "Опашка", now_playing: "Сега звучи", up_next: "Следва",
+  queue_loading: "Зареждане на опашката…", queue_empty: "Опашката е празна.", queue_error: "Опашката не можа да бъде заредена.", queue_count: "Песни в опашката: {n}", favorites: "Любими",
+  play_favorite: "Пусни {name}", track_of: "Песен {n} от {total}", show_player: "Покажи {name}", cancel: "Отказ", no_player: "Не е намерен медиен плейър.", unknown_entity: "Медийният плейър не е намерен",
+  zoom_in: "Покажи подробности", zoom_out: "Покажи по-малко",
+  entity: "Медиен плейър", entities: "Стаи (други плейъри, по избор)", title: "Заглавие (по избор, по подразбиране името на плейъра)", show_title: "Покажи заглавието", show_subtitle: "Покажи подзаглавието",
+  show_background: "Размит фон от обложката", show_progress: "Покажи напредъка", show_controls: "Покажи бутоните за управление", show_volume: "Покажи силата на звука", show_rooms: "Покажи стаите и групите",
+  show_source: "Покажи източника и звуковия режим", show_queue: "Покажи опашката", show_favorites: "Покажи любимите", collapsed: "Свити по подразбиране секции", favorites_entity: "Сензор за любими (Sonos)",
+  zoom: "Бутон за подробности", zoom_helper: "Бутон горе вдясно: превключва към пълната карта и обратно", language: "Език", lang_auto: "Автоматично (езикът на Home Assistant)",
+  media: "Медия", players: "Плейъри (няколко, един под друг в картата)", players_helper: "Два или повече: по един блок за плейър, един под друг", only_playing: "Само плейърите, които възпроизвеждат", include_paused: "И плейърите на пауза", hide_when_idle: "Скриване на картата, когато нищо не се възпроизвежда", n_playing: "Възпроизвеждат: {n}", players_count: "Плейъри: {n}", more_players: "Още {n}: {names}", back: "Назад към всички плейъри",
+  movie: "Филм", last_called: "Последно извикан", next_alarm: "Аларма", next_timer: "Таймер", next_reminder: "Напомняне", dnd: "Не безпокойте", speaker_group: "Група високоговорители", hide_idle_sessions: "Скриване на неактивните сесии на Jellyfin",
+  remote: "Дистанционно", r_up: "Нагоре", r_down: "Надолу", r_left: "Наляво", r_right: "Надясно", r_select: "Избор", r_menu: "Меню", r_home: "Начало", r_play_pause: "Пускане / пауза", show_remote: "Показване на дистанционното (Apple TV, Philips TV)", close_remote: "Затваряне на дистанционното", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Включване или изключване на екрана", recording: "Записва", new_recording: "Нов запис",
+  illustration: "Анимирана илюстрация", illustration_theme: "Тема на илюстрацията", theme_auto: "Автоматично (следва темата)", theme_day: "Ден", theme_night: "Нощ",
+};

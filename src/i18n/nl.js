@@ -1,0 +1,19 @@
+// STRINGS — "nl"; a missing key falls back to English.
+export default {
+  st_playing: "Speelt af", st_paused: "Gepauzeerd", st_idle: "Inactief", st_on: "Aan", st_off: "Uit", st_standby: "Stand-by", st_buffering: "Bufferen", st_unavailable: "Niet beschikbaar", st_unknown: "Onbekend",
+  play: "Afspelen", pause: "Pauze", stop: "Stop", next: "Volgend nummer", previous: "Vorig nummer", shuffle: "Willekeurig", repeat_off: "Herhalen uit", repeat_all: "Alles herhalen", repeat_one: "Nummer herhalen",
+  mute: "Dempen", unmute: "Geluid aan", volume: "Volume", volume_down: "Zachter", volume_up: "Harder", power: "Aan- of uitzetten", seek: "Positie",
+  nothing_playing: "Er speelt niets", source: "Bron", sound_mode: "Geluidsmodus", rooms: "Ruimtes", join: "{name} aan de groep toevoegen", leave: "{name} uit de groep halen",
+  grouped: "Met {names}", ungroup_all: "Groep opheffen", confirm_ungroup: "Alle speakers uit de groep van {name} halen?", queue: "Wachtrij", now_playing: "Nu aan het spelen", up_next: "Hierna",
+  queue_loading: "Wachtrij laden…", queue_empty: "De wachtrij is leeg.", queue_error: "Kon de wachtrij niet ophalen.", queue_count: "Nummers in de wachtrij: {n}", favorites: "Favorieten",
+  play_favorite: "{name} afspelen", track_of: "Nummer {n} van {total}", show_player: "{name} tonen", cancel: "Annuleren", no_player: "Geen mediaspeler gevonden.", unknown_entity: "Mediaspeler niet gevonden",
+  zoom_in: "Details tonen", zoom_out: "Minder tonen",
+  entity: "Mediaspeler", entities: "Ruimtes (andere spelers, optioneel)", title: "Titel (optioneel, standaard de naam van de speler)", show_title: "Titel tonen", show_subtitle: "Ondertitel tonen",
+  show_background: "Vervaagde hoesachtergrond", show_progress: "Voortgang tonen", show_controls: "Bedieningsknoppen tonen", show_volume: "Volume tonen", show_rooms: "Ruimtes en groepen tonen",
+  show_source: "Bron en geluidsmodus tonen", show_queue: "Wachtrij tonen", show_favorites: "Favorieten tonen", collapsed: "Standaard ingeklapte secties", favorites_entity: "Favorietensensor (Sonos)",
+  zoom: "Detailknop", zoom_helper: "Knop rechtsboven: schakelt naar de volledige kaart en terug", language: "Taal", lang_auto: "Automatisch (taal van Home Assistant)",
+  media: "Media", players: "Spelers (meerdere, gestapeld in de kaart)", players_helper: "Twee of meer: één blok per speler, onder elkaar", only_playing: "Alleen spelers die afspelen", include_paused: "Ook gepauzeerde spelers", hide_when_idle: "Kaart verbergen als er niets wordt afgespeeld", n_playing: "{n} spelen af", players_count: "{n} spelers", more_players: "Nog {n}: {names}", back: "Terug naar alle spelers",
+  movie: "Film", last_called: "Laatst aangesproken", next_alarm: "Wekker", next_timer: "Timer", next_reminder: "Herinnering", dnd: "Niet storen", speaker_group: "Speakergroep", hide_idle_sessions: "Inactieve Jellyfin-sessies verbergen",
+  remote: "Afstandsbediening", r_up: "Omhoog", r_down: "Omlaag", r_left: "Links", r_right: "Rechts", r_select: "Selecteren", r_menu: "Menu", r_home: "Home", r_play_pause: "Afspelen / pauze", show_remote: "Afstandsbediening tonen (Apple TV, Philips TV)", close_remote: "Afstandsbediening sluiten", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Scherm aan of uit", recording: "Opname bezig", new_recording: "Nieuwe opname",
+  illustration: "Geanimeerde illustratie", illustration_theme: "Thema van de illustratie", theme_auto: "Automatisch (volgt het thema)", theme_day: "Dag", theme_night: "Nacht",
+};

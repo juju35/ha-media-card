@@ -1,0 +1,19 @@
+// STRINGS — "es"; a missing key falls back to English.
+export default {
+  st_playing: "Reproduciendo", st_paused: "En pausa", st_idle: "Inactivo", st_on: "Encendido", st_off: "Apagado", st_standby: "En espera", st_buffering: "Cargando", st_unavailable: "No disponible", st_unknown: "Desconocido",
+  play: "Reproducir", pause: "Pausa", stop: "Detener", next: "Pista siguiente", previous: "Pista anterior", shuffle: "Aleatorio", repeat_off: "Sin repetición", repeat_all: "Repetir todo", repeat_one: "Repetir una",
+  mute: "Silenciar", unmute: "Activar sonido", volume: "Volumen", volume_down: "Bajar volumen", volume_up: "Subir volumen", power: "Encender o apagar", seek: "Posición",
+  nothing_playing: "Nada en reproducción", source: "Fuente", sound_mode: "Modo de sonido", rooms: "Habitaciones", join: "Añadir {name} al grupo", leave: "Quitar {name} del grupo",
+  grouped: "Con {names}", ungroup_all: "Desagrupar todo", confirm_ungroup: "¿Quitar todos los altavoces del grupo de {name}?", queue: "Cola", now_playing: "Sonando ahora", up_next: "A continuación",
+  queue_loading: "Cargando la cola…", queue_empty: "La cola está vacía.", queue_error: "No se pudo obtener la cola.", queue_count: "Pistas en la cola: {n}", favorites: "Favoritos",
+  play_favorite: "Reproducir {name}", track_of: "Pista {n} de {total}", show_player: "Mostrar {name}", cancel: "Cancelar", no_player: "No se encontró ningún reproductor multimedia.", unknown_entity: "Reproductor multimedia no encontrado",
+  zoom_in: "Ver detalles", zoom_out: "Ver menos",
+  entity: "Reproductor multimedia", entities: "Habitaciones (otros reproductores, opcional)", title: "Título (opcional, por defecto el nombre del reproductor)", show_title: "Mostrar título", show_subtitle: "Mostrar subtítulo",
+  show_background: "Fondo difuminado de la carátula", show_progress: "Mostrar progreso", show_controls: "Mostrar botones de control", show_volume: "Mostrar volumen", show_rooms: "Mostrar habitaciones y grupos",
+  show_source: "Mostrar fuente y modo de sonido", show_queue: "Mostrar cola", show_favorites: "Mostrar favoritos", collapsed: "Secciones plegadas por defecto", favorites_entity: "Sensor de favoritos (Sonos)",
+  zoom: "Botón de detalle", zoom_helper: "Botón arriba a la derecha: cambia a la tarjeta completa y vuelve", language: "Idioma", lang_auto: "Automático (idioma de Home Assistant)",
+  media: "Multimedia", players: "Reproductores (varios, apilados en la tarjeta)", players_helper: "Dos o más: un bloque por reproductor, uno debajo de otro", only_playing: "Solo los reproductores en reproducción", include_paused: "También los reproductores en pausa", hide_when_idle: "Ocultar la tarjeta cuando no se reproduce nada", n_playing: "{n} reproduciendo", players_count: "{n} reproductores", more_players: "{n} más: {names}", back: "Volver a todos los reproductores",
+  movie: "Película", last_called: "Último llamado", next_alarm: "Alarma", next_timer: "Temporizador", next_reminder: "Recordatorio", dnd: "No molestar", speaker_group: "Grupo de altavoces", hide_idle_sessions: "Ocultar sesiones de Jellyfin inactivas",
+  remote: "Mando", r_up: "Arriba", r_down: "Abajo", r_left: "Izquierda", r_right: "Derecha", r_select: "Seleccionar", r_menu: "Menú", r_home: "Inicio", r_play_pause: "Reproducir / pausa", show_remote: "Mostrar el mando (Apple TV, Philips TV)", close_remote: "Cerrar el mando", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Encender o apagar la pantalla", recording: "Grabando", new_recording: "Nueva grabación",
+  illustration: "Ilustración animada", illustration_theme: "Tema de la ilustración", theme_auto: "Automático (sigue el tema)", theme_day: "Día", theme_night: "Noche",
+};

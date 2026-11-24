@@ -1,0 +1,19 @@
+// STRINGS — "de"; a missing key falls back to English.
+export default {
+  st_playing: "Wiedergabe", st_paused: "Pausiert", st_idle: "Untätig", st_on: "An", st_off: "Aus", st_standby: "Standby", st_buffering: "Puffern", st_unavailable: "Nicht verfügbar", st_unknown: "Unbekannt",
+  play: "Abspielen", pause: "Pause", stop: "Stopp", next: "Nächster Titel", previous: "Vorheriger Titel", shuffle: "Zufallswiedergabe", repeat_off: "Wiederholen aus", repeat_all: "Alle wiederholen", repeat_one: "Titel wiederholen",
+  mute: "Stumm", unmute: "Ton an", volume: "Lautstärke", volume_down: "Leiser", volume_up: "Lauter", power: "Ein- oder ausschalten", seek: "Position",
+  nothing_playing: "Keine Wiedergabe", source: "Quelle", sound_mode: "Klangmodus", rooms: "Räume", join: "{name} zur Gruppe hinzufügen", leave: "{name} aus der Gruppe entfernen",
+  grouped: "Mit {names}", ungroup_all: "Gruppe auflösen", confirm_ungroup: "Alle Lautsprecher aus der Gruppe von {name} entfernen?", queue: "Warteschlange", now_playing: "Läuft gerade", up_next: "Als Nächstes",
+  queue_loading: "Warteschlange wird geladen…", queue_empty: "Die Warteschlange ist leer.", queue_error: "Warteschlange konnte nicht geladen werden.", queue_count: "Titel in der Warteschlange: {n}", favorites: "Favoriten",
+  play_favorite: "{name} abspielen", track_of: "Titel {n} von {total}", show_player: "{name} anzeigen", cancel: "Abbrechen", no_player: "Kein Mediaplayer gefunden.", unknown_entity: "Mediaplayer nicht gefunden",
+  zoom_in: "Details anzeigen", zoom_out: "Weniger anzeigen",
+  entity: "Mediaplayer", entities: "Räume (weitere Player, optional)", title: "Titel (optional, standardmäßig der Playername)", show_title: "Titel anzeigen", show_subtitle: "Untertitel anzeigen",
+  show_background: "Unscharfer Cover-Hintergrund", show_progress: "Fortschritt anzeigen", show_controls: "Steuertasten anzeigen", show_volume: "Lautstärke anzeigen", show_rooms: "Räume und Gruppen anzeigen",
+  show_source: "Quelle und Klangmodus anzeigen", show_queue: "Warteschlange anzeigen", show_favorites: "Favoriten anzeigen", collapsed: "Standardmäßig eingeklappte Abschnitte", favorites_entity: "Favoriten-Sensor (Sonos)",
+  zoom: "Detailtaste", zoom_helper: "Taste oben rechts: wechselt zur vollständigen Karte und zurück", language: "Sprache", lang_auto: "Automatisch (Sprache von Home Assistant)",
+  media: "Medien", players: "Player (mehrere, in der Karte gestapelt)", players_helper: "Zwei oder mehr: ein Block pro Player, untereinander", only_playing: "Nur Player, die gerade abspielen", include_paused: "Auch pausierte Player", hide_when_idle: "Karte ausblenden, wenn nichts abgespielt wird", n_playing: "{n} spielen", players_count: "{n} Player", more_players: "{n} weitere: {names}", back: "Zurück zu allen Playern",
+  movie: "Film", last_called: "Zuletzt angesprochen", next_alarm: "Wecker", next_timer: "Timer", next_reminder: "Erinnerung", dnd: "Nicht stören", speaker_group: "Lautsprechergruppe", hide_idle_sessions: "Inaktive Jellyfin-Sitzungen ausblenden",
+  remote: "Fernbedienung", r_up: "Hoch", r_down: "Runter", r_left: "Links", r_right: "Rechts", r_select: "Auswählen", r_menu: "Menü", r_home: "Home", r_play_pause: "Wiedergabe / Pause", show_remote: "Fernbedienung anzeigen (Apple TV, Philips TV)", close_remote: "Fernbedienung schließen", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Bildschirm ein- oder ausschalten", recording: "Aufnahme läuft", new_recording: "Neue Aufnahme",
+  illustration: "Animierte Illustration", illustration_theme: "Thema der Illustration", theme_auto: "Automatisch (folgt dem Design)", theme_day: "Tag", theme_night: "Nacht",
+};

@@ -1,0 +1,19 @@
+// STRINGS — "lv"; a missing key falls back to English.
+export default {
+  st_playing: "Atskaņo", st_paused: "Pauzēts", st_idle: "Dīkstāvē", st_on: "Ieslēgts", st_off: "Izslēgts", st_standby: "Gaidstāve", st_buffering: "Ielādē", st_unavailable: "Nav pieejams", st_unknown: "Nezināms",
+  play: "Atskaņot", pause: "Pauze", stop: "Apturēt", next: "Nākamais ieraksts", previous: "Iepriekšējais ieraksts", shuffle: "Jaukt", repeat_off: "Bez atkārtošanas", repeat_all: "Atkārtot visu", repeat_one: "Atkārtot ierakstu",
+  mute: "Izslēgt skaņu", unmute: "Ieslēgt skaņu", volume: "Skaļums", volume_down: "Klusāk", volume_up: "Skaļāk", power: "Ieslēgt vai izslēgt", seek: "Pozīcija",
+  nothing_playing: "Nekas netiek atskaņots", source: "Avots", sound_mode: "Skaņas režīms", rooms: "Telpas", join: "Pievienot {name} grupai", leave: "Noņemt {name} no grupas",
+  grouped: "Kopā ar: {names}", ungroup_all: "Izjaukt grupu", confirm_ungroup: "Noņemt visus skaļruņus no {name} grupas?", queue: "Rinda", now_playing: "Tagad skan", up_next: "Nākamais",
+  queue_loading: "Ielādē rindu…", queue_empty: "Rinda ir tukša.", queue_error: "Neizdevās iegūt rindu.", queue_count: "Ieraksti rindā: {n}", favorites: "Izlase",
+  play_favorite: "Atskaņot {name}", track_of: "Ieraksts {n} no {total}", show_player: "Rādīt {name}", cancel: "Atcelt", no_player: "Nav atrasts neviens multivides atskaņotājs.", unknown_entity: "Multivides atskaņotājs nav atrasts",
+  zoom_in: "Rādīt detaļas", zoom_out: "Rādīt mazāk",
+  entity: "Multivides atskaņotājs", entities: "Telpas (citi atskaņotāji, neobligāti)", title: "Nosaukums (neobligāts, pēc noklusējuma atskaņotāja nosaukums)", show_title: "Rādīt nosaukumu", show_subtitle: "Rādīt apakšvirsrakstu",
+  show_background: "Izpludināts vāciņa fons", show_progress: "Rādīt progresu", show_controls: "Rādīt vadības pogas", show_volume: "Rādīt skaļumu", show_rooms: "Rādīt telpas un grupas",
+  show_source: "Rādīt avotu un skaņas režīmu", show_queue: "Rādīt rindu", show_favorites: "Rādīt izlasi", collapsed: "Pēc noklusējuma sakļautās sadaļas", favorites_entity: "Izlases sensors (Sonos)",
+  zoom: "Detaļu poga", zoom_helper: "Poga augšējā labajā stūrī: pārslēdz uz pilno karti un atpakaļ", language: "Valoda", lang_auto: "Automātiski (Home Assistant valoda)",
+  media: "Multivide", players: "Atskaņotāji (vairāki, kartē cits zem cita)", players_helper: "Divi vai vairāk: viens bloks katram atskaņotājam, cits zem cita", only_playing: "Tikai atskaņotāji, kas atskaņo", include_paused: "Arī pauzētie atskaņotāji", hide_when_idle: "Slēpt karti, kad nekas netiek atskaņots", n_playing: "Atskaņo: {n}", players_count: "Atskaņotāji: {n}", more_players: "Vēl {n}: {names}", back: "Atpakaļ uz visiem atskaņotājiem",
+  movie: "Filma", last_called: "Pēdējais uzrunātais", next_alarm: "Modinātājs", next_timer: "Taimeris", next_reminder: "Atgādinājums", dnd: "Netraucēt", speaker_group: "Skaļruņu grupa", hide_idle_sessions: "Slēpt neaktīvās Jellyfin sesijas",
+  remote: "Tālvadība", r_up: "Augšup", r_down: "Lejup", r_left: "Pa kreisi", r_right: "Pa labi", r_select: "Izvēlēties", r_menu: "Izvēlne", r_home: "Sākums", r_play_pause: "Atskaņot / pauze", show_remote: "Rādīt tālvadību (Apple TV, Philips TV)", close_remote: "Aizvērt tālvadību", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Ieslēgt vai izslēgt ekrānu", recording: "Notiek ierakstīšana", new_recording: "Jauns ieraksts",
+  illustration: "Animēta ilustrācija", illustration_theme: "Ilustrācijas motīvs", theme_auto: "Automātiski (atbilstoši tēmai)", theme_day: "Diena", theme_night: "Nakts",
+};

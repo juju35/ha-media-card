@@ -1,0 +1,19 @@
+// STRINGS — "sk"; a missing key falls back to English.
+export default {
+  st_playing: "Prehráva sa", st_paused: "Pozastavené", st_idle: "Nečinný", st_on: "Zapnutý", st_off: "Vypnutý", st_standby: "Pohotovosť", st_buffering: "Načítava sa", st_unavailable: "Nedostupný", st_unknown: "Neznámy",
+  play: "Prehrať", pause: "Pozastaviť", stop: "Zastaviť", next: "Ďalšia skladba", previous: "Predchádzajúca skladba", shuffle: "Náhodne", repeat_off: "Bez opakovania", repeat_all: "Opakovať všetko", repeat_one: "Opakovať skladbu",
+  mute: "Stlmiť", unmute: "Zapnúť zvuk", volume: "Hlasitosť", volume_down: "Tichšie", volume_up: "Hlasnejšie", power: "Zapnúť alebo vypnúť", seek: "Pozícia",
+  nothing_playing: "Nič sa neprehráva", source: "Zdroj", sound_mode: "Režim zvuku", rooms: "Miestnosti", join: "Pridať {name} do skupiny", leave: "Odobrať {name} zo skupiny",
+  grouped: "S: {names}", ungroup_all: "Zrušiť skupinu", confirm_ungroup: "Odobrať všetky reproduktory zo skupiny {name}?", queue: "Poradie", now_playing: "Práve hrá", up_next: "Nasleduje",
+  queue_loading: "Načítava sa poradie…", queue_empty: "Poradie je prázdne.", queue_error: "Poradie sa nepodarilo získať.", queue_count: "Skladby v poradí: {n}", favorites: "Obľúbené",
+  play_favorite: "Prehrať {name}", track_of: "Skladba {n} z {total}", show_player: "Zobraziť {name}", cancel: "Zrušiť", no_player: "Nenašiel sa žiadny prehrávač médií.", unknown_entity: "Prehrávač médií sa nenašiel",
+  zoom_in: "Zobraziť podrobnosti", zoom_out: "Zobraziť menej",
+  entity: "Prehrávač médií", entities: "Miestnosti (iné prehrávače, voliteľné)", title: "Názov (voliteľný, predvolene názov prehrávača)", show_title: "Zobraziť názov", show_subtitle: "Zobraziť podnadpis",
+  show_background: "Rozmazané pozadie obalu", show_progress: "Zobraziť priebeh", show_controls: "Zobraziť ovládacie tlačidlá", show_volume: "Zobraziť hlasitosť", show_rooms: "Zobraziť miestnosti a skupiny",
+  show_source: "Zobraziť zdroj a režim zvuku", show_queue: "Zobraziť poradie", show_favorites: "Zobraziť obľúbené", collapsed: "Predvolene zbalené sekcie", favorites_entity: "Senzor obľúbených (Sonos)",
+  zoom: "Tlačidlo podrobností", zoom_helper: "Tlačidlo vpravo hore: prepne na úplnú kartu a späť", language: "Jazyk", lang_auto: "Automaticky (jazyk Home Assistant)",
+  media: "Médiá", players: "Prehrávače (viaceré, pod sebou v karte)", players_helper: "Dva alebo viac: jeden blok na prehrávač, pod sebou", only_playing: "Len prehrávače, ktoré prehrávajú", include_paused: "Aj pozastavené prehrávače", hide_when_idle: "Skryť kartu, keď sa nič neprehráva", n_playing: "Prehráva: {n}", players_count: "Prehrávače: {n}", more_players: "Ďalšie {n}: {names}", back: "Späť na všetky prehrávače",
+  movie: "Film", last_called: "Naposledy oslovený", next_alarm: "Budík", next_timer: "Časovač", next_reminder: "Pripomienka", dnd: "Nerušiť", speaker_group: "Skupina reproduktorov", hide_idle_sessions: "Skryť neaktívne relácie Jellyfin",
+  remote: "Diaľkový ovládač", r_up: "Hore", r_down: "Dole", r_left: "Vľavo", r_right: "Vpravo", r_select: "Vybrať", r_menu: "Ponuka", r_home: "Domov", r_play_pause: "Prehrať / pozastaviť", show_remote: "Zobraziť diaľkový ovládač (Apple TV, Philips TV)", close_remote: "Zavrieť diaľkový ovládač", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Zapnúť alebo vypnúť obrazovku", recording: "Nahráva sa", new_recording: "Nová nahrávka",
+  illustration: "Animovaná ilustrácia", illustration_theme: "Téma ilustrácie", theme_auto: "Automaticky (podľa témy)", theme_day: "Deň", theme_night: "Noc",
+};
