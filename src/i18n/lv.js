@@ -16,4 +16,5 @@ export default {
   movie: "Filma", last_called: "Pēdējais uzrunātais", next_alarm: "Modinātājs", next_timer: "Taimeris", next_reminder: "Atgādinājums", dnd: "Netraucēt", speaker_group: "Skaļruņu grupa", hide_idle_sessions: "Slēpt neaktīvās Jellyfin sesijas",
   remote: "Tālvadība", r_up: "Augšup", r_down: "Lejup", r_left: "Pa kreisi", r_right: "Pa labi", r_select: "Izvēlēties", r_menu: "Izvēlne", r_home: "Sākums", r_play_pause: "Atskaņot / pauze", show_remote: "Rādīt tālvadību (Apple TV, Philips TV)", close_remote: "Aizvērt tālvadību", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Ieslēgt vai izslēgt ekrānu", recording: "Notiek ierakstīšana", new_recording: "Jauns ieraksts",
   illustration: "Animēta ilustrācija", illustration_theme: "Ilustrācijas motīvs", theme_auto: "Automātiski (atbilstoši tēmai)", theme_day: "Diena", theme_night: "Nakts",
+  title_overflow: "Gari nosaukumi", overflow_ellipsis: "Saīsināt ar daudzpunkti", overflow_wrap: "Vairākās rindās", overflow_scroll: "Ritināt", title_lines: "Rindas, pārnesot", title_lines_helper: "Lielākais rindu skaits, pārnesot (0: bez ierobežojuma)",
 };

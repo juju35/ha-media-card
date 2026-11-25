@@ -16,4 +16,5 @@ export default {
   movie: "Film", last_called: "Senast anropad", next_alarm: "Alarm", next_timer: "Timer", next_reminder: "Påminnelse", dnd: "Stör ej", speaker_group: "Högtalargrupp", hide_idle_sessions: "Dölj inaktiva Jellyfin-sessioner",
   remote: "Fjärrkontroll", r_up: "Upp", r_down: "Ned", r_left: "Vänster", r_right: "Höger", r_select: "Välj", r_menu: "Meny", r_home: "Hem", r_play_pause: "Spela / pausa", show_remote: "Visa fjärrkontrollen (Apple TV, Philips TV)", close_remote: "Stäng fjärrkontrollen", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Slå på eller av skärmen", recording: "Spelar in", new_recording: "Ny inspelning",
   illustration: "Animerad illustration", illustration_theme: "Illustrationens tema", theme_auto: "Automatiskt (följer temat)", theme_day: "Dag", theme_night: "Natt",
+  title_overflow: "Långa titlar", overflow_ellipsis: "Korta med ellips", overflow_wrap: "Radbryt över flera rader", overflow_scroll: "Rulla", title_lines: "Rader vid radbrytning", title_lines_helper: "Högsta antal rader vid radbrytning (0: ingen gräns)",
 };

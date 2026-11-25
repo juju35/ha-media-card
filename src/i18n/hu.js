@@ -16,4 +16,5 @@ export default {
   movie: "Film", last_called: "Utoljára megszólítva", next_alarm: "Ébresztő", next_timer: "Időzítő", next_reminder: "Emlékeztető", dnd: "Ne zavarjanak", speaker_group: "Hangszórócsoport", hide_idle_sessions: "Inaktív Jellyfin-munkamenetek elrejtése",
   remote: "Távirányító", r_up: "Fel", r_down: "Le", r_left: "Balra", r_right: "Jobbra", r_select: "Kiválasztás", r_menu: "Menü", r_home: "Kezdőlap", r_play_pause: "Lejátszás / szünet", show_remote: "Távirányító megjelenítése (Apple TV, Philips TV)", close_remote: "Távirányító bezárása", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Képernyő be- vagy kikapcsolása", recording: "Felvétel folyamatban", new_recording: "Új felvétel",
   illustration: "Animált illusztráció", illustration_theme: "Az illusztráció témája", theme_auto: "Automatikus (a témát követi)", theme_day: "Nappal", theme_night: "Éjszaka",
+  title_overflow: "Hosszú címek", overflow_ellipsis: "Levágás három ponttal", overflow_wrap: "Több sorba tördelve", overflow_scroll: "Görgetés", title_lines: "Sorok tördeléskor", title_lines_helper: "Sorok legnagyobb száma tördeléskor (0: nincs korlát)",
 };

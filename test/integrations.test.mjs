@@ -33,15 +33,15 @@ const inMinutes = (m) => new Date(Date.now() + m * 60_000).toISOString();
 
 test("Jellyfin: an episode shows its series and episode, the client app in the subtitle", () => {
   const h = html(card({ entity: TV }));
-  assert.match(h, /<div class="track" title="The Lighthouse Keeper">The Lighthouse Keeper<\/div>/);
-  assert.match(h, /<div class="artist">Harbor Tales · S2E5<\/div>/);
+  assert.match(h, /<div class="track mt" title="The Lighthouse Keeper">The Lighthouse Keeper<\/div>/);
+  assert.match(h, /<div class="artist mt">Harbor Tales · S2E5<\/div>/);
   assert.match(h, /<div class="sub" title="Jellyfin Android TV · Jellyfin">Jellyfin Android TV · Jellyfin<\/div>/);
 });
 
 test("Jellyfin: a film says so; with no artwork the session draws a TV", () => {
   const movie = home({ [TV]: { attributes: { media_content_type: "movie", media_series_title: undefined, media_season: undefined, media_episode: undefined, entity_picture: undefined } } });
   const h = html(card({ entity: TV }, makeHass(movie)));
-  assert.match(h, /<div class="artist">Movie<\/div>/);
+  assert.match(h, /<div class="artist mt">Movie<\/div>/);
   assert.match(h, /class="pic-box/);
   assert.match(h, /class="pic" viewBox="0 0 [0-9 ]+"[^>]*>[\s\S]*screen/, "the drawn picture is the TV");
 });
@@ -138,7 +138,7 @@ test("Alexa: favorites take Alexa content types (Amazon Music, TuneIn, a voice c
 test("other integrations: no Alexa row, no Jellyfin line", () => {
   const h = html(card({ entity: "media_player.living_room" }));
   assert.doesNotMatch(h, /class="alexa/);
-  assert.match(h, /<div class="artist">The Neon Drifters<\/div>/);
+  assert.match(h, /<div class="artist mt">The Neon Drifters<\/div>/);
 });
 
 const ATV = "media_player.family_room_apple_tv";
@@ -148,7 +148,7 @@ const REMOTE = "remote.family_room_apple_tv";
 test("Apple TV: the app in the subtitle, the episode, its apps as sources, a drawn box with no artwork", () => {
   const h = html(card({ entity: ATV }));
   assert.match(h, /<div class="sub" title="TV">TV<\/div>/);
-  assert.match(h, /<div class="artist">Northern Lights · S1E4<\/div>/);
+  assert.match(h, /<div class="artist mt">Northern Lights · S1E4<\/div>/);
   assert.match(h, /Arcade/);
   assert.match(h, /M30 72L42 62H110L98 72z/, "the drawn streaming box");
   assert.match(h, /M64 22L80 30L64 38z/, "a video plays: the small screen with its play triangle");

@@ -16,4 +16,5 @@ export default {
   movie: "Фільм", last_called: "Останній викликаний", next_alarm: "Будильник", next_timer: "Таймер", next_reminder: "Нагадування", dnd: "Не турбувати", speaker_group: "Група колонок", hide_idle_sessions: "Приховувати неактивні сеанси Jellyfin",
   remote: "Пульт", r_up: "Вгору", r_down: "Вниз", r_left: "Ліворуч", r_right: "Праворуч", r_select: "Вибрати", r_menu: "Меню", r_home: "Додому", r_play_pause: "Відтворення / пауза", show_remote: "Показувати пульт (Apple TV, Philips TV)", close_remote: "Закрити пульт", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Увімкнути або вимкнути екран", recording: "Триває запис", new_recording: "Новий запис",
   illustration: "Анімована ілюстрація", illustration_theme: "Тема ілюстрації", theme_auto: "Автоматично (за темою)", theme_day: "День", theme_night: "Ніч",
+  title_overflow: "Довгі назви", overflow_ellipsis: "Обрізати трикрапкою", overflow_wrap: "На кілька рядків", overflow_scroll: "Прокручування", title_lines: "Рядки при перенесенні", title_lines_helper: "Максимальна кількість рядків при перенесенні (0: без обмеження)",
 };

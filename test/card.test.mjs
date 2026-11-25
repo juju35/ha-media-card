@@ -53,7 +53,7 @@ test("times, positions and volumes", () => {
 test("the full card shows the artwork, the track, the progress, the controls and the volume", () => {
   const h = html(newCard());
   assert.match(h, /class="backdrop-art"/);
-  assert.match(h, /<div class="track" title="Midnight Avenue">Midnight Avenue<\/div>/);
+  assert.match(h, /<div class="track mt" title="Midnight Avenue">Midnight Avenue<\/div>/);
   assert.match(h, /The Neon Drifters/);
   assert.match(h, /City Lights/);
   assert.match(h, /class="vinyl playing"/);
@@ -726,5 +726,43 @@ test("hide_when_idle: the card hides itself when none of its players plays nor i
     assert.match(html(one), /<ha-card/, "one player still plays");
     const none = stacked({ hide_when_idle: true }, makeHass(idle(PLAYERS)), Card);
     assert.equal(html(none), "");
+  }
+});
+
+test("title_overflow: ellipsis by default, wrap on title_lines lines, scroll in a marquee span", () => {
+  const plain = html(newCard());
+  assert.match(plain, /class="track mt"/);
+  assert.doesNotMatch(plain, /class="mq"/);
+  const attrs = {};
+  const props = {};
+  const card = new mc.MediaCard();
+  card.setAttribute = (n, v) => (attrs[n] = v);
+  card.removeAttribute = (n) => delete attrs[n];
+  card.style = { setProperty: (n, v) => (props[n] = v) };
+  card.setConfig({ entity: LIVING, title_overflow: "wrap", title_lines: 3 });
+  assert.deepEqual([attrs["title-overflow"], props["--mc-lines"]], ["wrap", "3"]);
+  card.setConfig({ entity: LIVING, title_overflow: "wrap", title_lines: 0 });
+  assert.equal(props["--mc-lines"], "none");
+  card.setConfig({ entity: LIVING, title_overflow: "bogus" });
+  assert.equal("title-overflow" in attrs, false);
+  card.setConfig({ entity: LIVING, collapsed: [], title_overflow: "scroll" });
+  card.hass = makeHass();
+  assert.match(html(card), /<div class="track mt"[^>]*><span class="mq">/);
+  // A measure already taken is written in the HTML, so that a patch keeps the line scrolling as it was.
+  const title = states[LIVING].attributes.media_title;
+  card._mq.set(`track|${title}`, { shift: -42, dur: 4 });
+  card._update();
+  assert.match(html(card), /class="track mt scrolling" style="--mq-shift:-42px;--mq-dur:4s"/);
+  const list = html(newCard({ entity: undefined, players: ["media_player.living_room", "media_player.kitchen"], title_overflow: "scroll" }, makeHass(), mc.MediaMiniCard));
+  assert.match(list, /class="prow-sub mt"><span class="mq">/);
+});
+
+test("title_overflow: in both visual editors, default values kept out of the YAML", () => {
+  for (const Editor of [mc.MediaCardEditor, mc.MediaMiniCardEditor]) {
+    const { form, events } = editorForm(Editor, { entity: LIVING });
+    const names = schemaNames(form.schema);
+    assert.ok(names.includes("title_overflow") && names.includes("title_lines"));
+    form.listeners["value-changed"]({ stopPropagation() {}, detail: { value: { entity: LIVING, title_overflow: "ellipsis", title_lines: 2 } } });
+    assert.deepEqual({ ...events[0].detail.config }, { entity: LIVING });
   }
 });

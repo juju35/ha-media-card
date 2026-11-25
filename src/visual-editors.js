@@ -3,7 +3,7 @@
 // ---------------------------------------------------------------------------
 import { DEFAULT_COLLAPSED, SECTIONS } from "./core.js";
 import { lang, listedPlayers, t } from "./helpers.js";
-import { MediaCard } from "./cards.js";
+import { MediaCard, OVERFLOWS } from "./cards.js";
 
 export const LANGUAGES = [
   ["en", "English"],
@@ -30,7 +30,7 @@ export const LANGUAGES = [
   ["el", "Ελληνικά"],
 ];
 
-export const HELPERS = { zoom: "zoom_helper", players: "players_helper" };
+export const HELPERS = { zoom: "zoom_helper", players: "players_helper", title_lines: "title_lines_helper" };
 
 // Several players stacked in the card (both editors).
 // Lists of players that accept `- entity: media_player.x` as well as plain ids in the YAML.
@@ -145,12 +145,14 @@ export class MediaCardEditor extends MediaEditorBase {
   }
 
   static get defaults() {
-    return { collapsed: DEFAULT_COLLAPSED, illustration_theme: "auto" };
+    return { collapsed: DEFAULT_COLLAPSED, illustration_theme: "auto", title_overflow: "ellipsis", title_lines: 2 };
   }
 
   static extraFields(tr) {
     return [
       { name: "illustration_theme", selector: { select: { mode: "dropdown", options: ["auto", "day", "night"].map((v) => ({ value: v, label: tr(`theme_${v}`) })) } } },
+      { name: "title_overflow", selector: { select: { mode: "dropdown", options: OVERFLOWS.map((v) => ({ value: v, label: tr(`overflow_${v}`) })) } } },
+      { name: "title_lines", selector: { number: { min: 0, max: 6, mode: "box" } } },
       PLAYERS_FIELD,
       { name: "entities", selector: { entity: { domain: "media_player", multiple: true } } },
       {

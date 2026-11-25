@@ -10,6 +10,7 @@
 //   mc-wave   — sound waves leave the drawn speaker
 //   mc-ring   — rings around the playing rooms of a group
 //   mc-slide  — the record slides out of the sleeve when playback starts
+//   mc-marquee — a track text wider than its line scrolls to its end and back (`title_overflow: scroll`)
 export const ANIM_STYLE = `
   @keyframes mc-spin { to { transform: rotate(360deg); } }
   @keyframes mc-eq { 0%, 100% { transform: scaleY(.3); } 50% { transform: scaleY(1); } }
@@ -18,6 +19,7 @@ export const ANIM_STYLE = `
   @keyframes mc-wave { 0% { opacity: 0; transform: scale(.7); } 35% { opacity: .9; } 100% { opacity: 0; transform: scale(1.15); } }
   @keyframes mc-ring { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--mc-accent) 55%, transparent); } 100% { box-shadow: 0 0 0 8px transparent; } }
   @keyframes mc-slide { from { transform: translateX(-40%) rotate(-90deg); } to { transform: translateX(0) rotate(0deg); } }
+  @keyframes mc-marquee { 0%, 15% { transform: translateX(0); } 85%, 100% { transform: translateX(var(--mq-shift, 0px)); } }
   .cone { transform-box: fill-box; transform-origin: center; }
   .cone.beat { animation: mc-beat .5s ease-in-out infinite; }
   .wave { transform-box: fill-box; transform-origin: center; animation: mc-wave 1.5s ease-out infinite; }
@@ -97,6 +99,17 @@ export const BASE_STYLE = `
   .track { font-size: 15px; font-weight: 500; line-height: 1.3; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .artist, .album { font-size: 13px; color: var(--secondary-text-color); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .album { font-size: 12px; }
+  /* Track texts (title, artist, album, a list row's track line), title_overflow: cut with an ellipsis by default;
+     wrap: on up to --mc-lines lines (none: every line); scroll: a text wider than its line scrolls to its end and back. */
+  :host([title-overflow="wrap"]) .mt { white-space: normal; overflow-wrap: anywhere; display: -webkit-box; -webkit-box-orient: vertical;
+                                        -webkit-line-clamp: var(--mc-lines, 2); line-clamp: var(--mc-lines, 2); }
+  :host([title-overflow="scroll"]) .mt { text-overflow: clip; }
+  .mt > .mq { display: inline-block; white-space: nowrap; }
+  .mt.scrolling > .mq { animation: mc-marquee var(--mq-dur, 8s) ease-in-out infinite alternate; }
+  .mt.scrolling { -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 12px), transparent);
+                  mask-image: linear-gradient(90deg, #000 calc(100% - 12px), transparent); }
+  /* No motion wanted: the text stays cut with an ellipsis. */
+  @media (prefers-reduced-motion: reduce) { .mt > .mq { display: inline; } :host([title-overflow="scroll"]) .mt { text-overflow: ellipsis; } .mt.scrolling { -webkit-mask-image: none; mask-image: none; } }
   .progress { display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--secondary-text-color); font-variant-numeric: tabular-nums; }
   .bar { flex: 1; height: 4px; border-radius: 3px; background: var(--divider-color, rgba(127,127,127,.25)); overflow: hidden; position: relative; }
   .bar.seek { cursor: pointer; height: 6px; }

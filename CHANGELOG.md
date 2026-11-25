@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.8.0 - 2026-11-25
+
+### Features
+- Long track texts: a `title_overflow` option — `ellipsis` (default, as before), `wrap` on up to `title_lines` lines (2 by default, `0` for no limit) or `scroll`, a marquee that runs only when the text does not fit its line (and stays cut with `…` under reduced motion). It applies to the title, artist and album lines and to a player's track line in the lists; both options are in the visual editors (#39).
+
 ## 1.7.0 - 2026-11-25
 
 ### Features

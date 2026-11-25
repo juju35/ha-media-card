@@ -16,4 +16,5 @@ export default {
   movie: "Филм", last_called: "Последно извикан", next_alarm: "Аларма", next_timer: "Таймер", next_reminder: "Напомняне", dnd: "Не безпокойте", speaker_group: "Група високоговорители", hide_idle_sessions: "Скриване на неактивните сесии на Jellyfin",
   remote: "Дистанционно", r_up: "Нагоре", r_down: "Надолу", r_left: "Наляво", r_right: "Надясно", r_select: "Избор", r_menu: "Меню", r_home: "Начало", r_play_pause: "Пускане / пауза", show_remote: "Показване на дистанционното (Apple TV, Philips TV)", close_remote: "Затваряне на дистанционното", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Включване или изключване на екрана", recording: "Записва", new_recording: "Нов запис",
   illustration: "Анимирана илюстрация", illustration_theme: "Тема на илюстрацията", theme_auto: "Автоматично (следва темата)", theme_day: "Ден", theme_night: "Нощ",
+  title_overflow: "Дълги заглавия", overflow_ellipsis: "Съкращаване с многоточие", overflow_wrap: "На няколко реда", overflow_scroll: "Превъртане", title_lines: "Редове при пренасяне", title_lines_helper: "Максимален брой редове при пренасяне (0: без ограничение)",
 };

@@ -221,6 +221,8 @@ language: fr
 | `show_progress` | both | `true` | Progress bar and times (only while a track with a duration plays) |
 | `show_controls` | both | `true` | Transport buttons; the mini card keeps previous, play / pause and next |
 | `show_volume` | both | `true` | Volume slider (or - / + buttons) and mute |
+| `title_overflow` | both | `ellipsis` | Long track texts (title, artist, album, a player's track line in a list): `ellipsis` cuts them with `…`, `wrap` puts them on several lines (see `title_lines`), `scroll` makes a text wider than its line scroll to its end and back (a marquee, only when it does not fit; it stays cut with `…` when the system asks for reduced motion) |
+| `title_lines` | both | `2` | With `title_overflow: wrap`: maximum number of lines of each text, `0` for no limit |
 | `zoom` | mini | `true` | Detail button at the top right of the mini card: it shows the full card's content (with the same options, so `entities`, `favorites`, `collapsed`… can be set on the mini card too, in YAML or, but for `favorites`, in its visual editor) and switches back; `false` removes the button |
 | `show_background` | both | `true` | Blurred artwork behind the whole card |
 | `entities` | both | Players the shown one can group with | Rooms of the card: a list of `media_player` entities (or `- entity: media_player.x`), listed after the shown player |

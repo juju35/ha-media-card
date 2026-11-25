@@ -16,4 +16,5 @@ export default {
   movie: "Film", last_called: "Poslednji pozvan", next_alarm: "Alarm", next_timer: "Tajmer", next_reminder: "Podsetnik", dnd: "Ne uznemiravaj", speaker_group: "Grupa zvučnika", hide_idle_sessions: "Sakrij neaktivne Jellyfin sesije",
   remote: "Daljinski", r_up: "Gore", r_down: "Dole", r_left: "Levo", r_right: "Desno", r_select: "Izaberi", r_menu: "Meni", r_home: "Početna", r_play_pause: "Pusti / pauza", show_remote: "Prikaži daljinski (Apple TV, Philips TV)", close_remote: "Zatvori daljinski", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Uključi ili isključi ekran", recording: "Snimanje", new_recording: "Novi snimak",
   illustration: "Animirana ilustracija", illustration_theme: "Tema ilustracije", theme_auto: "Automatski (prati temu)", theme_day: "Dan", theme_night: "Noć",
+  title_overflow: "Dugi naslovi", overflow_ellipsis: "Skrati trotačkom", overflow_wrap: "U više redova", overflow_scroll: "Klizanje", title_lines: "Redovi pri prelamanju", title_lines_helper: "Najveći broj redova pri prelamanju (0: bez ograničenja)",
 };
