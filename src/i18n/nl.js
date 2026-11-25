@@ -16,4 +16,5 @@ export default {
   movie: "Film", last_called: "Laatst aangesproken", next_alarm: "Wekker", next_timer: "Timer", next_reminder: "Herinnering", dnd: "Niet storen", speaker_group: "Speakergroep", hide_idle_sessions: "Inactieve Jellyfin-sessies verbergen",
   remote: "Afstandsbediening", r_up: "Omhoog", r_down: "Omlaag", r_left: "Links", r_right: "Rechts", r_select: "Selecteren", r_menu: "Menu", r_home: "Home", r_play_pause: "Afspelen / pauze", show_remote: "Afstandsbediening tonen (Apple TV, Philips TV)", close_remote: "Afstandsbediening sluiten", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Scherm aan of uit", recording: "Opname bezig", new_recording: "Nieuwe opname",
   illustration: "Geanimeerde illustratie", illustration_theme: "Thema van de illustratie", theme_auto: "Automatisch (volgt het thema)", theme_day: "Dag", theme_night: "Nacht",
+  title_overflow: "Lange titels", overflow_ellipsis: "Afkappen met beletselteken", overflow_wrap: "Over meerdere regels", overflow_scroll: "Scrollen", title_lines: "Regels bij terugloop", title_lines_helper: "Maximaal aantal regels bij terugloop (0: geen limiet)",
 };

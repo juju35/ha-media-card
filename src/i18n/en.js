@@ -16,4 +16,5 @@ export default {
   movie: "Movie", last_called: "Last called", next_alarm: "Alarm", next_timer: "Timer", next_reminder: "Reminder", dnd: "Do not disturb", speaker_group: "Speaker group", hide_idle_sessions: "Hide idle Jellyfin sessions",
   remote: "Remote", r_up: "Up", r_down: "Down", r_left: "Left", r_right: "Right", r_select: "Select", r_menu: "Menu", r_home: "Home", r_play_pause: "Play / pause", show_remote: "Show the remote (Apple TV, Philips TV)", close_remote: "Close the remote", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Screen on or off", recording: "Recording", new_recording: "New recording",
   illustration: "Animated illustration", illustration_theme: "Illustration theme", theme_auto: "Automatic (follows the theme)", theme_day: "Day", theme_night: "Night",
+  title_overflow: "Long track titles", overflow_ellipsis: "Cut with an ellipsis", overflow_wrap: "Wrap onto several lines", overflow_scroll: "Scroll", title_lines: "Lines when wrapped", title_lines_helper: "Maximum number of lines with Wrap (0: no limit)",
 };

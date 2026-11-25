@@ -16,4 +16,5 @@ export default {
   movie: "Фильм", last_called: "Последний вызванный", next_alarm: "Будильник", next_timer: "Таймер", next_reminder: "Напоминание", dnd: "Не беспокоить", speaker_group: "Группа колонок", hide_idle_sessions: "Скрывать неактивные сеансы Jellyfin",
   remote: "Пульт", r_up: "Вверх", r_down: "Вниз", r_left: "Влево", r_right: "Вправо", r_select: "Выбрать", r_menu: "Меню", r_home: "Домой", r_play_pause: "Воспроизведение / пауза", show_remote: "Показывать пульт (Apple TV, Philips TV)", close_remote: "Закрыть пульт", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Включить или выключить экран", recording: "Идёт запись", new_recording: "Новая запись",
   illustration: "Анимированная иллюстрация", illustration_theme: "Тема иллюстрации", theme_auto: "Автоматически (по теме)", theme_day: "День", theme_night: "Ночь",
+  title_overflow: "Длинные названия", overflow_ellipsis: "Обрезать многоточием", overflow_wrap: "На несколько строк", overflow_scroll: "Прокрутка", title_lines: "Строки при переносе", title_lines_helper: "Максимальное число строк при переносе (0: без ограничения)",
 };

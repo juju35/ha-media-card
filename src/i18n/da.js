@@ -16,4 +16,5 @@ export default {
   movie: "Film", last_called: "Sidst kaldt", next_alarm: "Alarm", next_timer: "Timer", next_reminder: "Påmindelse", dnd: "Forstyr ikke", speaker_group: "Højttalergruppe", hide_idle_sessions: "Skjul inaktive Jellyfin-sessioner",
   remote: "Fjernbetjening", r_up: "Op", r_down: "Ned", r_left: "Venstre", r_right: "Højre", r_select: "Vælg", r_menu: "Menu", r_home: "Hjem", r_play_pause: "Afspil / pause", show_remote: "Vis fjernbetjeningen (Apple TV, Philips TV)", close_remote: "Luk fjernbetjeningen", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Tænd eller sluk skærmen", recording: "Optager", new_recording: "Ny optagelse",
   illustration: "Animeret illustration", illustration_theme: "Illustrationens tema", theme_auto: "Automatisk (følger temaet)", theme_day: "Dag", theme_night: "Nat",
+  title_overflow: "Lange titler", overflow_ellipsis: "Afkort med ellipse", overflow_wrap: "Ombryd over flere linjer", overflow_scroll: "Rul", title_lines: "Linjer ved ombrydning", title_lines_helper: "Maksimalt antal linjer ved ombrydning (0: ingen grænse)",
 };

@@ -7,6 +7,7 @@ import { ANIM_STYLE, BASE_STYLE, DIALOG_STYLE, FOCUS_SELECTOR, FULL_STYLE, LIST_
 import { STRINGS } from "./i18n/strings.js";
 
 export let mediaUid = 0;
+export const OVERFLOWS = ["ellipsis", "wrap", "scroll"];
 
 export class MediaBase extends HTMLElement {
   constructor() {
@@ -160,8 +161,15 @@ export class MediaBase extends HTMLElement {
     // The position moves on its own while playing: only the progress bar and its time are updated every second.
     clearInterval(this._ticker);
     this._ticker = setInterval(() => this._tick(), 1000);
-    if (!this._fitObserver && typeof ResizeObserver === "function") this._fitObserver = new ResizeObserver(() => this._fitPill());
-    document.fonts?.ready?.then(() => this._fitPill());
+    if (!this._fitObserver && typeof ResizeObserver === "function")
+      this._fitObserver = new ResizeObserver(() => {
+        this._fitPill();
+        this._fitMarquee();
+      });
+    document.fonts?.ready?.then(() => {
+      this._fitPill();
+      this._fitMarquee();
+    });
     this._fitObserver?.observe(this);
   }
 
@@ -191,6 +199,14 @@ export class MediaBase extends HTMLElement {
     this._config = { ...config };
     this.toggleAttribute?.("hide-title", config.show_title === false);
     this.toggleAttribute?.("hide-subtitle", config.show_subtitle === false);
+    // Long track texts (title_overflow): ellipsis (default), wrap on title_lines lines (0: every line) or scroll.
+    const overflow = OVERFLOWS.includes(config.title_overflow) ? config.title_overflow : "ellipsis";
+    this._overflow = overflow;
+    this._mq = new Map();
+    if (overflow === "ellipsis") this.removeAttribute?.("title-overflow");
+    else this.setAttribute?.("title-overflow", overflow);
+    const lines = Number(config.title_lines ?? 2);
+    this.style?.setProperty?.("--mc-lines", Number.isInteger(lines) && lines > 0 ? String(lines) : "none");
     this._active = null;
     this._showHidden = false;
     this._html = "";
@@ -236,6 +252,7 @@ export class MediaBase extends HTMLElement {
     this._html = html;
     morph(this.shadowRoot, html);
     this._fitPill();
+    this._fitMarquee();
     this._afterRender(true);
     if (kept) this._focusables(kept.key)[kept.index]?.focus({ preventScroll: true });
     if (this._confirm) {
@@ -755,6 +772,43 @@ export class MediaBase extends HTMLElement {
     return [a.media_title, this._videoLine(id, s) || a.media_artist].filter(Boolean).join(" · ");
   }
 
+  // A track text (title, artist, album, a list row's track line): its text in a span that scrolls when
+  // title_overflow is scroll and it is wider than its line (measured after the render, _fitMarquee). The measure is
+  // kept by text so that a render patching the same line keeps it scrolling as it was.
+  _mt(cls, text, attrs = "") {
+    if (this._overflow !== "scroll") return `<div class="${cls} mt"${attrs}>${esc(text)}</div>`;
+    const m = this._mq?.get(`${cls}|${text}`);
+    const run = m ? ` scrolling" style="--mq-shift:${m.shift}px;--mq-dur:${m.dur}s` : "";
+    return `<div class="${cls} mt${run}"${attrs}><span class="mq">${esc(text)}</span></div>`;
+  }
+
+  // title_overflow: scroll — each track text wider than its line scrolls by what it overflows, at about 30 px a second
+  // between two pauses at the ends.
+  _fitMarquee() {
+    if (this._overflow !== "scroll") return;
+    for (const el of this.shadowRoot?.querySelectorAll?.(".mt") || []) {
+      const span = el.querySelector?.(".mq");
+      if (!span?.getBoundingClientRect) continue;
+      const cls = [...el.classList].find((c) => c !== "mt" && c !== "scrolling");
+      const key = `${cls}|${span.textContent}`;
+      const over = Math.ceil(span.scrollWidth - el.clientWidth);
+      const was = this._mq.get(key);
+      if (over > 1 && el.clientWidth > 0) {
+        const m = { shift: -over, dur: Math.max(4, Math.round((over / 30 / 0.7) * 10) / 10) };
+        if (was?.shift === m.shift && el.classList.contains("scrolling")) continue;
+        this._mq.set(key, m);
+        el.style.setProperty("--mq-shift", `${m.shift}px`);
+        el.style.setProperty("--mq-dur", `${m.dur}s`);
+        el.classList.add("scrolling");
+      } else if (el.clientWidth > 0) {
+        this._mq.delete(key);
+        el.classList.remove("scrolling");
+        el.style.removeProperty("--mq-shift");
+        el.style.removeProperty("--mq-dur");
+      }
+    }
+  }
+
   _meta(s, id = "") {
     const a = s?.attributes || {};
     const title = a.media_title || (s?.state === "on" || s?.state === "idle" ? a.source || a.app_name : "") || this._t("nothing_playing");
@@ -762,7 +816,7 @@ export class MediaBase extends HTMLElement {
     const extra = [a.media_album_name];
     if (Number(a.queue_size) > 1 && Number.isFinite(Number(a.queue_position))) extra.push(this._t("track_of", { n: a.queue_position, total: a.queue_size }));
     const album = extra.filter(Boolean).join(" · ");
-    return `<div class="meta"><div class="track" title="${esc(title)}">${esc(title)}</div>${artist ? `<div class="artist">${esc(artist)}</div>` : ""}${album ? `<div class="album">${esc(album)}</div>` : ""}</div>`;
+    return `<div class="meta">${this._mt("track", title, ` title="${esc(title)}"`)}${artist ? this._mt("artist", artist) : ""}${album ? this._mt("album", album) : ""}</div>`;
   }
 
   // `own`: the bar and the time name their player (several players in the card), painted from its own position.
@@ -1050,7 +1104,7 @@ export class MediaCard extends MediaBase {
           <div class="room-icon ${statusClass(s?.state)}${ring}">${svgIcon(ICONS[kindFor(this._hass, rid, s)])}</div>
           <div class="room-main">
             <div class="room-name clickable" role="button" tabindex="0" data-action="show_player" data-target="${esc(rid)}" title="${esc(this._t("show_player", { name }))}">${esc(name)}</div>
-            <div class="room-sub">${esc(sub)}</div>
+            ${this._mt("room-sub", sub)}
             ${this._volume(rid, s)}
           </div>
           ${link}
@@ -1298,7 +1352,7 @@ export class MediaMiniCard extends MediaCard {
       return `<div class="pitem${open ? " open" : ""}">
           <div class="prow">${this._art(id, s, { front: true })}<div class="prow-main clickable" role="button" tabindex="0" data-action="expand_player" data-target="${esc(id)}" aria-expanded="${open}"><div class="prow-name">${esc(
             nameOf(this._hass, id),
-          )}</div><div class="prow-sub">${esc(sub)}</div></div>${play}${vol}</div>${detail}
+          )}</div>${this._mt("prow-sub", sub)}</div>${play}${vol}</div>${detail}
         </div>`;
     });
     return `<style>${ANIM_STYLE}${BASE_STYLE}${MINI_STYLE}${STACK_STYLE}${LIST_STYLE}${this._sceneStyle(true)}</style>

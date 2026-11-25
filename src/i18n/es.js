@@ -16,4 +16,5 @@ export default {
   movie: "Película", last_called: "Último llamado", next_alarm: "Alarma", next_timer: "Temporizador", next_reminder: "Recordatorio", dnd: "No molestar", speaker_group: "Grupo de altavoces", hide_idle_sessions: "Ocultar sesiones de Jellyfin inactivas",
   remote: "Mando", r_up: "Arriba", r_down: "Abajo", r_left: "Izquierda", r_right: "Derecha", r_select: "Seleccionar", r_menu: "Menú", r_home: "Inicio", r_play_pause: "Reproducir / pausa", show_remote: "Mostrar el mando (Apple TV, Philips TV)", close_remote: "Cerrar el mando", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Encender o apagar la pantalla", recording: "Grabando", new_recording: "Nueva grabación",
   illustration: "Ilustración animada", illustration_theme: "Tema de la ilustración", theme_auto: "Automático (sigue el tema)", theme_day: "Día", theme_night: "Noche",
+  title_overflow: "Títulos largos", overflow_ellipsis: "Cortar con puntos suspensivos", overflow_wrap: "En varias líneas", overflow_scroll: "Desplazamiento", title_lines: "Líneas al ajustar", title_lines_helper: "Número máximo de líneas al ajustar (0: sin límite)",
 };

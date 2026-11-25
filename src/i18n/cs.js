@@ -16,4 +16,5 @@ export default {
   movie: "Film", last_called: "Naposledy oslovený", next_alarm: "Budík", next_timer: "Časovač", next_reminder: "Připomínka", dnd: "Nerušit", speaker_group: "Skupina reproduktorů", hide_idle_sessions: "Skrýt neaktivní relace Jellyfin",
   remote: "Dálkový ovladač", r_up: "Nahoru", r_down: "Dolů", r_left: "Vlevo", r_right: "Vpravo", r_select: "Vybrat", r_menu: "Nabídka", r_home: "Domů", r_play_pause: "Přehrát / pozastavit", show_remote: "Zobrazit dálkový ovladač (Apple TV, Philips TV)", close_remote: "Zavřít dálkový ovladač", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Zapnout nebo vypnout obrazovku", recording: "Nahrává se", new_recording: "Nová nahrávka",
   illustration: "Animovaná ilustrace", illustration_theme: "Motiv ilustrace", theme_auto: "Automaticky (podle motivu)", theme_day: "Den", theme_night: "Noc",
+  title_overflow: "Dlouhé názvy", overflow_ellipsis: "Zkrátit třemi tečkami", overflow_wrap: "Na více řádků", overflow_scroll: "Posouvání", title_lines: "Řádky při zalomení", title_lines_helper: "Největší počet řádků při zalomení (0: bez omezení)",
 };

@@ -16,4 +16,5 @@ export default {
   movie: "Film", last_called: "Ultimul apelat", next_alarm: "Alarmă", next_timer: "Cronometru", next_reminder: "Memento", dnd: "Nu deranjați", speaker_group: "Grup de boxe", hide_idle_sessions: "Ascunde sesiunile Jellyfin inactive",
   remote: "Telecomandă", r_up: "Sus", r_down: "Jos", r_left: "Stânga", r_right: "Dreapta", r_select: "Selectează", r_menu: "Meniu", r_home: "Acasă", r_play_pause: "Redare / pauză", show_remote: "Afișează telecomanda (Apple TV, Philips TV)", close_remote: "Închide telecomanda", ambilight: "Ambilight", ambilight_hue: "Ambilight + Hue", screen: "Pornește sau oprește ecranul", recording: "Înregistrare în curs", new_recording: "Înregistrare nouă",
   illustration: "Ilustrație animată", illustration_theme: "Tema ilustrației", theme_auto: "Automat (urmează tema)", theme_day: "Zi", theme_night: "Noapte",
+  title_overflow: "Titluri lungi", overflow_ellipsis: "Tăiate cu puncte de suspensie", overflow_wrap: "Pe mai multe rânduri", overflow_scroll: "Derulare", title_lines: "Rânduri la încadrare", title_lines_helper: "Număr maxim de rânduri la încadrare (0: fără limită)",
 };
