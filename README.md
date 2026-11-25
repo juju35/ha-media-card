@@ -443,6 +443,12 @@ A Sonos speaker: shuffle on, "Track 3 of 12", its sources and the Sonos favorite
 |---|---|
 | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/card-sonos.png" alt="sonos" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/card-sonos-dark.png" alt="sonos dark" width="400"> |
 
+Favorites with an `icon` each (`mdi:radio`, `mdi:web`, `mdi:podcast`), and the star for one with neither image nor icon:
+
+| Light | Dark |
+|---|---|
+| <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/card-favorites.png" alt="favorites with icons" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-media-card/main/screenshots/card-favorites-dark.png" alt="favorites with icons dark" width="400"> |
+
 A receiver: no transport buttons (it has none), power, volume, sources and sound modes, its drawn picture:
 
 | Light | Dark |
