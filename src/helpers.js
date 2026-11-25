@@ -351,10 +351,11 @@ export const favoritesOf = (hass, config, mainId) => {
       media_content_id: String(f.media_content_id),
       media_content_type: String(f.media_content_type || "music"),
       image: f.image || "",
+      icon: typeof f.icon === "string" && f.icon.includes(":") ? f.icon : "",
     }));
   const sensor = favoritesSensor(hass, config, mainId);
   const items = sensor ? hass.states[sensor].attributes.items || {} : {};
-  const sonos = Object.entries(items).map(([id, title]) => ({ name: String(title), media_content_id: id, media_content_type: "favorite_item_id", image: "" }));
+  const sonos = Object.entries(items).map(([id, title]) => ({ name: String(title), media_content_id: id, media_content_type: "favorite_item_id", image: "", icon: "" }));
   return [...own, ...sonos];
 };
 

@@ -1179,7 +1179,7 @@ export class MediaCard extends MediaBase {
       const tiles = favs.map(
         (f, i) =>
           `<button class="btn fav" data-action="favorite" data-index="${i}" title="${esc(this._t("play_favorite", { name: f.name }))}"${dis ? " disabled" : ""}><span class="art">${
-            f.image ? `<img src="${esc(f.image)}" alt="">` : svgIcon(ICONS.star)
+            f.image ? `<img src="${esc(f.image)}" alt="">` : f.icon ? `<ha-icon class="icon" icon="${esc(f.icon)}"></ha-icon>` : svgIcon(ICONS.star)
           }</span><span>${esc(f.name)}</span></button>`,
       );
       return `<div class="favs">${tiles.join("")}</div>`;

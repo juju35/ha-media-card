@@ -183,6 +183,7 @@ favorites:
   - name: Jazz radio
     media_content_id: http://radio.example/jazz.mp3
     media_content_type: music
+    icon: mdi:radio
   - name: Focus playlist
     media_content_id: library://playlist/12
     media_content_type: playlist
@@ -228,7 +229,7 @@ language: fr
 | `show_queue` | both | `true` | Queue section (Music Assistant players) |
 | `show_favorites` | both | `true` | Favorites section (players that can play media) |
 | `collapsed` | both | `[source, queue, favorites]` | Sections folded by default, among `rooms`, `source`, `queue`, `favorites` and `remote` (`[]` to unfold everything). Click a section title (or Tab to it and press Enter or Space) to fold or unfold it; a click elsewhere on the page folds them back |
-| `favorites` | both | — | Your favorites, played with `media_player.play_media`: a list of `name`, `media_content_id`, `media_content_type` (default `music`) and an optional `image`. YAML only (the visual editor keeps it) |
+| `favorites` | both | — | Your favorites, played with `media_player.play_media`: a list of `name`, `media_content_id`, `media_content_type` (default `music`), an optional `image` and an optional `icon` (`mdi:…`, shown when there is no `image`; a star by default). YAML only (the visual editor keeps it) |
 | `favorites_entity` | both | Sonos favorites sensor | Sensor whose `items` attribute lists favorites as `{ id: title }` (found by itself for a Sonos player) |
 | `language` | both | Auto | Force language: `en`, `fr`, `de`, `es`, `sr`, `sr-Latn`, `it`, `nl`, `pt`, `pl`, `ro`, `da`, `sv`, `bg`, `ru`, `uk`, `hu`, `sk`, `cs`, `sl`, `lv` or `el` (auto-detects from HA settings) |
 

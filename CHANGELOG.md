@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.7.0 - 2026-11-25
+
+### Features
+- Favorites: an optional `icon` (`mdi:…`) per entry of the `favorites` option, shown when the favorite has no `image` (the image still comes first; a star by default), to tell favorites apart without hosting picture files (#37).
+
 ## 1.6.5 - 2026-11-24
 
 ### Maintenance

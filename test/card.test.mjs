@@ -274,6 +274,19 @@ test("favorites: the option's list and the Sonos favorites sensor, played with p
   ]);
 });
 
+test("favorites: an mdi icon when there is no image, the image first, a star otherwise", () => {
+  const favorites = [
+    { name: "Web", media_content_id: "a", icon: "mdi:web" },
+    { name: "Both", media_content_id: "b", icon: "mdi:radio", image: "/local/b.png" },
+    { name: "Bad", media_content_id: "c", icon: "radio" },
+  ];
+  const h = html(newCard({ entity: "media_player.lounge", favorites }));
+  assert.match(h, /<ha-icon class="icon" icon="mdi:web"><\/ha-icon><\/span><span>Web<\/span>/);
+  assert.doesNotMatch(h, /icon="mdi:radio"/);
+  assert.match(h, /<img src="\/local\/b.png" alt=""><\/span><span>Both<\/span>/);
+  assert.match(h, /<svg class="icon "[^>]*><path d="[^"]+"\/><\/svg><\/span><span>Bad<\/span>/);
+});
+
 test("sections fold by default as configured, and unfold on click", () => {
   const card = newCard({ collapsed: undefined });
   let h = html(card);
