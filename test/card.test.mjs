@@ -279,12 +279,15 @@ test("favorites: an mdi icon when there is no image, the image first, a star oth
     { name: "Web", media_content_id: "a", icon: "mdi:web" },
     { name: "Both", media_content_id: "b", icon: "mdi:radio", image: "/local/b.png" },
     { name: "Bad", media_content_id: "c", icon: "radio" },
+    { name: "Url", media_content_id: "d", icon: "https://example.com/radio.svg" },
   ];
   const h = html(newCard({ entity: "media_player.lounge", favorites }));
   assert.match(h, /<ha-icon class="icon" icon="mdi:web"><\/ha-icon><\/span><span>Web<\/span>/);
   assert.doesNotMatch(h, /icon="mdi:radio"/);
   assert.match(h, /<img src="\/local\/b.png" alt=""><\/span><span>Both<\/span>/);
   assert.match(h, /<svg class="icon "[^>]*><path d="[^"]+"\/><\/svg><\/span><span>Bad<\/span>/);
+  assert.match(h, /<svg class="icon "[^>]*><path d="[^"]+"\/><\/svg><\/span><span>Url<\/span>/);
+  assert.doesNotMatch(h, /icon="https/);
 });
 
 test("sections fold by default as configured, and unfold on click", () => {

@@ -351,7 +351,7 @@ export const favoritesOf = (hass, config, mainId) => {
       media_content_id: String(f.media_content_id),
       media_content_type: String(f.media_content_type || "music"),
       image: f.image || "",
-      icon: typeof f.icon === "string" && f.icon.includes(":") ? f.icon : "",
+      icon: typeof f.icon === "string" && /^[\w-]+:[\w-]+$/.test(f.icon.trim()) ? f.icon.trim() : "",
     }));
   const sensor = favoritesSensor(hass, config, mainId);
   const items = sensor ? hass.states[sensor].attributes.items || {} : {};
