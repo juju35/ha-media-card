@@ -192,6 +192,7 @@ export const FULL_STYLE = `
   .fav { justify-content: flex-start; border-radius: 12px; padding: 6px 10px 6px 6px; font-weight: 400; }
   .fav .art { width: 28px; height: 28px; border-radius: 6px; box-shadow: none; }
   .fav .art .icon { width: 16px; height: 16px; }
+  .fav .art ha-icon { --mdc-icon-size: 16px; display: flex; color: var(--mc-accent); }
   /* Narrow card: the artwork shrinks, then the hero stacks. */
   @container (max-width: 340px) {
     .art-wrap, .art-wrap .art, .pic-box { width: 88px; height: 88px; }

@@ -14,6 +14,21 @@ const pair = (file, rest) => [
 export const shots = [
   ...pair("card", { type: "media-card", width: 460, config: { entity: LIVING } }),
   ...pair("card-queue", { type: "media-card", width: 460, config: { entity: LIVING, collapsed: ["rooms", "source", "favorites"] } }),
+  // Favorites told apart by an mdi icon (`icon`), the star when a favorite has neither image nor icon.
+  ...pair("card-favorites", {
+    type: "media-card",
+    width: 460,
+    config: {
+      entity: LIVING,
+      collapsed: ["rooms", "source", "queue"],
+      favorites: [
+        { name: "News (DAB)", media_content_id: "dab://news", media_content_type: "channel", icon: "mdi:radio" },
+        { name: "Jazz web radio", media_content_id: "http://radio.example/jazz.mp3", media_content_type: "channel", icon: "mdi:web" },
+        { name: "Daily podcast", media_content_id: "library://podcast/3", media_content_type: "podcast", icon: "mdi:podcast" },
+        { name: "Focus playlist", media_content_id: "library://playlist/12", media_content_type: "playlist" },
+      ],
+    },
+  }),
   ...pair("card-sonos", { type: "media-card", width: 460, config: { entity: "media_player.lounge", collapsed: ["queue"] } }),
   ...pair("card-receiver", { type: "media-card", width: 460, config: { entity: "media_player.home_cinema", collapsed: [] } }),
   ...pair("card-ungroup", { type: "media-card", width: 460, config: { entity: LIVING }, clicks: ['[data-action="ungroup_all"]'] }),

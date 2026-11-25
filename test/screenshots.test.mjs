@@ -26,11 +26,21 @@ for (const [kind, list] of [
   });
 }
 
+// Only orphans fail: a capture just added to the list is committed by the Screenshots workflow after the first push.
 test("every file in screenshots/ is rendered by the screenshot script", () => {
   const rendered = new Set([...shots.map((s) => `${s.file}.png`), ...gifs.map((g) => `${g.file}.gif`)]);
   const files = readdirSync(new URL("../screenshots/", import.meta.url));
   assert.deepEqual(files.filter((f) => !rendered.has(f)), []);
-  assert.deepEqual([...rendered].filter((f) => !files.includes(f)), []);
+});
+
+// No capture that serves no purpose: every rendered capture is shown in the README, and the README shows only
+// rendered captures (no stale name, no broken image).
+test("the README shows every rendered capture, and only those", () => {
+  const rendered = [...shots.map((s) => `${s.file}.png`), ...gifs.map((g) => `${g.file}.gif`)];
+  const readme = readFileSync(new URL("../README.md", import.meta.url), "utf8");
+  const shown = new Set([...readme.matchAll(/screenshots\/([\w.-]+\.(?:png|gif))/g)].map((m) => m[1]));
+  assert.deepEqual(rendered.filter((f) => !shown.has(f)), [], "rendered but not in the README");
+  assert.deepEqual([...shown].filter((f) => !rendered.includes(f)), [], "in the README but not rendered");
 });
 
 // The screenshot script rewrites a capture only when its decoded pixels change (see scripts/pixels.mjs): an exact
