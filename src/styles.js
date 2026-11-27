@@ -33,7 +33,7 @@ export const ANIM_STYLE = `
 
 export const BASE_STYLE = `
   :host { --mc-accent: var(--primary-color, #03a9f4); --mc-ok: var(--success-color, #43a047); --mc-warn: var(--warning-color, #ffa600);
-          --mc-crit: var(--error-color, #db4437); --mc-idle: var(--disabled-text-color, #9e9e9e); --mc-active: var(--info-color, #039be5);
+          --mc-crit: var(--error-color, #db4437); --mc-idle: var(--secondary-text-color, #9e9e9e); --mc-active: var(--info-color, #039be5);
           /* Text in a state or accent color is mixed with the text color so that it reads at 4.5:1 at least. */
           --mc-accent-text: color-mix(in srgb, var(--mc-accent) 50%, var(--primary-text-color)); }
   ha-card { overflow: hidden; container-type: inline-size; position: relative; isolation: isolate; }
